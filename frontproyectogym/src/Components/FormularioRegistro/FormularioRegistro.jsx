@@ -4,6 +4,7 @@ import Contenedor from '../Contenedor/Contenedor';
 import CampoInput from '../CampoInput/CampoInput';
 import PostUsuario from '../../Datos/PostUsuario';
 import {Link} from 'react-router-dom'
+import styles from '../FormularioRegistro/FormularioRegistro.module.css'
 
 export default function FormularioRegistro() {
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
@@ -18,7 +19,7 @@ export default function FormularioRegistro() {
 
     return (
     <Contenedor>
-        <form onSubmit={onSubmit}>
+        <form className={styles.formulario} onSubmit={onSubmit}>
             <CampoInput 
             name='PrimerNombre'
             type='text'
