@@ -1,0 +1,17 @@
+import { AuthContext } from "../../Auth/AuthContext"
+import { useContext } from "react"
+
+
+export default function CerrarSesion(){
+    const url = 'https://localhost:7051/api/v1/Account/CerrarSesion'
+    const {user, setUser} = useContext(AuthContext)
+
+    function Cerrar(){
+        setUser(null)
+    }
+
+    return <>
+        <button onClick={() => Cerrar(url)}>Cerrar Sesion</button>
+    </>
+}
+

@@ -3,11 +3,20 @@ import { useForm } from 'react-hook-form';
 import Contenedor from '../Contenedor/Contenedor';
 import CampoInput from '../CampoInput/CampoInput';
 import PostUsuario from '../../Datos/PostUsuario';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import styles from '../FormularioRegistro/FormularioRegistro.module.css'
+import { AuthContext } from '../../Auth/AuthContext';
+import { useContext, useEffect } from 'react';
 
 export default function FormularioRegistro() {
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
+    const {user} = useContext(AuthContext);
+    const navigate = useNavigate();
+    useEffect(()=>{
+        if(user){
+            navigate('/PaginaPrincipal')
+        }
+    }, [user])
 
     const Contraseña = watch('password')
 

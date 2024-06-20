@@ -1,4 +1,26 @@
+import { useContext } from "react"
+import CerrarSesion from "../CerrarSesion/CerrarSesion"
+import Contenedor from "../Contenedor/Contenedor"
+import { AuthContext } from "../../Auth/AuthContext"
+import { useNavigate } from "react-router-dom"
+
 
 export default function PaginaPrincipal(){
-    return <h1>Pagina Principal</h1>
+    const {user} = useContext(AuthContext)
+    console.log(user)
+
+    const navigate = useNavigate();
+    const login = () =>{
+        navigate('/')
+    }
+
+    const registro = () =>{
+        navigate('/Registro')
+    }
+    return <Contenedor>
+    <h1>Pagina Principal</h1>
+    <CerrarSesion />
+    <button onClick={login}>Login</button>
+    <button onClick={registro}>Registro</button>
+    </Contenedor>
 }

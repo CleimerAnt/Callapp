@@ -1,4 +1,4 @@
-// PostUsuario.js
+
 export default async function postUsuario(url, data) {
     const response = await fetch(url, {
     method: 'POST',
