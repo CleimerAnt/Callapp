@@ -7,6 +7,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import styles from '../FormularioRegistro/FormularioRegistro.module.css'
 import { AuthContext } from '../../Auth/AuthContext';
 import { useContext, useEffect } from 'react';
+import BotonForm from '../BotonForm/BotonForm';
 
 export default function FormularioRegistro() {
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
@@ -84,9 +85,7 @@ export default function FormularioRegistro() {
             validate={value => value === Contraseña || 'Las Contraseñas no coinciden'}
             />
 
-            <div className="mb-3 float-end">
-            <button type="submit" className='btn btn-primary'>Registrarme</button>
-            </div>
+            <BotonForm texto='Registrarme'/>
         </form>
 
         <Link to={'/'}>Login</Link>
