@@ -4,39 +4,17 @@ import { useForm } from 'react-hook-form';
 import BotonForm from "../BotonForm/BotonForm";
 import { useContext } from "react";
 import {AuthContext} from '../../Auth/AuthContext'
-import postUsuario from "../../Datos/PostUsuario";
+import postDataAutorizacion from "../../Datos/PostDataAutorizacion";
+import calcularCalorias from "../../Metodos/CalcularCalorias";
+
 
 export default function FormularioCalorias() {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const {user} = useContext(AuthContext)
 
-    function calcularCalorias(peso, altura, edad, nivelActividad, objetivo, genero) {
-        const pesoKg = peso * 0.453592;
-        let TMB;
-        let caloriasDiarias;
-        let totalCalorias;
-
-        if (genero === 'masculino') {
-            TMB = 88.362 + (13.397 * pesoKg) + (4.799 * altura) - (5.677 * edad);
-        } else if (genero === 'femenino') {
-            TMB = 447.593 + (9.247 * pesoKg) + (3.098 * altura) - (4.330 * edad);
-        }
-
-        caloriasDiarias = TMB * nivelActividad;
-
-        if (objetivo === '-500') {
-            totalCalorias = caloriasDiarias - 500;
-        } else if (objetivo === '+500') {
-            totalCalorias = caloriasDiarias + 500;
-        } else {
-            totalCalorias = caloriasDiarias;
-        }
-
-        return parseFloat(totalCalorias);
-    }
-
     const onSubmit = handleSubmit(async(data) => {
         const url = 'https://localhost:7051/api/v1/Usuario/AgregarUsuarios'
+        
         const calorias = calcularCalorias(
             parseFloat(data.Peso),
             parseFloat(data.Altura),
@@ -46,8 +24,7 @@ export default function FormularioCalorias() {
             data.Genero
         );
         data.Calorias = calorias
-        console.log(data)
-        await postUsuario(url, data)
+        await postDataAutorizacion(url, data, user)
     });
 
     return (
@@ -139,3 +116,4 @@ export default function FormularioCalorias() {
         </Container>
     );
 }
+

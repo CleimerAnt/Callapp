@@ -8,6 +8,7 @@ import FormularioCalorias from "../FormularioCalorias/FormularioCalorias"
 
 export default function PaginaPrincipal(){
     const {user} = useContext(AuthContext)
+    console.log(user)
     const navigate = useNavigate();
     const login = () =>{
         navigate('/')
