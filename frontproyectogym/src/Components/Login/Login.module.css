@@ -1,3 +1,39 @@
-.formulario input {
-    width: 500px;
+.formulario div{
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario label{
+    font-size: 0px;
+}
+
+.formulario{
+    background-color: #183153;
+    padding: 15px;
+    width: 400px;
+    
+}
+
+.formulario input{
+    background-color: #F2F2F2;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.link a{
+    list-style: none;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: color 0.5s;
+}
+
+.link a:hover{
+    color: #FF9800;
+}
+
+span{
+    color: #FF9800;
+    margin-top: 5px;
 }
