@@ -5,19 +5,10 @@ import CampoInput from '../CampoInput/CampoInput';
 import PostUsuario from '../../Datos/PostUsuario';
 import {Link, useNavigate} from 'react-router-dom'
 import styles from '../FormularioRegistro/FormularioRegistro.module.css'
-import { AuthContext } from '../../Auth/AuthContext';
-import { useContext, useEffect } from 'react';
 import BotonForm from '../BotonForm/BotonForm';
 
 export default function FormularioRegistro() {
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
-    const {user} = useContext(AuthContext);
-    const navigate = useNavigate();
-    useEffect(()=>{
-        if(user){
-            navigate('/PaginaPrincipal')
-        }
-    }, [user])
 
     const Contraseña = watch('password')
 
@@ -28,8 +19,8 @@ export default function FormularioRegistro() {
     })
 
     return (
-    <Contenedor>
-        <form className={styles.formulario} onSubmit={onSubmit}>
+    <Contenedor center={'d-flex align-items-center justify-content-center mb-5'}>
+        <form className={`${styles.formulario} mt-5 d-flex flex-column `} onSubmit={onSubmit}>
             <CampoInput 
             name='PrimerNombre'
             type='text'
@@ -37,6 +28,7 @@ export default function FormularioRegistro() {
             register={register}
             required={true}
             errors={errors}
+            placeholder={'Primer Nombre'}
             />
 
             <CampoInput 
@@ -46,6 +38,7 @@ export default function FormularioRegistro() {
             register={register}
             required={true}
             errors={errors}
+            placeholder={'Apellido'}
             />
 
             <CampoInput 
@@ -55,6 +48,7 @@ export default function FormularioRegistro() {
             register={register}
             required={true}
             errors={errors}
+            placeholder={'Correo Electronico'}
             />
             
             <CampoInput 
@@ -64,6 +58,7 @@ export default function FormularioRegistro() {
             register={register}
             required={true}
             errors={errors}
+            placeholder={'Nombre de Usuario'}
             />
 
             <CampoInput 
@@ -73,6 +68,7 @@ export default function FormularioRegistro() {
             register={register}
             required={true}
             errors={errors}
+            placeholder={'Contraseña'}
             />
 
             <CampoInput 
@@ -82,13 +78,17 @@ export default function FormularioRegistro() {
             register={register}
             required={true}
             errors={errors}
+            placeholder={'Confirmar Contraseña'}
             validate={value => value === Contraseña || 'Las Contraseñas no coinciden'}
             />
 
-            <BotonForm texto='Registrarme'/>
+            <BotonForm tipoBoton={'btn btn-primary'} texto='Registrarme'/>
+
+            <div className={`d-flex align-items-end p-3 ${styles.link}`}>
+                <Link  to={'/'}>Loguearme</Link>
+            </div>
         </form>
 
-        <Link to={'/'}>Login</Link>
     </Contenedor>
 );
 }

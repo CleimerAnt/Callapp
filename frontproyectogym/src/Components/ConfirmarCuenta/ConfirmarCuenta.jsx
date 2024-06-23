@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import styles from '../ConfirmarCuenta/ConfirmarCuenta.module.css'
 
 export default function ConfirmarCuenta(){
     const urlActual = window.location.href;
@@ -7,8 +7,17 @@ export default function ConfirmarCuenta(){
     obtenerTokenUserId(urlActual);
 
     return <>
-    <h1>Cuenta Confirmada</h1>
-    <Link to={'/'}>Inicial Sesion</Link>
+    <div className="card text-center container mt-4 w-50">
+    <div className={`card-header`}>
+        Confirmar Cuenta
+    </div>
+    <div className="card-body">
+        <h5 className="card-title">Cuenta Confirmada</h5>
+        <p className="card-text">Vorver al Formulario de Inicico de sesion</p>
+        <Link className="btn btn-primary" to={'/'}>Inicial Sesion</Link>
+    </div>
+
+    </div>
     </>
 
 }
