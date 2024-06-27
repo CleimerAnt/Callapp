@@ -1,10 +1,10 @@
-export default function CampoInput({ name, type, errors, label, register, required, validate, options, value, placeholder }) {
+export default function CampoInput({ name, type, errors, label, register, required, validate, options, value, placeholder, classFom }) {
     return (
         <div className={type === 'hidden' ? 'd-none' : 'mb-3'}>
             {type !== 'hidden' && <label htmlFor={name} className="form-label">{label}</label>}
             {type === 'select' ? (
                 <select
-                    className="form-control"
+                    className={classFom}
                     id={name}
                     {...register(name, {
                         required: {
@@ -23,7 +23,7 @@ export default function CampoInput({ name, type, errors, label, register, requir
             ) : (
                 <input
                     type={type}
-                    className=""
+                    className={classFom}
                     id={name}
                     placeholder={placeholder}
                     value={value}

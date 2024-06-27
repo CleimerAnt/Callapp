@@ -6,6 +6,7 @@ import ConfirmarCuenta from './Components/ConfirmarCuenta/ConfirmarCuenta';
 import PaginaPrincipal from './Components/PaginaPrincipal/PaginaPrincipal';
 import RutaProtegida from './Components/RutaProtegida/RutaProtegida';
 import { AuthContext } from './Auth/AuthContext';
+import FormularioCalorias from './Components/FormularioCalorias/FormularioCalorias';
 
 export default function App() {
   const { estaAutenticado } = useContext(AuthContext);
@@ -14,6 +15,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={estaAutenticado() ? <Navigate to="/PaginaPrincipal" /> : <Login />} />
       <Route path="/Registro" element={estaAutenticado() ? <Navigate to="/PaginaPrincipal" /> : <FormularioRegistro />} />
+      <Route path="/FormularioCalorias" element={<RutaProtegida><FormularioCalorias /></RutaProtegida>} />
       <Route path="/ConfirmarCuenta" element={<ConfirmarCuenta />} />
       <Route path="/PaginaPrincipal" element={<RutaProtegida><PaginaPrincipal /></RutaProtegida>} />
       <Route path="*" element={<Navigate to={estaAutenticado() ? "/PaginaPrincipal" : "/"} />} />

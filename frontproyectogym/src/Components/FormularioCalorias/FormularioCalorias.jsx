@@ -5,6 +5,7 @@ import BotonForm from "../BotonForm/BotonForm";
 import { useContext } from "react";
 import {AuthContext} from '../../Auth/AuthContext'
 import postDataAutorizacion from "../../Datos/PostDataAutorizacion";
+import styles from '../FormularioCalorias/FormularioCalorias.module.css'
 import calcularCalorias from "../../Metodos/CalcularCalorias";
 
 
@@ -29,51 +30,63 @@ export default function FormularioCalorias() {
 
     return (
         <Container>
-            <form onSubmit={onSubmit}>
-                <CampoInput
-                    name='Edad'
-                    label='Edad'
-                    type='number'
-                    required={true}
-                    errors={errors}
-                    register={register}
-                />
+            <h1 className="text-center mt-4">Calcular Calorias.</h1>
+            <form className={`d-flex flex-column align-items-center justify-content-center ${styles.formulario}`} onSubmit={onSubmit}>
+                <div className={styles.contenedor}>
+                    <CampoInput
+                        name='Edad'
+                        placeholder={'Edad'}
+                        classFom={'form-control'}
+                        type='number'
+                        required={true}
+                        errors={errors}
+                        register={register}
+                    />
 
-                <CampoInput
-                    name="Genero"
-                    label="Género"
-                    type="select"
-                    required={true}
-                    errors={errors}
-                    register={register}
-                    options={[
-                        { value: '', label: 'Seleccione su género' },
-                        { value: 'masculino', label: 'Hombre' },
-                        { value: 'femenino', label: 'Mujer' }
-                    ]}
-                />
+                    <CampoInput
+                        name="Genero"
+                        placeholder={'Genero'}
+                        classFom={'form-control'}
+                        type="select"
+                        required={true}
+                        errors={errors}
+                        register={register}
+                        options={[
+                            { value: '', label: 'Seleccione su género' },
+                            { value: 'masculino', label: 'Hombre' },
+                            { value: 'femenino', label: 'Mujer' }
+                        ]}
+                    />
+                </div>
 
-                <CampoInput
-                    name='Altura'
-                    label='Altura'
-                    type='text'
-                    required={true}
-                    errors={errors}
-                    register={register}
-                />
+                <div className={styles.contenedor}>
+                    <CampoInput
+                        name='Altura'
+                        placeholder='Altura'
+                        classFom={'form-control'}
+                        type='text'
+                        required={true}
+                        errors={errors}
+                        register={register}
+                    />
 
-                <CampoInput
-                    name='Peso'
-                    label='Peso'
-                    type='text'
-                    required={true}
-                    errors={errors}
-                    register={register}
-                />
+                    <CampoInput
+                        name='Peso'
+                        classFom={'form-control'}
+                        placeholder='Peso'
+                        type='text'
+                        required={true}
+                        errors={errors}
+                        register={register}
+                    />
 
-                <CampoInput
+                </div>
+
+                <div className={styles.contenedor}>
+                    <CampoInput
                     name="NivelActividadFisica"
-                    label="Nivel de Actividad Física"
+                    placeholder="Nivel de Actividad Física"
+                    classFom={'form-control'}
                     type="select"
                     required={true}
                     errors={errors}
@@ -90,7 +103,8 @@ export default function FormularioCalorias() {
 
                 <CampoInput
                     name="Objetivo"
-                    label="Objetivo"
+                    placeholder="Objetivo"
+                    classFom={'form-control'}
                     type="select"
                     required={true}
                     errors={errors}
@@ -102,6 +116,9 @@ export default function FormularioCalorias() {
                         { value: '+500', label: 'Ganar Peso' }
                     ]}
                 />
+                </div>
+                
+                
 
                 <CampoInput
                     name="IdentityId"
@@ -111,7 +128,7 @@ export default function FormularioCalorias() {
                     errors={errors}
                 />
 
-                <BotonForm texto='Enviar' />
+                <BotonForm texto='Enviar' tipoBoton={'btn btn-primary'} />
             </form>
         </Container>
     );
