@@ -10,7 +10,7 @@ export default function AuthContextProvider({ children }) {
     useEffect(() => {
         if (user) {
             const url = `https://localhost:7051/api/v1/Usuario/ObtenerUsuarios?id=${user.id}`;
-            getDatosUser(url).then(response => {
+            getDatosUser(url, user.jwToken).then(response => {
                 if (response && response.status === 204) {
                     setState(204);
                 } else {
