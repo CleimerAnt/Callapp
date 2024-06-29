@@ -2,7 +2,7 @@ import Contenedor from '../Contenedor/Contenedor';
 import CampoInput from '../CampoInput/CampoInput';
 import { useForm } from 'react-hook-form';
 import postUsuario from '../../Datos/PostUsuario';
-import { Link } from 'react-router-dom';
+import { Link, json } from 'react-router-dom';
 import styles from '../Login/Login.module.css';
 import { useContext, useEffect, useState } from 'react';
 import BotonForm from '../BotonForm/BotonForm';
@@ -18,9 +18,10 @@ export default function Login() {
         const url = 'https://localhost:7051/api/v1/Account/authenticate';
         
         try {
-            const result = await postUsuario(url, data);
+            const result = await login(url, data);
+            console.log(result)
             setUser(result);
-            setHasAuthenticated(true); // Indica que se ha realizado una autenticación
+            setHasAuthenticated(true); 
         } catch (error) {
             console.error('Error al autenticar:', error);
         }
@@ -35,7 +36,7 @@ export default function Login() {
                     swal("Aviso", "Su Cuenta no esta activada", "warning");
                 }
             }
-            setHasAuthenticated(false); // Resetea el estado después de manejar la autenticación
+            setHasAuthenticated(false);
         }
     }, [user, hasAuthenticated]);
 
@@ -71,3 +72,27 @@ export default function Login() {
         </Contenedor>
     );
 }
+
+
+const login = async (url, data) => {
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Error al realizar el Login:', errorText);
+            throw new Error('Error al realizar el Login');
+        }
+
+        return await response.json();
+    } catch (err) {
+        console.error('Error: ', err);
+        throw err;
+    }
+};

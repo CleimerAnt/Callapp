@@ -9,11 +9,30 @@ import { AuthContext } from './Auth/AuthContext';
 import FormularioCalorias from './Components/FormularioCalorias/FormularioCalorias';
 
 export default function App() {
-  const { estaAutenticado } = useContext(AuthContext);
+  const { estaAutenticado, calculoCalorias } = useContext(AuthContext);
+
+  const renderComponent = () =>{
+    if(estaAutenticado()){
+        const calorias = calculoCalorias();
+        if(calorias === null){
+          return <div>Loading</div>
+        }
+        else if(calorias){
+          return <Navigate to={'/PaginaPrincipal'} />
+        }
+        else{
+          return <Navigate to={'/FormularioCalorias'} />
+        }
+        }
+        else {
+          return <Login />
+        }
+  }
+
 
   return (
     <Routes>
-      <Route path="/" element={estaAutenticado() ? <Navigate to="/PaginaPrincipal" /> : <Login />} />
+      <Route path="/" element={renderComponent()} />
       <Route path="/Registro" element={estaAutenticado() ? <Navigate to="/PaginaPrincipal" /> : <FormularioRegistro />} />
       <Route path="/FormularioCalorias" element={<RutaProtegida><FormularioCalorias /></RutaProtegida>} />
       <Route path="/ConfirmarCuenta" element={<ConfirmarCuenta />} />
