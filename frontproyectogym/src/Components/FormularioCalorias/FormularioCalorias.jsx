@@ -2,6 +2,7 @@ import { Container } from "react-bootstrap";
 import CampoInput from "../CampoInput/CampoInput";
 import { useForm } from 'react-hook-form';
 import BotonForm from "../BotonForm/BotonForm";
+import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from '../../Auth/AuthContext';
 import postDataAutorizacion from "../../Datos/PostDataAutorizacion";
@@ -11,6 +12,8 @@ import calcularCalorias from "../../Metodos/CalcularCalorias";
 export default function FormularioCalorias() {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate()
+
 
     const onSubmit = handleSubmit(async (data) => {
         const url = 'https://localhost:7051/api/v1/Usuario/AgregarUsuarios';
@@ -29,8 +32,26 @@ export default function FormularioCalorias() {
         console.log('Datos enviados:', data);
 
         try {
-            const response = await postDataAutorizacion(url, data, user);
+            const response = await postDataAutorizacion(url,data, user);
             console.log('Respuesta del servidor:', response);
+            swal({
+                title: "Aviso",
+                text: "Calorías calculadas",
+                icon: "success",
+                buttons: {
+                    confirm: {
+                        text: "OK",
+                        value: true,
+                        visible: true,
+                        className: "btn btn-primary",
+                        closeModal: true
+                    }
+                }
+            }).then((value) => {
+                if (value) {
+                    navigate('/PaginaPrincipal');
+                }
+            });
         } catch (error) {
             console.error('Error al hacer la solicitud:', error);
         }

@@ -6,6 +6,7 @@ import postUsuario from '../../Datos/PostUsuario';
 import { Link } from 'react-router-dom';
 import styles from '../FormularioRegistro/FormularioRegistro.module.css';
 import BotonForm from '../BotonForm/BotonForm';
+import swal from 'sweetalert';
 
 export default function FormularioRegistro() {
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
@@ -29,7 +30,13 @@ export default function FormularioRegistro() {
 
         try {
             const res = await postUsuario(url, formData);
-            console.log(await res); // Verifica la respuesta del servidor
+            console.log(await res); 
+            if(await res.hasError === false){
+                swal("Aviso", "Usuario registrado exitosamente", "success");            
+            }
+            else{
+                swal("Aviso", `${res.error}`, "warning")
+            }
         } catch (error) {
             console.error('Error al registrar usuario:', error);
         }
