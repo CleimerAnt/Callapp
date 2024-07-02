@@ -1,8 +1,8 @@
 
 
-export default function Contenedor({children, elemento: Elemento = 'div', center})
+export default function Contenedor({children, elemento: Elemento = 'div', center, margin})
 {
-    return <Elemento className={`container ${center}`}>
+    return <Elemento className={`container ${center} ${margin}`}>
         {children}
     </Elemento>
 }

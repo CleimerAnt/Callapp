@@ -11,7 +11,7 @@ export default function CerrarSesion(){
     }
 
     return <>
-        <button onClick={() => Cerrar(url)}>Cerrar Sesion</button>
+        <button className="btn btn-danger" onClick={() => Cerrar(url)}>Cerrar Sesion</button>
     </>
 }
 

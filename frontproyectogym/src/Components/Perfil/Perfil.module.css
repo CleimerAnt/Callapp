@@ -1,0 +1,19 @@
+.perfil img{
+    border-radius: 80%;
+    width: 60px;
+}
+
+.perfil{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.perfil p{
+    font-size: 18px;
+}
+
+.spanCalorias{
+    font-size: 20px;
+    color: black;
+}
