@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import CerrarSesion from "../CerrarSesion/CerrarSesion";
 import Contenedor from "../Contenedor/Contenedor";
 import { AuthContext } from "../../Auth/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +11,7 @@ export default function PaginaPrincipal() {
     const { user } = useContext(AuthContext);
     const [state, setState] = useState();
     const [calorias, setCalorias] = useState();
+    const [contenedor, setContenedor] = useState([]);
 
     console.log("usuario", user);
     const navigate = useNavigate();
@@ -44,10 +44,31 @@ export default function PaginaPrincipal() {
         }
     }, [state, navigate]);
 
-
+    useEffect(() => {
+        const url = 'https://localhost:7051/api/v1/ContenedorAlimentos'
+        getDatosUser(url, user.jwToken)
+            .then(res => {
+                setContenedor(res)
+            })
+            .catch(err => console.error('Ha ocurrido un error: ', err))
+    }, [url])
+    console.log(contenedor)
     return (
         <Contenedor elemento="main" margin={'mt-3'}>
-            <Perfil calorias={calorias} imagenPerfil={imagenPerfil} />
+            <div className="row">
+                <section className="col-12 col-md-3">
+                    <Perfil calorias={calorias} imagenPerfil={imagenPerfil} />
+                </section>
+                <section className={`col-12 col-md-9 ${styles.principal} text-black `}>
+                    <h1>Pagina Principal</h1>
+                    {contenedor.map((element, index) => (
+                        <div key={index}>
+                            <p>{element.carbohidratosDelAlimento}</p>
+                            <p>{element.horario}</p>
+                        </div>
+                    ))}
+                </section>
+            </div>
         </Contenedor>
     );
 }

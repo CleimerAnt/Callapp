@@ -7,7 +7,7 @@ import CerrarSesion from "../CerrarSesion/CerrarSesion";
 export default function Perfil({imagenPerfil, calorias}){
     const { user } = useContext(AuthContext)
     return <>
-        <div className={`${styles.perfil} mb-3`}>
+        <div className={`${styles.perfil} `}>
             <img className={styles.imagenPerfil} src={imagenPerfil} alt="Imagen de Usuario" />
             <p>{user.userName}</p>
         </div>
