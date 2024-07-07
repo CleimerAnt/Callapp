@@ -6,11 +6,13 @@ import getDatosUser from '../../Datos/ObtenerCalculoCalorias';
 import styles from './PaginaPrincipal.module.css';
 import imagen from '../../assets/imagenPerfil.jpg';
 import Perfil from "../Perfil/Perfil";
+import ContenedorAlimentos from "../ContenedorAlimentos/ContenedorAlimentos";
+
 
 export default function PaginaPrincipal() {
     const { user } = useContext(AuthContext);
     const [state, setState] = useState();
-    const [calorias, setCalorias] = useState();
+    const [calorias, setCalorias] = useState(0);
     const [contenedor, setContenedor] = useState([]);
 
     console.log("usuario", user);
@@ -28,8 +30,7 @@ export default function PaginaPrincipal() {
                 return null;
             });
     }, [url]);
-        
-
+    
     let imagenPerfil = '';
 
     if (user.imgUrl === '') {
@@ -45,14 +46,34 @@ export default function PaginaPrincipal() {
     }, [state, navigate]);
 
     useEffect(() => {
-        const url = 'https://localhost:7051/api/v1/ContenedorAlimentos'
+        const url = `https://localhost:7051/api/v1/ContenedorAlimentos?id=${user.id}`
         getDatosUser(url, user.jwToken)
             .then(res => {
                 setContenedor(res)
             })
             .catch(err => console.error('Ha ocurrido un error: ', err))
     }, [url])
-    console.log(contenedor)
+    console.log('Contenedor: ',contenedor)
+    let desayuno = [];
+    let almuerzo = [];
+    let cena = [];
+    if(contenedor.status === 204){
+        console.log(contenedor)
+    }
+    else{
+    contenedor.forEach(element => {
+        if(element.horario === 'Desayuno'){
+            desayuno.push(element)
+        }
+        if(element.horario === 'Almuerzo'){
+            almuerzo.push(element)
+        }
+        if(element.horario === 'Cena'){
+            cena.push(element)
+        }
+    });
+    }
+
     return (
         <Contenedor elemento="main" margin={'mt-3'}>
             <div className="row">
@@ -61,14 +82,20 @@ export default function PaginaPrincipal() {
                 </section>
                 <section className={`col-12 col-md-9 ${styles.principal} text-black `}>
                     <h1>Pagina Principal</h1>
-                    {contenedor.map((element, index) => (
-                        <div key={index}>
-                            <p>{element.carbohidratosDelAlimento}</p>
-                            <p>{element.horario}</p>
-                        </div>
-                    ))}
+                    <h3>Desayuno</h3>
+                    {contenedor.status === 204 ? 'No hay contenido'  : <ContenedorAlimentos aray={desayuno}/>
+                    }
+                    <h3>Almuerzo</h3>
+                    {contenedor.status === 204 ? 'No hay contenido' : <ContenedorAlimentos aray={almuerzo}/> 
+                    
+                    }
+                    <h3>Cena</h3>
+                    {contenedor.status === 204 ? 'No hay contenido' : <ContenedorAlimentos aray={cena}/> 
+                    
+                    }
                 </section>
             </div>
         </Contenedor>
     );
 }
+

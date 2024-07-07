@@ -3,6 +3,7 @@ import { AuthContext } from "../../Auth/AuthContext";
 import { useContext } from "react";
 import styles from './Perfil.module.css'
 import CerrarSesion from "../CerrarSesion/CerrarSesion";
+import FormularioAlimentos from "../FormularioAlimentos/FormularioAlimentos";
 
 export default function Perfil({imagenPerfil, calorias}){
     const { user } = useContext(AuthContext)
@@ -14,5 +15,7 @@ export default function Perfil({imagenPerfil, calorias}){
         <p><span className={styles.spanCalorias}>Calorias:</span> {calorias} </p>
         
         <CerrarSesion />
+
+        <FormularioAlimentos />
     </>
 }
