@@ -1,20 +1,23 @@
 import { useContext, useEffect, useState } from "react";
 import Contenedor from "../Contenedor/Contenedor";
 import { AuthContext } from "../../Auth/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import getDatosUser from '../../Datos/ObtenerCalculoCalorias';
 import styles from './PaginaPrincipal.module.css';
 import imagen from '../../assets/imagenPerfil.jpg';
 import Perfil from "../Perfil/Perfil";
 import ContenedorAlimentos from "../ContenedorAlimentos/ContenedorAlimentos";
+import FormularioContenedorAlimentos from "../FormularioContenedorAlimentos/FormularioContenedorAlimentos";
 
 
 export default function PaginaPrincipal() {
     const { user } = useContext(AuthContext);
     const [state, setState] = useState();
+    const comida = ['Desayuno', 'Almuerzo', 'Cena']
     const [calorias, setCalorias] = useState(0);
     const [contenedor, setContenedor] = useState([]);
-
+    const params = useParams();
     console.log("usuario", user);
     const navigate = useNavigate();
     const url = `https://localhost:7051/api/v1/Usuario/ObtenerUsuarios?id=${user.id}`;
@@ -83,15 +86,26 @@ export default function PaginaPrincipal() {
                 <section className={`col-12 col-md-9 ${styles.principal} text-black `}>
                     <h1>Pagina Principal</h1>
                     <h3>Desayuno</h3>
-                    {contenedor.status === 204 ? 'No hay contenido'  : <ContenedorAlimentos aray={desayuno}/>
+                    {contenedor.status === 204 ? 'No hay contenido'  : 
+                    <>
+                        <ContenedorAlimentos aray={desayuno}/>
+                        <Link to={`/agregarAlimentos/${comida[0]}`}>Agregar alimentos</Link>
+                    </>
+                    
                     }
                     <h3>Almuerzo</h3>
-                    {contenedor.status === 204 ? 'No hay contenido' : <ContenedorAlimentos aray={almuerzo}/> 
-                    
+                    {contenedor.status === 204 ? 'No hay contenido' : 
+                    <>
+                        <ContenedorAlimentos aray={almuerzo}/> 
+                        <Link to={`/agregarAlimentos/${comida[1]}`}>Agregar alimentos</Link>
+                    </>
                     }
                     <h3>Cena</h3>
-                    {contenedor.status === 204 ? 'No hay contenido' : <ContenedorAlimentos aray={cena}/> 
-                    
+                    {contenedor.status === 204 ? 'No hay contenido' : 
+                    <>
+                        <ContenedorAlimentos aray={cena}/> 
+                        <Link to={`/agregarAlimentos/${comida[2]}`}>Agregar alimentos</Link>
+                    </>
                     }
                 </section>
             </div>
