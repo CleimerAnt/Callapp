@@ -1,21 +1,24 @@
-import { useParams } from "react-router-dom";
 import { AuthContext } from "../../Auth/AuthContext";
-import { useContext, useEffect } from "react";
+import Contenedor from '../Contenedor/Contenedor'
+import { useContext, useEffect, useState } from "react";
 import getDatosUser from "../../Datos/ObtenerCalculoCalorias";
+import ContenedorAlimentos from "../ContenedorAlimentos/ContenedorAlimentos";
 
 export default function FormularioContenedorAlimentos(){
+    const [alimentos, setAlimentos] = useState([]);
+    const camposAlimentos = ['nombreAlimento', 'carbohidratos', 'proteina', 'grasa', 'calorias', 'descripcion']
     const {user} = useContext(AuthContext)
-    const {comida} = useParams()
     const url = `https://localhost:7051/api/v1/Alimentos/Obtener Alimentos?id=${user.id}`
     useEffect(() => {
         getDatosUser(url, user.jwToken)
             .then(res => {
-                console.log(res)
+                setAlimentos(res)
             })
             .catch(err => console.error(err))
-    })
-    console.log(comida)
-    return<>
-    <button className="btn btn-primary">Agregar alimento</button>
-    </>
+    }, [url, user])
+    console.log(alimentos)
+
+    return <Contenedor elemento="main">
+        <ContenedorAlimentos  elementos={camposAlimentos} thead={['Nombre del Alimento', 'Carbohidratos', 'Proteina', 'Grasa', 'Calorias', 'Descripcion']} aray={alimentos}/>
+    </Contenedor>
 }
