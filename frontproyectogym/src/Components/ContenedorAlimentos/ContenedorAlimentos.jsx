@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elementos = [] }) {
-    
+export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elementos = [], acciones }) {
+
     return (
         <>
             <table className="table table-striped" style={{ width: `${ancho}` }}>
@@ -14,11 +14,17 @@ export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elem
                 </thead>
                 <tbody>
                     {aray.map((element, index) => (
+                        <>
+                        {typeof(element) === 'function' ?? element()}
                         <tr key={index}>
                             {elementos.map((key, idx) => (
-                                <td key={idx}>{element[key]}</td>
+                                <>
+                                    <td>{typeof(element[key]) === 'function' ? element[key]() : element[key]}</td>
+                                </>
                             ))}
                         </tr>
+                        </>
+                        
                     ))}
                 </tbody>
             </table>
