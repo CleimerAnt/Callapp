@@ -1,6 +1,6 @@
 import { AuthContext } from "../../Auth/AuthContext";
 import Contenedor from '../Contenedor/Contenedor'
-import { json, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import CampoInput from '../CampoInput/CampoInput'
 import getDatosUser from "../../Datos/ObtenerCalculoCalorias";
@@ -24,57 +24,10 @@ export default function FormularioContenedorAlimentos(){
             })
             .catch(err => console.error(err))
     }, [url, user])
-    const urlPostContenedor = `https://localhost:7051/api/v1/ContenedorAlimentos`;
 
-    const onSubmit = handleSubmit(async (data) => {
-        const alimentosIdObjeto = [data.alimentosId] 
-        data.alimentosId = alimentosIdObjeto;
-        console.log(JSON.stringify(data))
-        try{
-            const response = await postDataAutorizacion(urlPostContenedor, data, user)
-            console.log(await response)
-        }
-        catch(err){
-            console.error(err)
-        }
-    })
-
-    const boton = (id) =>{
-        return <>
-            <form onSubmit={onSubmit}>
-                <CampoInput 
-                name='horario'
-                type={'hidden'}
-                register={register}
-                value={comida.toString()}
-                required={true}
-                errors={errors}
-                />
-                
-                <CampoInput 
-                name={'usuarioIdString'}
-                type={'hidden'}
-                register={register}
-                required={true}
-                value={user.id}
-                errors={errors}
-                />
-
-                <CampoInput 
-                name={'alimentosId'}
-                type={'hidden'}
-                register={register}
-                required={true}
-                value={[id]}
-                errors={errors}
-                />
-
-                <BotonForm texto={'Agregar'} tipoBoton={'btn btn-primary'}/>
-            </form>
-        </>
-    }
-    alimentos.forEach((element) => {
-        element.funcion = boton(element.id);
+    alimentos.forEach((element)=>{
+        element.funcion = 'funcion'
+        element.horaio = comida;
     })
     return <Contenedor elemento="main">
         <ContenedorAlimentos  elementos={camposAlimentos} thead={['Nombre del Alimento', 'Carbohidratos', 'Proteina', 'Grasa', 'Calorias', 'Descripcion', 'Acciones']} aray={alimentos}/>

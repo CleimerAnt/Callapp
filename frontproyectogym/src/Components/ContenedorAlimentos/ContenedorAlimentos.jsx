@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import FormularioAgregarAlimentos from '../FormularioAgregarAlimentos/FormularioAgregarAlimentos';
+import { AuthContext } from '../../Auth/AuthContext';
 
 export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elementos = [], acciones }) {
-
+    const {user} = useContext(AuthContext);
+    console.log(aray)
     return (
         <>
             <table className="table table-striped" style={{ width: `${ancho}` }}>
@@ -19,7 +22,7 @@ export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elem
                         <tr key={index}>
                             {elementos.map((key, idx) => (
                                 <>
-                                    <td>{typeof(element[key]) === 'function' ? element[key]() : element[key]}</td>
+                                    <td>{element[key] === 'funcion' ? <FormularioAgregarAlimentos id={element.id} userId={user.id} comida={element.horaio}/>  : element[key]}</td>
                                 </>
                             ))}
                         </tr>
