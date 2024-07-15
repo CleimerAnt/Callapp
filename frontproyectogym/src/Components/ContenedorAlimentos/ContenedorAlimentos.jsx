@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import FormularioAgregarAlimentos from '../FormularioAgregarAlimentos/FormularioAgregarAlimentos';
+import FormularioAgregarAlimentos from '../FormularioAgregarAlimentos/FormularioAgregarAlimentos'
 import { AuthContext } from '../../Auth/AuthContext';
 import FormularioEliminarAlimento from '../FormularioEliminarAlimento/FormularioEliminarAlimento';
 
 export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elementos = [] }) {
     const { user } = useContext(AuthContext);
     console.log(aray);
-
+    aray.forEach(element => console.log(element))
     return (
         <>
             <table className="table table-striped" style={{ width: `${ancho}` }}>
@@ -19,26 +19,23 @@ export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elem
                 </thead>
                 <tbody>
                     {aray.map((element, index) => (
-                        <React.Fragment key={index}>
-                            {typeof element === 'function' && element()}
-                            <tr>
+                            <tr key={index}>
                                 {elementos.map((key, idx) => (
                                     <td key={idx}>
-                                        {element[key] === 'funcion' ? (
-                                            <FormularioAgregarAlimentos 
-                                                id={element.id} 
-                                                userId={user.id} 
-                                                comida={element.horario} 
-                                            />
-                                        ) : element[key] === "Eliminar" ? (
-                                            <FormularioEliminarAlimento alimentoId={element.alimentoId} contenedorId={element.contenedorId}/>
-                                        ) : (
-                                            element[key]
-                                        )}
-                                    </td>
+                                    {element[key] === 'funcion' ? (
+                                    <FormularioAgregarAlimentos 
+                                    id={element.id} 
+                                    userId={user.id} 
+                                    comida={element.horaio} 
+                                />
+                                ) : element[key] === "Eliminar" ? (
+                                    <FormularioEliminarAlimento alimentoId={element.alimentoId} contenedorId={element.contenedorId}/>
+                                ) : (
+                                    element[key]
+                                )}
+                            </td>
                                 ))}
                             </tr>
-                        </React.Fragment>
                     ))}
                 </tbody>
             </table>

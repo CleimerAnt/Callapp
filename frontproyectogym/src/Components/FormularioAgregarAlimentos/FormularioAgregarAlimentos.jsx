@@ -25,34 +25,34 @@ export default function FormularioAgregarAlimentos({id,comida, userId}){
 
         return <>
         <form onSubmit={onSubmit}>
-        <CampoInput 
-        name='horario'
-        type={'hidden'}
-        register={register}
-        value={comida}
-        required={true}
-        errors={errors}
-        />
-        
-        <CampoInput 
-        name={'usuarioIdString'}
-        type={'hidden'} 
-        register={register}
-        required={true}
-        value={userId}
-        errors={errors}
-        />
+            <CampoInput 
+            name='horario'
+            type={'hidden'}
+            register={register}
+            value={comida}
+            required={true}
+            errors={errors}
+            />
+            
+            <CampoInput 
+            name={'usuarioIdString'}
+            type={'hidden'} 
+            register={register}
+            required={true}
+            value={userId}
+            errors={errors}
+            />
 
-        <CampoInput 
-        name={'alimentosId'}
-        type={'hidden'}
-        register={register}
-        required={true}
-        value={id}
-        errors={errors}
-        />
+            <CampoInput 
+            name={'alimentosId'}
+            type={'hidden'}
+            register={register}
+            required={true}
+            value={id}
+            errors={errors}
+            />
 
-        <BotonForm texto={'Agregar'}  tipoBoton={'btn btn-primary'}/>
+            <button type='submit' className='btn btn-primary'>Enviar</button>
         </form>
         </>
     }

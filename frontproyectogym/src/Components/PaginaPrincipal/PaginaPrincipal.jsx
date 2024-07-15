@@ -65,7 +65,7 @@ export default function PaginaPrincipal() {
             }
         });
     }
-
+    console.log(contenedor)
     return (
         <Contenedor elemento="main" margin={'mt-3'}>
             <div className="row">
@@ -75,21 +75,30 @@ export default function PaginaPrincipal() {
                 <section className={`col-12 col-md-9 ${styles.principal} text-black `}>
                     <h1>Pagina Principal</h1>
                     <h3>Desayuno</h3>
-                    {contenedor.status === 204 ? 'No hay contenido' :
+                    {contenedor.status === 204 ? <>
+                    <h3>No hay contenido</h3>
+                    <Link to={`/agregarAlimentos/${comida[1]}`}>Agregar alimentos</Link>
+                    </> :
                         <>
                             <ContenedorAlimentos ancho={'500px'} thead={['Alimento', 'Calorias', 'Aciones']}  aray={desayuno} elementos={['nombreAlimento', 'caloriasDelAlimento','funcion',]} />
                             <Link to={`/agregarAlimentos/${comida[0]}`}>Agregar alimentos</Link>
                         </>
                     }
                     <h3>Almuerzo</h3>
-                    {contenedor.status === 204 ? 'No hay contenido' :
+                    {contenedor.status === 204 ? <>
+                        <h3>No hay contenido</h3>
+                        <Link to={`/agregarAlimentos/${comida[1]}`}>Agregar alimentos</Link>
+                    </> :
                         <>
                             <ContenedorAlimentos ancho={'500px'} thead={['Alimento', 'Calorias', 'Aciones']} aray={almuerzo} elementos={['nombreAlimento', 'caloriasDelAlimento','funcion',]} />
                             <Link to={`/agregarAlimentos/${comida[1]}`}>Agregar alimentos</Link>
                         </>
                     }
                     <h3>Cena</h3>
-                    {contenedor.status === 204 ? 'No hay contenido' :
+                    {contenedor.status === 204 ? <>
+                    <h3>No hay contenido</h3>
+                    <Link to={`/agregarAlimentos/${comida[2]}`}>Agregar alimentos</Link>
+                    </> :
                         <>
                             <ContenedorAlimentos
                                 elementos={['nombreAlimento', 'caloriasDelAlimento','funcion',]}
