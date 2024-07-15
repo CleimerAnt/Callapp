@@ -53,6 +53,7 @@ export default function PaginaPrincipal() {
     let cena = [];
     if (contenedor && Array.isArray(contenedor)) {
         contenedor.forEach(element => {
+            element.funcion = 'Eliminar'
             if (element.horario === 'Desayuno') {
                 desayuno.push(element);
             }
@@ -76,14 +77,14 @@ export default function PaginaPrincipal() {
                     <h3>Desayuno</h3>
                     {contenedor.status === 204 ? 'No hay contenido' :
                         <>
-                            <ContenedorAlimentos ancho={'500px'} thead={['Alimento', 'Calorias']} aray={desayuno} elementos={['nombreAlimento', 'caloriasDelAlimento']} />
+                            <ContenedorAlimentos ancho={'500px'} thead={['Alimento', 'Calorias', 'Aciones']}  aray={desayuno} elementos={['nombreAlimento', 'caloriasDelAlimento','funcion',]} />
                             <Link to={`/agregarAlimentos/${comida[0]}`}>Agregar alimentos</Link>
                         </>
                     }
                     <h3>Almuerzo</h3>
                     {contenedor.status === 204 ? 'No hay contenido' :
                         <>
-                            <ContenedorAlimentos ancho={'500px'} thead={['Alimento', 'Calorias']} aray={almuerzo} elementos={['nombreAlimento', 'caloriasDelAlimento']} />
+                            <ContenedorAlimentos ancho={'500px'} thead={['Alimento', 'Calorias', 'Aciones']} aray={almuerzo} elementos={['nombreAlimento', 'caloriasDelAlimento','funcion',]} />
                             <Link to={`/agregarAlimentos/${comida[1]}`}>Agregar alimentos</Link>
                         </>
                     }
@@ -91,9 +92,9 @@ export default function PaginaPrincipal() {
                     {contenedor.status === 204 ? 'No hay contenido' :
                         <>
                             <ContenedorAlimentos
-                                elementos={['nombreAlimento', 'caloriasDelAlimento']}
+                                elementos={['nombreAlimento', 'caloriasDelAlimento','funcion',]}
                                 ancho={'500px'}
-                                thead={['Alimento', 'Calorias']}
+                                thead={['Alimento', 'Calorias', 'Aciones']}
                                 aray={cena}
                             />
                             <Link to={`/agregarAlimentos/${comida[2]}`}>Agregar alimentos</Link>

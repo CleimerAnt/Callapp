@@ -3,6 +3,7 @@ import CampoInput from '../CampoInput/CampoInput';
 import postDataAutorizacion from '../../Datos/PostDataAutorizacion';
 import { AuthContext } from '../../Auth/AuthContext';
 import { useContext } from 'react';
+import BotonForm from '../BotonForm/BotonForm'
 
 export default function FormularioAgregarAlimentos({id,comida, userId}){
     const {handleSubmit, register, formState : {errors}} = useForm()
@@ -51,7 +52,7 @@ export default function FormularioAgregarAlimentos({id,comida, userId}){
         errors={errors}
         />
 
-        <button type="submit">Enviar</button>
+        <BotonForm texto={'Agregar'}  tipoBoton={'btn btn-primary'}/>
         </form>
         </>
     }
