@@ -1,30 +1,12 @@
-import {useForm} from 'react-hook-form';
 import CampoInput from '../CampoInput/CampoInput';
-import postDataAutorizacion from '../../Datos/PostDataAutorizacion';
-import { AuthContext } from '../../Auth/AuthContext';
-import { useContext } from 'react';
-import BotonForm from '../BotonForm/BotonForm'
+import Modal  from '../Modal/Modal';
 
 export default function FormularioAgregarAlimentos({id,comida, userId}){
-    const {handleSubmit, register, formState : {errors}} = useForm()
     const urlPostContenedor = `https://localhost:7051/api/v1/ContenedorAlimentos`;
-    const {user} = useContext(AuthContext)
-
-    const onSubmit = handleSubmit(async(data) =>  {
-        const alimentosIdObjeto = [data.alimentosId] 
-        data.alimentosId = alimentosIdObjeto;
-        console.log(data)
-        try{
-            const response = await postDataAutorizacion(urlPostContenedor, data, user)
-            console.log(await response)
-        }
-        catch(err){
-            console.error(err)
-        }
-        })
 
         return <>
-        <form onSubmit={onSubmit}>
+        <Modal url={urlPostContenedor} id={id} titulo={'Agregar Alimento'} body={({ register, errors }) => (
+            <>
             <CampoInput 
             name='horario'
             type={'hidden'}
@@ -52,7 +34,21 @@ export default function FormularioAgregarAlimentos({id,comida, userId}){
             errors={errors}
             />
 
-            <button type='submit' className='btn btn-primary'>Enviar</button>
-        </form>
+            <CampoInput 
+            name={'porcion'}
+            type={'number'}
+            placeholder={'Porcion'}
+            register={register}
+            required={true}
+            classFom={'form-control'}
+            errors={errors}
+            />
+        
+            </>
+        )
+        }/>
         </>
+        
     }
+
+

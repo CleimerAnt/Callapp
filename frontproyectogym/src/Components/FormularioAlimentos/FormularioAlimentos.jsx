@@ -7,7 +7,8 @@ import postDataAutorizacion from "../../Datos/PostDataAutorizacion"
 export default function FormularioAlimentos(){
     const {register, formState: {errors}, handleSubmit} = useForm()
     const {user} = useContext(AuthContext)
-    const url = `https://localhost:7051/api/v1/Alimentos/Agregar alimentos`
+    const url = `https://localhost:7051/api/v1/Alimentos/Agregar alimentos`;
+    
     const onSubmit = handleSubmit( async (data) => {
         data.usuarioIdString = user.id
         console.log(data)
