@@ -8,8 +8,8 @@ import AuthContextProvider from './Auth/AuthContext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-  <AuthContextProvider>
-    <App />
-  </AuthContextProvider>
+    <AuthContextProvider>
+      <App />
+    </AuthContextProvider>
   </BrowserRouter>,
 )

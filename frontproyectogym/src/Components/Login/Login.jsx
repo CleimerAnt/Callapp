@@ -1,7 +1,6 @@
 import Contenedor from '../Contenedor/Contenedor';
 import CampoInput from '../CampoInput/CampoInput';
 import { useForm } from 'react-hook-form';
-import postUsuario from '../../Datos/PostUsuario';
 import { Link, json } from 'react-router-dom';
 import styles from '../Login/Login.module.css';
 import { useContext, useEffect, useState } from 'react';

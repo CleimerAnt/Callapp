@@ -1,54 +1,75 @@
 import CampoInput from '../CampoInput/CampoInput';
-import Modal  from '../Modal/Modal';
+import Modal from '../Modal/Modal';
+import postDataAutorizacion from "../../Datos/PostDataAutorizacion";
+import { useContext } from "react";
+import { AuthContext } from "../../Auth/AuthContext";
+import { useForm } from "react-hook-form";
 
-export default function FormularioAgregarAlimentos({id,comida, userId}){
+export default function FormularioAgregarAlimentos({ id, comida, userId }) {
     const urlPostContenedor = `https://localhost:7051/api/v1/ContenedorAlimentos`;
+    const { user } = useContext(AuthContext);
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
-        return <>
-        <Modal url={urlPostContenedor} id={id} titulo={'Agregar Alimento'} body={({ register, errors }) => (
-            <>
-            <CampoInput 
-            name='horario'
-            type={'hidden'}
-            register={register}
-            value={comida}
-            required={true}
-            errors={errors}
-            />
-            
-            <CampoInput 
-            name={'usuarioIdString'}
-            type={'hidden'} 
-            register={register}
-            required={true}
-            value={userId}
-            errors={errors}
-            />
+    const onSubmit = async (data) => {
+        console.log(data);
+        const alimentosIdObjeto = [data.alimentosId];
+        data.alimentosId = alimentosIdObjeto;
+        try {
+            const response = await postDataAutorizacion(urlPostContenedor, data, user);
+            console.log('Respuesta: ', response.status);
+            if (response.status === 201) {
+                swal('Agregado', 'Alimento agregado exitosamente', "success");
+            } else {
+                swal('Error', 'Error al agregar el alimento', "warning");
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
-            <CampoInput 
-            name={'alimentosId'}
-            type={'hidden'}
-            register={register}
-            required={true}
-            value={id}
-            errors={errors}
-            />
-
-            <CampoInput 
-            name={'porcion'}
-            type={'number'}
-            placeholder={'Porcion'}
-            register={register}
-            required={true}
-            classFom={'form-control'}
-            errors={errors}
-            />
+    return (
         
-            </>
-        )
-        }/>
-        </>
+            <Modal tipoBoton={'primary'} texto={'Agregar'} titulo={'Agregar Alimento'} id={id} body={() => (
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <CampoInput
+                        name='horario'
+                        type={'hidden'}
+                        register={register}
+                        value={comida}
+                        required={true}
+                        errors={errors}
+                    />
+                    
+                    <CampoInput
+                        name={'usuarioIdString'}
+                        type={'hidden'}
+                        register={register}
+                        required={true}
+                        value={userId}
+                        errors={errors}
+                    />
+
+                    <CampoInput
+                        name={'alimentosId'}
+                        type={'hidden'}
+                        register={register}
+                        required={true}
+                        value={id}
+                        errors={errors}
+                    />
+
+                    <CampoInput
+                        name={'porcion'}
+                        type={'number'}
+                        placeholder={'Porción'}
+                        register={register}
+                        required={true}
+                        classFom={'form-control'}
+                        errors={errors}
+                    />
+                    <button type="submit" className="btn btn-primary">Aceptar</button>
+                </form>
+            )} />
         
-    }
-
-
+    );
+}

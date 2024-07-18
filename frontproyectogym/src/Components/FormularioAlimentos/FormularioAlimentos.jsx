@@ -15,7 +15,7 @@ export default function FormularioAlimentos(){
         const response = await postDataAutorizacion(url,data,user)
         console.log(response)
     })
-    return<>
+    return <>   
     <button type="button" className="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Agregar Alimento
     </button>
@@ -116,5 +116,5 @@ export default function FormularioAlimentos(){
     </div>
     </div>
 </div></form>
-    </>
+</>
 }
