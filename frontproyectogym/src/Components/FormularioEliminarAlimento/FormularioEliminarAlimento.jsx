@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../Auth/AuthContext";
 import EliminarDatos from '../../Datos/EliminarDatos'
-import Modal from "../Modal/Modal";
 import CampoInput from "../CampoInput/CampoInput";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -34,8 +33,13 @@ export default function FormularioEliminarAlimento() {
 
     return (
         <>
-            <h3>¿Desea eliminar este alimento?</h3>
-            <form onSubmit={onSubmit}>
+            <div class="card container w-50 mt-5">
+                <div class="card-header bg-primary mt-2 ">
+                    <h4 className="text-center mt-1 text-white">Eliminar alimento del contenedor</h4>    
+                </div>
+                <div class="card-body">
+                    <p class="card-text text-center" style={{fontSize : "20px"}}>¿Esta seguro que desea eliminar el alimento? </p>
+                    <form onSubmit={onSubmit}>
                     <CampoInput
                         name={'alimentoId'}
                         type={'hidden'}
@@ -54,8 +58,15 @@ export default function FormularioEliminarAlimento() {
                         errors={errors}
                     />
                 
-                    <button type="submit" className={`btn btn-danger float-end mt-3`}>Aceptar</button>
+                    <div className="d-flex flex-row-reverse" style={{gap: "20px"}}>
+                        <button type="submit" className={`btn btn-danger float-end w-25`}>Aceptar</button>
+                        <button onClick={() => navigate('/PaginaPrincipal')} className={`btn btn-secondary float-end`}>Cancelar</button>
+                    </div>
                 </form>
+                </div>
+            </div>
+
+            
         </>
     );
 }

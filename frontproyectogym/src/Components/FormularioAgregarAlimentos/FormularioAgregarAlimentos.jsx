@@ -11,7 +11,6 @@ export default function FormularioAgregarAlimentos({ id, comida, userId }) {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = async (data) => {
-        console.log(data);
         const alimentosIdObjeto = [data.alimentosId];
         data.alimentosId = alimentosIdObjeto;
         try {

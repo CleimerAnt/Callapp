@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import FormularioAgregarAlimentos from '../FormularioAgregarAlimentos/FormularioAgregarAlimentos'
 import { AuthContext } from '../../Auth/AuthContext';
-import FormularioEliminarAlimento from '../FormularioEliminarAlimento/FormularioEliminarAlimento';
 import { Link } from 'react-router-dom';
 
 export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elementos = [], onDelete }) {
