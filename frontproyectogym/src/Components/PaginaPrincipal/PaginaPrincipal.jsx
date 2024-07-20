@@ -11,6 +11,7 @@ import ContenedorAlimentos from "../ContenedorAlimentos/ContenedorAlimentos";
 export default function PaginaPrincipal() {
     const { user } = useContext(AuthContext);
     const comida = ['Desayuno', 'Almuerzo', 'Cena'];
+    let caloriasGenerales = 0;
     const [calorias, setCalorias] = useState(0);
     const [contenedor, setContenedor] = useState([]);
 
@@ -60,13 +61,21 @@ export default function PaginaPrincipal() {
 
     const cena = Array.isArray(contenedor) ? contenedor.filter(element => element.horario === 'Cena').map(element => ({
         ...element,
-        funcion: 'Eliminar'
+        funcion: 'Eliminar',
     })) : [];
 
-    const handleDelete = async () => {
-        await obtenerDatosUser();
-    };
-    console.log(contenedor)
+    if(Array.isArray(contenedor)){
+    contenedor.forEach(element => {
+        caloriasGenerales += element.caloriasDelAlimento;
+    });
+    }
+    console.log(caloriasGenerales)
+
+    let porcentaje = (caloriasGenerales / calorias) * 100;
+
+    console.log(`Porcentaje de calorías consumidas: ${porcentaje.toFixed(2)}%`);
+    console.log(`Calorias restantes: ${calorias - caloriasGenerales}` )
+    let porcentajeCalculado = Math.round(porcentaje.toFixed(2));
     return (
         <Contenedor elemento="main" margin={'mt-3'}>
             <div className="row">
@@ -75,13 +84,17 @@ export default function PaginaPrincipal() {
                 </section>
                 <section className={`col-12 col-md-9 ${styles.principal} text-black `}>
                     <h1>Pagina Principal</h1>
+                    <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar" style={{width : `${porcentajeCalculado}%`}}>{`${porcentajeCalculado}%`}</div>
+</div>
+
                     <h3>Desayuno</h3>
                     {desayuno.length === 0 ? <>
                         <h3>No hay contenido</h3>
                         <Link to={`/agregarAlimentos/${comida[0]}`}>Agregar alimentos</Link>
                     </> :
                         <>
-                            <ContenedorAlimentos onDelete={handleDelete} ancho={'500px'} thead={['Alimento', 'Calorias', 'Acciones']} aray={desayuno} elementos={['nombreAlimento', 'caloriasDelAlimento', 'funcion']} />
+                            <ContenedorAlimentos ancho={'500px'} thead={['Alimento', 'Calorias', 'Acciones']} aray={desayuno} elementos={['nombreAlimento', 'caloriasDelAlimento', 'funcion']} />
                             <Link to={`/agregarAlimentos/${comida[0]}`}>Agregar alimentos</Link>
                         </>
                     }
@@ -91,7 +104,7 @@ export default function PaginaPrincipal() {
                         <Link to={`/agregarAlimentos/${comida[1]}`}>Agregar alimentos</Link>
                     </> :
                         <>
-                            <ContenedorAlimentos onDelete={handleDelete} ancho={'500px'} thead={['Alimento', 'Calorias', 'Acciones']} aray={almuerzo} elementos={['nombreAlimento', 'caloriasDelAlimento', 'funcion']} />
+                            <ContenedorAlimentos ancho={'500px'} thead={['Alimento', 'Calorias', 'Acciones']} aray={almuerzo} elementos={['nombreAlimento', 'caloriasDelAlimento', 'funcion']} />
                             <Link to={`/agregarAlimentos/${comida[1]}`}>Agregar alimentos</Link>
                         </>
                     }
@@ -106,7 +119,7 @@ export default function PaginaPrincipal() {
                                 ancho={'500px'}
                                 thead={['Alimento', 'Calorias', 'Acciones']}
                                 aray={cena}
-                                onDelete={handleDelete}
+                                
                             />
                             <Link to={`/agregarAlimentos/${comida[2]}`}>Agregar alimentos</Link>
                         </>

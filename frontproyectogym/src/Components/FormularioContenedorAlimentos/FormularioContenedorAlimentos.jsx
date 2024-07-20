@@ -25,6 +25,10 @@ export default function FormularioContenedorAlimentos(){
             .catch(err => console.error(err))
     }, [url, user])
 
+    if(alimentos.status === 204){
+        return <h1>No Hay alimentos</h1>
+    }
+
     alimentos.forEach((element)=>{
         element.funcion = 'funcion'
         element.horaio = comida;

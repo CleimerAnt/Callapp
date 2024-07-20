@@ -3,9 +3,8 @@ import FormularioAgregarAlimentos from '../FormularioAgregarAlimentos/Formulario
 import { AuthContext } from '../../Auth/AuthContext';
 import { Link } from 'react-router-dom';
 
-export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elementos = [], onDelete }) {
+export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elementos = [] }) {
     const {user} = useContext(AuthContext)
-    console.log(aray)
 
     return (
         <>
