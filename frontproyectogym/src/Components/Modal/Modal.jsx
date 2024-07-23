@@ -1,8 +1,6 @@
-import { useForm } from "react-hook-form";
-import { useContext } from "react";
-import { AuthContext } from "../../Auth/AuthContext";
+import Grafica from "../Grafica/Grafica";
 
-export default function Modal({ id, body, titulo, tipoBoton, texto }) {
+export default function Modal({ id, body, titulo, tipoBoton, texto, grafica }) {
     const modalId = `modal-${id}`;
 
     return (
@@ -18,6 +16,8 @@ export default function Modal({ id, body, titulo, tipoBoton, texto }) {
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
+                            {grafica ? <Grafica carbohidratos={grafica[1]} proteina={grafica[0]} grasa={grafica[2]}/> : ''}
+                            
                             {body()}
                         </div>
                         <div className="modal-footer">

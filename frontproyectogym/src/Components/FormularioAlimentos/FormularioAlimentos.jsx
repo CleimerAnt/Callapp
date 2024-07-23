@@ -9,7 +9,7 @@ export default function FormularioAlimentos(){
     const {register, formState: {errors}, handleSubmit} = useForm()
     const {user} = useContext(AuthContext)
     const url = `https://localhost:7051/api/v1/Alimentos/Agregar alimentos`;
-    
+
     const onSubmit = async (data) => { 
         data.usuarioIdString = user.id
         const response = await postDataAutorizacion(url,data,user)
@@ -22,7 +22,9 @@ export default function FormularioAlimentos(){
         }
     }
 
+
     return (
+        <>
         <Modal tipoBoton={'primary'} texto={'Agregar'} titulo={'Agregar Alimento'} id={user.id} body={() => (
             <form onSubmit={handleSubmit(onSubmit)}>
                 <CampoInput
@@ -107,5 +109,6 @@ export default function FormularioAlimentos(){
             <button type="submit" className="btn btn-primary">Agregar</button>
             </form>
         )}
-        /> )
+        /> 
+        </>)
 }

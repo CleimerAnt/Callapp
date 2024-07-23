@@ -32,6 +32,7 @@ export default function FormularioContenedorAlimentos(){
     alimentos.forEach((element)=>{
         element.funcion = 'funcion'
         element.horaio = comida;
+        element.eliminar = 'eliminar'
     })
     return <Contenedor elemento="main">
         <ContenedorAlimentos  elementos={camposAlimentos} thead={['Nombre del Alimento', 'Carbohidratos', 'Proteina', 'Grasa', 'Calorias', 'Descripcion', 'Acciones']} aray={alimentos}/>

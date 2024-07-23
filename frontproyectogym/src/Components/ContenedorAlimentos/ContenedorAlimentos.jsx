@@ -4,8 +4,7 @@ import { AuthContext } from '../../Auth/AuthContext';
 import { Link } from 'react-router-dom';
 
 export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elementos = [] }) {
-    const {user} = useContext(AuthContext)
-
+    const { user } = useContext(AuthContext);
     return (
         <>
             <table className="table table-striped" style={{ width: `${ancho}` }}>
@@ -17,25 +16,32 @@ export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elem
                     </tr>
                 </thead>
                 <tbody>
-                    {aray.length === 0 ? <td>No hay contenido</td> : aray.map((element, index) => (
+                    {aray.length === 0 ? (
+                        <tr>
+                            <td colSpan={thead.length}>No hay contenido</td>
+                        </tr>
+                    ) : (
+                        aray.map((element, index) => (
                             <tr key={index}>
                                 {elementos.map((key, idx) => (
                                     <td key={idx}>
-                                    {element[key] === 'funcion' ? (
-                                    <FormularioAgregarAlimentos 
-                                    id={element.id} 
-                                    userId={user.id} 
-                                    comida={element.horaio} 
-                                />
-                                ) : element[key] === "Eliminar" ? (
-                                    <Link className='btn btn-danger' to={`/EliminarAlimentos/${element.alimentoId}/${element.contenedorId}`}>Eliminar</Link>
-                                ) : (
-                                    element[key]
-                                )}
-                            </td>
+                                        {element[key] === 'funcion' ? (
+                                            <FormularioAgregarAlimentos 
+                                                id={element.id} 
+                                                userId={user.id} 
+                                                comida={element.horaio} 
+                                                grafica={[element.proteina, element.carbohidratos, element.grasa]}
+                                            />
+                                        ) : element[key] === "Eliminar" ? (
+                                            <Link className='btn btn-danger' to={`/EliminarAlimentos/${element.alimentoId}/${element.contenedorId}`}>Eliminar</Link>
+                                        ) : (
+                                            element[key]
+                                        )}
+                                    </td>
                                 ))}
                             </tr>
-                    ))}
+                        ))
+                    )}
                 </tbody>
             </table>
         </>
