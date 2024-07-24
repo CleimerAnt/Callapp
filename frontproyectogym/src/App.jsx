@@ -11,6 +11,7 @@ import FormularioContenedorAlimentos from './Components/FormularioContenedorAlim
 import FormularioEliminarAlimento from './Components/FormularioEliminarAlimento/FormularioEliminarAlimento';
 import AccionesAlimentos from './Components/AccionesAlimentos/AccionesAlimentos';
 import FormularioEliminarAlimentoDelUsuario from './Components/FormularioEliminarAlimentoDelUsuario/FormularioEliminarAlimentoDelUsuario';
+import EditarAlimento from './Components/EditarAlimento/EditarAlimento';
 
 export default function App() {
   const { estaAutenticado, calculoCalorias } = useContext(AuthContext);
@@ -43,6 +44,7 @@ export default function App() {
       <Route path="/FormularioCalorias" element={<RutaProtegida><FormularioCalorias /></RutaProtegida>} />
       <Route path="/EliminarAlimentos/:alimentoId/:contenedorId" element={<RutaProtegida><FormularioEliminarAlimento /></RutaProtegida>} />
       <Route path='/EliminarAlimentoDelUsuario/:alimentoId' element={<RutaProtegida> <FormularioEliminarAlimentoDelUsuario /> </RutaProtegida>}/>
+      <Route path='/EditarAlimento/:alimentoId' element={<RutaProtegida> <EditarAlimento /> </RutaProtegida>}/>
       <Route path="/ConfirmarCuenta" element={<ConfirmarCuenta />} />
       <Route path="/PaginaPrincipal" element={<RutaProtegida><PaginaPrincipal /></RutaProtegida>} />
       <Route path="*" element={<Navigate to={estaAutenticado() ? "/PaginaPrincipal" : "/"} />} />

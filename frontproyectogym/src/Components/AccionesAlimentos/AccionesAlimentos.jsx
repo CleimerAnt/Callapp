@@ -10,7 +10,7 @@ export default function AccionesAlimentos(){
     const [alimentos, setAlimentos] = useState([])
     const url = `https://localhost:7051/api/v1/Alimentos/Obtener Alimentos?id=${user.id}`;
     const cabeza = ['Nombre del Alimento', 'Carbohidratos', 'Proteina', 'Grasa', 'Calorias', 'Descripcion', 'Acciones'];
-    const elmentos = ['nombreAlimento', 'carbohidratos', 'proteina', 'grasa', 'calorias', 'descripcion', 'funcion']
+    const elmentos = ['nombreAlimento', 'carbohidratos', 'proteina', 'grasa', 'calorias', 'descripcion', 'funcion', 'editar']
 
     useEffect(() => {
         getDatosUser(url, user.jwToken)
@@ -21,7 +21,8 @@ export default function AccionesAlimentos(){
     }, [url, user])
 
     alimentos.forEach((element) => {
-        element.funcion = 'EliminarAlimentos'
+        element.funcion = 'EliminarAlimentos',
+        element.editar = 'Editar'
     })
 
     console.log('Alimentos', alimentos)
