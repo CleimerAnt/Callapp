@@ -5,14 +5,14 @@ import EliminarDatos from '../../Datos/EliminarDatos'
 import CampoInput from "../CampoInput/CampoInput";
 import { useNavigate, useParams } from "react-router-dom";
 
-export default function FormularioEliminarAlimento() {
+export default function FormularioEliminarAlimentoDelUsuario() {
     const { formState: { errors }, handleSubmit, register } = useForm();
     const { user } = useContext(AuthContext);
-    const {alimentoId, contenedorId} = useParams();
+    const {alimentoId} = useParams();
     const navigate = useNavigate()
 
     const onSubmit = handleSubmit (async (data) => {
-        const url = `https://localhost:7051/api/v1/ContenedorAlimentos/Eliminar alimento del contenedor?alimentoId=${parseInt(data.alimentoId)}&contenedorId=${parseInt(data.contenedorId)}`;
+        const url = `https://localhost:7051/api/v1/Alimentos?id=${data.alimentoId}`
 
         console.log(url)
 
@@ -45,15 +45,6 @@ export default function FormularioEliminarAlimento() {
                         type={'hidden'}
                         register={register}
                         value={parseInt(alimentoId)}
-                        required={true}
-                        errors={errors}
-                    />
-
-                    <CampoInput
-                        name={'contenedorId'}
-                        type={'hidden'}
-                        register={register}
-                        value={parseInt(contenedorId)}
                         required={true}
                         errors={errors}
                     />

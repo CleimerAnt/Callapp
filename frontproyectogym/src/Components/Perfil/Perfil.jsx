@@ -3,10 +3,12 @@ import { AuthContext } from "../../Auth/AuthContext";
 import { useContext } from "react";
 import styles from './Perfil.module.css'
 import CerrarSesion from "../CerrarSesion/CerrarSesion";
-import FormularioAlimentos from "../FormularioAlimentos/FormularioAlimentos";
+import { useNavigate } from "react-router-dom";
 
 export default function Perfil({imagenPerfil, calorias}){
     const { user } = useContext(AuthContext)
+    const navigate = useNavigate();
+
     return <>
         <div className={`${styles.perfil} `}>
             <img className={styles.imagenPerfil} src={imagenPerfil} alt="Imagen de Usuario" />
@@ -16,6 +18,6 @@ export default function Perfil({imagenPerfil, calorias}){
         
         <CerrarSesion />
 
-        <FormularioAlimentos />
+        <button className="btn btn-primary" onClick={() => navigate('/accionesAlimentos')}>Alimentos</button>
     </>
 }

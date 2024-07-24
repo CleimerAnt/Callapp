@@ -69,12 +69,10 @@ export default function PaginaPrincipal() {
         caloriasGenerales += element.caloriasDelAlimento;
     });
     }
-    console.log(caloriasGenerales)
+
 
     let porcentaje = (caloriasGenerales / calorias) * 100;
 
-    console.log(`Porcentaje de calorías consumidas: ${porcentaje.toFixed(2)}%`);
-    console.log(`Calorias restantes: ${calorias - caloriasGenerales}` )
     let porcentajeCalculado = Math.round(porcentaje.toFixed(2));
     return (
         <Contenedor elemento="main" margin={'mt-3'}>
