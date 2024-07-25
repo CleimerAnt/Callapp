@@ -23,7 +23,7 @@ export default function App() {
           return <div>Loading</div>
         }
         else if(calorias){
-          return <Navigate to={'/PaginaPrincipal'} />
+          return <Navigate to={`/PaginaPrincipal/${new Date().toISOString()}`} />
         }
         else{
           return <Navigate to={'/FormularioCalorias'} />
@@ -38,7 +38,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={renderComponent()} />
-      <Route path='/agregarAlimentos/:comida' element = {<RutaProtegida ><FormularioContenedorAlimentos /></RutaProtegida>} />
+      <Route path='/agregarAlimentos/:comida/:fecha' element = {<RutaProtegida ><FormularioContenedorAlimentos /></RutaProtegida>} />
       <Route path='/accionesAlimentos' element={<RutaProtegida> <AccionesAlimentos /> </RutaProtegida>}/>
       <Route path="/Registro" element={estaAutenticado() ? <Navigate to="/PaginaPrincipal" /> : <FormularioRegistro />} />
       <Route path="/FormularioCalorias" element={<RutaProtegida><FormularioCalorias /></RutaProtegida>} />

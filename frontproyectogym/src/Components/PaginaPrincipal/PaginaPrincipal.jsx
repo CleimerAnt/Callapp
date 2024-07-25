@@ -112,27 +112,29 @@ export default function PaginaPrincipal() {
                     <h3>Desayuno</h3>
                     {desayuno.length === 0 ? <>
                         <h3>No hay contenido</h3>
-                        <Link to={`/agregarAlimentos/${comida[0]}`}>Agregar alimentos</Link>
+                        <Link to={`/agregarAlimentos/${comida[0]}/${fecha ?? new Date().toISOString()}`}> Agregar alimentos
+</Link>
+
                     </> :
                         <>
                             <ContenedorAlimentos ancho={'500px'} thead={['Alimento', 'Calorias', 'Acciones']} aray={desayuno} elementos={['nombreAlimento', 'caloriasDelAlimento', 'funcion']} />
-                            <Link to={`/agregarAlimentos/${comida[0]}`}>Agregar alimentos</Link>
+                            <Link to={`/agregarAlimentos/${comida[0]}/${fecha}`}>Agregar alimentos</Link>
                         </>
                     }
                     <h3>Almuerzo</h3>
                     {almuerzo.length === 0 ? <>
                         <h3>No hay contenido</h3>
-                        <Link to={`/agregarAlimentos/${comida[1]}`}>Agregar alimentos</Link>
+                        <Link to={`/agregarAlimentos/${comida[0]}/${fecha}`}>Agregar alimentos</Link>
                     </> :
                         <>
                             <ContenedorAlimentos ancho={'500px'} thead={['Alimento', 'Calorias', 'Acciones']} aray={almuerzo} elementos={['nombreAlimento', 'caloriasDelAlimento', 'funcion']} />
-                            <Link to={`/agregarAlimentos/${comida[1]}`}>Agregar alimentos</Link>
+                            <Link to={`/agregarAlimentos/${comida[0]}/${fecha}`}>Agregar alimentos</Link>
                         </>
                     }
                     <h3>Cena</h3>
                     {cena.length === 0 ? <>
                         <h3>No hay contenido</h3>
-                        <Link to={`/agregarAlimentos/${comida[2]}`}>Agregar alimentos</Link>
+                        <Link to={`/agregarAlimentos/${comida[0]}/${fecha}`}>Agregar alimentos</Link>
                     </> :
                         <>
                             <ContenedorAlimentos
@@ -142,7 +144,7 @@ export default function PaginaPrincipal() {
                                 aray={cena}
                                 
                             />
-                            <Link to={`/agregarAlimentos/${comida[2]}`}>Agregar alimentos</Link>
+                            <Link to={`/agregarAlimentos/${comida[0]}/${fecha}`}>Agregar alimentos</Link>
                         </>
                     }
                 </section>

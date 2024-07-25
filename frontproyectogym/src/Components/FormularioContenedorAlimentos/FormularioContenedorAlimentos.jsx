@@ -4,12 +4,10 @@ import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import getDatosUser from "../../Datos/ObtenerCalculoCalorias";
 import ContenedorAlimentos from "../ContenedorAlimentos/ContenedorAlimentos";
-import {useForm} from 'react-hook-form'
 
 
 export default function FormularioContenedorAlimentos(){
-
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const {fecha} = useParams()
     const [alimentos, setAlimentos] = useState([]);
     const {comida} = useParams()
     const camposAlimentos = ['nombreAlimento', 'carbohidratos', 'proteina', 'grasa', 'calorias', 'descripcion', 'funcion']
@@ -34,7 +32,9 @@ export default function FormularioContenedorAlimentos(){
         element.horaio = comida;
         element.eliminar = 'eliminar'
     })
+
+    console.log(fecha)
     return <Contenedor elemento="main">
-        <ContenedorAlimentos  elementos={camposAlimentos} thead={['Nombre del Alimento', 'Carbohidratos', 'Proteina', 'Grasa', 'Calorias', 'Descripcion', 'Acciones']} aray={alimentos}/>
+        <ContenedorAlimentos fecha={fecha} elementos={camposAlimentos} thead={['Nombre del Alimento', 'Carbohidratos', 'Proteina', 'Grasa', 'Calorias', 'Descripcion', 'Acciones']} aray={alimentos}/>
     </Contenedor>
 }

@@ -4,9 +4,12 @@ import { AuthContext } from '../../Auth/AuthContext';
 import { Link } from 'react-router-dom';
 
 
-export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elementos = [] }) {
+export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elementos = [], fecha  = new Date().toISOString()}) {
     const { user } = useContext(AuthContext);
-
+    if(fecha)
+    {
+        console.log(fecha)
+    }
     return (
         <>
             <table className="table table-striped" style={{ width: `${ancho}` }}>
@@ -33,6 +36,7 @@ export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elem
                                                 userId={user.id} 
                                                 comida={element.horaio} 
                                                 grafica={[element.proteina, element.carbohidratos, element.grasa]}
+                                                fecha={fecha}
                                             />
                                         ) : element[key] === "Eliminar" ? (
                                             <Link className='btn btn-danger' to={`/EliminarAlimentos/${element.alimentoId}/${element.contenedorId}`}>Eliminar</Link>
