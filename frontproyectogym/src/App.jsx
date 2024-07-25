@@ -47,6 +47,7 @@ export default function App() {
       <Route path='/EditarAlimento/:alimentoId' element={<RutaProtegida> <EditarAlimento /> </RutaProtegida>}/>
       <Route path="/ConfirmarCuenta" element={<ConfirmarCuenta />} />
       <Route path="/PaginaPrincipal" element={<RutaProtegida><PaginaPrincipal /></RutaProtegida>} />
+      <Route path="/PaginaPrincipal/:fecha" element={<RutaProtegida><PaginaPrincipal /></RutaProtegida>} />
       <Route path="*" element={<Navigate to={estaAutenticado() ? "/PaginaPrincipal" : "/"} />} />
     </Routes>
   );

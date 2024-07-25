@@ -8,7 +8,6 @@ import swal from 'sweetalert';
 import EditarDataAutorizacion from '../../Datos/EditarDataAutorizacion';
 import getDatosUser from '../../Datos/ObtenerCalculoCalorias';
 
-
 export default function EditarAlimento(){
     const {user} = useContext(AuthContext)
     const [alimento, setAlimento] = useState([]);

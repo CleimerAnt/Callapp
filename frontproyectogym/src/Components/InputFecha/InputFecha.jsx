@@ -1,0 +1,38 @@
+import { Form, useForm } from "react-hook-form";
+import CampoInput from "../CampoInput/CampoInput";
+import { useNavigate } from "react-router-dom";
+
+export default function InputFecha({fechas = []}){
+    const {register, reset, handleSubmit, formState : {errors}} = useForm();
+    const navigate = useNavigate()
+
+    const onSubmit = handleSubmit((data) => {
+        console.log(data)
+        navigate(`/PaginaPrincipal/${data.Fecha}`)
+    })
+
+    const obejeto = fechas.map((element) => {
+        return {
+                value:element, label:element
+            }
+        
+    })
+
+    console.log(obejeto)
+
+    return<>
+    <form onSubmit={onSubmit}>
+        <CampoInput
+        name="Fecha"
+        placeholder="Fecha"
+        classFom={'form-control'}
+        type="select"
+        required={true}
+        errors={errors}
+        register={register}
+        options={[...obejeto]}
+        />
+        <button type="submit">Enviar</button>
+    </form>
+    </>
+}

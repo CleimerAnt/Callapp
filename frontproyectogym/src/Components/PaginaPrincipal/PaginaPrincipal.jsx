@@ -1,12 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import Contenedor from "../Contenedor/Contenedor";
 import { AuthContext } from "../../Auth/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import getDatosUser from '../../Datos/ObtenerCalculoCalorias';
 import styles from './PaginaPrincipal.module.css';
 import imagen from '../../assets/imagenPerfil.jpg';
 import Perfil from "../Perfil/Perfil";
 import ContenedorAlimentos from "../ContenedorAlimentos/ContenedorAlimentos";
+import CampoInput from "../CampoInput/CampoInput";
+import InputFecha from "../InputFecha/InputFecha";
 
 export default function PaginaPrincipal() {
     const { user } = useContext(AuthContext);
@@ -14,6 +16,7 @@ export default function PaginaPrincipal() {
     let caloriasGenerales = 0;
     const [calorias, setCalorias] = useState(0);
     const [contenedor, setContenedor] = useState([]);
+    const {fecha} = useParams()
 
     const userUrl = `https://localhost:7051/api/v1/Usuario/ObtenerUsuarios?id=${user.id}`;
     const contenedorUrl = `https://localhost:7051/api/v1/ContenedorAlimentos?id=${user.id}`;
@@ -48,24 +51,41 @@ export default function PaginaPrincipal() {
 
     let imagenPerfil = user.imgUrl === '' ? imagen : `https://localhost:7051${user.imgUrl}`;
 
+    let contenedorFecha;
+    function asignarFecha(fecha = new Date()) {
+    
+        fecha = new Date(fecha)
 
-    const desayuno = Array.isArray(contenedor) ? contenedor.filter(element => element.horario === 'Desayuno').map(element => ({
+        contenedorFecha = contenedor.filter((element) => {
+            
+            const fechaElemento = new Date(element.fecha);
+
+            return fechaElemento.toDateString() === fecha.toDateString();
+        });
+
+    }
+    
+    asignarFecha(fecha)
+
+    console.log(contenedor)
+
+    const desayuno = Array.isArray(contenedorFecha) ? contenedorFecha.filter(element => element.horario === 'Desayuno').map(element => ({
         ...element,
         funcion: 'Eliminar'
     })) : [];
 
-    const almuerzo = Array.isArray(contenedor) ? contenedor.filter(element => element.horario === 'Almuerzo').map(element => ({
+    const almuerzo = Array.isArray(contenedorFecha) ? contenedorFecha.filter(element => element.horario === 'Almuerzo').map(element => ({
         ...element,
         funcion: 'Eliminar'
     })):  [];
 
-    const cena = Array.isArray(contenedor) ? contenedor.filter(element => element.horario === 'Cena').map(element => ({
+    const cena = Array.isArray(contenedorFecha) ? contenedorFecha.filter(element => element.horario === 'Cena').map(element => ({
         ...element,
         funcion: 'Eliminar',
     })) : [];
 
-    if(Array.isArray(contenedor)){
-    contenedor.forEach(element => {
+    if(Array.isArray(contenedorFecha)){
+    contenedorFecha.forEach(element => {
         caloriasGenerales += element.caloriasDelAlimento;
     });
     }
@@ -76,6 +96,9 @@ export default function PaginaPrincipal() {
     let porcentajeCalculado = Math.round(porcentaje.toFixed(2));
     return (
         <Contenedor elemento="main" margin={'mt-3'}>
+            <InputFecha fechas={contenedor.map((element) => {
+                return element.fecha
+            })} asignarFecha={asignarFecha}/>
             <div className="row">
                 <section className="col-12 col-md-3">
                     <Perfil calorias={calorias} imagenPerfil={imagenPerfil} />

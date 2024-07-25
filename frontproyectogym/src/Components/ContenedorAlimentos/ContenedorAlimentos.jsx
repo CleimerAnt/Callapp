@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elementos = [] }) {
     const { user } = useContext(AuthContext);
-    console.log(aray)
+
     return (
         <>
             <table className="table table-striped" style={{ width: `${ancho}` }}>
