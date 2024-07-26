@@ -14,9 +14,10 @@ export default function FormularioAgregarAlimentos({ id, comida, userId, grafica
         const alimentosIdObjeto = [data.alimentosId];
         data.alimentosId = alimentosIdObjeto;
         data.Fecha = fecha;
-        console.log(data.Fecha)
+        console.log('fecha',data.Fecha)
         try {
             const response = await postDataAutorizacion(urlPostContenedor, data, user);
+            console.log(response)
             if (response.status === 201) {
                 swal('Agregado', 'Alimento agregado exitosamente', "success");
             } else {

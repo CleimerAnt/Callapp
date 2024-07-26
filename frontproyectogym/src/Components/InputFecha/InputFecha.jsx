@@ -1,6 +1,7 @@
 import { Form, useForm } from "react-hook-form";
 import CampoInput from "../CampoInput/CampoInput";
 import { useNavigate } from "react-router-dom";
+import ContenedorFechas from "../ContenedorFechas/ContenedorFechas";
 
 export default function InputFecha({fechas = []}){
     const {register, reset, handleSubmit, formState : {errors}} = useForm();
@@ -18,6 +19,7 @@ export default function InputFecha({fechas = []}){
     })
 
     return<>
+    <ContenedorFechas />
     <form onSubmit={onSubmit}>
         <CampoInput
         name="Fecha"
