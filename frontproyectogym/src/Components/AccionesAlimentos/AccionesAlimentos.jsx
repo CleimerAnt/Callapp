@@ -20,10 +20,12 @@ export default function AccionesAlimentos(){
             .catch(err => console.error(err))
     }, [url, user])
 
-    alimentos.forEach((element) => {
-        element.funcion = 'EliminarAlimentos',
-        element.editar = 'Editar'
-    })
+    if(Array.isArray(alimentos)){
+        alimentos.forEach((element) => {
+            element.funcion = 'EliminarAlimentos',
+            element.editar = 'Editar'
+        })
+    }
 
     console.log('Alimentos', alimentos)
 
@@ -31,7 +33,7 @@ export default function AccionesAlimentos(){
     return<>
     <Contenedor elemento="main">
         <FormularioAlimentos />
-        <ContenedorAlimentos aray={alimentos ? alimentos : []} elementos={elmentos} thead={cabeza}/>
+        {Array.isArray(alimentos) ? <ContenedorAlimentos aray={alimentos ? alimentos : []} elementos={elmentos} thead={cabeza}/> : <h1>No hay contenido</h1>}
     </Contenedor>
     </>
 }

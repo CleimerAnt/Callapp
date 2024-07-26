@@ -7,7 +7,6 @@ import styles from './PaginaPrincipal.module.css';
 import imagen from '../../assets/imagenPerfil.jpg';
 import Perfil from "../Perfil/Perfil";
 import ContenedorAlimentos from "../ContenedorAlimentos/ContenedorAlimentos";
-import CampoInput from "../CampoInput/CampoInput";
 import InputFecha from "../InputFecha/InputFecha";
 
 export default function PaginaPrincipal() {
@@ -52,20 +51,19 @@ export default function PaginaPrincipal() {
     let imagenPerfil = user.imgUrl === '' ? imagen : `https://localhost:7051${user.imgUrl}`;
 
     let contenedorFecha;
-    function asignarFecha(fecha = new Date()) {
-    
+    function asignarFecha(fecha) {
         fecha = new Date(fecha)
+        console.log(fecha)
 
         contenedorFecha = contenedor.filter((element) => {
-            
             const fechaElemento = new Date(element.fecha);
-
             return fechaElemento.toDateString() === fecha.toDateString();
         });
-
     }
     
-    asignarFecha(fecha)
+    if(Array.isArray(contenedor)){
+        asignarFecha(fecha)
+    }
 
     console.log(contenedor)
 
@@ -96,9 +94,9 @@ export default function PaginaPrincipal() {
     let porcentajeCalculado = Math.round(porcentaje.toFixed(2));
     return (
         <Contenedor elemento="main" margin={'mt-3'}>
-            <InputFecha fechas={contenedor.map((element) => {
+            <InputFecha fechas={Array.isArray(contenedor) ?  contenedor.map((element) => {
                 return element.fecha
-            })} asignarFecha={asignarFecha}/>
+            }) : [new Date().toISOString()]} asignarFecha={asignarFecha}/>
             <div className="row">
                 <section className="col-12 col-md-3">
                     <Perfil calorias={calorias} imagenPerfil={imagenPerfil} />
