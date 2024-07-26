@@ -8,6 +8,7 @@ import imagen from '../../assets/imagenPerfil.jpg';
 import Perfil from "../Perfil/Perfil";
 import ContenedorAlimentos from "../ContenedorAlimentos/ContenedorAlimentos";
 import InputFecha from "../InputFecha/InputFecha";
+import ContenedorPrincipal from "../ContenedorPrincipal/ContenedorPrincipal";
 
 export default function PaginaPrincipal() {
     const { user } = useContext(AuthContext);
@@ -53,7 +54,6 @@ export default function PaginaPrincipal() {
     let contenedorFecha;
     function asignarFecha(fecha) {
         fecha = new Date(fecha)
-        console.log(fecha)
 
         contenedorFecha = contenedor.filter((element) => {
             const fechaElemento = new Date(element.fecha);
@@ -65,90 +65,38 @@ export default function PaginaPrincipal() {
         asignarFecha(fecha)
     }
 
-    console.log(contenedor)
-
-    const desayuno = Array.isArray(contenedorFecha) ? contenedorFecha.filter(element => element.horario === 'Desayuno').map(element => ({
-        ...element,
-        funcion: 'Eliminar'
-    })) : [];
-
-    const almuerzo = Array.isArray(contenedorFecha) ? contenedorFecha.filter(element => element.horario === 'Almuerzo').map(element => ({
-        ...element,
-        funcion: 'Eliminar'
-    })):  [];
-
-    const cena = Array.isArray(contenedorFecha) ? contenedorFecha.filter(element => element.horario === 'Cena').map(element => ({
-        ...element,
-        funcion: 'Eliminar',
-    })) : [];
-
     if(Array.isArray(contenedorFecha)){
     contenedorFecha.forEach(element => {
         caloriasGenerales += element.caloriasDelAlimento;
     });
     }
-
-
     let porcentaje = (caloriasGenerales / calorias) * 100;
 
     let porcentajeCalculado = Math.round(porcentaje.toFixed(2));
+
     return (
-        <Contenedor elemento="main" margin={'mt-3'}>
-            <InputFecha fechas={Array.isArray(contenedor) ?  contenedor.map((element) => {
-                return element.fecha
-            }) : [new Date().toISOString()]} asignarFecha={asignarFecha}/>
+        <Contenedor margin="mt-4" elemento="main">
+        <div className="container">
             <div className="row">
-                <section className="col-12 col-md-3">
-                    <Perfil calorias={calorias} imagenPerfil={imagenPerfil} />
-                </section>
-                <section className={`col-12 col-md-9 ${styles.principal} text-black `}>
-                    <h1>Pagina Principal</h1>
-                    <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-  <div class="progress-bar" style={{width : `${porcentajeCalculado}%`}}>{`${porcentajeCalculado}%`}</div>
-</div>
-
-                    <h3>Desayuno</h3>
-                    {desayuno.length === 0 ? <>
-                        <h3>No hay contenido</h3>
-                        <Link to={`/agregarAlimentos/${comida[0]}/${fecha ?? new Date().toISOString()}`}> Agregar alimentos
-</Link>
-
-                    </> :
-                        <>
-                            <ContenedorAlimentos ancho={'500px'} thead={['Alimento', 'Calorias', 'Acciones']} aray={desayuno} elementos={['nombreAlimento', 'caloriasDelAlimento', 'funcion']} />
-                            <Link to={`/agregarAlimentos/${comida[0]}/${fecha}`}>Agregar alimentos</Link>
-                        </>
-                    }
-                    <h3>Almuerzo</h3>
-                    {almuerzo.length === 0 ? <>
-                        <h3>No hay contenido</h3>
-                        <Link to={`/agregarAlimentos/${comida[0]}/${fecha}`}>Agregar alimentos</Link>
-                    </> :
-                        <>
-                            <ContenedorAlimentos ancho={'500px'} thead={['Alimento', 'Calorias', 'Acciones']} aray={almuerzo} elementos={['nombreAlimento', 'caloriasDelAlimento', 'funcion']} />
-                            <Link to={`/agregarAlimentos/${comida[0]}/${fecha}`}>Agregar alimentos</Link>
-                        </>
-                    }
-                    <h3>Cena</h3>
-                    {cena.length === 0 ? <>
-                        <h3>No hay contenido</h3>
-                        <Link to={`/agregarAlimentos/${comida[0]}/${fecha}`}>Agregar alimentos</Link>
-                    </> :
-                        <>
-                            <ContenedorAlimentos
-                                elementos={['nombreAlimento', 'caloriasDelAlimento', 'funcion']}
-                                ancho={'500px'}
-                                thead={['Alimento', 'Calorias', 'Acciones']}
-                                aray={cena}
-                                
-                            />
-                            <Link to={`/agregarAlimentos/${comida[0]}/${fecha}`}>Agregar alimentos</Link>
-                        </>
-                    }
-                </section>
+              {/* Columna izquierda */}
+                <div className="col-md-6 d-flex justify-content-center">
+                    <div style={{ maxWidth: '550px' }}>
+                    <div className={`${styles.resumen}`} style={{ borderRadius: '10px' }}>
+                        <h3 className="text-white">Tu resumen calórico</h3>
+                    </div>
+        
+                    <div className="mt-2">
+                        <Perfil porcentajeCalculado={porcentajeCalculado} calorias={calorias} imagenPerfil={imagenPerfil} />
+                    </div>
+                    </div>
+                </div>
+    
+              {/* Columna derecha */}
+            <div className="col-md-6">
+                    <ContenedorPrincipal fecha={fecha}/>
             </div>
+            </div>
+        </div>
         </Contenedor>
     );
-
-
-}
+    }      

@@ -7,7 +7,6 @@ export default function InputFecha({fechas = []}){
     const navigate = useNavigate()
 
     const onSubmit = handleSubmit((data) => {
-        console.log(data)
         navigate(`/PaginaPrincipal/${data.Fecha}`)
     })
 
@@ -17,8 +16,6 @@ export default function InputFecha({fechas = []}){
             }
         
     })
-
-    console.log(obejeto)
 
     return<>
     <form onSubmit={onSubmit}>

@@ -1,12 +1,19 @@
 .perfil img{
-    border-radius: 80%;
-    width: 60px;
+    width: 130px;
+}
+
+.nombreUsuario{
+    font-weight: bold;
+    margin-top: 10px;
+
 }
 
 .perfil{
     display: flex;
-    gap: 10px;
-    flex-direction: column;
+    gap: 30px;
+    flex-direction:row;
+    padding: 20px;
+    background-color: #F6F6F6;
 }
 
 .perfil p{

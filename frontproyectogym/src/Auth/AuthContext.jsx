@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 export default function AuthContextProvider({ children }) {
     const [user, setUser] = useState(null);
     const [state, setState] = useState(null);
-    console.log(state)
+
     useEffect(() => {
         if (user) {
             const url = `https://localhost:7051/api/v1/Usuario/ObtenerUsuarios?id=${user.id}`;

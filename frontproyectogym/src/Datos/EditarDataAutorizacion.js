@@ -13,8 +13,7 @@ export default async function EditarDataAutorizacion(url, data = {}, user) {
         if (!response.ok) {
             const errorText = await response.text();
             console.error('Error al hacer la solicitud:', errorText);
-            return response;
-            throw new Error('Error al hacer la solicitud: ' + errorText); 
+            return await response;
         }
 
         return await response;

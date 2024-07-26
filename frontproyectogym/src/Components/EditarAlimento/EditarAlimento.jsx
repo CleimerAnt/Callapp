@@ -52,6 +52,7 @@ export default function EditarAlimento(){
 
         try{
             const response = await EditarDataAutorizacion(url, data, user);
+
             if (response.status === 200) {
                 swal('Editado', 'Alimento editado exitosamente', "success");
             } else {

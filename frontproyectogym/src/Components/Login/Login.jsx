@@ -18,7 +18,6 @@ export default function Login() {
         
         try {
             const result = await login(url, data);
-            console.log(result)
             setUser(result);
             setHasAuthenticated(true); 
         } catch (error) {
