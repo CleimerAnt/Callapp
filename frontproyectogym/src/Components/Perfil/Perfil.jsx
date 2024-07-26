@@ -23,7 +23,7 @@ export default function Perfil({imagenPerfil, calorias , porcentajeCalculado}){
 </div>
             </div>
 
-            <div style={{marginTop : '70px'}}>
+            <div style={{marginTop : '85px'}}>
             <button className="btn btn-success" onClick={() => navigate('/accionesAlimentos')}>Alimentos</button>
             </div>
         </div>

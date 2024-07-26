@@ -76,10 +76,10 @@ export default function PaginaPrincipal() {
 
     return (
         <Contenedor margin="mt-4" elemento="main">
-        <div className="container">
+        <div className="container mt-3">
             <div className="row">
               {/* Columna izquierda */}
-                <div className="col-md-6 d-flex justify-content-center">
+                <div className="col-md-6 mt-2 d-flex justify-content-center">
                     <div style={{ maxWidth: '550px' }}>
                     <div className={`${styles.resumen}`} style={{ borderRadius: '10px' }}>
                         <h3 className="text-white">Tu resumen calórico</h3>

@@ -1,0 +1,25 @@
+.titulo{
+    text-align: center;
+    width: 600px;
+    background-color: #157246;
+    color: white;
+    padding: 5px;
+}
+
+.link{
+    text-align: center;
+    width: 600px;
+    margin-bottom: 20px;
+}
+
+.link a {
+    text-decoration: none;
+    color: #157246;
+    font-weight: bold;
+    transition: color 0.3s, text-decoration 0.3s; 
+}
+
+.link a:hover {
+    text-decoration: underline; 
+    color: #0d5e31; 
+}

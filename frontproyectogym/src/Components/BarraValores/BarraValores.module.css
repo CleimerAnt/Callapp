@@ -1,0 +1,11 @@
+.listaValores{
+    list-style: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.listaValores{
+    display: flex;
+    gap: 30px;
+}
