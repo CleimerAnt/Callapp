@@ -3,6 +3,7 @@ import {useForm} from 'react-hook-form'
 import { AuthContext } from "../../Auth/AuthContext";
 import CampoInput from '../CampoInput/CampoInput';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Contenedor from '../Contenedor/Contenedor';
 import swal from 'sweetalert';
 import EditarDataAutorizacion from '../../Datos/EditarDataAutorizacion';
@@ -13,6 +14,7 @@ export default function EditarAlimento(){
     const [alimento, setAlimento] = useState([]);
     const {register, reset, handleSubmit, formState : {errors}} = useForm();
     const {alimentoId} = useParams()
+    const navigate = useNavigate();
 
     const obtenerAlimento = async () => {
         const url = `https://localhost:7051/api/v1/Alimentos/Obtener Alimentos por el Id?id=${alimentoId}`;
@@ -54,7 +56,9 @@ export default function EditarAlimento(){
             const response = await EditarDataAutorizacion(url, data, user);
 
             if (response.status === 200) {
-                swal('Editado', 'Alimento editado exitosamente', "success");
+                swal('Editado', 'Alimento editado exitosamente', "success").then(() => {
+                    navigate(`/PaginaPrincipal/${new Date().toISOString()}`); 
+                });
             } else {
                 swal('Error', 'Error al editar el alimento', "warning");
             }

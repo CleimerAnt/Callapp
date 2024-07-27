@@ -1,18 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import Contenedor from "../Contenedor/Contenedor";
 import { AuthContext } from "../../Auth/AuthContext";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import getDatosUser from '../../Datos/ObtenerCalculoCalorias';
 import styles from './PaginaPrincipal.module.css';
 import imagen from '../../assets/imagenPerfil.jpg';
 import Perfil from "../Perfil/Perfil";
-import ContenedorAlimentos from "../ContenedorAlimentos/ContenedorAlimentos";
-import InputFecha from "../InputFecha/InputFecha";
 import ContenedorPrincipal from "../ContenedorPrincipal/ContenedorPrincipal";
 
 export default function PaginaPrincipal() {
     const { user } = useContext(AuthContext);
-    const comida = ['Desayuno', 'Almuerzo', 'Cena'];
     let caloriasGenerales = 0;
     const [calorias, setCalorias] = useState(0);
     const [contenedor, setContenedor] = useState([]);
@@ -93,7 +90,7 @@ export default function PaginaPrincipal() {
     
               {/* Columna derecha */}
             <div className="col-md-6">
-                    <ContenedorPrincipal fecha={fecha}/>
+                    <ContenedorPrincipal contenedorFecha={contenedorFecha} fecha={fecha}/>
             </div>
             </div>
         </div>

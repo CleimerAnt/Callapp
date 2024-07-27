@@ -1,51 +1,12 @@
-import { useContext, useEffect, useState } from "react";
 import Contenedor from "../Contenedor/Contenedor";
-import { AuthContext } from "../../Auth/AuthContext";
 import { Link } from "react-router-dom";
-import getDatosUser from '../../Datos/ObtenerCalculoCalorias';
 import ContenedorAlimentos from "../ContenedorAlimentos/ContenedorAlimentos";
-import InputFecha from "../InputFecha/InputFecha";
 import styles from '../ContenedorPrincipal/ContenedorPrincipal.module.css'
 import ContenedorFechas from "../ContenedorFechas/ContenedorFechas";
 import BarraValores from "../BarraValores/BarraValores";
 
-export default function ContenedorPrincipal({ fecha }) {
-    const { user } = useContext(AuthContext)
+export default function ContenedorPrincipal({ fecha, contenedorFecha }) {
     const comida = ['Desayuno', 'Almuerzo', 'Cena'];
-    const [contenedorFecha, setContenedorFecha] = useState([]);
-    const [contenedor, setContenedor] = useState([]);
-
-    const contenedorUrl = `https://localhost:7051/api/v1/ContenedorAlimentos?id=${user.id}`;
-
-    const obtenerDatosUser = async () => {
-        try {
-            const response = await getDatosUser(contenedorUrl, user.jwToken);
-            setContenedor(response);
-        } catch (err) {
-            console.log(err);
-        }
-    };
-
-    useEffect(() => {
-        obtenerDatosUser();
-    }, []);
-
-    useEffect(() => {
-        if (contenedor.length > 0) {
-            setContenedorFecha(asignarFecha(fecha));
-        }
-    }, [fecha, contenedor]);
-
-    function asignarFecha(fechaData) {
-        fechaData = new Date(fechaData);
-        let datos = contenedor.filter((element) => {
-            const fechaElemento = new Date(element.fecha);
-            return fechaElemento.toDateString() === fechaData.toDateString();
-        });
-        return datos;
-    }
-
-    console.log(contenedorFecha);
 
     const desayuno = contenedorFecha.filter(element => element.horario === 'Desayuno').map(element => ({
         ...element,
@@ -71,8 +32,6 @@ export default function ContenedorPrincipal({ fecha }) {
 
         return valor;
     }
-
-    console.log(calculoValores(desayuno, 'proteinaDelAlimento'))
 
     return <>
         <Contenedor elemento="main" margin={'mt-2'}>

@@ -20,7 +20,7 @@ export default function FormularioEliminarAlimento() {
             const response = await EliminarDatos(url, user);
             if (response.ok) {
                 swal('Eliminado', 'Alimento eliminado exitosamente', "success").then(() => {
-                    navigate('/PaginaPrincipal'); 
+                    navigate(`/PaginaPrincipal/${new Date().toISOString()}`); 
                 });
             }
             else{
@@ -60,7 +60,7 @@ export default function FormularioEliminarAlimento() {
                 
                     <div className="d-flex flex-row-reverse" style={{gap: "20px"}}>
                         <button type="submit" className={`btn btn-danger float-end w-25`}>Aceptar</button>
-                        <button onClick={() => navigate('/PaginaPrincipal')} className={`btn btn-secondary float-end`}>Cancelar</button>
+                        <button onClick={() => navigate(`/PaginaPrincipal/${new Date().toISOString()}`)} className={`btn btn-secondary float-end`}>Cancelar</button>
                     </div>
                 </form>
                 </div>
