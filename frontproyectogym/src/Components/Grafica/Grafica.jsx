@@ -62,7 +62,7 @@ export default function Grafica({proteina,carbohidratos, grasa}) {
 
     return (
         <div className='container' style={{ width: '250px', margin: '0 auto', textAlign: 'center' }}>
-            <Pie data={data} options={options} />
+            <Pie data={data} options={options}/>
         </div>
     );
 }

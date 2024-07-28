@@ -5,7 +5,7 @@ import styles from '../ContenedorPrincipal/ContenedorPrincipal.module.css'
 import ContenedorFechas from "../ContenedorFechas/ContenedorFechas";
 import BarraValores from "../BarraValores/BarraValores";
 
-export default function ContenedorPrincipal({ fecha, contenedorFecha }) {
+export default function ContenedorPrincipal({ fecha, contenedorFecha = [] }) {
     const comida = ['Desayuno', 'Almuerzo', 'Cena'];
 
     const desayuno = contenedorFecha.filter(element => element.horario === 'Desayuno').map(element => ({
@@ -30,8 +30,10 @@ export default function ContenedorPrincipal({ fecha, contenedorFecha }) {
             valor += element[key]
         })
 
-        return valor;
+        return Math.round(valor)
     }
+
+    console.log(contenedorFecha)
 
     return <>
         <Contenedor elemento="main" margin={'mt-2'}>
@@ -49,12 +51,12 @@ export default function ContenedorPrincipal({ fecha, contenedorFecha }) {
                         
                     </> :
                         <>
-                            <ContenedorAlimentos ancho={'600px'} thead={['Alimento', 'Calorias', 'Acciones']} aray={desayuno} elementos={['nombreAlimento', 'caloriasDelAlimento', 'funcion']} />
+                            <ContenedorAlimentos ancho={'600px'} thead={['Alimento', 'Calorias', 'Porcion' ,'Acciones']} aray={desayuno} elementos={['nombreAlimento', 'caloriasDelAlimento', 'porcion','funcion']} />
                             <div className={`${styles.link}`}>
                                 <Link to={`/agregarAlimentos/${comida[0]}/${fecha}`}>Agregar alimentos</Link>
                                 <BarraValores 
                                 proteina={calculoValores(desayuno, 'proteinaDelAlimento')}
-                                carbohidratos={calculoValores(desayuno, 'caloriasDelAlimento')}
+                                carbohidratos={calculoValores(desayuno, 'carbohidratosDelAlimento')}
                                 grasas={calculoValores(desayuno, 'grasaDelAlimento')}
                                 calorias={calculoValores(desayuno, 'caloriasDelAlimento')}
                                 />
@@ -71,12 +73,12 @@ export default function ContenedorPrincipal({ fecha, contenedorFecha }) {
                         </div>
                     </> :
                         <>
-                            <ContenedorAlimentos ancho={'600px'} thead={['Alimento', 'Calorias', 'Acciones']} aray={almuerzo} elementos={['nombreAlimento', 'caloriasDelAlimento', 'funcion']} />
+                            <ContenedorAlimentos ancho={'600px'} thead={['Alimento', 'Calorias', 'Porcion' ,'Acciones']} aray={almuerzo} elementos={['nombreAlimento', 'caloriasDelAlimento', 'porcion','funcion']} />
                             <div className={`${styles.link}`}>
                             <Link to={`/agregarAlimentos/${comida[1]}/${fecha}`}>Agregar alimentos</Link>
                             <BarraValores 
                                 proteina={calculoValores(almuerzo, 'proteinaDelAlimento')}
-                                carbohidratos={calculoValores(almuerzo, 'caloriasDelAlimento')}
+                                carbohidratos={calculoValores(desayuno, 'carbohidratosDelAlimento')}
                                 grasas={calculoValores(almuerzo, 'grasaDelAlimento')}
                                 calorias={calculoValores(almuerzo, 'caloriasDelAlimento')}
                                 />
@@ -95,9 +97,9 @@ export default function ContenedorPrincipal({ fecha, contenedorFecha }) {
                     </> :
                         <>
                             <ContenedorAlimentos
-                                elementos={['nombreAlimento', 'caloriasDelAlimento', 'funcion']}
+                                elementos={['nombreAlimento', 'caloriasDelAlimento', 'porcion','funcion']}
                                 ancho={'600px'}
-                                thead={['Alimento', 'Calorias', 'Acciones']}
+                                thead={['Alimento', 'Calorias', 'Porcion' ,'Acciones']}
                                 aray={cena}
                                 
                             />
@@ -105,7 +107,7 @@ export default function ContenedorPrincipal({ fecha, contenedorFecha }) {
                                 <Link to={`/agregarAlimentos/${comida[2]}/${fecha}`}>Agregar alimentos</Link>
                                 <BarraValores 
                                 proteina={calculoValores(cena, 'proteinaDelAlimento')}
-                                carbohidratos={calculoValores(cena, 'caloriasDelAlimento')}
+                                carbohidratos={calculoValores(desayuno, 'carbohidratosDelAlimento')}
                                 grasas={calculoValores(cena, 'grasaDelAlimento')}
                                 calorias={calculoValores(cena, 'caloriasDelAlimento')}
                                 /> 

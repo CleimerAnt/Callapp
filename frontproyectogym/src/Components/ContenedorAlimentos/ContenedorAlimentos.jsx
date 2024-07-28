@@ -6,10 +6,6 @@ import { Link } from 'react-router-dom';
 
 export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elementos = [], fecha  = new Date().toISOString()}) {
     const { user } = useContext(AuthContext);
-    if(fecha)
-    {
-        console.log(fecha)
-    }
     return (
         <>
             <table className="table table-striped" style={{ width: `${ancho}` }}>
