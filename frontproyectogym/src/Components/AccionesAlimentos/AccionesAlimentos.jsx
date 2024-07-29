@@ -31,9 +31,11 @@ export default function AccionesAlimentos(){
 
 
     return<>
-    <Contenedor elemento="main">
+    <Contenedor elemento="main" margin={'mt-4'}>
         <FormularioAlimentos />
-        {Array.isArray(alimentos) ? <ContenedorAlimentos aray={alimentos ? alimentos : []} elementos={elmentos} thead={cabeza}/> : <h1>No hay contenido</h1>}
+        <div className="mt-4">
+        {Array.isArray(alimentos) ? <ContenedorAlimentos aray={alimentos ? alimentos : []} elementos={elmentos} thead={cabeza}/> : <h1 className="text-center mt-4">No hay contenido</h1>}
+        </div>
     </Contenedor>
     </>
 }

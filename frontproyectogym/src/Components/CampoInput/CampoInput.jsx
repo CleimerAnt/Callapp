@@ -36,7 +36,7 @@ export default function CampoInput({ name, type, errors, label, register, requir
                     })}
                 />
             )}
-            {errors[name] && <span>{errors[name].message}</span>}
+            {errors[name] && <span className="mt-2">{errors[name].message}</span>}
         </div>
     );
 }

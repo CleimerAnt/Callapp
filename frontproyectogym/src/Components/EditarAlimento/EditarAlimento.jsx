@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import {useForm} from 'react-hook-form'
+import styles from '../EditarAlimento/EditarAlimento.module.css'
 import { AuthContext } from "../../Auth/AuthContext";
 import CampoInput from '../CampoInput/CampoInput';
 import { useParams } from 'react-router-dom';
@@ -46,8 +47,6 @@ export default function EditarAlimento(){
     }, [alimento]);
     
 
-    console.log(alimento)
-
     const onSubmit = handleSubmit(async (data) => {
         console.log(data)
         const url = `https://localhost:7051/api/v1/Alimentos/Editar Alimentos?id=${alimentoId}`;
@@ -57,7 +56,7 @@ export default function EditarAlimento(){
 
             if (response.status === 200) {
                 swal('Editado', 'Alimento editado exitosamente', "success").then(() => {
-                    navigate(`/PaginaPrincipal/${new Date().toISOString()}`); 
+                    navigate(`/accionesAlimentos`);
                 });
             } else {
                 swal('Error', 'Error al editar el alimento', "warning");
@@ -69,39 +68,40 @@ export default function EditarAlimento(){
     })
     return <>
         <Contenedor elemento='main'>
-        <form onSubmit={onSubmit}>
-            <CampoInput
+    <form onSubmit={onSubmit} className={styles.formulario}>
+        <CampoInput
             name='nombreAlimento'
             type='text'
+            label={'Nombre del Alimento'}
             placeholder={'Nombre del Alimento'}
             classFom={'form-control'}
             required={true}
             register={register}
             errors={errors}
         />
-
         <CampoInput
             name='porcion'
+            label={'Porción'}
             type='text'
             classFom={'form-control'}
-            placeholder={'Porcion'}
+            placeholder={'Porción'}
             required={true}
             register={register}
             errors={errors}
         />
-
         <CampoInput
             name='calorias'
+            label={'Calorías'}
             type='text'
             classFom={'form-control'}
-            placeholder={'Calorias'}
+            placeholder={'Calorías'}
             required={true}
             register={register}
             errors={errors}
         />
-
         <CampoInput
             name='grasa'
+            label={'Grasa'}
             type='text'
             placeholder={'Grasa'}
             classFom={'form-control'}
@@ -109,9 +109,9 @@ export default function EditarAlimento(){
             register={register}
             errors={errors}
         />
-
         <CampoInput
             name='carbohidratos'
+            label={'Carbohidratos'}
             type='text'
             placeholder={'Carbohidratos'}
             classFom={'form-control'}
@@ -119,27 +119,26 @@ export default function EditarAlimento(){
             register={register}
             errors={errors}
         />
-
         <CampoInput
             name='proteina'
             type='text'
-            placeholder={'Proteina'}
+            label={'Proteína'}
+            placeholder={'Proteína'}
             classFom={'form-control'}
             required={true}
             register={register}
             errors={errors}
         />
-
         <CampoInput
             name='descripcion'
+            label={'Descripción'}
             type='textarea'
             classFom={'form-control'}
-            placeholder={'Descripcion'}
+            placeholder={'Descripción'}
             required={true}
             register={register}
             errors={errors}
         />
-
         <CampoInput
             name='UsuarioIdString'
             type='hidden'
@@ -148,9 +147,9 @@ export default function EditarAlimento(){
             register={register}
             errors={errors}
         />
+        <button type='submit' className={styles.boton}>Enviar</button>
+    </form>
+</Contenedor>
 
-        <button type='submit'>Enviar</button>
-        </form>
-        </Contenedor>
     </>
 }

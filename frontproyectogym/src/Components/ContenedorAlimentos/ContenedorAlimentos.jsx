@@ -39,7 +39,7 @@ export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elem
                                         ) : element[key] === "EliminarAlimentos" ? 
                                         (
                                             <Link className='btn btn-danger' to={`/EliminarAlimentoDelUsuario/${element.id}`}> Eliminar </Link>
-                                        ) : element[key] === "Editar" ? (<Link to={`/EditarAlimento/${element.id}`}>Editar</Link>) : (
+                                        ) : element[key] === "Editar" ? (<Link className='btn btn-secondary' to={`/EditarAlimento/${element.id}`}>Editar</Link>) : (
                                             element[key]
                                         )}
                                     </td>
