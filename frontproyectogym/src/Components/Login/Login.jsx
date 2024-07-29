@@ -39,35 +39,37 @@ export default function Login() {
     }, [user, hasAuthenticated]);
 
     return (
-        <Contenedor center={'d-flex align-items-center justify-content-center'}>
-            <form onSubmit={onsubmit} className={`${styles.formulario} mt-5 d-flex flex-column `}>
-                <CampoInput 
-                    name='email'
-                    type='email'
-                    label='Correo Electronico'
-                    register={register}
-                    required={true}
-                    placeholder={"Nombre de Usuario"}
-                    errors={errors}
-                />
+        <main className={styles.main} margin={'mt-5'}>
+            <section className={`${styles.contenedor} mt-5`}>
+                <form onSubmit={onsubmit} className={`${styles.formulario}`}>
+                <i className={`fa-solid fa-egg ${styles.huevo}`}></i>
+                        <CampoInput 
+                        name='email'
+                        type='email'
+                        label={'Correo Electonico'}
+                        register={register}
+                        required={true}
+                        placeholder={"Micorreo@gmail.com"}
+                        errors={errors}
+                        /> 
+            
+                        <CampoInput 
+                        name='password'
+                        label={'Contraseña'}
+                        type='password'
+                        register={register}
+                        required={true}
+                        errors={errors}
+                        />
 
-                <CampoInput 
-                    name='password'
-                    type='password'
-                    placeholder={"Contraseña"}
-                    label='Contraseña'
-                    register={register}
-                    required={true}
-                    errors={errors}
-                />
+                        <button className={styles.boton} type='submit'>Loguearme</button>
 
-                <BotonForm tipoBoton={'btn btn-primary'} texto='Loguearme'/>
-
-                <div className={`d-flex align-items-end p-3 ${styles.link}`}>
-                    <Link to={'/Registro'}>Registrarme</Link>
-                </div>
-            </form>    
-        </Contenedor>
+                        <div className={`d-flex align-items-end p-3 ${styles.link}`}>
+                                <Link to={'/Registro'}>Registrarme</Link>
+                        </div>
+                </form>    
+            </section>
+        </main>
     );
 }
 

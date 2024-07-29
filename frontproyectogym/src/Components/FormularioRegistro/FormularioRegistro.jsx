@@ -43,85 +43,80 @@ export default function FormularioRegistro() {
     });
 
     return (
-        <Contenedor center={'d-flex align-items-center justify-content-center mb-5'}>
-            <form encType="multipart/form-data" className={`${styles.formulario} mt-5 d-flex flex-column`} onSubmit={onSubmit}>
-                <CampoInput
-                    name='PrimerNombre'
-                    type='text'
-                    label='Primer Nombre'
-                    register={register}
-                    required={true}
-                    errors={errors}
-                    placeholder='Primer Nombre'
-                />
-
-                <CampoInput
-                    name='Apellido'
-                    type='text'
-                    label='Apellido'
-                    register={register}
-                    required={true}
-                    errors={errors}
-                    placeholder='Apellido'
-                />
-
-                <CampoInput
-                    name='Email'
-                    type='email'
-                    label='Correo Electrónico'
-                    register={register}
-                    required={true}
-                    errors={errors}
-                    placeholder='Correo Electrónico'
-                />
-
-                <CampoInput
-                    name='UserName'
-                    type='text'
-                    label='Nombre de Usuario'
-                    register={register}
-                    required={true}
-                    errors={errors}
-                    placeholder='Nombre de Usuario'
-                />
-
-                <CampoInput
-                    name='file'
-                    type='file'
-                    label='Foto de Perfil'
-                    register={register}
-                    required={true}
-                    errors={errors}
-                    placeholder='Foto de Perfil'
-                />
-
-                <CampoInput
-                    name='Password'
-                    type='password'
-                    label='Contraseña'
-                    register={register}
-                    required={true}
-                    errors={errors}
-                    placeholder='Contraseña'
-                />
-
-                <CampoInput
-                    name='ConfirmarContraseña'
-                    type='password'
-                    label='Confirmar Contraseña'
-                    register={register}
-                    required={true}
-                    errors={errors}
-                    placeholder='Confirmar Contraseña'
-                    validate={value => value === watch('Password') || 'Las Contraseñas no coinciden'}
-                />
-
-                <BotonForm tipoBoton='btn btn-primary' texto='Registrarme' />
-
-                <div className={`d-flex align-items-end p-3 ${styles.link}`}>
-                    <Link to={'/'}>Loguearme</Link>
-                </div>
-            </form>
-        </Contenedor>
+        <main className={styles.main} margin={'mt-5'}>
+    <section className={`${styles.contenedor} mt-5`}>
+        <form encType="multipart/form-data" className={`${styles.formulario}`} onSubmit={onSubmit}>
+            <i className={`fa-solid fa-egg ${styles.huevo}`}></i>
+            <CampoInput
+                name='PrimerNombre'
+                type='text'
+                label='Primer Nombre'
+                register={register}
+                required={true}
+                errors={errors}
+                placeholder='Primer Nombre'
+            />
+            <CampoInput
+                name='Apellido'
+                type='text'
+                label='Apellido'
+                register={register}
+                required={true}
+                errors={errors}
+                placeholder='Apellido'
+            />
+            <CampoInput
+                name='Email'
+                type='email'
+                label='Correo Electrónico'
+                register={register}
+                required={true}
+                errors={errors}
+                placeholder='Correo Electrónico'
+            />
+            <CampoInput
+                name='UserName'
+                type='text'
+                label='Nombre de Usuario'
+                register={register}
+                required={true}
+                errors={errors}
+                placeholder='Nombre de Usuario'
+            />
+            <CampoInput
+                name='file'
+                type='file'
+                label='Foto de Perfil'
+                register={register}
+                required={true}
+                errors={errors}
+                placeholder='Foto de Perfil'
+            />
+            <CampoInput
+                name='Password'
+                type='password'
+                label='Contraseña'
+                register={register}
+                required={true}
+                errors={errors}
+                placeholder='Contraseña'
+            />
+            <CampoInput
+                name='ConfirmarContraseña'
+                type='password'
+                label='Confirmar Contraseña'
+                register={register}
+                required={true}
+                errors={errors}
+                placeholder='Confirmar Contraseña'
+                validate={value => value === watch('Password') || 'Las Contraseñas no coinciden'}
+            />
+            <button className={styles.boton} type='submit'>Registrarme</button>
+            <div className={`d-flex align-items-end p-3 ${styles.link}`}>
+                <Link to={'/'}>Loguearme</Link>
+            </div>
+        </form>
+    </section>
+</main>
     );
 }

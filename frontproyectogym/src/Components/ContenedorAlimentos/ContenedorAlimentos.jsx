@@ -19,7 +19,7 @@ export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elem
                 <tbody>
                     {aray.length === 0 ? (
                         <tr>
-                            <td colSpan={thead.length}>No hay contenido</td>
+                            <td colSpan={thead.length}>No hay alimentos</td>
                         </tr>
                     ) : (
                         aray.map((element, index) => (
