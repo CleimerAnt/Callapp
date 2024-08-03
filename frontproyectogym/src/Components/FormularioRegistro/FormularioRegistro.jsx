@@ -115,7 +115,7 @@ export default function FormularioRegistro() {
                     <button className={styles.boton} type='submit'>Registrarme</button>
                 </div>
                 
-                <div className={`d-flex align-items-end p-3 ${styles.link}`}>
+                <div className={`d-flex align-items-center p-3 ${styles.link}`}>
                     <Link className={styles.link} to={'/Login'}>Loguearme</Link>
                 </div>
             </form>

@@ -1,4 +1,4 @@
-export default function CampoInput({ name, type, errors, label, register, required, validate, options, value, placeholder, classFom }) {
+export default function CampoInput({ name, type, errors, label, register, required, validate, options, value, placeholder, classFom, autocomplete }) {
     return (
         <div className={type === 'hidden' ? 'd-none' : 'mb-3'}>
             {type !== 'hidden' && <label htmlFor={name} className="form-label">{label}</label>}
@@ -25,6 +25,7 @@ export default function CampoInput({ name, type, errors, label, register, requir
                     type={type}
                     className={classFom}
                     id={name}
+                    autoComplete={autocomplete}
                     placeholder={placeholder}
                     value={value}
                     {...register(name, {

@@ -16,7 +16,7 @@
 .links a {
     text-decoration: none;
     color: #000000;
-    transition: border-bottom 0.4s ease 
+    transition: border-bottom 0.3s step-end
 }
 
 .links a:hover {

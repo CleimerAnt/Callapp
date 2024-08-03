@@ -36,11 +36,10 @@ export default function App() {
         }
   }
 
-
   return (
     <Routes>
-      <Route path="/" element={renderComponent()} />
-      <Route path='/Login' element={<Login />}/>
+      <Route path="/" element={renderComponent()}/>
+      <Route path='/Login' element={<Login />}/> 
       <Route path='/agregarAlimentos/:comida/:fecha' element = {<RutaProtegida ><FormularioContenedorAlimentos /></RutaProtegida>} />
       <Route path='/accionesAlimentos' element={<RutaProtegida> <AccionesAlimentos /> </RutaProtegida>}/>
       <Route path="/Registro" element={estaAutenticado() ? <Navigate to="/PaginaPrincipal" /> : <FormularioRegistro />} />
