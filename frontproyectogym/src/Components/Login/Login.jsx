@@ -1,10 +1,10 @@
-import Contenedor from '../Contenedor/Contenedor';
 import CampoInput from '../CampoInput/CampoInput';
 import { useForm } from 'react-hook-form';
 import { Link, json } from 'react-router-dom';
 import styles from '../Login/Login.module.css';
 import { useContext, useEffect, useState } from 'react';
-import BotonForm from '../BotonForm/BotonForm';
+import fuegoCalorico from '../../assets/fuegoCalorico.png'
+import Contenedor from '../Contenedor/Contenedor'
 import { AuthContext } from '../../Auth/AuthContext';
 import swal from 'sweetalert';
 
@@ -39,10 +39,13 @@ export default function Login() {
     }, [user, hasAuthenticated]);
 
     return (
-        <main className={styles.main} margin={'mt-5'}>
-            <section className={`${styles.contenedor} mt-5`}>
-                <form onSubmit={onsubmit} className={`${styles.formulario}`}>
-                <i className={`fa-solid fa-egg ${styles.huevo}`}></i>
+        <Contenedor margin={'d-flex align-items-center flex-column mt-4'}>
+            <section className='d-flex flex-column align-items-center justity-content-center mb-3'>
+                <img className={styles.fuegoCalorico} src={fuegoCalorico} alt="" />
+                <h1 className={`${styles.titulo} mt-2`}>Por favor logueate con tu cuenta</h1>
+            </section>
+
+            <form onSubmit={onsubmit} className={`${styles.formulario}`}>
                         <CampoInput 
                         name='email'
                         type='email'
@@ -62,14 +65,15 @@ export default function Login() {
                         errors={errors}
                         />
 
-                        <button className={styles.boton} type='submit'>Loguearme</button>
+                        <div className='d-flex align-items-center justity-content-center'>
+                            <button className={`${styles.boton}`} type='submit'>Loguearme</button>
+                        </div>
 
-                        <div className={`d-flex align-items-end p-3 ${styles.link}`}>
-                                <Link to={'/Registro'}>Registrarme</Link>
+                        <div className={`d-flex align-items-center justity-content-center  p-3 ${styles.link}`}>
+                                <Link className={styles.link} to={'/Registro'}>Desea crear una cuenta?</Link>
                         </div>
                 </form>    
-            </section>
-        </main>
+        </Contenedor>
     );
 }
 

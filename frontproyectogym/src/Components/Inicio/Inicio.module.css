@@ -1,0 +1,48 @@
+.logo{
+    width: 54px;
+}
+
+.titulo{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.links{
+    display: flex;
+    gap: 20px;
+    font-size: 24px;
+}
+
+.links a {
+    text-decoration: none;
+    color: #000000;
+    transition: border-bottom 0.4s ease 
+}
+
+.links a:hover {
+    border-bottom: #F8664F 2px solid;
+}
+
+.main{
+    background-color: #F1F1F1;
+    padding-top: 70px;
+    height: 90vh;
+}
+
+.subtitulo{
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.check{
+    width: 250px;
+}
+
+.subContainer{
+    display: flex;
+    justify-content: space-around;
+}
+
+.imagenCalorias{
+    width: 400px;
+}

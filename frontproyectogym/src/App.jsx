@@ -13,6 +13,7 @@ import AccionesAlimentos from './Components/AccionesAlimentos/AccionesAlimentos'
 import FormularioEliminarAlimentoDelUsuario from './Components/FormularioEliminarAlimentoDelUsuario/FormularioEliminarAlimentoDelUsuario';
 import EditarAlimento from './Components/EditarAlimento/EditarAlimento';
 import ContenedorPrincipal from './Components/ContenedorPrincipal/ContenedorPrincipal';
+import Inicio from './Components/Inicio/Inicio';
 
 export default function App() {
   const { estaAutenticado, calculoCalorias } = useContext(AuthContext);
@@ -31,7 +32,7 @@ export default function App() {
         }
         }
         else {
-          return <Login />
+          return <Inicio />
         }
   }
 
@@ -39,6 +40,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={renderComponent()} />
+      <Route path='/Login' element={<Login />}/>
       <Route path='/agregarAlimentos/:comida/:fecha' element = {<RutaProtegida ><FormularioContenedorAlimentos /></RutaProtegida>} />
       <Route path='/accionesAlimentos' element={<RutaProtegida> <AccionesAlimentos /> </RutaProtegida>}/>
       <Route path="/Registro" element={estaAutenticado() ? <Navigate to="/PaginaPrincipal" /> : <FormularioRegistro />} />

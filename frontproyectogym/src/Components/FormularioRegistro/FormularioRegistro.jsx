@@ -5,7 +5,7 @@ import CampoInput from '../CampoInput/CampoInput';
 import postUsuario from '../../Datos/PostUsuario';
 import { Link } from 'react-router-dom';
 import styles from '../FormularioRegistro/FormularioRegistro.module.css';
-import BotonForm from '../BotonForm/BotonForm';
+import fuegoCalorico from '../../assets/fuegoCalorico.png';
 import swal from 'sweetalert';
 
 export default function FormularioRegistro() {
@@ -13,10 +13,8 @@ export default function FormularioRegistro() {
     const onSubmit = handleSubmit(async (data) => {
         const url = 'https://localhost:7051/api/v1/Account/registerUser';
 
-        // Imprime los datos que se van a enviar
         console.log('Datos del formulario:', data);
 
-        // Asegúrate de que el archivo está presente
         const formData = new FormData();
         for (const key in data) {
             formData.append(key, data[key]);
@@ -43,80 +41,84 @@ export default function FormularioRegistro() {
     });
 
     return (
-        <main className={styles.main} margin={'mt-5'}>
-    <section className={`${styles.contenedor} mt-5`}>
-        <form encType="multipart/form-data" className={`${styles.formulario}`} onSubmit={onSubmit}>
-            <i className={`fa-solid fa-egg ${styles.huevo}`}></i>
-            <CampoInput
-                name='PrimerNombre'
-                type='text'
-                label='Primer Nombre'
-                register={register}
-                required={true}
-                errors={errors}
-                placeholder='Primer Nombre'
-            />
-            <CampoInput
-                name='Apellido'
-                type='text'
-                label='Apellido'
-                register={register}
-                required={true}
-                errors={errors}
-                placeholder='Apellido'
-            />
-            <CampoInput
-                name='Email'
-                type='email'
-                label='Correo Electrónico'
-                register={register}
-                required={true}
-                errors={errors}
-                placeholder='Correo Electrónico'
-            />
-            <CampoInput
-                name='UserName'
-                type='text'
-                label='Nombre de Usuario'
-                register={register}
-                required={true}
-                errors={errors}
-                placeholder='Nombre de Usuario'
-            />
-            <CampoInput
-                name='file'
-                type='file'
-                label='Foto de Perfil'
-                register={register}
-                required={true}
-                errors={errors}
-                placeholder='Foto de Perfil'
-            />
-            <CampoInput
-                name='Password'
-                type='password'
-                label='Contraseña'
-                register={register}
-                required={true}
-                errors={errors}
-                placeholder='Contraseña'
-            />
-            <CampoInput
-                name='ConfirmarContraseña'
-                type='password'
-                label='Confirmar Contraseña'
-                register={register}
-                required={true}
-                errors={errors}
-                placeholder='Confirmar Contraseña'
-                validate={value => value === watch('Password') || 'Las Contraseñas no coinciden'}
-            />
-            <button className={styles.boton} type='submit'>Registrarme</button>
-            <div className={`d-flex align-items-end p-3 ${styles.link}`}>
-                <Link to={'/'}>Loguearme</Link>
-            </div>
-        </form>
-    </section>
-</main>
+        <Contenedor margin={'d-flex align-items-center flex-column mt-4'}>
+            <section className='d-flex flex-column align-items-center justify-content-center mb-3'>
+                <img className={styles.fuegoCalorico} src={fuegoCalorico} alt="" />
+                <h1 className={`${styles.titulo} mt-2`}>Crear una nueva cuenta</h1>
+            </section>
+            <form encType="multipart/form-data" className={`${styles.formulario}`} onSubmit={onSubmit}>
+                <CampoInput
+                    name='PrimerNombre'
+                    type='text'
+                    label='Primer Nombre'
+                    register={register}
+                    required={true}
+                    errors={errors}
+                    placeholder='Primer Nombre'
+                />
+                <CampoInput
+                    name='Apellido'
+                    type='text'
+                    label='Apellido'
+                    register={register}
+                    required={true}
+                    errors={errors}
+                    placeholder='Apellido'
+                />
+                <CampoInput
+                    name='Email'
+                    type='email'
+                    label='Correo Electrónico'
+                    register={register}
+                    required={true}
+                    errors={errors}
+                    placeholder='Correo Electrónico'
+                />
+                <CampoInput
+                    name='UserName'
+                    type='text'
+                    label='Nombre de Usuario'
+                    register={register}
+                    required={true}
+                    errors={errors}
+                    placeholder='Nombre de Usuario'
+                />
+                <CampoInput
+                    name='file'
+                    type='file'
+                    label='Foto de Perfil'
+                    register={register}
+                    required={true}
+                    errors={errors}
+                    placeholder='Foto de Perfil'
+                />
+                <CampoInput
+                    name='Password'
+                    type='password'
+                    label='Contraseña'
+                    register={register}
+                    required={true}
+                    errors={errors}
+                    placeholder='Contraseña'
+                />
+                <CampoInput
+                    name='ConfirmarContraseña'
+                    type='password'
+                    label='Confirmar Contraseña'
+                    register={register}
+                    required={true}
+                    errors={errors}
+                    placeholder='Confirmar Contraseña'
+                    validate={value => value === watch('Password') || 'Las Contraseñas no coinciden'}
+                />
+                <div className='d-flex align-items-center justify-content-center'>
+                    <button className={styles.boton} type='submit'>Registrarme</button>
+                </div>
+                
+                <div className={`d-flex align-items-end p-3 ${styles.link}`}>
+                    <Link className={styles.link} to={'/Login'}>Loguearme</Link>
+                </div>
+            </form>
+        </Contenedor>
     );
 }

@@ -1,12 +1,10 @@
-.main{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.fuegoCalorico{
+    width: 150px;
 }
 
-.formulario{
-    display: flex;
-    flex-direction: column;
+.titulo{
+    font-weight: bold;
+    font-size: 30px;
 }
 
 .formulario div{
@@ -14,55 +12,35 @@
     flex-direction: column;
 }
 
-.formulario span{
-    color: black;
-    font-size: 15px;
-}
-
-.label{
+.formulario label{
     font-weight: bold;
 }
 
-
-.contenedor{
-    background-color: #EBEFF0;
-    padding: 30px;
-}
-
-.contenedor input{
-    width: 400px;
-    padding: 10px;
+.formulario input{
+    width: 389px;
+    height: 40px;
+    border: 4px #D9D9D9 solid;
+    padding: 15px;
     border-radius: 5px;
-    border: none;
 }
 
 .boton {
-    background-color: #1a8a58;
+    background-color: #DB366E;
     color: white;
-    padding: 8px;
     border: none;
-    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    width: 359px;
+    height: 40px;
+    transition: background-color 0.3s ease, transform 0.3s ease; 
 }
 
 .boton:hover {
-    background-color: #137a48; 
+    background-color: #C02F5F; 
+    transform: scale(1.05); 
 }
 
-.huevo{
-    margin-bottom: 20px;
-    text-align: center;
-    font-size: 25px;
-}
-
-.link a {
-    list-style: none;
+.link{
     text-decoration: none;
     color: black;
-    font-size: 18px;
-    transition: color 0.3s;
+    font-size: 20px;
 }
-
-.link a:hover {
-    color: #FF9800;
-}
-
