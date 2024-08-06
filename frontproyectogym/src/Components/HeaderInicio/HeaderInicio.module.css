@@ -23,26 +23,10 @@
     border-bottom: #F8664F 2px solid;
 }
 
-.main{
-    background-color: #F1F1F1;
-    padding-top: 70px;
-    height: 90vh;
-}
-
-.subtitulo{
-    font-size: 48px;
+.inicio{
+    text-decoration: none;
+    list-style: none;
+    color: black;
+    font-size: 30px;
     font-weight: bold;
-}
-
-.check{
-    width: 250px;
-}
-
-.subContainer{
-    display: flex;
-    justify-content: space-around;
-}
-
-.imagenCalorias{
-    width: 400px;
 }

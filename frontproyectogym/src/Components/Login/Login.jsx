@@ -1,6 +1,7 @@
 import CampoInput from '../CampoInput/CampoInput';
 import { useForm } from 'react-hook-form';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
+import HeaderInicio from '../HeaderInicio/HeaderInicio';
 import styles from '../Login/Login.module.css';
 import { useContext, useEffect, useState } from 'react';
 import fuegoCalorico from '../../assets/fuegoCalorico.png';
@@ -44,7 +45,12 @@ export default function Login() {
 }, [user, hasAuthenticated]);
 
     return (
-        <Contenedor margin={'d-flex align-items-center flex-column mt-4'}>
+        <>
+            <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
+                <HeaderInicio home= {true}/>
+            </Contenedor>
+
+            <Contenedor margin={'d-flex align-items-center flex-column mt-4'}>
             <section className='d-flex flex-column align-items-center justity-content-center mb-3'>
                 <img className={styles.fuegoCalorico} src={fuegoCalorico} alt="" />
                 <h1 className={`${styles.titulo} mt-2`}>Por favor logueate con tu cuenta</h1>
@@ -72,15 +78,17 @@ export default function Login() {
             errors={errors}
         />
 
-        <div className='d-flex align-items-center justity-content-center'>
+        <div className='d-flex align-items-center mt-4 justity-content-center'>
             <button className={`${styles.boton}`} type='submit'>Loguearme</button>
         </div>
 
-        <div className={`d-flex align-items-center justity-content-center  p-3 ${styles.link}`}>
+        <div className={`d-flex align-items-center justity-content-center p-3 ${styles.link}`}>
             <Link className={styles.link} to={'/Registro'}>Desea crear una cuenta?</Link>
         </div>
     </form>    
     </Contenedor>
+        </>
+        
 );
 }
 

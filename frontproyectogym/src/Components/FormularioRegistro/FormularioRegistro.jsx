@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import Contenedor from '../Contenedor/Contenedor';
 import CampoInput from '../CampoInput/CampoInput';
 import postUsuario from '../../Datos/PostUsuario';
+import HeaderInicio from '../HeaderInicio/HeaderInicio';
 import { Link } from 'react-router-dom';
 import styles from '../FormularioRegistro/FormularioRegistro.module.css';
 import fuegoCalorico from '../../assets/fuegoCalorico.png';
@@ -41,7 +42,11 @@ export default function FormularioRegistro() {
     });
 
     return (
-        <Contenedor margin={'d-flex align-items-center flex-column mt-4'}>
+        <>
+        <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
+                <HeaderInicio home= {true}/>
+            </Contenedor>
+            <Contenedor margin={'d-flex align-items-center flex-column mt-4'}>
             <section className='d-flex flex-column align-items-center justify-content-center mb-3'>
                 <img className={styles.fuegoCalorico} src={fuegoCalorico} alt="" />
                 <h1 className={`${styles.titulo} mt-2`}>Crear una nueva cuenta</h1>
@@ -120,5 +125,7 @@ export default function FormularioRegistro() {
                 </div>
             </form>
         </Contenedor>
+        </>
+        
     );
 }

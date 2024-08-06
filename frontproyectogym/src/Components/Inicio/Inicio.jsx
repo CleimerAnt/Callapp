@@ -6,20 +6,13 @@ import check3 from '../../assets/Check 3.svg';
 import Calorias1 from '../../assets/Calorias 1.png';
 import styles from '../Inicio/Inicio.module.css';
 import { Link } from 'react-router-dom';
+import HeaderInicio from '../HeaderInicio/HeaderInicio';
 
 export default function Inicio() {
   return (
     <>
       <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
-        <section className='d-flex flex-row-reverse'>
-          <h1 className={styles.titulo}>Call</h1>
-          <img className={styles.logo} src={fuegoCalorico} alt="fuegoCalorico" />
-        </section>
-
-        <section className={`${styles.links}`}>
-          <Link to={'/Login'}>Iniciar Sesion</Link>
-          <Link to={'/Registro'}>Crear Cuenta</Link>
-        </section>
+          <HeaderInicio />
       </Contenedor>
 
       <main className={`${styles.main}`}>
