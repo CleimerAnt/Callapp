@@ -8,7 +8,7 @@ export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elem
     const { user } = useContext(AuthContext);
     return (
         <>
-            <table className="table table-striped" style={{ width: `${ancho}` }}>
+            <table className="table table-hover" style={{ width: `${ancho}` }}>
                 <thead>
                     <tr>
                         {thead.map((element, index) => (

@@ -3,6 +3,7 @@ import Contenedor from "../Contenedor/Contenedor";
 import { AuthContext } from "../../Auth/AuthContext";
 import { Link, useParams } from "react-router-dom";
 import HeaderPaginaPrincipal from "../HeaderPaginaPrincipal/HeaderPaginaPrincipal";
+import HeaderInicio from '../HeaderInicio/HeaderInicio'
 import getDatosUser from '../../Datos/ObtenerCalculoCalorias';
 import styles from './PaginaPrincipal.module.css';
 import imagen from '../../assets/imagenPerfil.jpg';
@@ -74,7 +75,9 @@ export default function PaginaPrincipal() {
 
     return (
         <>
-        <HeaderPaginaPrincipal fecha={fecha}/>
+        <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
+                <HeaderPaginaPrincipal fecha={fecha} />
+        </Contenedor>
 
         <Contenedor margin="mt-4" elemento="main">
         <div className="container mt-3">

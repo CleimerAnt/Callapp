@@ -1,17 +1,33 @@
-.enlaces{
+.logo{
+    width: 54px;
+}
+
+.titulo{
+    font-size: 30px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.links{
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    padding-bottom: 15px;
-}
-
-.enlaces a{
-    text-decoration: none;
-    color: black;
+    gap: 20px;
     font-size: 20px;
-    transition: color 0.3s ease; 
 }
 
-.enlaces a:hover{
-    color: #157347;
+.links a {
+    text-decoration: none;
+    color: #000000;
+    transition: border-bottom 0.2s linear
+}
+
+.links a:hover {
+    border-bottom: #F8664F 2px solid;
+}
+
+.inicio{
+    text-decoration: none;
+    list-style: none;
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
 }

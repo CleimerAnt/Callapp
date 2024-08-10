@@ -34,12 +34,19 @@ export default function AccionesAlimentos(){
 
 
     return<>
-    <HeaderPaginaPrincipal fecha={fecha}/>
-    <Contenedor elemento="main" margin={'mt-4'}>
-        <FormularioAlimentos />
-        <div className="mt-4">
-        {Array.isArray(alimentos) ? <ContenedorAlimentos aray={alimentos ? alimentos : []} elementos={elmentos} thead={cabeza}/> : <h1 className="text-center mt-4">No hay contenido</h1>}
+        <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
+                <HeaderPaginaPrincipal fecha={fecha} home= {true}/>
+        </Contenedor>
+        
+    <main  style={{backgroundColor : '#F1F1F1', height : '90vh'}}>
+
+        <section className="container pt-4">
+            <FormularioAlimentos fecha={fecha}/>
+        </section>
+        
+        <div className="mt-4 container">
+        {Array.isArray(alimentos) ? <ContenedorAlimentos  aray={alimentos ? alimentos : []} elementos={elmentos} thead={cabeza}/> : <h1 className="text-center mt-4">No hay contenido</h1>}
         </div>
-    </Contenedor>
+    </main>
     </>
 }

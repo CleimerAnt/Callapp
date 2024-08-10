@@ -6,7 +6,7 @@ import postDataAutorizacion from "../../Datos/PostDataAutorizacion"
 import Modal from "../Modal/Modal";
 import { useNavigate } from "react-router-dom"
 
-export default function FormularioAlimentos(){
+export default function FormularioAlimentos({fecha}){
     const {register, formState: {errors}, handleSubmit} = useForm()
     const {user} = useContext(AuthContext)
     const navigate = useNavigate();
@@ -24,7 +24,7 @@ export default function FormularioAlimentos(){
                     icon: 'success',
                     button: 'OK',
                 }).then(() => {
-                    navigate('/accionesAlimentos'); 
+                    navigate(`/accionesAlimentos/${fecha}`); 
                 });
             } else if (response.status === 400) {
                 swal('Error', 'El alimento ya se encuentra agregado', 'warning');

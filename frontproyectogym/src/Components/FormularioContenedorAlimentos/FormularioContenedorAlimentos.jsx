@@ -36,10 +36,15 @@ export default function FormularioContenedorAlimentos(){
 
     console.log(fecha)
     return<>
-    <HeaderPaginaPrincipal fecha={fecha}/>
-    <Contenedor margin={`mt-5`} elemento="main">
-        <ContenedorAlimentos fecha={fecha} elementos={camposAlimentos} thead={['Nombre del Alimento', 'Carbohidratos', 'Proteina', 'Grasa', 'Calorias', 'Descripcion', 'Acciones']} aray={alimentos}/>
-    </Contenedor>
+        <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
+                <HeaderPaginaPrincipal fecha={fecha} home= {true}/>
+        </Contenedor>
+    <main className="pt-4" style={{backgroundColor : '#F1F1F1', height : '90vh'}}>
+        <section className="container">
+            <ContenedorAlimentos fecha={fecha} elementos={camposAlimentos} thead={['Nombre del Alimento', 'Carbohidratos', 'Proteina', 'Grasa', 'Calorias', 'Descripcion', 'Acciones']} aray={alimentos}/>
+        </section>
+        
+    </main>
     </>
     
 }
