@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import Contenedor from "../Contenedor/Contenedor";
 import { AuthContext } from "../../Auth/AuthContext";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import HeaderPaginaPrincipal from "../HeaderPaginaPrincipal/HeaderPaginaPrincipal";
 import getDatosUser from '../../Datos/ObtenerCalculoCalorias';
 import styles from './PaginaPrincipal.module.css';
 import imagen from '../../assets/imagenPerfil.jpg';
@@ -72,6 +73,9 @@ export default function PaginaPrincipal() {
     let porcentajeCalculado = Math.round(porcentaje.toFixed(2));
 
     return (
+        <>
+        <HeaderPaginaPrincipal fecha={fecha}/>
+
         <Contenedor margin="mt-4" elemento="main">
         <div className="container mt-3">
             <div className="row">
@@ -83,7 +87,7 @@ export default function PaginaPrincipal() {
                     </div>
         
                     <div className="mt-2">
-                        <Perfil porcentajeCalculado={porcentajeCalculado} calorias={calorias} imagenPerfil={imagenPerfil} />
+                        <Perfil fecha={fecha} porcentajeCalculado={porcentajeCalculado} calorias={calorias} imagenPerfil={imagenPerfil} />
                     </div>
                     </div>
                 </div>
@@ -95,5 +99,7 @@ export default function PaginaPrincipal() {
             </div>
         </div>
         </Contenedor>
+        </>
+        
     );
     }      

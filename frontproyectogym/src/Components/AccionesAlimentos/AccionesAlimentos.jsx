@@ -4,9 +4,12 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Auth/AuthContext";
 import ContenedorAlimentos from "../ContenedorAlimentos/ContenedorAlimentos";
 import FormularioAlimentos from "../FormularioAlimentos/FormularioAlimentos";
+import HeaderPaginaPrincipal from "../HeaderPaginaPrincipal/HeaderPaginaPrincipal";
+import { useParams } from "react-router-dom";
 
 export default function AccionesAlimentos(){
     const {user} = useContext(AuthContext);
+    const {fecha} = useParams()
     const [alimentos, setAlimentos] = useState([])
     const url = `https://localhost:7051/api/v1/Alimentos/Obtener Alimentos?id=${user.id}`;
     const cabeza = ['Nombre del Alimento', 'Carbohidratos', 'Proteina', 'Grasa', 'Calorias', 'Descripcion', 'Acciones'];
@@ -31,6 +34,7 @@ export default function AccionesAlimentos(){
 
 
     return<>
+    <HeaderPaginaPrincipal fecha={fecha}/>
     <Contenedor elemento="main" margin={'mt-4'}>
         <FormularioAlimentos />
         <div className="mt-4">

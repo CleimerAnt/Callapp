@@ -1,0 +1,17 @@
+.enlaces{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-bottom: 15px;
+}
+
+.enlaces a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    transition: color 0.3s ease; 
+}
+
+.enlaces a:hover{
+    color: #157347;
+}

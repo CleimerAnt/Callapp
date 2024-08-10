@@ -7,6 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 export default function FormularioEliminarAlimentoDelUsuario() {
     const { formState: { errors }, handleSubmit, register } = useForm();
+    const {fecha} = useParams();
     const { user } = useContext(AuthContext);
     const {alimentoId} = useParams();
     const navigate = useNavigate()
@@ -20,7 +21,7 @@ export default function FormularioEliminarAlimentoDelUsuario() {
             const response = await EliminarDatos(url, user);
             if (response.ok) {
                 swal('Eliminado', 'Alimento eliminado exitosamente', "success").then(() => {
-                    navigate(`/accionesAlimentos`);
+                    navigate(`/accionesAlimentos/${fecha}`);
                 });
             }
             else{
@@ -51,7 +52,7 @@ export default function FormularioEliminarAlimentoDelUsuario() {
                 
                     <div className="d-flex flex-row-reverse" style={{gap: "20px"}}>
                         <button type="submit" className={`btn btn-danger float-end w-25`}>Aceptar</button>
-                        <button onClick={() => navigate(`/accionesAlimentos`)} className={`btn btn-secondary float-end`}>Cancelar</button>
+                        <button onClick={() => navigate(`/accionesAlimentos/${fecha}`)} className={`btn btn-secondary float-end`}>Cancelar</button>
                     </div>
                 </form>
                 </div>

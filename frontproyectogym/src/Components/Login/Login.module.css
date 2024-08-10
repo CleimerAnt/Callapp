@@ -2,6 +2,11 @@
     width: 150px;
 }
 
+.main{
+    background-color: #F1F1F1;
+    height: 90vh;
+}
+
 .titulo{
     font-weight: bold;
     font-size: 30px;

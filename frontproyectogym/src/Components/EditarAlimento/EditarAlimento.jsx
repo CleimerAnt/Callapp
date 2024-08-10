@@ -12,6 +12,7 @@ import getDatosUser from '../../Datos/ObtenerCalculoCalorias';
 
 export default function EditarAlimento(){
     const {user} = useContext(AuthContext)
+    const {fecha} = useParams()
     const [alimento, setAlimento] = useState([]);
     const {register, reset, handleSubmit, formState : {errors}} = useForm();
     const {alimentoId} = useParams()
@@ -56,7 +57,7 @@ export default function EditarAlimento(){
 
             if (response.status === 200) {
                 swal('Editado', 'Alimento editado exitosamente', "success").then(() => {
-                    navigate(`/accionesAlimentos`);
+                    navigate(`/accionesAlimentos/${fecha}`);
                 });
             } else {
                 swal('Error', 'Error al editar el alimento', "warning");

@@ -41,13 +41,13 @@ export default function App() {
       <Route path="/" element={renderComponent()}/>
       <Route path='/Login' element={<Login />}/> 
       <Route path='/agregarAlimentos/:comida/:fecha' element = {<RutaProtegida ><FormularioContenedorAlimentos /></RutaProtegida>} />
-      <Route path='/accionesAlimentos' element={<RutaProtegida> <AccionesAlimentos /> </RutaProtegida>}/>
+      <Route path='/accionesAlimentos/:fecha' element={<RutaProtegida> <AccionesAlimentos /> </RutaProtegida>}/>
       <Route path="/Registro" element={estaAutenticado() ? <Navigate to="/PaginaPrincipal" /> : <FormularioRegistro />} />
       <Route path="/FormularioCalorias" element={<RutaProtegida><FormularioCalorias /></RutaProtegida>} />
       <Route path="/EliminarAlimentos/:alimentoId/:contenedorId" element={<RutaProtegida><FormularioEliminarAlimento /></RutaProtegida>} />
       <Route path={`/ContenedorPrincipal/:fecha`} element={<RutaProtegida><ContenedorPrincipal /></RutaProtegida>} />
-      <Route path='/EliminarAlimentoDelUsuario/:alimentoId' element={<RutaProtegida> <FormularioEliminarAlimentoDelUsuario /> </RutaProtegida>}/>
-      <Route path='/EditarAlimento/:alimentoId' element={<RutaProtegida> <EditarAlimento /> </RutaProtegida>}/>
+      <Route path='/EliminarAlimentoDelUsuario/:alimentoId/:fecha' element={<RutaProtegida> <FormularioEliminarAlimentoDelUsuario /> </RutaProtegida>}/>
+      <Route path='/EditarAlimento/:alimentoId/:fecha' element={<RutaProtegida> <EditarAlimento /> </RutaProtegida>}/>
       <Route path="/ConfirmarCuenta" element={<ConfirmarCuenta />} />
       <Route path="/PaginaPrincipal" element={<RutaProtegida><PaginaPrincipal /></RutaProtegida>} />
       <Route path="/PaginaPrincipal/:fecha" element={<RutaProtegida><PaginaPrincipal /></RutaProtegida>} />

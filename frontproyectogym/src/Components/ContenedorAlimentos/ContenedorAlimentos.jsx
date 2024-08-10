@@ -38,8 +38,8 @@ export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elem
                                             <Link className='btn btn-danger' to={`/EliminarAlimentos/${element.alimentoId}/${element.contenedorId}`}>Eliminar</Link>
                                         ) : element[key] === "EliminarAlimentos" ? 
                                         (
-                                            <Link className='btn btn-danger' to={`/EliminarAlimentoDelUsuario/${element.id}`}> Eliminar </Link>
-                                        ) : element[key] === "Editar" ? (<Link className='btn btn-secondary' to={`/EditarAlimento/${element.id}`}>Editar</Link>) : (
+                                            <Link className='btn btn-danger' to={`/EliminarAlimentoDelUsuario/${element.id}/${fecha}`}> Eliminar </Link>
+                                        ) : element[key] === "Editar" ? (<Link className='btn btn-secondary' to={`/EditarAlimento/${element.id}/${fecha}`}>Editar</Link>) : (
                                             element[key]
                                         )}
                                     </td>

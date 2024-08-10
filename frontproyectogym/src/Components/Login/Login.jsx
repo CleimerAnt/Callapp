@@ -50,8 +50,8 @@ export default function Login() {
                 <HeaderInicio home= {true}/>
             </Contenedor>
 
-            <Contenedor margin={'d-flex align-items-center flex-column mt-4'}>
-            <section className='d-flex flex-column align-items-center justity-content-center mb-3'>
+            <main className={`container-fluid ${styles.main} d-flex align-items-center flex-column mt-4`}>
+            <section className='d-flex flex-column align-items-center justity-content-center mb-3 mt-4'>
                 <img className={styles.fuegoCalorico} src={fuegoCalorico} alt="" />
                 <h1 className={`${styles.titulo} mt-2`}>Por favor logueate con tu cuenta</h1>
             </section>
@@ -83,10 +83,10 @@ export default function Login() {
         </div>
 
         <div className={`d-flex align-items-center justity-content-center p-3 ${styles.link}`}>
-            <Link className={styles.link} to={'/Registro'}>Desea crear una cuenta?</Link>
+            <Link className={styles.link} to={'/Registro'}>¿Desea crear una cuenta?</Link>
         </div>
     </form>    
-    </Contenedor>
+    </main>
         </>
         
 );

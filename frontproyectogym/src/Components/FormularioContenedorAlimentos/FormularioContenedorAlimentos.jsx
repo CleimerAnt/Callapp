@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import getDatosUser from "../../Datos/ObtenerCalculoCalorias";
 import ContenedorAlimentos from "../ContenedorAlimentos/ContenedorAlimentos";
+import HeaderPaginaPrincipal from "../HeaderPaginaPrincipal/HeaderPaginaPrincipal";
 
 
 export default function FormularioContenedorAlimentos(){
@@ -34,7 +35,11 @@ export default function FormularioContenedorAlimentos(){
     })
 
     console.log(fecha)
-    return <Contenedor elemento="main">
+    return<>
+    <HeaderPaginaPrincipal fecha={fecha}/>
+    <Contenedor margin={`mt-5`} elemento="main">
         <ContenedorAlimentos fecha={fecha} elementos={camposAlimentos} thead={['Nombre del Alimento', 'Carbohidratos', 'Proteina', 'Grasa', 'Calorias', 'Descripcion', 'Acciones']} aray={alimentos}/>
     </Contenedor>
+    </>
+    
 }

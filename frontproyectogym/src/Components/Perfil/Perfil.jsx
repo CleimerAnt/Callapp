@@ -4,7 +4,7 @@ import styles from './Perfil.module.css'
 import CerrarSesion from "../CerrarSesion/CerrarSesion";
 import { useNavigate } from "react-router-dom";
 
-export default function Perfil({imagenPerfil, calorias , porcentajeCalculado}){
+export default function Perfil({imagenPerfil, calorias , porcentajeCalculado, fecha}){
     const { user } = useContext(AuthContext)
     const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ export default function Perfil({imagenPerfil, calorias , porcentajeCalculado}){
             </div>
 
             <div style={{marginTop : '85px'}}>
-            <button className="btn btn-success" onClick={() => navigate('/accionesAlimentos')}>Alimentos</button>
+            <button className="btn btn-success" onClick={() => navigate(`/accionesAlimentos/${fecha}`)}>Alimentos</button>
             </div>
         </div>
         

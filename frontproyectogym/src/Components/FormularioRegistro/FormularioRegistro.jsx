@@ -46,8 +46,9 @@ export default function FormularioRegistro() {
         <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
                 <HeaderInicio home= {true}/>
             </Contenedor>
-            <Contenedor margin={'d-flex align-items-center flex-column mt-4'}>
-            <section className='d-flex flex-column align-items-center justify-content-center mb-3'>
+
+            <main className={`d-flex align-items-center flex-column mt-4 ${styles.main}`}>
+            <section className='d-flex flex-column align-items-center justify-content-center mb-3 mt-4'>
                 <img className={styles.fuegoCalorico} src={fuegoCalorico} alt="" />
                 <h1 className={`${styles.titulo} mt-2`}>Crear una nueva cuenta</h1>
             </section>
@@ -124,7 +125,7 @@ export default function FormularioRegistro() {
                     <Link className={styles.link} to={'/Login'}>Loguearme</Link>
                 </div>
             </form>
-        </Contenedor>
+        </main>
         </>
         
     );
