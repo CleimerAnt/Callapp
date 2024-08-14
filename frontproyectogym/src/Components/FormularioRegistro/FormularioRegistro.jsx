@@ -48,84 +48,87 @@ export default function FormularioRegistro() {
             </Contenedor>
 
             <main className={`d-flex align-items-center flex-column mt-4 ${styles.main}`}>
-            {<section className='d-flex flex-column align-items-center justify-content-center mt-4'>
-                
-                <h1 className={`${styles.titulo} mt-2`}>Crear una nueva cuenta</h1>
-            </section>}
-            <form encType="multipart/form-data" className={`${styles.formulario} mt-4`} onSubmit={onSubmit}>
-                <CampoInput
-                    name='PrimerNombre'
-                    type='text'
-                    label='Primer Nombre'
-                    register={register}
-                    required={true}
-                    errors={errors}
-                    placeholder=''
-                />
-                <CampoInput
-                    name='Apellido'
-                    type='text'
-                    label='Apellido'
-                    register={register}
-                    required={true}
-                    errors={errors}
-                    placeholder=''
-                />
-                <CampoInput
-                    name='Email'
-                    type='email'
-                    label='Correo Electrónico'
-                    register={register}
-                    required={true}
-                    errors={errors}
-                    placeholder=''
-                />
-                <CampoInput
-                    name='UserName'
-                    type='text'
-                    label='Nombre de Usuario'
-                    register={register}
-                    required={true}
-                    errors={errors}
-                    placeholder=''
-                />
-                <CampoInput
-                    name='file'
-                    type='file'
-                    label='Foto de Perfil'
-                    register={register}
-                    required={true}
-                    errors={errors}
-                    placeholder=''
-                />
-                <CampoInput
-                    name='Password'
-                    type='password'
-                    label='Contraseña'
-                    register={register}
-                    required={true}
-                    errors={errors}
-                    placeholder=''
-                />
-                <CampoInput
-                    name='ConfirmarContraseña'
-                    type='password'
-                    label='Confirmar Contraseña'
-                    register={register}
-                    required={true}
-                    errors={errors}
-                    placeholder=''
-                    validate={value => value === watch('Password') || 'Las Contraseñas no coinciden'}
-                />
-                <div className='d-flex align-items-center justify-content-center'>
-                    <button className={styles.boton} type='submit'>Registrarme</button>
-                </div>
-                
-                <div className={`d-flex align-items-center p-3 ${styles.link}`}>
-                    <Link className={styles.link} to={'/Login'}>Loguearme</Link>
-                </div>
-            </form>
-        </main>
+    <article className='d-flex flex-column align-items-center justify-content-center mt-4'>
+        <h1 className={`${styles.titulo} mt-2`}>Crear una nueva cuenta</h1>
+    </article>
+    
+    <section className={`w-md-75 w-lg-50 ${styles.contenedorFormulario}`}>
+        <form encType="multipart/form-data" className={`${styles.formulario} mt-4`} onSubmit={onSubmit}>
+            <CampoInput
+                name='PrimerNombre'
+                type='text'
+                label='Primer Nombre'
+                register={register}
+                required={true}
+                errors={errors}
+                placeholder=''
+            />
+            <CampoInput
+                name='Apellido'
+                type='text'
+                label='Apellido'
+                register={register}
+                required={true}
+                errors={errors}
+                placeholder=''
+            />
+            <CampoInput
+                name='Email'
+                type='email'
+                label='Correo Electrónico'
+                register={register}
+                required={true}
+                errors={errors}
+                placeholder=''
+            />
+            <CampoInput
+                name='UserName'
+                type='text'
+                label='Nombre de Usuario'
+                register={register}
+                required={true}
+                errors={errors}
+                placeholder=''
+            />
+            <CampoInput
+                name='file'
+                type='file'
+                label='Foto de Perfil'
+                register={register}
+                required={true}
+                errors={errors}
+                placeholder=''
+            />
+            <CampoInput
+                name='Password'
+                type='password'
+                label='Contraseña'
+                register={register}
+                required={true}
+                errors={errors}
+                placeholder=''
+            />
+            <CampoInput
+                name='ConfirmarContraseña'
+                type='password'
+                label='Confirmar Contraseña'
+                register={register}
+                required={true}
+                errors={errors}
+                placeholder=''
+                validate={value => value === watch('Password') || 'Las Contraseñas no coinciden'}
+            />
+            <div className='d-flex align-items-center justify-content-center mt-4'>
+                <button className={styles.boton} type='submit'>Registrarme</button>
+            </div>
+            
+            <div className={`d-flex align-items-center justify-content-center p-3 ${styles.link}`}>
+                <Link className={styles.link} to={'/Login'}>Iniciar Sesión</Link>
+            </div>
+        </form>
+    </section>
+</main>
+
         </>
         
     );

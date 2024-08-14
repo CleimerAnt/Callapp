@@ -16,21 +16,24 @@ export default function Inicio() {
       </Contenedor>
 
       <main className={`${styles.main}`}>
-        <section className={`${styles.subContainer} container`}>
-          <article>
-            <h2 className={`h1 ${styles.subtitulo}`}>En busca de un mejor <br /> estilo de vida.</h2>
-            <div className='mt-4 d-flex flex-column m-3'>
-              <img className={`${styles.check} mt-4`} src={check1} alt="" />
-              <img className={`${styles.check} mt-4`} src={check2} alt="" />
-              <img className={`${styles.check} mt-4`} src={check3} alt="" />
-            </div>
-          </article>
+  <section className={`${styles.subContainer} container`}>
+    <div className={`d-flex flex-column flex-md-row align-items-center justify-content-center ${styles.principal}`}>
+      <article className="text-center text-md-start">
+        <h2 className={`h1 ${styles.subtitulo}`}>En busca de un mejor <br /> estilo de vida.</h2>
+        <div className='mt-4 d-flex flex-column align-items-center align-items-md-start m-3'>
+          <img className={`${styles.check} mt-4`} src={check1} alt="Descripción de la primera imagen" />
+          <img className={`${styles.check} mt-4`} src={check2} alt="Descripción de la segunda imagen" />
+          <img className={`${styles.check} mt-4`} src={check3} alt="Descripción de la tercera imagen" />
+        </div>
+      </article>
 
-          <article>
-            <img className={`${styles.imagenCalorias}`} src={Calorias1} alt="" />
-          </article>
-        </section>
-      </main>
+      <figure className="text-center mt-4 mt-md-0 ms-md-4">
+        <img className={`${styles.imagenCalorias} img-fluid`} src={Calorias1} alt="Descripción de la imagen de calorías" />
+      </figure>
+    </div>
+  </section>
+</main>
+
     </>
   );
 }

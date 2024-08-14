@@ -12,6 +12,10 @@
     font-size: 30px;
 }
 
+.contenedorFormulario{
+    max-width: 80%;
+}
+
 .formulario div{
     display: flex;
     flex-direction: column;
@@ -22,7 +26,8 @@
 }
 
 .formulario input{
-    width: 389px;
+    width: 100%;
+    max-width: 389px;
     height: 40px;
     border: 4px #D9D9D9 solid;
     padding: 15px;

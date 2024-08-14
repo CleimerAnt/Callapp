@@ -30,19 +30,36 @@
 }
 
 .subtitulo{
-    font-size: 48px;
     font-weight: bold;
 }
 
 .check{
-    width: 250px;
+    width: 200px;
 }
 
 .subContainer{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .imagenCalorias{
     width: 400px;
+}
+
+@media (min-width: 501px) {
+    .principal {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 80px; 
+    }
+
+    .subtitulo{
+        font-size: 48px;
+    }
+
+    .check{
+        width: 250px;
+    }
 }

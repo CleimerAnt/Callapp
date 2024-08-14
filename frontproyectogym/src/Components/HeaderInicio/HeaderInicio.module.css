@@ -1,14 +1,14 @@
-.logo{
+.logo {
     width: 54px;
 }
 
-.titulo{
+.titulo {
     font-size: 30px;
     margin-top: 15px;
     font-weight: bold;
 }
 
-.links{
+.links {
     display: flex;
     gap: 20px;
     font-size: 20px;
@@ -17,16 +17,15 @@
 .links a {
     text-decoration: none;
     color: #000000;
-    transition: border-bottom 0.2s linear
+    transition: border-bottom 0.2s linear;
 }
 
 .links a:hover {
     border-bottom: #F8664F 2px solid;
 }
 
-.inicio{
+.inicio {
     text-decoration: none;
-    list-style: none;
     color: black;
     font-size: 30px;
     font-weight: bold;
