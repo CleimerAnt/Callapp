@@ -68,7 +68,7 @@ export default function FormularioAgregarAlimentos({ id, comida, userId, grafica
                         classFom={'form-control'}
                         errors={errors}
                     />
-                    <button type="submit" className="btn btn-primary">Aceptar</button>
+                    <button type="submit" className="btn btn-primary float-end w-25">Aceptar</button>
                 </form>
             )} />
         

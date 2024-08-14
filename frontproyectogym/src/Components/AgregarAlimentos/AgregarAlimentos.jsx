@@ -1,5 +1,6 @@
 import CampoInput from "../CampoInput/CampoInput"
 import { useForm } from "react-hook-form"
+import HeaderPaginaPrincipal from "../HeaderPaginaPrincipal/HeaderPaginaPrincipal"
 import postDataAutorizacion from "../../Datos/PostDataAutorizacion"
 import Contenedor from "../Contenedor/Contenedor"
 import { AuthContext } from "../../Auth/AuthContext"
@@ -41,7 +42,13 @@ export default function AgregarAlimentos(){
 
     return<>
     <Contenedor elemento='main'>
+    
+    <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
+                <HeaderPaginaPrincipal fecha={fecha} home= {true}/>
+    </Contenedor>
+
     <form onSubmit={onSubmit} className={styles.formulario}>
+        <h1 className="text-center mb-4">Agregar</h1>
         <CampoInput
             name='nombreAlimento'
             type='text'

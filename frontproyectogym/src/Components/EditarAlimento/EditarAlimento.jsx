@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import {useForm} from 'react-hook-form'
 import styles from '../EditarAlimento/EditarAlimento.module.css'
 import { AuthContext } from "../../Auth/AuthContext";
+import HeaderPaginaPrincipal from '../HeaderPaginaPrincipal/HeaderPaginaPrincipal';
 import CampoInput from '../CampoInput/CampoInput';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -69,8 +70,14 @@ export default function EditarAlimento(){
         }
     })
     return <>
-        <Contenedor elemento='main'>
+    <Contenedor elemento='main'>
+    <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
+                <HeaderPaginaPrincipal fecha={fecha} home= {true}/>
+    </Contenedor>
+
+
     <form onSubmit={onSubmit} className={styles.formulario}>
+    <h1 className="text-center mb-4">Editar</h1>
         <CampoInput
             name='nombreAlimento'
             type='text'
