@@ -1,75 +1,46 @@
-import { useContext, useEffect, useState } from 'react'
-import {useForm} from 'react-hook-form'
-import styles from '../EditarAlimento/EditarAlimento.module.css'
-import { AuthContext } from "../../Auth/AuthContext";
-import CampoInput from '../CampoInput/CampoInput';
-import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import Contenedor from '../Contenedor/Contenedor';
-import swal from 'sweetalert';
-import EditarDataAutorizacion from '../../Datos/EditarDataAutorizacion';
-import getDatosUser from '../../Datos/ObtenerCalculoCalorias';
+import CampoInput from "../CampoInput/CampoInput"
+import { useForm } from "react-hook-form"
+import postDataAutorizacion from "../../Datos/PostDataAutorizacion"
+import Contenedor from "../Contenedor/Contenedor"
+import { AuthContext } from "../../Auth/AuthContext"
+import styles from '../AgregarAlimentos/AgregarAlimentos.module.css'
+import { useContext } from "react"
+import { useNavigate, useParams } from "react-router-dom"
 
-export default function EditarAlimento(){
-    const {user} = useContext(AuthContext)
+export default function AgregarAlimentos(){
     const {fecha} = useParams()
-    const [alimento, setAlimento] = useState([]);
-    const {register, reset, handleSubmit, formState : {errors}} = useForm();
-    const {alimentoId} = useParams()
+    const {handleSubmit, register, formState : {errors}} = useForm()
+    const {user} = useContext(AuthContext)
     const navigate = useNavigate();
+    const url = `https://localhost:7051/api/v1/Alimentos/Agregar alimentos`;
 
-    const obtenerAlimento = async () => {
-        const url = `https://localhost:7051/api/v1/Alimentos/Obtener Alimentos por el Id?id=${alimentoId}`;
-        try{
-            const response = await getDatosUser(url, user.jwToken)
-            setAlimento(response)
-        }
-        catch(err){
-            throw err
-        }
-    }
-
-    useEffect(() => {
-        obtenerAlimento()
-    }, [])
-    
-    useEffect(() => {
-        if (alimento) {
-            reset({
-                nombreAlimento: alimento.nombreAlimento,
-                porcion: alimento.porcion,
-                calorias: alimento.calorias,
-                grasa: alimento.grasa,
-                carbohidratos: alimento.carbohidratos,
-                proteina: alimento.proteina,
-                descripcion: alimento.descripcion
-            });
-        }
-    }, [alimento]);
-    
-
-    const onSubmit = handleSubmit(async (data) => {
-        console.log(data)
-        const url = `https://localhost:7051/api/v1/Alimentos/Editar Alimentos?id=${alimentoId}`;
-
-        try{
-            const response = await EditarDataAutorizacion(url, data, user);
-
-            if (response.status === 200) {
-                swal('Editado', 'Alimento editado exitosamente', "success").then(() => {
-                    navigate(`/accionesAlimentos/${fecha}`);
+    const onSubmit = handleSubmit( async (data) => {
+        data.usuarioIdString = user.id;
+        try {
+            const response = await postDataAutorizacion(url, data, user);
+        
+            if (response.ok) {
+                swal({
+                    title: 'Agregado',
+                    text: 'Alimento agregado exitosamente',
+                    icon: 'success',
+                    button: 'OK',
+                }).then(() => {
+                    navigate(`/accionesAlimentos/${fecha}`); 
                 });
+            } else if (response.status === 400) {
+                swal('Error', 'El alimento ya se encuentra agregado', 'warning');
             } else {
-                console.log(response)
-                swal('Error', response, "warning");
+                swal('Error', 'Hubo un problema al agregar el alimento', 'error');
             }
-        }
-        catch(err){
-            throw err
+        } catch (error) {
+            console.error('Error:', error);
+            swal('Error', 'Ocurrió un error inesperado. Por favor, inténtelo de nuevo más tarde.', 'error');
         }
     })
-    return <>
-        <Contenedor elemento='main'>
+
+    return<>
+    <Contenedor elemento='main'>
     <form onSubmit={onSubmit} className={styles.formulario}>
         <CampoInput
             name='nombreAlimento'

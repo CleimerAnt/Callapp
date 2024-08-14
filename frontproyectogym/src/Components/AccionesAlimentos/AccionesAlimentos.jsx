@@ -1,5 +1,7 @@
 import getDatosUser from "../../Datos/ObtenerCalculoCalorias";
 import Contenedor from "../Contenedor/Contenedor";
+import { Link } from "react-router-dom";
+import postDataAutorizacion from "../../Datos/PostDataAutorizacion";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Auth/AuthContext";
 import ContenedorAlimentos from "../ContenedorAlimentos/ContenedorAlimentos";
@@ -32,7 +34,6 @@ export default function AccionesAlimentos(){
 
     console.log('Alimentos', alimentos)
 
-
     return<>
         <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
                 <HeaderPaginaPrincipal fecha={fecha} home= {true}/>
@@ -41,11 +42,11 @@ export default function AccionesAlimentos(){
     <main  style={{backgroundColor : '#F1F1F1', height : '90vh'}}>
 
         <section className="container pt-4">
-            <FormularioAlimentos fecha={fecha}/>
+            <Link className="btn btn-primary" to={`/FormulaioAgregarAlimentos/${fecha}`}>Agregar</Link>
         </section>
         
         <div className="mt-4 container">
-        {Array.isArray(alimentos) ? <ContenedorAlimentos  aray={alimentos ? alimentos : []} elementos={elmentos} thead={cabeza}/> : <h1 className="text-center mt-4">No hay contenido</h1>}
+        {Array.isArray(alimentos) ? <ContenedorAlimentos  aray={alimentos ? alimentos : []} elementos={elmentos} thead={cabeza}/> : <h1 className="text-center mt-4">No hay alimentos</h1>}
         </div>
     </main>
     </>

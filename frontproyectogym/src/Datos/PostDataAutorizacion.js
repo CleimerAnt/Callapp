@@ -14,7 +14,6 @@ export default async function postDataAutorizacion(url, data = {}, user) {
             const errorText = await response.text();
             console.error('Error al hacer la solicitud:', errorText);
             return response;
-            throw new Error('Error al hacer la solicitud: ' + errorText); 
         }
 
         return await response;

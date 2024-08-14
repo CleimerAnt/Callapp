@@ -1,0 +1,20 @@
+.link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    transition: color 0.3s ease, text-decoration 0.3s ease; 
+}
+
+.link:hover {
+    color: #007BFF; 
+    text-decoration: underline;
+}
+
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

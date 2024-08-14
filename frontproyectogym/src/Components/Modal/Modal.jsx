@@ -1,7 +1,9 @@
 import Grafica from "../Grafica/Grafica";
+import { useNavigate } from "react-router-dom";
 
-export default function Modal({ id, body, titulo, tipoBoton, texto, grafica }) {
+export default function Modal({ id, body, titulo, tipoBoton, texto, grafica, fecha }) {
     const modalId = `modal-${id}`;
+    const navigate = useNavigate();
 
     return (
         <>

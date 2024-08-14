@@ -37,10 +37,9 @@ export default function FormularioAlimentos({fecha}){
         }
     }
 
-
     return (
         <>
-        <Modal tipoBoton={'primary'} texto={'Agregar'} titulo={'Agregar Alimento'} id={user.id} body={() => (
+        <Modal fecha={fecha} tipoBoton={'primary'} texto={'Agregar'} titulo={'Agregar Alimento'} id={user.id} body={() => (
             <form onSubmit={handleSubmit(onSubmit)}>
                 <CampoInput
                 name='nombreAlimento'

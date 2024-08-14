@@ -1,6 +1,7 @@
 import { AuthContext } from "../../Auth/AuthContext";
 import Contenedor from '../Contenedor/Contenedor'
-import { useParams } from "react-router-dom";
+import styles from '../FormularioContenedorAlimentos/FormularioContenedorAlimentos.module.css'
+import { Link, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import getDatosUser from "../../Datos/ObtenerCalculoCalorias";
 import ContenedorAlimentos from "../ContenedorAlimentos/ContenedorAlimentos";
@@ -25,7 +26,16 @@ export default function FormularioContenedorAlimentos(){
     }, [url, user])
 
     if(alimentos.status === 204){
-        return <h1>No Hay alimentos</h1>
+        return<>
+        <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-5'}>
+                <HeaderPaginaPrincipal fecha={fecha} home= {true}/>
+        </Contenedor>
+
+        <main className={styles.main}>
+            <h1 className="text-center pt-2">No hay alimentos</h1>
+            <Link className={`${styles.link}`} to={`/accionesAlimentos/${fecha}`}>Pulse aqui para agregar</Link>
+        </main>
+        </>
     }
 
     alimentos.forEach((element)=>{
@@ -34,7 +44,7 @@ export default function FormularioContenedorAlimentos(){
         element.eliminar = 'eliminar'
     })
 
-    console.log(fecha)
+    console.log('Contenedor Alimentos')
     return<>
         <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
                 <HeaderPaginaPrincipal fecha={fecha} home= {true}/>
@@ -43,7 +53,6 @@ export default function FormularioContenedorAlimentos(){
         <section className="container">
             <ContenedorAlimentos fecha={fecha} elementos={camposAlimentos} thead={['Nombre del Alimento', 'Carbohidratos', 'Proteina', 'Grasa', 'Calorias', 'Descripcion', 'Acciones']} aray={alimentos}/>
         </section>
-        
     </main>
     </>
     

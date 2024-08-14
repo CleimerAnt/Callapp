@@ -48,11 +48,11 @@ export default function FormularioRegistro() {
             </Contenedor>
 
             <main className={`d-flex align-items-center flex-column mt-4 ${styles.main}`}>
-            <section className='d-flex flex-column align-items-center justify-content-center mb-3 mt-4'>
-                <img className={styles.fuegoCalorico} src={fuegoCalorico} alt="" />
+            {<section className='d-flex flex-column align-items-center justify-content-center mt-4'>
+                
                 <h1 className={`${styles.titulo} mt-2`}>Crear una nueva cuenta</h1>
-            </section>
-            <form encType="multipart/form-data" className={`${styles.formulario}`} onSubmit={onSubmit}>
+            </section>}
+            <form encType="multipart/form-data" className={`${styles.formulario} mt-4`} onSubmit={onSubmit}>
                 <CampoInput
                     name='PrimerNombre'
                     type='text'
@@ -60,7 +60,7 @@ export default function FormularioRegistro() {
                     register={register}
                     required={true}
                     errors={errors}
-                    placeholder='Primer Nombre'
+                    placeholder=''
                 />
                 <CampoInput
                     name='Apellido'
@@ -69,7 +69,7 @@ export default function FormularioRegistro() {
                     register={register}
                     required={true}
                     errors={errors}
-                    placeholder='Apellido'
+                    placeholder=''
                 />
                 <CampoInput
                     name='Email'
@@ -78,7 +78,7 @@ export default function FormularioRegistro() {
                     register={register}
                     required={true}
                     errors={errors}
-                    placeholder='Correo Electrónico'
+                    placeholder=''
                 />
                 <CampoInput
                     name='UserName'
@@ -87,7 +87,7 @@ export default function FormularioRegistro() {
                     register={register}
                     required={true}
                     errors={errors}
-                    placeholder='Nombre de Usuario'
+                    placeholder=''
                 />
                 <CampoInput
                     name='file'
@@ -96,7 +96,7 @@ export default function FormularioRegistro() {
                     register={register}
                     required={true}
                     errors={errors}
-                    placeholder='Foto de Perfil'
+                    placeholder=''
                 />
                 <CampoInput
                     name='Password'
@@ -105,7 +105,7 @@ export default function FormularioRegistro() {
                     register={register}
                     required={true}
                     errors={errors}
-                    placeholder='Contraseña'
+                    placeholder=''
                 />
                 <CampoInput
                     name='ConfirmarContraseña'
@@ -114,7 +114,7 @@ export default function FormularioRegistro() {
                     register={register}
                     required={true}
                     errors={errors}
-                    placeholder='Confirmar Contraseña'
+                    placeholder=''
                     validate={value => value === watch('Password') || 'Las Contraseñas no coinciden'}
                 />
                 <div className='d-flex align-items-center justify-content-center'>
