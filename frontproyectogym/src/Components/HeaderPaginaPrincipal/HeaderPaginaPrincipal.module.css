@@ -1,33 +1,39 @@
-.logo{
+.logo {
     width: 54px;
 }
 
-.titulo{
+.titulo {
     font-size: 30px;
     margin-top: 15px;
     font-weight: bold;
+    margin-left: 15px; /* Ajuste para el espacio entre la imagen y el título */
 }
 
-.links{
+.links {
     display: flex;
-    gap: 50px;
+    gap: 20px;
     font-size: 20px;
+    flex-direction: column; /* Column direction by default */
 }
 
 .links a {
     text-decoration: none;
     color: #000000;
-    transition: border-bottom 0.2s linear
+    transition: border-bottom 0.2s linear;
+    text-align: center;
+    margin-bottom: 10px; /* Margen inferior para los enlaces en pantallas pequeñas */
 }
 
 .links a:hover {
     border-bottom: #F8664F 2px solid;
 }
 
-.inicio{
-    text-decoration: none;
-    list-style: none;
-    color: black;
-    font-size: 30px;
-    font-weight: bold;
+@media (min-width: 768px) {
+    .links {
+        flex-direction: row; /* Cambia a fila en pantallas más grandes */
+    }
+
+    .links a {
+        margin-bottom: 0; /* Elimina el margen inferior en pantallas más grandes */
+    }
 }

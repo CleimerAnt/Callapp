@@ -9,24 +9,27 @@ export default function Perfil({imagenPerfil, calorias , porcentajeCalculado, fe
     const navigate = useNavigate();
 
     return <>
-        <div className={`${styles.perfil}`}>
-            <div>
-                <img className={styles.imagenPerfil} src={imagenPerfil} alt="Imagen de Usuario" />
-                <p style={{fontSize : '20px'}} className={`${styles.nombreUsuario}`}>{user.userName}</p>
-                <CerrarSesion />
-            </div>
-            <div className="mt-5">
-                <p style={{color : '#00B98E'}}><span className={styles.spanCalorias}>Meta calorica:</span> {calorias} </p>
+       <div className={`${styles.perfil}`}>
+    <div className="text-center">
+        <img className={styles.imagenPerfil} src={imagenPerfil} alt="Imagen de Usuario" />
+        <p className={`${styles.nombreUsuario}`}>{user.userName}</p>
+        <CerrarSesion />
+    </div>
+    <div className="mt-5">
+        <p style={{ color: '#00B98E' }}>
+            <span className={styles.spanCalorias}>Meta calórica:</span> {calorias}
+        </p>
 
-                <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-  <div class="progress-bar" style={{width : `${porcentajeCalculado}%`}}>{`${porcentajeCalculado}%`}</div>
-</div>
-            </div>
-
-            <div style={{marginTop : '85px'}}>
-            <button className="btn btn-success" onClick={() => navigate(`/accionesAlimentos/${fecha}`)}>Alimentos</button>
-            </div>
+        <div className="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+            <div className="progress-bar" style={{ width: `${porcentajeCalculado}%` }}>{`${porcentajeCalculado}%`}</div>
         </div>
+    </div>
+
+    <div className="mt-4 mt-md-5 text-center">
+        <button className="btn btn-success" onClick={() => navigate(`/accionesAlimentos/${fecha}`)}>Alimentos</button>
+    </div>
+</div>
+
         
     </>
 }

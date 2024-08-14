@@ -80,7 +80,7 @@ export default function PaginaPrincipal() {
         </Contenedor>
 
         <Contenedor margin="mt-4" elemento="main">
-        <div className="container mt-3">
+        <div className="container mt-3 ">
             <div className="row">
               {/* Columna izquierda */}
                 <div className="col-md-6 mt-2 d-flex justify-content-center">

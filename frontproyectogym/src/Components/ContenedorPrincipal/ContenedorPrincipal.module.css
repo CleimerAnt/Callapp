@@ -1,24 +1,34 @@
-.titulo{
+.titulo {
     text-align: center;
-    width: 600px;
+    width: 100%; /* Ajusta el ancho al 100% para pantallas pequeñas */
+    max-width: 600px; /* Limita el ancho máximo en pantallas grandes */
     background-color: #157246;
     color: white;
     padding: 5px;
+    margin: 0 auto; /* Centra el contenido */
 }
 
-.link{
+.link {
     text-align: center;
-    width: 600px;
+    width: 100%; /* Ajusta el ancho al 100% para pantallas pequeñas */
+    max-width: 600px; /* Limita el ancho máximo en pantallas grandes */
     margin-bottom: 20px;
+    margin: 0 auto; /* Centra el contenido */
 }
 
 .link a {
     text-decoration: none;
     color: #157246;
     font-weight: bold;
-    transition: color 0.2s, text-decoration 0.2s; 
+    transition: color 0.2s, text-decoration 0.2s;
 }
 
 .link a:hover {
-    color: #75BE7C; 
+    color: #75BE7C;
+}
+
+@media (min-width: 768px) {
+    .titulo, .link {
+        width: 600px; /* Mantén el ancho en 600px para pantallas más grandes */
+    }
 }

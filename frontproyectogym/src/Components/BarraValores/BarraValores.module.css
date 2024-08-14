@@ -1,11 +1,18 @@
-.listaValores{
+.listaValores {
     list-style: none;
     margin-top: 20px;
     margin-bottom: 20px;
-
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
 }
 
-.listaValores{
-    display: flex;
-    gap: 30px;
+@media (min-width: 768px) {
+    .listaValores {
+        flex-direction: row; /* Cambia a fila en pantallas más grandes */
+        gap: 30px; /* Ajuste del espacio entre los elementos */
+        text-align: left; /* Alinea el texto a la izquierda en pantallas más grandes */
+    }
 }

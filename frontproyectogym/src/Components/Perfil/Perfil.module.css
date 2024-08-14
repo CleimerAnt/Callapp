@@ -1,26 +1,45 @@
-.perfil img{
-    width: 130px;
-}
-
-.nombreUsuario{
-    font-weight: bold;
-    margin-top: 10px;
-
-}
-
-.perfil{
+.perfil {
     display: flex;
-    gap: 30px;
-    flex-direction:row;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
     background-color: #F6F6F6;
+    gap: 20px;
 }
 
-.perfil p{
+.perfil img {
+    width: 130px;
+    border-radius: 50%; /* Hace que la imagen sea redonda */
+}
+
+.nombreUsuario {
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.perfil p {
     font-size: 18px;
+    text-align: center;
 }
 
-.spanCalorias{
+.spanCalorias {
     font-size: 20px;
     color: black;
+}
+
+@media (min-width: 768px) {
+    .perfil {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .nombreUsuario, .perfil p {
+        text-align: left;
+    }
+
+    .perfil .progress {
+        width: 100%; /* Asegura que la barra de progreso ocupe todo el ancho disponible */
+    }
 }
