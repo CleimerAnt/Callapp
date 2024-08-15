@@ -48,12 +48,11 @@ export default function AgregarAlimentos(){
     </Contenedor>
 
     <form onSubmit={onSubmit} className={styles.formulario}>
-        <h1 className="text-center mb-4">Agregar</h1>
         <CampoInput
             name='nombreAlimento'
             type='text'
-            label={'Nombre del Alimento'}
-            placeholder={'Nombre del Alimento'}
+            label={'Nombre'}
+            placeholder={'Nombre del alimento'}
             classFom={'form-control'}
             required={true}
             register={register}
@@ -127,7 +126,10 @@ export default function AgregarAlimentos(){
             register={register}
             errors={errors}
         />
-        <button type='submit' className={styles.boton}>Enviar</button>
+        <div className="">
+            <button type='submit' className={styles.boton}>Enviar</button>
+        </div>
+        
     </form>
 </Contenedor>
 

@@ -32,7 +32,7 @@ export default function AccionesAlimentos(){
         })
     }
 
-    console.log('Alimentos', alimentos)
+    console.log(typeof(alimentos))
 
     return<>
         <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
@@ -50,7 +50,7 @@ export default function AccionesAlimentos(){
         </div>
 
         <article className={`${styles.contenedorMovil} mt-3`}>
-            {alimentos.map((alimento, index) => (
+            {Array.isArray(alimentos) ? alimentos.map((alimento, index) => (
                 <div className={`${styles.descripcion}`} key={index}>
                     <div className={`${styles.nombrePorcion}`}>
                         <p className="fw-bold">{alimento.nombreAlimento}</p>
@@ -64,7 +64,7 @@ export default function AccionesAlimentos(){
                     <Link className='btn btn-secondary w-75' to={`/EditarAlimento/${alimento.id}/${fecha}`}>Editar</Link>
                     </div>
                 </div>
-            ))}
+            )) : ''}
         </article>
     </main>
     </>

@@ -1,7 +1,7 @@
 .formulario {
-    display: flex;
-    flex-direction: column;
-    background-color: #F0F2F5; 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 25px;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -23,11 +23,7 @@
 }
 
 .formulario input, .formulario textarea {
-    background-color: #ffffff;
-    border: 1px solid #ced4da;
-    padding: 10px;
-    border-radius: 5px;
-    transition: border-color 0.3s ease;
+    
 }
 
 .formulario input:focus, .formulario textarea:focus {
@@ -40,6 +36,7 @@
     color: white;
     padding: 10px 15px;
     border: none;
+    margin-top: 28px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;

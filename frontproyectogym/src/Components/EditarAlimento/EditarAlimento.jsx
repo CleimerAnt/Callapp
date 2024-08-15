@@ -77,11 +77,10 @@ export default function EditarAlimento(){
 
 
     <form onSubmit={onSubmit} className={styles.formulario}>
-    <h1 className="text-center mb-4">Editar</h1>
         <CampoInput
             name='nombreAlimento'
             type='text'
-            label={'Nombre del Alimento'}
+            label={'Nombre'}
             placeholder={'Nombre del Alimento'}
             classFom={'form-control'}
             required={true}

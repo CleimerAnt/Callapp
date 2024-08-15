@@ -56,7 +56,8 @@ export default function AgregarAlimentoMovil(){
     console.log(alimento)
     return<>
     {alimento ? <Grafica proteina={alimento.proteina} carbohidratos={alimento.carbohidratos} grasa={alimento.grasa}/> : ''}
-        <form onSubmit={handleSubmit(onSubmit)} className={`${styles.formulario}`}>
+    <main className={`${styles.formulario}`}>
+        <form onSubmit={handleSubmit(onSubmit)}>
                     <CampoInput
                         name='horario'
                         type={'hidden'}
@@ -93,7 +94,8 @@ export default function AgregarAlimentoMovil(){
                         classFom={'form-control'}
                         errors={errors}
                     />
-                    <button type="submit" className="btn btn-primary float-end w-25">Aceptar</button>
+                    <button type="submit" className="btn btn-primary float-end w-100 mt-3">Agregar</button>
                 </form>
+    </main>
     </>
 }
