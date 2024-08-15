@@ -12,3 +12,33 @@
         font-size: 14px; /* Ajusta el tamaño de fuente para mejorar la legibilidad en pantallas pequeñas */
     }
 }
+
+.contenedorSubtabla{
+    display: none;
+}
+
+@media (width < 768px) {
+    .tabla{
+        display: none;
+    }
+
+    .contenedorSubtabla{
+        display: block;
+    }
+}
+
+.carbohidratos{
+    color: red;
+}
+
+.proteina{
+    color: blue;
+}
+
+.grasa{
+    color: #B57C00;
+}
+
+.subTabla{
+    border-bottom: 1px solid black;
+}

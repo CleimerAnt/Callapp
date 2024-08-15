@@ -2,13 +2,15 @@ import React, { useContext } from 'react';
 import FormularioAgregarAlimentos from '../FormularioAgregarAlimentos/FormularioAgregarAlimentos'
 import { AuthContext } from '../../Auth/AuthContext';
 import { Link } from 'react-router-dom';
+import styles from '../ContenedorAlimentos/ContenedorAlimentos.module.css'
 
 
 export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elementos = [], fecha  = new Date().toISOString()}) {
     const { user } = useContext(AuthContext);
+    console.log(aray)
     return (
         <>
-            <table className="table table-hover" style={{ width: `${ancho}` }}>
+            <table className={`table table-hover ${styles.tabla}`} style={{ width: `${ancho}` }}>
                 <thead>
                     <tr>
                         {thead.map((element, index) => (
@@ -49,6 +51,30 @@ export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elem
                     )}
                 </tbody>
             </table>
+
+            <div className={`p-2 ${styles.contenedorSubtabla}`}>
+                {aray.map((element, index) => (
+                    <div key={element.id} className={`d-flex align-items-center justify-content-between ${styles.subTabla}`}>
+                        <div>
+                            <p className='fw-bold'>{element.nombreAlimento}</p>
+
+                            <div key={index}>
+                            <p className='text-primary fw-bold'>Calorias: {element.caloriasDelAlimento}</p>
+                            <div className='d-flex' style={{gap : '10px'}}>
+                                <p>C: <span className={`${styles.carbohidratos}`}>{element.carbohidratosDelAlimento}</span></p>
+                                <p>P: <span className={`${styles.proteina}`}>{element.proteinaDelAlimento}</span></p>
+                                <p>G: <span className={`${styles.grasa}`}>{element.grasaDelAlimento}</span></p>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div className='d-flex align-items-center justify-content-center'>
+                            <Link className='btn btn-danger' to={`/EliminarAlimentos/${element.alimentoId}/${element.contenedorId}`}>Eliminar</Link>
+                        </div>
+                        
+                    </div>
+                ))}
+            </div>
         </>
     );
 }

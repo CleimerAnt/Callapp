@@ -51,7 +51,7 @@ export default function FormularioEliminarAlimentoDelUsuario() {
                 required={true}
                 errors={errors}
             />
-            <div className="d-flex justify-content-around flex-row-reverse mt-3">
+            <div className=" d-flex flex-row-reverse mt-3" style={{gap : '20px'}}>
                 <button type="submit" className="btn btn-danger w-45">Aceptar</button>
                 <button onClick={() => navigate(`/accionesAlimentos/${fecha}`)} className="btn btn-secondary w-45">Cancelar</button>
             </div>
