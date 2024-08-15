@@ -1,11 +1,11 @@
 import { AuthContext } from "../../Auth/AuthContext";
 import Contenedor from '../Contenedor/Contenedor';
-import FormularioAgregarAlimentos from "../FormularioAgregarAlimentos/FormularioAgregarAlimentos";
 import styles from '../FormularioContenedorAlimentos/FormularioContenedorAlimentos.module.css';
 import { Link, useParams } from "react-router-dom";
 import HeaderPaginaPrincipal from "../HeaderPaginaPrincipal/HeaderPaginaPrincipal";
 import { useContext, useEffect, useState } from "react";
 import getDatosUser from "../../Datos/ObtenerCalculoCalorias";
+import FormularioAgregarAlimentos from "../FormularioAgregarAlimentos/FormularioAgregarAlimentos";
 import ContenedorAlimentos from "../ContenedorAlimentos/ContenedorAlimentos";
 
 export default function FormularioContenedorAlimentos() {
@@ -62,15 +62,9 @@ export default function FormularioContenedorAlimentos() {
                         <p className="fw-bold">{alimento.nombreAlimento}</p>
                         <p>Calorias: <span className="text-primary">{alimento.calorias}</span></p>
                     </div>
-
+            
                     <div className="w-50 p-2 d-flex  align-items-center justify-content-center" style={{gap :'5px'}}>
-                    <FormularioAgregarAlimentos 
-                                                id={alimento.id} 
-                                                userId={alimento.id} 
-                                                comida={alimento.horaio} 
-                                                grafica={[alimento.proteina, alimento.carbohidratos, alimento.grasa]}
-                                                fecha={fecha}
-                                            />
+                    <Link className="btn btn-primary" to={`/agregarAlimentoMovil/${comida}/${fecha}/${alimento.id}`}>Agregar</Link>
 
                     </div>
                 </div>

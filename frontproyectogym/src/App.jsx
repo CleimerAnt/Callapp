@@ -15,6 +15,7 @@ import EditarAlimento from './Components/EditarAlimento/EditarAlimento';
 import ContenedorPrincipal from './Components/ContenedorPrincipal/ContenedorPrincipal';
 import Inicio from './Components/Inicio/Inicio';
 import AgregarAlimentos from './Components/AgregarAlimentos/AgregarAlimentos';
+import AgregarAlimentoMovil from './Components/AgregarAlimentoMovil/AgregarAlimentoMovil';
 
 export default function App() {
   const { estaAutenticado, calculoCalorias } = useContext(AuthContext);
@@ -42,6 +43,7 @@ export default function App() {
       <Route path="/" element={renderComponent()}/>
       <Route path='/Login' element={<Login />}/> 
       <Route path='/agregarAlimentos/:comida/:fecha' element = {<RutaProtegida ><FormularioContenedorAlimentos /></RutaProtegida>} />
+      <Route path='/agregarAlimentoMovil/:comida/:fecha/:id' element = {<RutaProtegida ><AgregarAlimentoMovil /></RutaProtegida>} />
       <Route path='/FormulaioAgregarAlimentos/:fecha' element = {<RutaProtegida ><AgregarAlimentos /></RutaProtegida>} />
       <Route path='/accionesAlimentos/:fecha' element={<RutaProtegida> <AccionesAlimentos /> </RutaProtegida>}/>
       <Route path="/Registro" element={estaAutenticado() ? <Navigate to="/PaginaPrincipal" /> : <FormularioRegistro />} />
