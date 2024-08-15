@@ -33,7 +33,7 @@ export default function FormularioEliminarAlimento() {
 
     return (
         <>
-            <div class="card container w-50 mt-5">
+            <div class="card container mt-5" style={{ maxWidth: "600px" }}>
                 <div class="card-header bg-primary mt-2 ">
                     <h4 className="text-center mt-1 text-white">Eliminar alimento del contenedor</h4>    
                 </div>
@@ -59,7 +59,7 @@ export default function FormularioEliminarAlimento() {
                     />
                 
                     <div className="d-flex flex-row-reverse" style={{gap: "20px"}}>
-                        <button type="submit" className={`btn btn-danger float-end w-25`}>Aceptar</button>
+                        <button type="submit" className={`btn btn-danger float-end `}>Aceptar</button>
                         <button onClick={() => navigate(`/PaginaPrincipal/${new Date().toISOString()}`)} className={`btn btn-secondary float-end`}>Cancelar</button>
                     </div>
                 </form>
