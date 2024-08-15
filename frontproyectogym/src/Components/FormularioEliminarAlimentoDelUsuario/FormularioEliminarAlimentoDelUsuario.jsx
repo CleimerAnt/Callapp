@@ -34,29 +34,31 @@ export default function FormularioEliminarAlimentoDelUsuario() {
 
     return (
         <>
-            <div class="card container w-50 mt-5">
-                <div class="card-header bg-primary mt-2 ">
-                    <h4 className="text-center mt-1 text-white">Eliminar alimento del contenedor</h4>    
-                </div>
-                <div class="card-body">
-                    <p class="card-text text-center" style={{fontSize : "20px"}}>¿Esta seguro que desea eliminar el alimento? </p>
-                    <form onSubmit={onSubmit}>
-                    <CampoInput
-                        name={'alimentoId'}
-                        type={'hidden'}
-                        register={register}
-                        value={parseInt(alimentoId)}
-                        required={true}
-                        errors={errors}
-                    />
-                
-                    <div className="d-flex flex-row-reverse" style={{gap: "20px"}}>
-                        <button type="submit" className={`btn btn-danger float-end w-25`}>Aceptar</button>
-                        <button onClick={() => navigate(`/accionesAlimentos/${fecha}`)} className={`btn btn-secondary float-end`}>Cancelar</button>
-                    </div>
-                </form>
-                </div>
+            <div className="card container mt-5" style={{ maxWidth: "600px" }}>
+    <div className="card-header bg-primary">
+        <h4 className="text-center mt-1 text-white">Eliminar alimento del contenedor</h4>
+    </div>
+    <div className="card-body">
+        <p className="card-text text-center" style={{ fontSize: "20px" }}>
+            ¿Está seguro que desea eliminar el alimento?
+        </p>
+        <form onSubmit={onSubmit}>
+            <CampoInput
+                name={'alimentoId'}
+                type={'hidden'}
+                register={register}
+                value={parseInt(alimentoId)}
+                required={true}
+                errors={errors}
+            />
+            <div className="d-flex justify-content-around flex-row-reverse mt-3">
+                <button type="submit" className="btn btn-danger w-45">Aceptar</button>
+                <button onClick={() => navigate(`/accionesAlimentos/${fecha}`)} className="btn btn-secondary w-45">Cancelar</button>
             </div>
+        </form>
+    </div>
+</div>
+
 
             
         </>

@@ -1,0 +1,38 @@
+.contenedorEscritorio {
+    display: none; 
+}
+
+@media (min-width: 992px) {
+    .contenedorEscritorio {
+        display: block; 
+    }
+}
+
+.contenedorMovil{
+    display: block;
+    padding: 20px;
+}
+
+@media (min-width: 992px) {
+    .contenedorMovil {
+        display: none; 
+    }
+}
+
+.nombrePorcion{
+    display: flex;
+    flex-direction: column;
+}
+
+.descripcion{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px 10px;
+}
+
+.calorias{
+    display: flex;
+    align-items: center;
+    justify-content: center
+}

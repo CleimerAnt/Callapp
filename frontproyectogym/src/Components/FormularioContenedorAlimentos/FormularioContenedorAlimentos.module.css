@@ -12,9 +12,48 @@
     text-decoration: underline;
 }
 
-.main{
+.main {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+.contenedorEscritorio {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .contenedorEscritorio {
+        display: block;
+    }
+}
+
+.contenedorMovil {
+    display: block;
+    padding: 20px;
+}
+
+@media (min-width: 992px) {
+    .contenedorMovil {
+        display: none;
+    }
+}
+
+.nombrePorcion {
+    display: flex;
+    flex-direction: column;
+}
+
+.descripcion {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    padding: 10px 0;
+}
+
+.calorias {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

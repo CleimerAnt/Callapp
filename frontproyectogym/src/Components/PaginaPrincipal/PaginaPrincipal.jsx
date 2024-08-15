@@ -96,7 +96,7 @@ export default function PaginaPrincipal() {
                 </div>
     
               {/* Columna derecha */}
-            <div className="col-md-6">
+            <div className={`col-md-6 ${styles.contenedorPrincipal}`}>
                     <ContenedorPrincipal contenedorFecha={contenedorFecha} fecha={fecha}/>
             </div>
             </div>

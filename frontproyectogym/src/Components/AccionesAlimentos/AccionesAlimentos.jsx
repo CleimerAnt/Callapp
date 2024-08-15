@@ -1,7 +1,7 @@
 import getDatosUser from "../../Datos/ObtenerCalculoCalorias";
 import Contenedor from "../Contenedor/Contenedor";
 import { Link } from "react-router-dom";
-import postDataAutorizacion from "../../Datos/PostDataAutorizacion";
+import styles from '../AccionesAlimentos/AccionesAlimentos.module.css'
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Auth/AuthContext";
 import ContenedorAlimentos from "../ContenedorAlimentos/ContenedorAlimentos";
@@ -45,9 +45,27 @@ export default function AccionesAlimentos(){
             <Link className="btn btn-primary" to={`/FormulaioAgregarAlimentos/${fecha}`}>Agregar</Link>
         </section>
         
-        <div className="mt-4 container">
+        <div className={`mt-4 container ${styles.contenedorEscritorio}`}>
         {Array.isArray(alimentos) ? <ContenedorAlimentos  aray={alimentos ? alimentos : []} elementos={elmentos} thead={cabeza}/> : <h1 className="text-center mt-4">No hay alimentos</h1>}
         </div>
+
+        <article className={`${styles.contenedorMovil} mt-3`}>
+            {alimentos.map((alimento, index) => (
+                <div className={`${styles.descripcion}`} key={index}>
+                    <div className={`${styles.nombrePorcion}`}>
+                        <p className="fw-bold">{alimento.nombreAlimento}</p>
+                        <p>Calorias: <span className="text-primary">{alimento.calorias}</span></p>
+                    </div>
+
+                    <div className="w-50 p-2 d-flex flex-column align-items-center justify-content-center" style={{gap :'5px'}}>
+                    <Link className='btn btn-danger w-75' to={`/EliminarAlimentoDelUsuario/${alimento.id}/${fecha}`}> Eliminar </Link>
+
+                    
+                    <Link className='btn btn-secondary w-75' to={`/EditarAlimento/${alimento.id}/${fecha}`}>Editar</Link>
+                    </div>
+                </div>
+            ))}
+        </article>
     </main>
     </>
 }
