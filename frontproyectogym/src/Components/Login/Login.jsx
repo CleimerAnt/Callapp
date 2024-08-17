@@ -2,6 +2,7 @@ import CampoInput from '../CampoInput/CampoInput';
 import { useForm } from 'react-hook-form';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import HeaderInicio from '../HeaderInicio/HeaderInicio';
+import getDatosUser from '../../Datos/ObtenerCalculoCalorias';
 import styles from '../Login/Login.module.css';
 import { useContext, useEffect, useState } from 'react';
 import fuegoCalorico from '../../assets/fuegoCalorico.png';
@@ -12,6 +13,7 @@ import swal from 'sweetalert';
 export default function Login() {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { user, setUser } = useContext(AuthContext);
+    const [state, setState] = useState();
     const [hasAuthenticated, setHasAuthenticated] = useState(false);
     const navigate = useNavigate();
     const onsubmit = handleSubmit(async (data) => {
@@ -21,6 +23,7 @@ export default function Login() {
         const result = await login(url, data);
         setUser(result);
         setHasAuthenticated(true);
+
     } catch (error) {
         console.error('Error al autenticar:', error);
     }
@@ -32,8 +35,23 @@ export default function Login() {
         if (user !== null) {
             console.log(user)
             if (user.hasError === false) {
-                console.log('Navigate')
-                navigate(`/PaginaPrincipal/${new Date().toISOString()}`)
+                console.log(user)
+                const url = `https://localhost:7051/api/v1/Usuario/ObtenerUsuarios?id=${user.id}`;
+
+                async function getCalorias(){
+                    const response = await  getDatosUser(url, user.jwToken)
+                    const data = await response
+                    console.log(data.status)
+                    if(data.status === 204){
+                        navigate('/FormularioCalorias')
+                        
+                    }
+                    else{
+                        navigate(`/PaginaPrincipal/${new Date().toISOString()}`) 
+                    }
+                }
+                getCalorias()
+
         } else if (user.hasError === true) {
             swal("Error:", user.error, "error");
         } else if (user.isVerified === false) {
@@ -116,3 +134,22 @@ const login = async (url, data) => {
     throw err;
 }
 };
+
+
+{/* 
+     useEffect(() => {
+            if (user) {
+                const url = `https://localhost:7051/api/v1/Usuario/ObtenerUsuarios?id=${user.id}`;
+                getDatosUser(url, user.jwToken).then(response => {
+                    if (response && response.status === 204) {
+                        setState(204);
+                    } else {
+                        setState(200);
+                    }
+                }).catch(err => {
+                    console.error('Error', err);
+                    setState(null);
+                });
+            }
+        }, [user]);
+    */}

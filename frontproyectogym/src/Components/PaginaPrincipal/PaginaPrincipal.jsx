@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import Contenedor from "../Contenedor/Contenedor";
 import { AuthContext } from "../../Auth/AuthContext";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import HeaderPaginaPrincipal from "../HeaderPaginaPrincipal/HeaderPaginaPrincipal";
 import HeaderInicio from '../HeaderInicio/HeaderInicio'
 import getDatosUser from '../../Datos/ObtenerCalculoCalorias';
@@ -12,6 +12,7 @@ import ContenedorPrincipal from "../ContenedorPrincipal/ContenedorPrincipal";
 
 export default function PaginaPrincipal() {
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
     let caloriasGenerales = 0;
     const [calorias, setCalorias] = useState(0);
     const [contenedor, setContenedor] = useState([]);
@@ -69,6 +70,9 @@ export default function PaginaPrincipal() {
         caloriasGenerales += element.caloriasDelAlimento;
     });
     }
+    console.log('Calorias', calorias)
+    
+
     let porcentaje = (caloriasGenerales / calorias) * 100;
 
     let porcentajeCalculado = Math.round(porcentaje.toFixed(2));

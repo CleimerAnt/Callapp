@@ -18,29 +18,11 @@ import AgregarAlimentos from './Components/AgregarAlimentos/AgregarAlimentos';
 import AgregarAlimentoMovil from './Components/AgregarAlimentoMovil/AgregarAlimentoMovil';
 
 export default function App() {
-  const { estaAutenticado, calculoCalorias } = useContext(AuthContext);
-
-  const renderComponent = () =>{
-    if(estaAutenticado()){
-        const calorias = calculoCalorias();
-        if(calorias === null){
-          return <div>Loading</div>
-        }
-        else if(calorias){
-          return <Navigate to={`/PaginaPrincipal/${new Date().toISOString()}`} />
-        }
-        else{
-          return <Navigate to={'/FormularioCalorias'} />
-        }
-        }
-        else {
-          return <Inicio />
-        }
-  }
+  const { estaAutenticado} = useContext(AuthContext);
 
   return (
     <Routes>
-      <Route path="/" element={renderComponent()}/>
+      <Route path="/" element={<Inicio />}/>
       <Route path='/Login' element={<Login />}/> 
       <Route path='/agregarAlimentos/:comida/:fecha' element = {<RutaProtegida ><FormularioContenedorAlimentos /></RutaProtegida>} />
       <Route path='/agregarAlimentoMovil/:comida/:fecha/:id' element = {<RutaProtegida ><AgregarAlimentoMovil /></RutaProtegida>} />

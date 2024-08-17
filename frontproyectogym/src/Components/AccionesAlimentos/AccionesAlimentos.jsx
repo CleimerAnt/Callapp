@@ -5,7 +5,6 @@ import styles from '../AccionesAlimentos/AccionesAlimentos.module.css'
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Auth/AuthContext";
 import ContenedorAlimentos from "../ContenedorAlimentos/ContenedorAlimentos";
-import FormularioAlimentos from "../FormularioAlimentos/FormularioAlimentos";
 import HeaderPaginaPrincipal from "../HeaderPaginaPrincipal/HeaderPaginaPrincipal";
 import { useParams } from "react-router-dom";
 
