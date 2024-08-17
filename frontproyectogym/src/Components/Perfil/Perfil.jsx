@@ -9,7 +9,7 @@ export default function Perfil({imagenPerfil, calorias , porcentajeCalculado, fe
     const navigate = useNavigate();
 
     return <>
-       <div className={`${styles.perfil}`}>
+        <div className={`${styles.perfil}`}>
     <div className="text-center">
         <img className={styles.imagenPerfil} src={imagenPerfil} alt="Imagen de Usuario" />
         <p className={`${styles.nombreUsuario}`}>{user.userName}</p>
@@ -28,7 +28,7 @@ export default function Perfil({imagenPerfil, calorias , porcentajeCalculado, fe
     <div className="mt-4 mt-md-5 text-center d-flex flex-column" style={{gap: '20px'}}>
         <button className="btn btn-success" onClick={() => navigate(`/accionesAlimentos/${fecha}`)}>Alimentos</button>
 
-        <button onClick={(() => navigate('/MiPerfil'))} className="btn btn-success">Mi Perfil</button>
+        <button onClick={(() => navigate(`/MiPerfil/${fecha}`))} className="btn btn-success">Mi Perfil</button>
     </div>
 </div>
 

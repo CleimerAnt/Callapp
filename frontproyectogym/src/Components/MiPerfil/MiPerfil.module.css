@@ -1,0 +1,42 @@
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F1F1F1;  
+}
+
+.main div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+.main input, select{
+    border: none;
+    text-align: end;
+    padding: 5px;
+    background-color: #F1F1F1;
+}
+
+.boton{
+    width: 90%;
+}
+
+.imagen{
+    width: 130px;
+    border-radius: 80%;
+}
+
+.perfil p{
+    font-size: 25px;
+}
+
+.perfil{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 10px;
+    background-color: #F1F1F1;
+}

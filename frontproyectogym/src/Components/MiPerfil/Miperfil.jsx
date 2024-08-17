@@ -1,16 +1,60 @@
 import CampoInput from '../CampoInput/CampoInput'
 import { useForm } from 'react-hook-form'
+import styles from '../MiPerfil/MiPerfil.module.css'
+import Contenedor from '../Contenedor/Contenedor'
+import HeaderPaginaPrincipal from '../HeaderPaginaPrincipal/HeaderPaginaPrincipal'
 import { AuthContext } from '../../Auth/AuthContext'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import swal from 'sweetalert'
 import calcularCalorias from '../../Metodos/CalcularCalorias'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import EditarDataAutorizacion from '../../Datos/EditarDataAutorizacion'
+import getDatosUser from '../../Datos/ObtenerCalculoCalorias'
 
 export default function MiPerfil(){
-    const {register, formState : {errors}, handleSubmit} = useForm()
+    const {register, formState : {errors}, handleSubmit,reset} = useForm()
+    const {fecha} = useParams();
     const {user} = useContext(AuthContext)
+    const [data, setData] = useState();
     const navigate = useNavigate();
+
+    const obtenerDatosUser = async () =>{
+        const url = `https://localhost:7051/api/v1/Usuario/ObtenerUsuarios?id=${user.id}`;
+        try{
+            const response = await getDatosUser(url, user.jwToken);
+            setData(response);
+            console.log(response)
+        }
+        catch(err){
+            throw err;
+        }
+    }
+
+    useEffect(() => {
+        obtenerDatosUser();
+    }, [])
+
+    useEffect(() => {
+        if (data) {
+            if(data.objetivo === 'Perder Peso'){
+                data.objetivo = '-500'
+            }
+            else if(data.objetivo === 'Mantener el Peso'){
+                data.objetivo = '0'
+            }
+            else if(data.objetivo === 'Ganar Peso'){
+                data.objetivo = '+500'
+            }
+            reset({
+                Peso: data.peso,
+                Altura: data.altura,
+                Edad: data.edad,
+                Genero: data.genero,
+                NivelActividadFisica: data.nivelActividadFisica,
+                Objetivo: data.objetivo
+            });
+        }
+    }, [data]);
 
     const onSubmit = handleSubmit( async (data) => {
         const url = `https://localhost:7051/api/v1/Usuario/EditarValoresUsuario?id=${user.id}`
@@ -45,7 +89,7 @@ export default function MiPerfil(){
                     }
                 }).then((value) => {
                     if (value) {
-                        navigate('/PaginaPrincipal');
+                        navigate(`/PaginaPrincipal/${fecha}`);
                     }
                 });
             }
@@ -57,13 +101,24 @@ export default function MiPerfil(){
             return err;
         }
     })
+    let imagenPerfil = user.imgUrl === '' ? imagen : `https://localhost:7051${user.imgUrl}`;
 
     return<>
+        <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
+                <HeaderPaginaPrincipal fecha={fecha} home= {true}/>
+        </Contenedor>
+
+        <section className = {styles.perfil}>
+            <img className={styles.imagen} src={imagenPerfil}/>
+            <p className='fw-bold mt-3'>{user.userName}</p>
+        </section>
+        
+        <main className={styles.main}>
         <form onSubmit={onSubmit}>
         <CampoInput
             name='Edad'
+            label={'Edad'}
             placeholder={'Edad'}
-            classFom={'form-control'}
             type='number'
             required={true}
             errors={errors}
@@ -72,8 +127,8 @@ export default function MiPerfil(){
 
         <CampoInput
             name="Genero"
+            label={'Genero'}
             placeholder={'Genero'}
-            classFom={'form-control'}
             type="select"
             required={true}
             errors={errors}
@@ -87,8 +142,8 @@ export default function MiPerfil(){
 
         <CampoInput
             name='Altura'
+            label={'Altura (CM)'}
             placeholder='Altura'
-            classFom={'form-control'}
             type='text'
             required={true}
             errors={errors}
@@ -97,7 +152,7 @@ export default function MiPerfil(){
 
         <CampoInput
             name='Peso'
-            classFom={'form-control'}
+            label={'Peso (LBS)'}
             placeholder='Peso'
             type='text'
             required={true}
@@ -109,7 +164,7 @@ export default function MiPerfil(){
         <CampoInput
             name="NivelActividadFisica"
             placeholder="Actividad Física"
-            classFom={'form-control'}
+            label={'Nivel de actividad fisica'}
             type="select"
             required={true}
             errors={errors}
@@ -126,8 +181,8 @@ export default function MiPerfil(){
 
         <CampoInput
             name="Objetivo"
+            label={'Objetivo'}
             placeholder="Objetivo"
-            classFom={'form-control'}
             type="select"
             required={true}
             errors={errors}
@@ -147,8 +202,13 @@ export default function MiPerfil(){
         register={register}
         errors={errors}
     />
+        
+        <div style={{border : 'none'}} className='d-flex align-itens-center justify-content-center'>
+            <button  type='submit' className={`btn btn-primary ${styles.boton}`}>Actualizar valores</button>
+        </div>
+        
 
-            <button type='submit' className='btn btn-primary'>Actualizar valores</button>
         </form>
+        </main>
     </>
 }
