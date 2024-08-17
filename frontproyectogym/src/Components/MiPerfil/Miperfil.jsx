@@ -1,23 +1,19 @@
-import { Container } from "react-bootstrap";
-import CampoInput from "../CampoInput/CampoInput";
-import { useForm } from 'react-hook-form';
-import BotonForm from "../BotonForm/BotonForm";
-import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from '../../Auth/AuthContext';
-import postDataAutorizacion from "../../Datos/PostDataAutorizacion";
-import styles from '../FormularioCalorias/FormularioCalorias.module.css';
-import calcularCalorias from "../../Metodos/CalcularCalorias";
+import CampoInput from '../CampoInput/CampoInput'
+import { useForm } from 'react-hook-form'
+import { AuthContext } from '../../Auth/AuthContext'
+import { useContext } from 'react'
+import swal from 'sweetalert'
+import calcularCalorias from '../../Metodos/CalcularCalorias'
+import { useNavigate } from 'react-router-dom'
+import EditarDataAutorizacion from '../../Datos/EditarDataAutorizacion'
 
-export default function FormularioCalorias() {
-    const { register, formState: { errors }, handleSubmit } = useForm();
-    const { user } = useContext(AuthContext);
-    const navigate = useNavigate()
+export default function MiPerfil(){
+    const {register, formState : {errors}, handleSubmit} = useForm()
+    const {user} = useContext(AuthContext)
+    const navigate = useNavigate();
 
-
-    const onSubmit = handleSubmit(async (data) => {
-        const url = 'https://localhost:7051/api/v1/Usuario/AgregarUsuarios';
-        
+    const onSubmit = handleSubmit( async (data) => {
+        const url = `https://localhost:7051/api/v1/Usuario/EditarValoresUsuario?id=${user.id}`
         const calorias = calcularCalorias(
             parseFloat(data.Peso),
             parseFloat(data.Altura),
@@ -29,39 +25,41 @@ export default function FormularioCalorias() {
         data.Calorias = calorias;
         data.IdentityId = user.id;
 
-        console.log('Datos enviados:', data);
+        try{
+            const response = await EditarDataAutorizacion(url, data, user);
+            console.log('Respuesta del servidor', response);
 
-        try {
-            const response = await postDataAutorizacion(url,data, user);
-            console.log('Respuesta del servidor:', response);
-            swal({
-                title: "Aviso",
-                text: "Calorías calculadas",
-                icon: "success",
-                buttons: {
-                    confirm: {
-                        text: "OK",
-                        value: true,
-                        visible: true,
-                        className: "btn btn-primary",
-                        closeModal: true
+            if(response.status === 200){
+                swal({
+                    title: "Aviso",
+                    text: "Datos actualizados",
+                    icon: "success",
+                    buttons: {
+                        confirm: {
+                            text: "OK",
+                            value: true,
+                            visible: true,
+                            className: "btn btn-primary",
+                            closeModal: true
+                        }
                     }
-                }
-            }).then((value) => {
-                if (value) {
-                    navigate('/PaginaPrincipal');
-                }
-            });
-        } catch (error) {
-            console.error('Error al hacer la solicitud:', error);
+                }).then((value) => {
+                    if (value) {
+                        navigate('/PaginaPrincipal');
+                    }
+                });
+            }
+            else{
+                swal('Aviso', 'Error al actualizar los datos', 'Warning')
+            }
         }
-    });
+        catch(err){
+            return err;
+        }
+    })
 
-    return (
-        <Container>
-            <h1 className="text-center mt-4">Calcular Calorias.</h1>
-            <form className={`d-flex flex-column align-items-center justify-content-center ${styles.formulario}`} onSubmit={onSubmit}>
-    <div className={`${styles.contenedor} ${styles.contenedorResponsive}`}>
+    return<>
+        <form onSubmit={onSubmit}>
         <CampoInput
             name='Edad'
             placeholder={'Edad'}
@@ -86,9 +84,7 @@ export default function FormularioCalorias() {
                 { value: 'femenino', label: 'Mujer' }
             ]}
         />
-    </div>
 
-    <div className={`${styles.contenedor} ${styles.contenedorResponsive}`}>
         <CampoInput
             name='Altura'
             placeholder='Altura'
@@ -108,9 +104,8 @@ export default function FormularioCalorias() {
             errors={errors}
             register={register}
         />
-    </div>
 
-    <div className={`${styles.contenedor} ${styles.contenedorResponsive}`}>
+
         <CampoInput
             name="NivelActividadFisica"
             placeholder="Actividad Física"
@@ -144,7 +139,6 @@ export default function FormularioCalorias() {
                 { value: '+500', label: 'Ganar Peso' }
             ]}
         />
-    </div>
 
     <CampoInput
         name="IdentityId"
@@ -154,9 +148,7 @@ export default function FormularioCalorias() {
         errors={errors}
     />
 
-    <button className={`btn btn-primary ${styles.boton}`}>Enviar</button>
-</form>
-
-        </Container>
-    );
+            <button type='submit' className='btn btn-primary'>Actualizar valores</button>
+        </form>
+    </>
 }

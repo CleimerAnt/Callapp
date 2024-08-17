@@ -9,7 +9,7 @@ export default function CampoInput({ name, type, errors, label, register, requir
                     {...register(name, {
                         required: {
                             value: required,
-                            message: `El campo ${label} es requerido`,
+                            message: `${label ? label : placeholder} es requerido`,
                         },
                         validate: validate
                     })}
@@ -31,7 +31,7 @@ export default function CampoInput({ name, type, errors, label, register, requir
                     {...register(name, {
                         required: {
                             value: required,
-                            message: `El campo ${label} es requerido`,
+                            message: `${label ? label : placeholder} es requerido`,
                         },
                         validate: validate
                     })}

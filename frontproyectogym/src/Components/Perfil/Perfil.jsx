@@ -25,8 +25,10 @@ export default function Perfil({imagenPerfil, calorias , porcentajeCalculado, fe
         </div>
     </div>
 
-    <div className="mt-4 mt-md-5 text-center">
+    <div className="mt-4 mt-md-5 text-center d-flex flex-column" style={{gap: '20px'}}>
         <button className="btn btn-success" onClick={() => navigate(`/accionesAlimentos/${fecha}`)}>Alimentos</button>
+
+        <button onClick={(() => navigate('/MiPerfil'))} className="btn btn-success">Mi Perfil</button>
     </div>
 </div>
 

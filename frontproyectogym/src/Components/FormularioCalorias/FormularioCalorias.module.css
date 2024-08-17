@@ -1,18 +1,48 @@
-.contenedor{
+.contenedor {
     display: flex;
     gap: 20px;
     align-items: center;
     justify-content: center;
 }
 
-.contenedor input{
+.contenedor input, .contenedor select {
     width: 200px;
     padding: 10px;
     border-radius: 20px;
+    margin-bottom: 10px;
 }
 
-.contenedor select{
-    width: 200px;
-    padding: 10px;
-    border-radius: 20px;
+@media (max-width: 768px) {
+    .contenedorResponsive {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .contenedor input, .contenedor select {
+        width: 100%;
+    }
+
+    .contenedor input, .contenedor select {
+        width: 500px;
+        padding: 10px;
+        border-radius: 20px;
+    }
+
+    .boton{
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
 }
+
+@media (max-width: 576px) {
+    .contenedor {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .contenedor input, .contenedor select {
+        width: 100%;
+    }
+}
+

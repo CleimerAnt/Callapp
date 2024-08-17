@@ -16,6 +16,7 @@ import ContenedorPrincipal from './Components/ContenedorPrincipal/ContenedorPrin
 import Inicio from './Components/Inicio/Inicio';
 import AgregarAlimentos from './Components/AgregarAlimentos/AgregarAlimentos';
 import AgregarAlimentoMovil from './Components/AgregarAlimentoMovil/AgregarAlimentoMovil';
+import MiPerfil from './Components/MiPerfil/Miperfil';
 
 export default function App() {
   const { estaAutenticado} = useContext(AuthContext);
@@ -26,6 +27,7 @@ export default function App() {
       <Route path='/Login' element={<Login />}/> 
       <Route path='/agregarAlimentos/:comida/:fecha' element = {<RutaProtegida ><FormularioContenedorAlimentos /></RutaProtegida>} />
       <Route path='/agregarAlimentoMovil/:comida/:fecha/:id' element = {<RutaProtegida ><AgregarAlimentoMovil /></RutaProtegida>} />
+      <Route path='/MiPerfil' element = {<RutaProtegida> <MiPerfil /> </RutaProtegida>}/>
       <Route path='/FormulaioAgregarAlimentos/:fecha' element = {<RutaProtegida ><AgregarAlimentos /></RutaProtegida>} />
       <Route path='/accionesAlimentos/:fecha' element={<RutaProtegida> <AccionesAlimentos /> </RutaProtegida>}/>
       <Route path="/Registro" element={estaAutenticado() ? <Navigate to="/PaginaPrincipal" /> : <FormularioRegistro />} />
