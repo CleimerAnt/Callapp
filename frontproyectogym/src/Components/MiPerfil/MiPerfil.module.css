@@ -1,8 +1,16 @@
 .main{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #F1F1F1;  
+    max-width: 90%;
+    margin: 0 auto;
+    display: none;
+}
+.contenedor{
+    background-color: #F1F1F1;
+}
+
+@media(max-width: 767px) {
+    .main {
+        display: block;
+    }
 }
 
 .main div{
@@ -32,11 +40,63 @@
     font-size: 25px;
 }
 
-.perfil{
-    display: flex;
+.perfil{    
     align-items: center;
     justify-content: center;
+    display: flex;
     flex-direction: column;
     padding-top: 10px;
+    display: none;
     background-color: #F1F1F1;
 }
+
+@media(max-width: 767px) {
+    .perfil {
+        display: flex;
+    }
+}
+
+.mainOrdenador{
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .mainOrdenador {
+        background-color: #F1F1F1;
+        display: block;
+    }
+}
+
+.formularioOrdenador form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 60px;
+}
+
+.formularioOrdenador div{
+    border: 3px solid #FFFFFF;
+    border-radius: 5px;
+    padding: 15px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formularioOrdenador label{
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+}
+.formularioOrdenador select{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.formularioOrdenador input{
+    border: none;
+    text-align: center;
+    font-size: 20px;
+    background-color: #F1F1F1;
+    
+}
+

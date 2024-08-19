@@ -1,6 +1,7 @@
 import CampoInput from '../CampoInput/CampoInput'
 import { useForm } from 'react-hook-form'
 import styles from '../MiPerfil/MiPerfil.module.css'
+import imagen from '../../assets/imagenPerfil.jpg';
 import Contenedor from '../Contenedor/Contenedor'
 import HeaderPaginaPrincipal from '../HeaderPaginaPrincipal/HeaderPaginaPrincipal'
 import { AuthContext } from '../../Auth/AuthContext'
@@ -109,11 +110,12 @@ export default function MiPerfil(){
         </Contenedor>
 
         <section className = {styles.perfil}>
-            <img className={styles.imagen} src={imagenPerfil}/>
+            <img className={styles.imagen} src={imagenPerfil ? imagenPerfil : imagenPerfilExtra}/>
             <p className='fw-bold mt-3'>{user.userName}</p>
         </section>
         
-        <main className={styles.main}>
+        <main className={`${styles.contenedor}`}>
+        <section className={styles.main}>
         <form onSubmit={onSubmit}>
         <CampoInput
             name='Edad'
@@ -209,6 +211,111 @@ export default function MiPerfil(){
         
 
         </form>
+        </section>
+        </main>
+
+
+        <main className={`${styles.mainOrdenador}`}>
+            <section className={`${styles.perfilOrdenador}} d-flex align-items-center justify-content-center container pt-4`} style={{gap : '20px'}}>
+                <h1>Calcular calorias diarias.</h1>
+            </section>
+
+        <section className={`container ${styles.formularioOrdenador} pt-4 d-flex flex-column align-items-center justify-content-center`}>
+        <form onSubmit={onSubmit}>
+        <CampoInput
+            name='Edad'
+            label={'Edad'}
+            placeholder={'Edad'}
+            type='number'
+            required={true}
+            errors={errors}
+            register={register}
+        />
+
+        <CampoInput
+            name="Genero"
+            label={'Genero'}
+            placeholder={'Genero'}
+            type="select"
+            required={true}
+            errors={errors}
+            register={register}
+            options={[
+                { value: '', label: 'Seleccione su género' },
+                { value: 'masculino', label: 'Hombre' },
+                { value: 'femenino', label: 'Mujer' }
+            ]}
+        />
+
+        <CampoInput
+            name='Altura'
+            label={'Altura (Pies)'}
+            placeholder='Altura'
+            type='text'
+            required={true}
+            errors={errors}
+            register={register}
+        />
+
+        <CampoInput
+            name='Peso'
+            label={'Peso (Libras)'}
+            placeholder='Peso'
+            type='text'
+            required={true}
+            errors={errors}
+            register={register}
+        />
+
+
+        <CampoInput
+            name="NivelActividadFisica"
+            label={'Nivel de actividad fisica'}
+            placeholder="Actividad Física"
+            type="select"
+            required={true}
+            errors={errors}
+            register={register}
+            options={[
+                { value: '', label: 'Seleccione su nivel' },
+                { value: '1.2', label: 'Sedentario' },
+                { value: '1.375', label: 'Ligero' },
+                { value: '1.55', label: 'Moderado' },
+                { value: '1.725', label: 'Intenso' },
+                { value: '1.9', label: 'Muy Intenso' }
+            ]}
+        />
+
+        <CampoInput
+            name="Objetivo"
+            label={'Objetivo'}
+            placeholder="Objetivo"
+            type="select"
+            required={true}
+            errors={errors}
+            register={register}
+            options={[
+                { value: '', label: 'Seleccione su objetivo ' },
+                { value: '-500', label: 'Perder Peso' },
+                { value: '0', label: 'Mantener el Peso' },
+                { value: '+500', label: 'Ganar Peso' }
+            ]}
+        />
+
+    <CampoInput
+        name="IdentityId"
+        type="hidden"
+        value={user.id}
+        register={register}
+        errors={errors}
+    />
+    
+        </form>
+
+        <section className={`mt-3`}>
+            <button  type='submit' style={{width : '500px'}} className={`btn btn-primary  ${styles.botonOrdenador}`}>Actualizar valores</button>
+        </section>
+        </section>
         </main>
     </>
 }
