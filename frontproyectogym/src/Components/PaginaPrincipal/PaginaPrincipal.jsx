@@ -76,7 +76,7 @@ export default function PaginaPrincipal() {
     let porcentaje = (caloriasGenerales / calorias) * 100;
 
     let porcentajeCalculado = Math.round(porcentaje.toFixed(2));
-
+    console.log('calorias generales', caloriasGenerales)
     return (
         <>
         <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
@@ -94,7 +94,7 @@ export default function PaginaPrincipal() {
                     </div>
         
                     <div className="mt-2">
-                        <Perfil fecha={fecha} porcentajeCalculado={porcentajeCalculado} calorias={calorias} imagenPerfil={imagenPerfil} />
+                        <Perfil caloriasGenerales={caloriasGenerales} fecha={fecha} porcentajeCalculado={porcentajeCalculado} calorias={calorias} imagenPerfil={imagenPerfil} />
                     </div>
                     </div>
                 </div>

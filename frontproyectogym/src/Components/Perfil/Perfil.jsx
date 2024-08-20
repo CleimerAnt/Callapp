@@ -4,7 +4,7 @@ import styles from './Perfil.module.css'
 import CerrarSesion from "../CerrarSesion/CerrarSesion";
 import { useNavigate } from "react-router-dom";
 
-export default function Perfil({imagenPerfil, calorias , porcentajeCalculado, fecha}){
+export default function Perfil({imagenPerfil, calorias , porcentajeCalculado, fecha, caloriasGenerales}){
     const { user } = useContext(AuthContext)
     const navigate = useNavigate();
 
@@ -20,10 +20,26 @@ export default function Perfil({imagenPerfil, calorias , porcentajeCalculado, fe
             <span className={styles.spanCalorias}>Meta calórica:</span> {calorias}
         </p>
 
-        <div className="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-            <div className="progress-bar" style={{ width: `${porcentajeCalculado}%` }}>{`${porcentajeCalculado}%`}</div>
-        </div>
+        <p style={{ color: '#00B98E' }}>
+            <span className={styles.spanCalorias}>Calorias consumidas:</span> {caloriasGenerales}
+        </p>
+
+        <div className="progress" role="progressbar" aria-label="Example with label" aria-valuenow={porcentajeCalculado} aria-valuemin="0" aria-valuemax="100">
+    <div 
+        className="progress-bar" 
+        style={{ 
+            width: `${porcentajeCalculado}%`, 
+            backgroundColor: porcentajeCalculado >= 100 ? 'red' : '' 
+        }}
+    >
+        {`${porcentajeCalculado}%`}
     </div>
+</div>
+
+
+
+    </div>
+
 
     <div className="mt-4 mt-md-5 text-center d-flex flex-column" style={{gap: '20px'}}>
         <button className="btn btn-success" onClick={() => navigate(`/accionesAlimentos/${fecha}`)}>Alimentos</button>

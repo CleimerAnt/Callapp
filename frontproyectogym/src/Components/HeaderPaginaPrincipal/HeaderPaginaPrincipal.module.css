@@ -6,14 +6,14 @@
     font-size: 30px;
     margin-top: 15px;
     font-weight: bold;
-    margin-left: 15px; /* Ajuste para el espacio entre la imagen y el título */
+    margin-left: 15px; 
 }
 
 .links {
     display: flex;
     gap: 20px;
     font-size: 20px;
-    flex-direction: column; /* Column direction by default */
+    flex-direction: column; 
 }
 
 .links a {
@@ -21,7 +21,7 @@
     color: #000000;
     transition: border-bottom 0.2s linear;
     text-align: center;
-    margin-bottom: 10px; /* Margen inferior para los enlaces en pantallas pequeñas */
+    margin-bottom: 10px;
 }
 
 .links a:hover {
@@ -30,10 +30,11 @@
 
 @media (min-width: 768px) {
     .links {
-        flex-direction: row; /* Cambia a fila en pantallas más grandes */
+        flex-direction: row; 
     }
 
     .links a {
-        margin-bottom: 0; /* Elimina el margen inferior en pantallas más grandes */
+        margin-bottom: 0; 
     }
 }
+

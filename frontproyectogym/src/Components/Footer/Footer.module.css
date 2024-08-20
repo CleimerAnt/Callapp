@@ -1,20 +1,36 @@
-/* El wrapper se expande para ocupar toda la altura de la ventana */
+
 .wrapper {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Asegura que ocupe al menos la altura de la ventana */
+    min-height: 100vh; 
 }
 
-/* El contenido crece para ocupar el espacio disponible */
 .content {
-    flex: 1; /* Empuja el footer hacia abajo */
+    flex: 1; 
 }
 
-/* Estilo del footer */
 .footer {
-    height: 60px; /* Ajusta la altura según tus necesidades */
-    background-color: #f8f9fa; /* Cambia el color de fondo si es necesario */
-    text-align: center;
-    padding: 20px;
-    /* Puedes agregar más estilos aquí si es necesario */
+    height: 60px;
+    background-color: #F1F1F1;
+    background-color: #ffff;
+    text-align: center; 
+    padding: 55px;
+    margin-top: 60px;
+}
+
+.links{
+    display: flex;
+    gap: 50px;
+}
+
+.links a{
+    font-size: 25px;
+}
+
+.links a:hover{
+    border-bottom: 1px solid black;
+}
+
+.nombre{
+    font-size: 15px;
 }

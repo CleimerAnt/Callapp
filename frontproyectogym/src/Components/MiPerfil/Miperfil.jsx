@@ -144,9 +144,10 @@ export default function MiPerfil(){
 
         <CampoInput
             name='Altura'
-            label={'Altura (CM)'}
+            label={'Altura (Pies)'}
             placeholder='Altura'
-            type='text'
+            type='number'
+            decimal={true}
             required={true}
             errors={errors}
             register={register}
@@ -156,7 +157,7 @@ export default function MiPerfil(){
             name='Peso'
             label={'Peso (LBS)'}
             placeholder='Peso'
-            type='text'
+            type='number'
             required={true}
             errors={errors}
             register={register}

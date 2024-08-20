@@ -4,7 +4,7 @@ import fuegoCalorico from '../../assets/fuegoCalorico.png';
 
 export default function HeaderPaginaPrincipal({fecha}){
     return<>
-    <header className="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
+    <header  className={`${styles.header} container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between`}>
     <div className="d-flex align-items-center flex-row-reverse">
         <h1 className={`${styles.titulo} ms-3`}>Call</h1>
         <img className={`${styles.logo} img-fluid`} src={fuegoCalorico} alt="fuegoCalorico" />
