@@ -163,10 +163,10 @@ export default function MiPerfil(){
         />
 
 
-        <CampoInput
+            <CampoInput
             name="NivelActividadFisica"
-            placeholder="Actividad Física"
             label={'Nivel de actividad fisica'}
+            placeholder="Actividad Física"
             type="select"
             required={true}
             errors={errors}
@@ -174,12 +174,12 @@ export default function MiPerfil(){
             options={[
                 { value: '', label: 'Seleccione su nivel' },
                 { value: '1.2', label: 'Sedentario' },
-                { value: '1.375', label: 'Ligero' },
-                { value: '1.55', label: 'Moderado' },
-                { value: '1.725', label: 'Intenso' },
+                { value: '1.375', label: 'Ligero (1-3 dias)' },
+                { value: '1.55', label: 'Moderado (3-5 dias)' },
+                { value: '1.725', label: 'Intenso (6-7 dias)' },
                 { value: '1.9', label: 'Muy Intenso' }
             ]}
-        />
+            />
 
         <CampoInput
             name="Objetivo"
@@ -221,8 +221,9 @@ export default function MiPerfil(){
             </section>
 
         <section className={`container ${styles.formularioOrdenador} pt-4 d-flex flex-column align-items-center justify-content-center`}>
-        <form onSubmit={onSubmit}>
-        <CampoInput
+            <form onSubmit={onSubmit}>
+
+            <CampoInput
             name='Edad'
             label={'Edad'}
             placeholder={'Edad'}
@@ -279,9 +280,9 @@ export default function MiPerfil(){
             options={[
                 { value: '', label: 'Seleccione su nivel' },
                 { value: '1.2', label: 'Sedentario' },
-                { value: '1.375', label: 'Ligero' },
-                { value: '1.55', label: 'Moderado' },
-                { value: '1.725', label: 'Intenso' },
+                { value: '1.375', label: 'Ligero (1-3 dias)' },
+                { value: '1.55', label: 'Moderado (3-5 dias)' },
+                { value: '1.725', label: 'Intenso (6-7 dias)' },
                 { value: '1.9', label: 'Muy Intenso' }
             ]}
         />
@@ -309,12 +310,12 @@ export default function MiPerfil(){
         register={register}
         errors={errors}
     />
-    
-        </form>
 
-        <section className={`mt-3`}>
-            <button  type='submit' style={{width : '500px'}} className={`btn btn-primary  ${styles.botonOrdenador}`}>Actualizar valores</button>
+    <section style={{gridColumnStart : '2'}} className={`mt-1`}>
+            <button  type='submit'className={`btn btn-primary  ${styles.botonOrdenador} float-end`}>Actualizar valores</button>
         </section>
+
+        </form>
         </section>
         </main>
     </>
