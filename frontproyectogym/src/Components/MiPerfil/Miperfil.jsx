@@ -311,9 +311,9 @@ export default function MiPerfil(){
         errors={errors}
     />
 
-    <section style={{gridColumnStart : '2'}} className={`mt-1`}>
-            <button  type='submit'className={`btn btn-primary  ${styles.botonOrdenador} float-end`}>Actualizar valores</button>
-        </section>
+<section style={{ gridColumn: '1 / 3', textAlign: 'center' }} className={`mt-1`}>
+    <button type='submit' className={`w-75 mt-1 p-2 btn btn-primary ${styles.botonOrdenador}`}>Actualizar valores</button>
+</section>
 
         </form>
         </section>

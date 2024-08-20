@@ -70,11 +70,10 @@ export default function EditarAlimento(){
         }
     })
     return <>
-    <Contenedor elemento='main'>
     <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
             <HeaderPaginaPrincipal fecha={fecha} home= {true}/>
     </Contenedor>
-
+    <main className={styles.main}>
 
     <form onSubmit={onSubmit} className={styles.formulario}>
         <CampoInput
@@ -157,7 +156,7 @@ export default function EditarAlimento(){
         />
         <button type='submit' className={styles.boton}>Enviar</button>
     </form>
-</Contenedor>
+</main>
 
     </>
 }

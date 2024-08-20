@@ -6,8 +6,8 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 500px; 
-    margin: auto;
-    margin-top: 20px;
+    margin: auto;  
+
     margin-bottom: 20px;
 }
 
@@ -44,4 +44,10 @@
 
 .boton:hover {
     background-color: #218838;
+}
+
+.main{
+    background-color: #F1F1F1;
+    height: 90vh;
+    padding-top: 50px;
 }

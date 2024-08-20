@@ -41,97 +41,96 @@ export default function AgregarAlimentos(){
     })
 
     return<>
-    <Contenedor elemento='main'>
-    
     <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
                 <HeaderPaginaPrincipal fecha={fecha} home= {true}/>
     </Contenedor>
 
-    <form onSubmit={onSubmit} className={styles.formulario}>
-        <CampoInput
-            name='nombreAlimento'
-            type='text'
-            label={'Nombre'}
-            placeholder={'Nombre del alimento'}
-            classFom={'form-control'}
-            required={true}
-            register={register}
-            errors={errors}
-        />
-        <CampoInput
-            name='porcion'
-            label={'Porción'}
-            type='text'
-            classFom={'form-control'}
-            placeholder={'Porción'}
-            required={true}
-            register={register}
-            errors={errors}
-        />
-        <CampoInput
-            name='calorias'
-            label={'Calorías'}
-            type='text'
-            classFom={'form-control'}
-            placeholder={'Calorías'}
-            required={true}
-            register={register}
-            errors={errors}
-        />
-        <CampoInput
-            name='grasa'
-            label={'Grasa'}
-            type='text'
-            placeholder={'Grasa'}
-            classFom={'form-control'}
-            required={true}
-            register={register}
-            errors={errors}
-        />
-        <CampoInput
-            name='carbohidratos'
-            label={'Carbohidratos'}
-            type='text'
-            placeholder={'Carbohidratos'}
-            classFom={'form-control'}
-            required={true}
-            register={register}
-            errors={errors}
-        />
-        <CampoInput
-            name='proteina'
-            type='text'
-            label={'Proteína'}
-            placeholder={'Proteína'}
-            classFom={'form-control'}
-            required={true}
-            register={register}
-            errors={errors}
-        />
-        <CampoInput
-            name='descripcion'
-            label={'Descripción'}
-            type='textarea'
-            classFom={'form-control'}
-            placeholder={'Descripción'}
-            required={true}
-            register={register}
-            errors={errors}
-        />
-        <CampoInput
-            name='UsuarioIdString'
-            type='hidden'
-            classFom={'form-control'}
-            value={user.id}
-            register={register}
-            errors={errors}
-        />
-        <div className="">
-            <button type='submit' className={styles.boton}>Enviar</button>
-        </div>
-        
-    </form>
-</Contenedor>
+    <main className={styles.main}>
+        <form onSubmit={onSubmit} className={styles.formulario}>
+            <CampoInput
+                name='nombreAlimento'
+                type='text'
+                label={'Nombre'}
+                placeholder={'Nombre del alimento'}
+                classFom={'form-control'}
+                required={true}
+                register={register}
+                errors={errors}
+            />
+            <CampoInput
+                name='porcion'
+                label={'Porción'}
+                type='text'
+                classFom={'form-control'}
+                placeholder={'Porción'}
+                required={true}
+                register={register}
+                errors={errors}
+            />
+            <CampoInput
+                name='calorias'
+                label={'Calorías'}
+                type='text'
+                classFom={'form-control'}
+                placeholder={'Calorías'}
+                required={true}
+                register={register}
+                errors={errors}
+            />
+            <CampoInput
+                name='grasa'
+                label={'Grasa'}
+                type='text'
+                placeholder={'Grasa'}
+                classFom={'form-control'}
+                required={true}
+                register={register}
+                errors={errors}
+            />
+            <CampoInput
+                name='carbohidratos'
+                label={'Carbohidratos'}
+                type='text'
+                placeholder={'Carbohidratos'}
+                classFom={'form-control'}
+                required={true}
+                register={register}
+                errors={errors}
+            />
+            <CampoInput
+                name='proteina'
+                type='text'
+                label={'Proteína'}
+                placeholder={'Proteína'}
+                classFom={'form-control'}
+                required={true}
+                register={register}
+                errors={errors}
+            />
+            <CampoInput
+                name='descripcion'
+                label={'Descripción'}
+                type='textarea'
+                classFom={'form-control'}
+                placeholder={'Descripción'}
+                required={true}
+                register={register}
+                errors={errors}
+            />
+            <CampoInput
+                name='UsuarioIdString'
+                type='hidden'
+                classFom={'form-control'}
+                value={user.id}
+                register={register}
+                errors={errors}
+            />
+            <div className="">
+                <button type='submit' className={styles.boton}>Enviar</button>
+            </div>
+            
+        </form>
+</main>
 
     </>
 }
