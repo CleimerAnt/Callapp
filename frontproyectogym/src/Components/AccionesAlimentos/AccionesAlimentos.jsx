@@ -38,7 +38,7 @@ export default function AccionesAlimentos(){
                 <HeaderPaginaPrincipal fecha={fecha} home= {true}/>
         </Contenedor>
         
-    <main  style={{backgroundColor : '#F1F1F1', height : '90vh'}}>
+    <main>
 
         <section className="container pt-4">
             <Link className="btn btn-primary" to={`/FormulaioAgregarAlimentos/${fecha}`}>Agregar</Link>

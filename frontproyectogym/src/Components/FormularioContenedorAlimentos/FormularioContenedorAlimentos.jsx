@@ -49,7 +49,7 @@ export default function FormularioContenedorAlimentos() {
                 <HeaderPaginaPrincipal fecha={fecha} home= {true}/>
         </Contenedor>
 
-            <main className="pt-4" style={{ backgroundColor: '#F1F1F1', height: '90vh' }}>
+            <main className="pt-4" >
                 <section className={`container ${styles.contenedorEscritorio}`}>
                     <ContenedorAlimentos fecha={fecha} elementos={camposAlimentos} thead={['Nombre del Alimento', 'Carbohidratos', 'Proteina', 'Grasa', 'Calorias', 'Descripcion', 'Acciones']} aray={alimentos} />
                 </section>

@@ -7,8 +7,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 500px; 
     margin: auto;  
-
-    margin-bottom: 20px;
 }
 
 .formulario div {
@@ -20,10 +18,6 @@
 .formulario label {
     font-weight: bold;
     margin-bottom: 5px;
-}
-
-.formulario input, .formulario textarea {
-    
 }
 
 .formulario input:focus, .formulario textarea:focus {
@@ -48,6 +42,5 @@
 
 .main{
     background-color: #F1F1F1;
-    height: 90vh;
     padding-top: 50px;
 }
