@@ -60,7 +60,7 @@ export default function AgregarAlimentos(){
             <CampoInput
                 name='porcion'
                 label={'Porción'}
-                type='text'
+                type='number'
                 classFom={'form-control'}
                 placeholder={'Porción'}
                 required={true}
@@ -70,7 +70,7 @@ export default function AgregarAlimentos(){
             <CampoInput
                 name='calorias'
                 label={'Calorías'}
-                type='text'
+                type='number'
                 classFom={'form-control'}
                 placeholder={'Calorías'}
                 required={true}
@@ -80,7 +80,7 @@ export default function AgregarAlimentos(){
             <CampoInput
                 name='grasa'
                 label={'Grasa'}
-                type='text'
+                type='number'
                 placeholder={'Grasa'}
                 classFom={'form-control'}
                 required={true}
@@ -90,7 +90,7 @@ export default function AgregarAlimentos(){
             <CampoInput
                 name='carbohidratos'
                 label={'Carbohidratos'}
-                type='text'
+                type='number'
                 placeholder={'Carbohidratos'}
                 classFom={'form-control'}
                 required={true}
@@ -99,7 +99,7 @@ export default function AgregarAlimentos(){
             />
             <CampoInput
                 name='proteina'
-                type='text'
+                type='number'
                 label={'Proteína'}
                 placeholder={'Proteína'}
                 classFom={'form-control'}

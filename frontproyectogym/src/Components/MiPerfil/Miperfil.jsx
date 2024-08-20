@@ -252,7 +252,8 @@ export default function MiPerfil(){
             name='Altura'
             label={'Altura (Pies)'}
             placeholder='Altura'
-            type='text'
+            type='number'
+            decimal={true}
             required={true}
             errors={errors}
             register={register}
@@ -262,7 +263,7 @@ export default function MiPerfil(){
             name='Peso'
             label={'Peso (Libras)'}
             placeholder='Peso'
-            type='text'
+            type='number'
             required={true}
             errors={errors}
             register={register}

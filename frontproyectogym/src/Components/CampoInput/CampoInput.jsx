@@ -1,4 +1,18 @@
-export default function CampoInput({ name, type, errors, label, register, required, validate, options, value, placeholder, classFom, autocomplete }) {
+export default function CampoInput({ 
+    name, 
+    type, 
+    errors, 
+    label, 
+    register, 
+    required, 
+    validate, 
+    options, 
+    value, 
+    placeholder, 
+    classFom, 
+    autocomplete, 
+    decimal 
+}) {
     return (
         <div className={type === 'hidden' ? 'd-none' : 'mb-3'}>
             {type !== 'hidden' && <label htmlFor={name} className="form-label">{label}</label>}
@@ -22,12 +36,13 @@ export default function CampoInput({ name, type, errors, label, register, requir
                 </select>
             ) : (
                 <input
-                    type={type}
+                    type={decimal ? 'number' : type}
                     className={classFom}
                     id={name}
                     autoComplete={autocomplete}
                     placeholder={placeholder}
                     value={value}
+                    step={decimal ? '0.01' : undefined}
                     {...register(name, {
                         required: {
                             value: required,
