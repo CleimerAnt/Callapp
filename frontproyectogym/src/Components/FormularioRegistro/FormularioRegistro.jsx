@@ -16,17 +16,14 @@ export default function FormularioRegistro() {
 
         console.log('Datos del formulario:', data);
 
-        const formData = new FormData();
-        for (const key in data) {
-            formData.append(key, data[key]);
-        }
-        if (data.file && data.file[0]) {
-            formData.append('file', data.file[0]);
-        } else {
-            console.error('El archivo es obligatorio');
-            return;
-        }
-
+            const formData = new FormData();
+            for (const key in data) {
+                formData.append(key, data[key]);
+            }
+            if (data.file && data.file[0]) {
+                formData.append('file', data.file[0]);
+            }     
+    
         try {
             const res = await postUsuario(url, formData);
             console.log(await res); 
@@ -95,7 +92,7 @@ export default function FormularioRegistro() {
                 type='file'
                 label='Foto de Perfil'
                 register={register}
-                required={true}
+                required={false}
                 errors={errors}
                 placeholder=''
             />
