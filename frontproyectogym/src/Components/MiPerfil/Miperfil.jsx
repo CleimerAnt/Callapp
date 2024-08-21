@@ -45,7 +45,7 @@ export default function MiPerfil(){
             if(data.objetivo === 'Perder Peso'){
                 data.objetivo = '-500'
             }
-            else if(data.objetivo === 'Mantener el Peso'){
+            else if(data.objetivo === 'Mantener Peso'){
                 data.objetivo = '0'
             }
             else if(data.objetivo === 'Ganar Peso'){

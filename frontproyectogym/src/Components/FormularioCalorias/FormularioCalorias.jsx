@@ -160,7 +160,7 @@ export default function FormularioCalorias() {
             options={[
                 { value: '', label: 'Seleccione su objetivo ' },
                 { value: '-500', label: 'Perder Peso' },
-                { value: '0', label: 'Mantener el Peso' },
+                { value: '0', label: 'Mantener Peso' },
                 { value: '+500', label: 'Ganar Peso' }
             ]}
         />

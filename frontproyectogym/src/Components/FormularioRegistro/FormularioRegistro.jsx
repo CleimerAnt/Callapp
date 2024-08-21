@@ -6,7 +6,6 @@ import postUsuario from '../../Datos/PostUsuario';
 import HeaderInicio from '../HeaderInicio/HeaderInicio';
 import { Link } from 'react-router-dom';
 import styles from '../FormularioRegistro/FormularioRegistro.module.css';
-import fuegoCalorico from '../../assets/fuegoCalorico.png';
 import swal from 'sweetalert';
 
 export default function FormularioRegistro() {
@@ -16,27 +15,45 @@ export default function FormularioRegistro() {
 
         console.log('Datos del formulario:', data);
 
-            const formData = new FormData();
-            for (const key in data) {
-                formData.append(key, data[key]);
-            }
-            if (data.file && data.file[0]) {
-                formData.append('file', data.file[0]);
-            }     
-    
-        try {
-            const res = await postUsuario(url, formData);
-            console.log(await res); 
-            if(await res.hasError === false){
-                swal("Aviso", "Usuario registrado exitosamente", "success");            
-            }
-            else{
-                swal("Aviso", `${res.error}`, "warning")
-            }
-        } catch (error) {
-            console.error('Error al registrar usuario:', error);
-        }
-    });
+        const formData = new FormData();
+for (const key in data) {
+    formData.append(key, data[key]);
+}
+if (data.file && data.file[0]) {
+    formData.append('file', data.file[0]);
+}
+
+const loadingAlert = swal({
+    title: "Registrando...",
+    text: "Por favor, espera mientras se registra el usuario.",
+    icon: "info",
+    buttons: false,
+    closeOnClickOutside: false,
+    closeOnEsc: false,
+    timer: 5000,
+});
+
+try {
+    const res = await postUsuario(url, formData);
+    console.log(await res); 
+
+
+    swal.close();
+
+    if(await res.hasError === false){
+        swal("Aviso", "Usuario registrado exitosamente", "success");            
+    } else {
+        swal("Aviso", `${res.error}`, "warning");
+    }
+} catch (error) {
+    console.error('Error al registrar usuario:', error);
+
+    swal.close();
+
+    swal("Error", "Hubo un problema al registrar el usuario.", "error");
+}
+
+    })
 
     return (
         <>
