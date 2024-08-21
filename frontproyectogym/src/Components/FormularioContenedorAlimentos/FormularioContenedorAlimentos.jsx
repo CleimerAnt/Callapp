@@ -5,7 +5,6 @@ import { Link, useParams } from "react-router-dom";
 import HeaderPaginaPrincipal from "../HeaderPaginaPrincipal/HeaderPaginaPrincipal";
 import { useContext, useEffect, useState } from "react";
 import getDatosUser from "../../Datos/ObtenerCalculoCalorias";
-import FormularioAgregarAlimentos from "../FormularioAgregarAlimentos/FormularioAgregarAlimentos";
 import ContenedorAlimentos from "../ContenedorAlimentos/ContenedorAlimentos";
 
 export default function FormularioContenedorAlimentos() {
@@ -13,7 +12,7 @@ export default function FormularioContenedorAlimentos() {
     const [alimentos, setAlimentos] = useState([]);
     const { comida } = useParams();
     const camposAlimentos = ['nombreAlimento', 'carbohidratos', 'proteina', 'grasa', 'calorias', 'descripcion', 'funcion'];
-    const { user } = useContext(AuthContext);
+    const { user, width } = useContext(AuthContext);
 
     const url = `https://localhost:7051/api/v1/Alimentos/Obtener Alimentos?id=${user.id}`;
 
@@ -49,13 +48,7 @@ export default function FormularioContenedorAlimentos() {
                 <HeaderPaginaPrincipal fecha={fecha} home= {true}/>
         </Contenedor>
 
-            <main className="pt-4" >
-                <section className={`container ${styles.contenedorEscritorio}`}>
-                    <ContenedorAlimentos fecha={fecha} elementos={camposAlimentos} thead={['Nombre del Alimento', 'Carbohidratos', 'Proteina', 'Grasa', 'Calorias', 'Descripcion', 'Acciones']} aray={alimentos} />
-                </section>
-
-
-                <article className={`${styles.contenedorMovil} mt-3`}>
+            {width <= 767 ? <article className={`${styles.contenedorMovil} mt-3`}>
             {alimentos.map((alimento, index) => (
                 <div className={`${styles.descripcion}`} key={index}>
                     <div className={`${styles.nombrePorcion}`}>
@@ -69,8 +62,15 @@ export default function FormularioContenedorAlimentos() {
                     </div>
                 </div>
             ))}
-        </article>
-            </main>
+        </article> : width > 1024 ?  <main className="pt-4" >
+                <section className={`container ${styles.contenedorEscritorio}`}>
+                    <ContenedorAlimentos fecha={fecha} elementos={camposAlimentos} thead={['Nombre del Alimento', 'Carbohidratos', 'Proteina', 'Grasa', 'Calorias', 'Descripcion', 'Acciones']} aray={alimentos} />
+                </section>
+
+
+                
+            </main> : ''}
+        
         </>
     );
 }

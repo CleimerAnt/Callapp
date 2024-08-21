@@ -9,7 +9,7 @@ import HeaderPaginaPrincipal from "../HeaderPaginaPrincipal/HeaderPaginaPrincipa
 import { useParams } from "react-router-dom";
 
 export default function AccionesAlimentos(){
-    const {user} = useContext(AuthContext);
+    const {user, width} = useContext(AuthContext);
     const {fecha} = useParams()
     const [alimentos, setAlimentos] = useState([])
     const url = `https://localhost:7051/api/v1/Alimentos/Obtener Alimentos?id=${user.id}`;
@@ -39,16 +39,11 @@ export default function AccionesAlimentos(){
         </Contenedor>
         
     <main>
-
         <section className="container pt-4">
             <Link className="btn btn-primary" to={`/FormulaioAgregarAlimentos/${fecha}`}>Agregar</Link>
         </section>
         
-        <div className={`mt-4 container ${styles.contenedorEscritorio}`}>
-        {Array.isArray(alimentos) ? <ContenedorAlimentos  aray={alimentos ? alimentos : []} elementos={elmentos} thead={cabeza}/> : <h1 className="text-center mt-4">No hay alimentos</h1>}
-        </div>
-
-        <article className={`${styles.contenedorMovil} mt-3`}>
+        {width <= 767 ?<section className={`${styles.contenedorMovil} mt-3`}>
             {Array.isArray(alimentos) ? alimentos.map((alimento, index) => (
                 <div className={`${styles.descripcion}`} key={index}>
                     <div className={`${styles.nombrePorcion}`}>
@@ -64,7 +59,9 @@ export default function AccionesAlimentos(){
                     </div>
                 </div>
             )) : ''}
-        </article>
+        </section> : width > 1024 ?  <section className={`mt-4 container ${styles.contenedorEscritorio}`}>
+        {Array.isArray(alimentos) ? <ContenedorAlimentos  aray={alimentos ? alimentos : []} elementos={elmentos} thead={cabeza}/> : <h1 className="text-center mt-4">No hay alimentos</h1>}
+        </section> : ''}
     </main>
     </>
 }
