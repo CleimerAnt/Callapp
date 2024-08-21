@@ -12,8 +12,7 @@ import swal from 'sweetalert';
 
 export default function Login() {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { user, setUser } = useContext(AuthContext);
-    const [state, setState] = useState();
+    const { user, setUser} = useContext(AuthContext);
     const [hasAuthenticated, setHasAuthenticated] = useState(false);
     const navigate = useNavigate();
     const onsubmit = handleSubmit(async (data) => {

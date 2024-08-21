@@ -15,22 +15,9 @@ import getDatosUser from '../../Datos/ObtenerCalculoCalorias'
 export default function MiPerfil(){
     const {register, formState : {errors}, handleSubmit,reset} = useForm()
     const {fecha} = useParams();
-    const {user} = useContext(AuthContext)
+    const {user, width} = useContext(AuthContext)
     const [data, setData] = useState();
     const navigate = useNavigate();
-
-    const [width, setWidth] = useState(window.innerWidth);
-
-    useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth);
-
-    window.addEventListener('resize', handleResize);
-
-    // Limpieza del efecto para evitar fugas de memoria
-    return () => {
-        window.removeEventListener('resize', handleResize);
-    };
-    }, []);
 
     console.log('Anchura: ',width)
 

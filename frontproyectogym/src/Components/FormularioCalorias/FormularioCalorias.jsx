@@ -10,7 +10,7 @@ import calcularCalorias from "../../Metodos/CalcularCalorias";
 
 export default function FormularioCalorias() {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { user } = useContext(AuthContext);
+    const { user, width } = useContext(AuthContext);
     const navigate = useNavigate()
 
     const onSubmit = handleSubmit(async (data) => {
@@ -62,108 +62,7 @@ export default function FormularioCalorias() {
                 <h1>Calcular calorias diarias.</h1>
             </header>
 
-        <main className={`${styles.contenedor} mt-5`}>
-        <section className={styles.main}>
-        <form onSubmit={onSubmit}>
-        <CampoInput
-            name='Edad'
-            label={'Edad'}
-            placeholder={'Edad'}
-            type='number'
-            required={true}
-            errors={errors}
-            register={register}
-        />
-
-        <CampoInput
-            name="Genero"
-            label={'Genero'}
-            placeholder={'Genero'}
-            type="select"
-            required={true}
-            errors={errors}
-            register={register}
-            options={[
-                { value: '', label: 'Seleccione su género' },
-                { value: 'masculino', label: 'Hombre' },
-                { value: 'femenino', label: 'Mujer' }
-            ]}
-        />
-
-        <CampoInput
-            name='Altura'
-            label={'Altura (CM)'}
-            placeholder='Altura'
-            type='text'
-            required={true}
-            errors={errors}
-            register={register}
-        />
-
-        <CampoInput
-            name='Peso'
-            label={'Peso (LBS)'}
-            placeholder='Peso'
-            type='text'
-            required={true}
-            errors={errors}
-            register={register}
-        />
-
-
-            <CampoInput
-            name="NivelActividadFisica"
-            label={'Nivel de actividad fisica'}
-            placeholder="Actividad Física"
-            type="select"
-            required={true}
-            errors={errors}
-            register={register}
-            options={[
-                { value: '', label: 'Seleccione su nivel' },
-                { value: '1.2', label: 'Sedentario' },
-                { value: '1.375', label: 'Ligero (1-3 dias)' },
-                { value: '1.55', label: 'Moderado (3-5 dias)' },
-                { value: '1.725', label: 'Intenso (6-7 dias)' },
-                { value: '1.9', label: 'Muy Intenso' }
-            ]}
-            />
-
-        <CampoInput
-            name="Objetivo"
-            label={'Objetivo'}
-            placeholder="Objetivo"
-            type="select"
-            required={true}
-            errors={errors}
-            register={register}
-            options={[
-                { value: '', label: 'Seleccione su objetivo ' },
-                { value: '-500', label: 'Perder Peso' },
-                { value: '0', label: 'Mantener el Peso' },
-                { value: '+500', label: 'Ganar Peso' }
-            ]}
-        />
-
-    <CampoInput
-        name="IdentityId"
-        type="hidden"
-        value={user.id}
-        register={register}
-        errors={errors}
-    />
-        
-        <div style={{border : 'none'}} className='d-flex align-itens-center justify-content-center'>
-            <button  type='submit' className={`btn btn-primary ${styles.boton}`}>Ingresar valores</button>
-        </div>
-        
-
-        </form>
-        </section>
-        </main>
-
-
-        <main className={`${styles.mainOrdenador}`}>
+        {width >= 1024 ?  <main className={`${styles.mainOrdenador}`}>
         
         <section className={`container ${styles.formularioOrdenador} mt-4 d-flex flex-column align-items-center justify-content-center`}>
             <form onSubmit={onSubmit}>
@@ -262,7 +161,106 @@ export default function FormularioCalorias() {
 
         </form>
         </section>
-        </main>
+        </main> : width <= 767 ?  <main className={`${styles.contenedor} mt-5`}>
+        <section className={styles.main}>
+        <form onSubmit={onSubmit}>
+        <CampoInput
+            name='Edad'
+            label={'Edad'}
+            placeholder={'Edad'}
+            type='number'
+            required={true}
+            errors={errors}
+            register={register}
+        />
+
+        <CampoInput
+            name="Genero"
+            label={'Genero'}
+            placeholder={'Genero'}
+            type="select"
+            required={true}
+            errors={errors}
+            register={register}
+            options={[
+                { value: '', label: 'Seleccione su género' },
+                { value: 'masculino', label: 'Hombre' },
+                { value: 'femenino', label: 'Mujer' }
+            ]}
+        />
+
+        <CampoInput
+            name='Altura'
+            label={'Altura (CM)'}
+            placeholder='Altura'
+            type='text'
+            required={true}
+            errors={errors}
+            register={register}
+        />
+
+        <CampoInput
+            name='Peso'
+            label={'Peso (LBS)'}
+            placeholder='Peso'
+            type='text'
+            required={true}
+            errors={errors}
+            register={register}
+        />
+
+
+            <CampoInput
+            name="NivelActividadFisica"
+            label={'Nivel de actividad fisica'}
+            placeholder="Actividad Física"
+            type="select"
+            required={true}
+            errors={errors}
+            register={register}
+            options={[
+                { value: '', label: 'Seleccione su nivel' },
+                { value: '1.2', label: 'Sedentario' },
+                { value: '1.375', label: 'Ligero (1-3 dias)' },
+                { value: '1.55', label: 'Moderado (3-5 dias)' },
+                { value: '1.725', label: 'Intenso (6-7 dias)' },
+                { value: '1.9', label: 'Muy Intenso' }
+            ]}
+            />
+
+        <CampoInput
+            name="Objetivo"
+            label={'Objetivo'}
+            placeholder="Objetivo"
+            type="select"
+            required={true}
+            errors={errors}
+            register={register}
+            options={[
+                { value: '', label: 'Seleccione su objetivo ' },
+                { value: '-500', label: 'Perder Peso' },
+                { value: '0', label: 'Mantener el Peso' },
+                { value: '+500', label: 'Ganar Peso' }
+            ]}
+        />
+
+    <CampoInput
+        name="IdentityId"
+        type="hidden"
+        value={user.id}
+        register={register}
+        errors={errors}
+    />
+        
+        <div style={{border : 'none'}} className='d-flex align-itens-center justify-content-center'>
+            <button  type='submit' className={`btn btn-primary ${styles.boton}`}>Ingresar valores</button>
+        </div>
+        
+
+        </form>
+        </section>
+        </main> : ''}
+        
         </>
     );
 }

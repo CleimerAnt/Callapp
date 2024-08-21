@@ -5,6 +5,18 @@ export const AuthContext = createContext();
 
 export default function AuthContextProvider({ children }) {
     const [user, setUser] = useState(null);
+    const [width, setWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+
+    window.addEventListener('resize', handleResize);
+
+    // Limpieza del efecto para evitar fugas de memoria
+    return () => {
+        window.removeEventListener('resize', handleResize);
+    };
+    }, []);
 
     const estaAutenticado = () => {
         return user !== null && user.isVerified;
@@ -12,7 +24,7 @@ export default function AuthContextProvider({ children }) {
 
 
     return (
-        <AuthContext.Provider value={{ user, setUser, estaAutenticado }}>
+        <AuthContext.Provider value={{ user, setUser, estaAutenticado, width }}>
             {children}
         </AuthContext.Provider>
     );

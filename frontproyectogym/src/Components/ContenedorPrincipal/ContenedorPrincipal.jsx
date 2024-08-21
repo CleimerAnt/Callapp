@@ -33,8 +33,6 @@ export default function ContenedorPrincipal({ fecha, contenedorFecha = [] }) {
         return Math.round(valor)
     }
 
-    console.log(contenedorFecha)
-
     return <>
         <Contenedor elemento="main" margin={'mt-2'}>
     <ContenedorFechas />
