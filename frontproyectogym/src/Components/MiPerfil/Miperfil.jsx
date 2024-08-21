@@ -19,6 +19,23 @@ export default function MiPerfil(){
     const [data, setData] = useState();
     const navigate = useNavigate();
 
+    const [width, setWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+
+    window.addEventListener('resize', handleResize);
+
+    // Limpieza del efecto para evitar fugas de memoria
+    return () => {
+        window.removeEventListener('resize', handleResize);
+    };
+    }, []);
+
+    console.log('Anchura: ',width)
+
+        console.log('anchura: ',width)
+
     const obtenerDatosUser = async () =>{
         const url = `https://localhost:7051/api/v1/Usuario/ObtenerUsuarios?id=${user.id}`;
         try{
@@ -114,7 +131,7 @@ export default function MiPerfil(){
             <p className='fw-bold mt-3'>{user.userName}</p>
         </section>
         
-        <main className={`${styles.contenedor}`}>
+        {width <= 767 ? <main className={`${styles.contenedor}`}>
         <section className={styles.main}>
         <form onSubmit={onSubmit}>
         <CampoInput
@@ -213,10 +230,7 @@ export default function MiPerfil(){
 
         </form>
         </section>
-        </main>
-
-
-        <main className={`${styles.mainOrdenador}`}>
+        </main> : width > 1024 ?  <main className={`${styles.mainOrdenador}`}>
             <section className={`${styles.perfilOrdenador}} d-flex align-items-center justify-content-center container pt-4`} style={{gap : '20px'}}>
                 <h1>Calcular calorias diarias.</h1>
             </section>
@@ -319,6 +333,6 @@ export default function MiPerfil(){
 
         </form>
         </section>
-        </main>
+        </main> : ''}
     </>
-}
+      }
