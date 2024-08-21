@@ -11,6 +11,7 @@ import calcularCalorias from '../../Metodos/CalcularCalorias'
 import { useNavigate, useParams } from 'react-router-dom'
 import EditarDataAutorizacion from '../../Datos/EditarDataAutorizacion'
 import getDatosUser from '../../Datos/ObtenerCalculoCalorias'
+import calcularMacronutrientes from '../../Metodos/CalcularMacronutrientes';
 
 export default function MiPerfil(){
     const {register, formState : {errors}, handleSubmit,reset} = useForm()
@@ -71,7 +72,22 @@ export default function MiPerfil(){
             data.Objetivo,
             data.Genero
         );
+
+        const macronutrientes = calcularMacronutrientes(
+            parseFloat(data.Peso),
+            parseFloat(data.Altura),
+            parseInt(data.Edad),
+            parseFloat(data.NivelActividadFisica),
+            data.Objetivo,
+            data.Genero
+        )
+
+        console.log('Macronutrientes: ', macronutrientes.proteinas)
+
         data.Calorias = calorias;
+        data.Proteinas = macronutrientes.proteinas;
+        data.Carbohidratos = macronutrientes.carbohidratos;
+        data.Grasas = macronutrientes.grasas;
         data.IdentityId = user.id;
 
         try{
@@ -322,4 +338,4 @@ export default function MiPerfil(){
         </section>
         </main> : ''}
     </>
-      }
+}

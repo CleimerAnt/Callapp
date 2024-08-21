@@ -5,7 +5,6 @@ import { useContext } from "react";
 import { AuthContext } from "../../Auth/AuthContext";
 import { useForm } from "react-hook-form";
 
-
 export default function FormularioAgregarAlimentos({ id, comida, userId, grafica, fecha }) {
     const urlPostContenedor = `https://localhost:7051/api/v1/ContenedorAlimentos`;
     const { user } = useContext(AuthContext);
@@ -14,7 +13,6 @@ export default function FormularioAgregarAlimentos({ id, comida, userId, grafica
         const alimentosIdObjeto = [data.alimentosId];
         data.alimentosId = alimentosIdObjeto;
         data.Fecha = fecha;
-        console.log('fecha',data.Fecha)
         try {
             const response = await postDataAutorizacion(urlPostContenedor, data, user);
             console.log(response)

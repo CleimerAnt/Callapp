@@ -1,13 +1,14 @@
 import { AuthContext } from "../../Auth/AuthContext";
 import { useContext } from "react";
+import Grafica from '../Grafica/Grafica'
 import styles from './Perfil.module.css'
 import CerrarSesion from "../CerrarSesion/CerrarSesion";
 import { useNavigate } from "react-router-dom";
 
-export default function Perfil({imagenPerfil, calorias , porcentajeCalculado, fecha, caloriasGenerales}){
+export default function Perfil({imagenPerfil, calorias , porcentajeCalculado, fecha, caloriasGenerales, usuario}){
     const { user } = useContext(AuthContext)
     const navigate = useNavigate();
-
+    console.log('Usuario: ',usuario)
     return <>
         <div className={`${styles.perfil}`}>
     <div className="text-center">
@@ -16,6 +17,7 @@ export default function Perfil({imagenPerfil, calorias , porcentajeCalculado, fe
         <CerrarSesion />
     </div>
     <div className="mt-5">
+
         <p style={{ color: '#00B98E' }}>
             <span className={styles.spanCalorias}>Meta calórica:</span> {calorias}
         </p>
@@ -36,6 +38,10 @@ export default function Perfil({imagenPerfil, calorias , porcentajeCalculado, fe
     </div>
 </div>
 
+<section >
+                {usuario ? <Grafica grasa={usuario.grasas} proteina={usuario.proteinas} carbohidratos={usuario.carbohidratos}/> : ''}
+                <p className="text-center"> Gráfico de Macronutrientes.</p>
+            </section>
 
 
     </div>

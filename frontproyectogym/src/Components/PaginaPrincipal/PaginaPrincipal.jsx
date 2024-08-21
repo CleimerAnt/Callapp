@@ -12,6 +12,7 @@ import ContenedorPrincipal from "../ContenedorPrincipal/ContenedorPrincipal";
 export default function PaginaPrincipal() {
     const { user } = useContext(AuthContext);
     let caloriasGenerales = 0;
+    const [datosUsuario, setDatosUsuario] = useState();
     const [calorias, setCalorias] = useState(0);
     const [contenedor, setContenedor] = useState([]);
     const {fecha} = useParams()
@@ -32,6 +33,7 @@ export default function PaginaPrincipal() {
     const datosUser = async () => {
             try{
                 const res = await getDatosUser(userUrl, user.jwToken)
+                setDatosUsuario(res)
                 setCalorias(Math.round(res.calorias));
             }
             catch(error){
@@ -92,7 +94,7 @@ export default function PaginaPrincipal() {
                     </div>
         
                     <div className="mt-2">
-                        <Perfil caloriasGenerales={caloriasGenerales} fecha={fecha} porcentajeCalculado={porcentajeCalculado} calorias={calorias} imagenPerfil={imagenPerfil} />
+                        <Perfil usuario={datosUsuario} caloriasGenerales={caloriasGenerales} fecha={fecha} porcentajeCalculado={porcentajeCalculado} calorias={calorias} imagenPerfil={imagenPerfil} />
                     </div>
                     </div>
                 </div>

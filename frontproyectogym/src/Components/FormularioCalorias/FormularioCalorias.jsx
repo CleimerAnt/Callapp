@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap";
+import calcularMacronutrientes from "../../Metodos/CalcularMacronutrientes";
 import CampoInput from "../CampoInput/CampoInput";
 import { useForm } from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
@@ -26,6 +26,24 @@ export default function FormularioCalorias() {
         );
         data.Calorias = calorias;
         data.IdentityId = user.id;
+
+        const macronutrientes = calcularMacronutrientes(
+            parseFloat(data.Peso),
+            parseFloat(data.Altura),
+            parseInt(data.Edad),
+            parseFloat(data.NivelActividadFisica),
+            data.Objetivo,
+            data.Genero
+        )
+
+        console.log('Macronutrientes: ', macronutrientes.proteinas)
+
+        data.Calorias = calorias;
+        data.Proteinas = macronutrientes.proteinas;
+        data.Carbohidratos = macronutrientes.carbohidratos;
+        data.Grasas = macronutrientes.grasas;
+        data.IdentityId = user.id;
+
 
         console.log('Datos enviados:', data);
 
