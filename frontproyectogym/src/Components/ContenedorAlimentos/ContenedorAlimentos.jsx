@@ -55,7 +55,9 @@ export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elem
                                     <td key={idx}>
                                         {element[key] === 'funcion' ? (
                                             
-                                                <ModalReact id={element.id} tituloBoton={'Agregar'}/>
+                                                <FormularioAgregarAlimentos  id={element.id} 
+                                                userId={user.id} 
+                                                comida={element.horaio}  fecha={fecha}  macros={[element.proteina, element.carbohidratos, element.grasa]}/>
                                                 
                                                 
                                         ) : element[key] === "Eliminar" ? (
