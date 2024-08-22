@@ -36,7 +36,7 @@ export default function FormularioAgregarAlimentos({ id, comida, userId, macros 
 
     return (
 
-            <ModalReact proteina={macros[0]} carbohidratos={macros[1]} grasas={macros[2]} tituloBoton={'Agregar'} body={() => {
+            <ModalReact isGrafica={true} proteina={macros[0]} carbohidratos={macros[1]} grasas={macros[2]} tituloBoton={'Agregar'} body={() => {
 
                 return<>  
                 <form onSubmit={handleSubmit(enviarFormulario)}>

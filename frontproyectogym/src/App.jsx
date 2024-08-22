@@ -18,7 +18,7 @@ import AgregarAlimentos from './Components/AgregarAlimentos/AgregarAlimentos';
 import AgregarAlimentoMovil from './Components/AgregarAlimentoMovil/AgregarAlimentoMovil';
 import MiPerfil from './Components/MiPerfil/Miperfil';
 import Footer from './Components/Footer/Footer';
-import './App.css'; // Asegúrate de que los estilos CSS globales están incluidos
+import './App.css'; 
 
 export default function App() {
   const { estaAutenticado } = useContext(AuthContext);

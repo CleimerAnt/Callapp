@@ -51,6 +51,9 @@ export default function MiPerfil(){
             else if(data.objetivo === 'Ganar Peso'){
                 data.objetivo = '+500'
             }
+            else{
+                data.objetivo = '0'
+            }
             reset({
                 Peso: data.peso,
                 Altura: data.altura,
@@ -213,7 +216,7 @@ export default function MiPerfil(){
             options={[
                 { value: '', label: 'Seleccione su objetivo ' },
                 { value: '-500', label: 'Perder Peso' },
-                { value: '0', label: 'Mantener el Peso' },
+                { value: '0', label: 'Mantener Peso' },
                 { value: '+500', label: 'Ganar Peso' }
             ]}
         />
@@ -317,7 +320,7 @@ export default function MiPerfil(){
             options={[
                 { value: '', label: 'Seleccione su objetivo ' },
                 { value: '-500', label: 'Perder Peso' },
-                { value: '0', label: 'Mantener el Peso' },
+                { value: '0', label: 'Mantener Peso' },
                 { value: '+500', label: 'Ganar Peso' }
             ]}
         />
