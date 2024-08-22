@@ -3,6 +3,7 @@ import FormularioAgregarAlimentos from '../FormularioAgregarAlimentos/Formulario
 import { AuthContext } from '../../Auth/AuthContext';
 import { Link } from 'react-router-dom';
 import styles from '../ContenedorAlimentos/ContenedorAlimentos.module.css'
+import ModalReact from '../ModalReact/ModalReact';
 
 
 export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elementos = [], fecha  = new Date().toISOString()}) {
@@ -53,13 +54,10 @@ export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elem
                                 {elementos.map((key, idx) => (
                                     <td key={idx}>
                                         {element[key] === 'funcion' ? (
-                                            <FormularioAgregarAlimentos 
-                                                id={element.id} 
-                                                userId={user.id} 
-                                                comida={element.horaio} 
-                                                grafica={[element.proteina, element.carbohidratos, element.grasa]}
-                                                fecha={fecha}
-                                            />
+                                            
+                                                <ModalReact id={element.id} tituloBoton={'Agregar'}/>
+                                                
+                                                
                                         ) : element[key] === "Eliminar" ? (
                                             <Link className='btn btn-danger' to={`/EliminarAlimentos/${element.alimentoId}/${element.contenedorId}`}>Eliminar</Link>
                                         ) : element[key] === "EliminarAlimentos" ? 
@@ -79,3 +77,13 @@ export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elem
         </>
     );
 }
+
+{/*
+    <FormularioAgregarAlimentos 
+                                                id={element.id} 
+                                                userId={user.id} 
+                                                comida={element.horaio} 
+                                                grafica={[element.proteina, element.carbohidratos, element.grasa]}
+                                                fecha={fecha}
+                                            />
+    */}

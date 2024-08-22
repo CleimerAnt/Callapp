@@ -66,8 +66,6 @@ export default function FormularioContenedorAlimentos() {
                 <section className={`container ${styles.contenedorEscritorio}`}>
                     <ContenedorAlimentos fecha={fecha} elementos={camposAlimentos} thead={['Nombre del Alimento', 'Carbohidratos', 'Proteina', 'Grasa', 'Calorias', 'Descripcion', 'Acciones']} aray={alimentos} />
                 </section>
-
-
                 
             </main> : ''}
         
