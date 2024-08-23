@@ -7,7 +7,7 @@ import ModalReact from '../ModalReact/ModalReact';
 import { useNavigate } from 'react-router-dom';
 
 export default function FormularioAgregarAlimentos({ id, comida, userId, macros = [], fecha }) {
-    const urlPostContenedor = `https://localhost:7051/api/v1/ContenedorAlimentos`;
+    const urlPostContenedor = import.meta.env.VITE_API_BASE_FORMULARIOAGREGARALIMENTOS;
     const { user } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate()
@@ -30,7 +30,7 @@ export default function FormularioAgregarAlimentos({ id, comida, userId, macros 
                 swal('Error', 'Error al agregar el alimento', "warning");
             }
         } catch (err) {
-            console.error(err);
+            return err;
         }
     };
 

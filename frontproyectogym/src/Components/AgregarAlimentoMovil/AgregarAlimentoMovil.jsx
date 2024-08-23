@@ -17,8 +17,9 @@ export default function AgregarAlimentoMovil(){
     const {user} = useContext(AuthContext)
     console.log(user)
     const {id, comida, fecha} = useParams()
-    const urlPostContenedor = `https://localhost:7051/api/v1/ContenedorAlimentos`;
-    const url = `https://localhost:7051/api/v1/Alimentos/Obtener Alimentos por el Id?id=${id}`
+    const urlPostContenedor = import.meta.env.VITE_API_BASE_CONTENEDORALIMENTOSGET;
+    const BaseUrl = import.meta.env.VITE_API_BASE_OBTENERALIMENTOSPORELID;
+    const url = `${BaseUrl}id=${id}`
 
     const onSubmit = handleSubmit( async (data) => {
         const alimentosIdObjeto = [data.alimentosId];
@@ -27,7 +28,7 @@ export default function AgregarAlimentoMovil(){
         console.log('fecha',data.Fecha)
         try {
             const response = await postDataAutorizacion(urlPostContenedor, data, user);
-            console.log(response)
+
             if (response.status === 201) {
                 swal('Agregado', 'Alimento agregado exitosamente', 'success')
         .then(() => {
@@ -38,6 +39,7 @@ export default function AgregarAlimentoMovil(){
             }
         } catch (err) {
             console.error(err);
+            return err;
         }
     })
 

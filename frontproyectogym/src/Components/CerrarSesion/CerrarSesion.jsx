@@ -3,7 +3,7 @@ import { useContext } from "react"
 
 
 export default function CerrarSesion(){
-    const url = 'https://localhost:7051/api/v1/Account/CerrarSesion'
+    const url = import.meta.env.VITE_API_BASE_CERRARSESION;
     const {setUser} = useContext(AuthContext)
 
     function Cerrar(){

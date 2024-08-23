@@ -20,7 +20,8 @@ export default function EditarAlimento(){
     const navigate = useNavigate();
 
     const obtenerAlimento = async () => {
-        const url = `https://localhost:7051/api/v1/Alimentos/Obtener Alimentos por el Id?id=${alimentoId}`;
+        const BaseApi = import.meta.env.VITE_API_BASE_EDITARALIMENTO;
+        const url = `${BaseApi}?id=${alimentoId}`;
         try{
             const response = await getDatosUser(url, user.jwToken)
             setAlimento(response)
@@ -51,7 +52,8 @@ export default function EditarAlimento(){
 
     const onSubmit = handleSubmit(async (data) => {
         console.log(data)
-        const url = `https://localhost:7051/api/v1/Alimentos/Editar Alimentos?id=${alimentoId}`;
+        const BaseUrl = import.meta.env.VITE_API_BASE_EDITARALIMENTOPOST;
+        const url = `${BaseUrl}id=${alimentoId}`;
 
         try{
             const response = await EditarDataAutorizacion(url, data, user);

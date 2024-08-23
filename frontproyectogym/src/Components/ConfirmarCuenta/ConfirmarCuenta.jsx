@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import styles from '../ConfirmarCuenta/ConfirmarCuenta.module.css'
 
 export default function ConfirmarCuenta(){
     const urlActual = window.location.href;

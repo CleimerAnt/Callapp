@@ -14,7 +14,7 @@ export default function FormularioCalorias() {
     const navigate = useNavigate()
 
     const onSubmit = handleSubmit(async (data) => {
-        const url = 'https://localhost:7051/api/v1/Usuario/AgregarUsuarios';
+        const url = import.meta.env.VITE_API_BASE_FORMULARIOCALORIAS;
         
         const calorias = calcularCalorias(
             parseFloat(data.Peso),

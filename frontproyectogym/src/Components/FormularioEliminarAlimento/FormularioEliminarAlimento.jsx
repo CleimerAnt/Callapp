@@ -12,7 +12,8 @@ export default function FormularioEliminarAlimento() {
     const navigate = useNavigate()
 
     const onSubmit = handleSubmit (async (data) => {
-        const url = `https://localhost:7051/api/v1/ContenedorAlimentos/Eliminar alimento del contenedor?alimentoId=${parseInt(data.alimentoId)}&contenedorId=${parseInt(data.contenedorId)}`;
+        const BaseUrl = import.meta.env.VITE_API_BASE_ELIMINARALIMENTO;
+        const url = `${BaseUrl}alimentoId=${parseInt(data.alimentoId)}&contenedorId=${parseInt(data.contenedorId)}`;
 
         console.log(url)
 

@@ -1,11 +1,9 @@
 import Contenedor from '../Contenedor/Contenedor';
-import fuegoCalorico from '../../assets/fuegoCalorico.png';
 import check1 from '../../assets/Check.svg';
 import check2 from '../../assets/Check 2.svg';
 import check3 from '../../assets/Check 3.svg';
 import Calorias1 from '../../assets/Calorias 1.png';
 import styles from '../Inicio/Inicio.module.css';
-import { Link } from 'react-router-dom';
 import HeaderInicio from '../HeaderInicio/HeaderInicio';
 
 export default function Inicio() {

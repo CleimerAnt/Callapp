@@ -10,7 +10,7 @@ export default function FormularioAlimentos({fecha}){
     const {register, formState: {errors}, handleSubmit} = useForm()
     const {user} = useContext(AuthContext)
     const navigate = useNavigate();
-    const url = `https://localhost:7051/api/v1/Alimentos/Agregar alimentos`;
+    const url = import.meta.env.VITE_API_BASE_FORMULARIOALIMENTOS;
 
     const onSubmit = async (data) => { 
         data.usuarioIdString = user.id;
@@ -34,6 +34,7 @@ export default function FormularioAlimentos({fecha}){
         } catch (error) {
             console.error('Error:', error);
             swal('Error', 'Ocurrió un error inesperado. Por favor, inténtelo de nuevo más tarde.', 'error');
+            return error;
         }
     }
 

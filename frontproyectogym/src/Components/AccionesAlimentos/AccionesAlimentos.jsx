@@ -12,7 +12,8 @@ export default function AccionesAlimentos(){
     const {user, width} = useContext(AuthContext);
     const {fecha} = useParams()
     const [alimentos, setAlimentos] = useState([])
-    const url = `https://localhost:7051/api/v1/Alimentos/Obtener Alimentos?id=${user.id}`;
+    const BaseUrl = import.meta.env.VITE_API_BASE_ACCIONESALIMENTOS
+    const url = `${BaseUrl}id=${user.id}`;
     const cabeza = ['Nombre del Alimento', 'Carbohidratos', 'Proteina', 'Grasa', 'Calorias', 'Descripcion', 'Acciones'];
     const elmentos = ['nombreAlimento', 'carbohidratos', 'proteina', 'grasa', 'calorias', 'descripcion', 'funcion', 'editar']
 

@@ -13,8 +13,8 @@ export default function FormularioContenedorAlimentos() {
     const { comida } = useParams();
     const camposAlimentos = ['nombreAlimento', 'carbohidratos', 'proteina', 'grasa', 'calorias', 'descripcion', 'funcion'];
     const { user, width } = useContext(AuthContext);
-
-    const url = `https://localhost:7051/api/v1/Alimentos/Obtener Alimentos?id=${user.id}`;
+    const BaseUrl = import.meta.env.VITE_API_BASE_CONTENEDORALIMENTOS;
+    const url = `${BaseUrl}id=${user.id}`;
 
     useEffect(() => {
         getDatosUser(url, user.jwToken)

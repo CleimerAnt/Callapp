@@ -25,7 +25,8 @@ export default function MiPerfil(){
         console.log('anchura: ',width)
 
     const obtenerDatosUser = async () =>{
-        const url = `https://localhost:7051/api/v1/Usuario/ObtenerUsuarios?id=${user.id}`;
+        const BaseUrl = import.meta.env.VITE_API_BASE_MIPERFIL;
+        const url = `${BaseUrl}id=${user.id}`;
         try{
             const response = await getDatosUser(url, user.jwToken);
             setData(response);
@@ -66,7 +67,8 @@ export default function MiPerfil(){
     }, [data]);
 
     const onSubmit = handleSubmit( async (data) => {
-        const url = `https://localhost:7051/api/v1/Usuario/EditarValoresUsuario?id=${user.id}`
+        const BaseUrl = import.meta.env.VITE_API_BASE_MIPERFILEDITARDATA;
+        const url = `${BaseUrl}id=${user.id}`
         const calorias = calcularCalorias(
             parseFloat(data.Peso),
             parseFloat(data.Altura),

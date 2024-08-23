@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import Contenedor from "../Contenedor/Contenedor";
 import { AuthContext } from "../../Auth/AuthContext";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import HeaderPaginaPrincipal from "../HeaderPaginaPrincipal/HeaderPaginaPrincipal";
 import getDatosUser from '../../Datos/ObtenerCalculoCalorias';
 import styles from './PaginaPrincipal.module.css';
@@ -16,9 +16,10 @@ export default function PaginaPrincipal() {
     const [calorias, setCalorias] = useState(0);
     const [contenedor, setContenedor] = useState([]);
     const {fecha} = useParams()
-
-    const userUrl = `https://localhost:7051/api/v1/Usuario/ObtenerUsuarios?id=${user.id}`;
-    const contenedorUrl = `https://localhost:7051/api/v1/ContenedorAlimentos?id=${user.id}`;
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
+    const userUrl = `${baseUrl}id=${user.id}`;
+    const urlContenedor = import.meta.env.VITE_API_BASE_CONTENEDORURL;
+    const contenedorUrl = `${urlContenedor}id=${user.id}`;
 
     const obtenerDatosUser = async () => {
         try {
@@ -40,6 +41,7 @@ export default function PaginaPrincipal() {
                 console.log(error)
             }
     };
+
 
     useEffect(() => {
         datosUser();

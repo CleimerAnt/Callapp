@@ -13,7 +13,7 @@ export default function AgregarAlimentos(){
     const {handleSubmit, register, formState : {errors}} = useForm()
     const {user} = useContext(AuthContext)
     const navigate = useNavigate();
-    const url = `https://localhost:7051/api/v1/Alimentos/Agregar alimentos`;
+    const url = import.meta.env.VITET_API_BASE_AGREGARALIMENTOS;
 
     const onSubmit = handleSubmit( async (data) => {
         data.usuarioIdString = user.id;
@@ -37,6 +37,7 @@ export default function AgregarAlimentos(){
         } catch (error) {
             console.error('Error:', error);
             swal('Error', 'Ocurrió un error inesperado. Por favor, inténtelo de nuevo más tarde.', 'error');
+            return error;
         }
     })
 

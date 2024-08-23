@@ -13,7 +13,8 @@ export default function FormularioEliminarAlimentoDelUsuario() {
     const navigate = useNavigate()
 
     const onSubmit = handleSubmit (async (data) => {
-        const url = `https://localhost:7051/api/v1/Alimentos?id=${data.alimentoId}`
+        const BaseUrl = import.meta.env.VITE_API_BASE_ELIMINARALIMENTOUSUARIO;
+        const url = `${BaseUrl}id=${data.alimentoId}`
 
         console.log(url)
 

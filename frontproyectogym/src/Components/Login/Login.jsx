@@ -1,6 +1,6 @@
 import CampoInput from '../CampoInput/CampoInput';
 import { useForm } from 'react-hook-form';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import HeaderInicio from '../HeaderInicio/HeaderInicio';
 import getDatosUser from '../../Datos/ObtenerCalculoCalorias';
 import styles from '../Login/Login.module.css';
@@ -9,6 +9,7 @@ import fuegoCalorico from '../../assets/fuegoCalorico.png';
 import Contenedor from '../Contenedor/Contenedor';
 import { AuthContext } from '../../Auth/AuthContext';
 import swal from 'sweetalert';
+import login from '../../Datos/Login';
 
 export default function Login() {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -16,7 +17,7 @@ export default function Login() {
     const [hasAuthenticated, setHasAuthenticated] = useState(false);
     const navigate = useNavigate();
     const onsubmit = handleSubmit(async (data) => {
-    const url = 'https://localhost:7051/api/v1/Account/authenticate';
+    const url = import.meta.env.VITE_API_BASE_LOGIN;
     console.log(data);
     try {
         const result = await login(url, data);
@@ -25,6 +26,7 @@ export default function Login() {
 
     } catch (error) {
         console.error('Error al autenticar:', error);
+        return error;
     }
     });
 
@@ -35,7 +37,8 @@ export default function Login() {
             console.log(user)
             if (user.hasError === false) {
                 console.log(user)
-                const url = `https://localhost:7051/api/v1/Usuario/ObtenerUsuarios?id=${user.id}`;
+                const baseUrl = import.meta.env.VITE_API_BASE_URL;
+                const url = `${baseUrl}id=${user.id}`;
 
                 async function getCalorias(){
                     const response = await  getDatosUser(url, user.jwToken)
@@ -43,7 +46,6 @@ export default function Login() {
                     console.log(data.status)
                     if(data.status === 204){
                         navigate('/FormularioCalorias')
-                        
                     }
                     else{
                         navigate(`/PaginaPrincipal/${new Date().toISOString()}`) 
@@ -111,25 +113,3 @@ export default function Login() {
 );
 }
 
-const login = async (url, data) => {
-    try {
-    const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    });
-
-    if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Error al realizar el Login:', errorText);
-        throw new Error('Error al realizar el Login');
-    }
-
-    return await response.json();
-} catch (err) {
-    console.error('Error: ', err);
-    throw err;
-}
-};

@@ -12,7 +12,7 @@ export default function FormularioRegistro() {
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
     const navigate = useNavigate();
     const onSubmit = handleSubmit(async (data) => {
-        const url = 'https://localhost:7051/api/v1/Account/registerUser';
+        const url = import.meta.env.VITE_API_BASE_REGISTER;
 
         console.log('Datos del formulario:', data);
 
@@ -38,7 +38,6 @@ try {
     const res = await postUsuario(url, formData);
     console.log(await res); 
 
-
     swal.close();
 
     if(await res.hasError === false){
@@ -52,6 +51,7 @@ try {
     swal.close();
 
     swal("Error", "Hubo un problema al registrar el usuario.", "error");
+    return error;
 }
 
     })
