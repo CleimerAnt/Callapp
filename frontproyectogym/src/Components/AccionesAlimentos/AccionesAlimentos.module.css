@@ -1,6 +1,4 @@
-.contenedorEscritorio {
-    display: none; 
-}
+
 
 @media (min-width: 992px) {
     .contenedorEscritorio {

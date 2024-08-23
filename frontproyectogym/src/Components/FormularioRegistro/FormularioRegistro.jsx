@@ -4,12 +4,13 @@ import Contenedor from '../Contenedor/Contenedor';
 import CampoInput from '../CampoInput/CampoInput';
 import postUsuario from '../../Datos/PostUsuario';
 import HeaderInicio from '../HeaderInicio/HeaderInicio';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from '../FormularioRegistro/FormularioRegistro.module.css';
 import swal from 'sweetalert';
 
 export default function FormularioRegistro() {
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
+    const navigate = useNavigate();
     const onSubmit = handleSubmit(async (data) => {
         const url = 'https://localhost:7051/api/v1/Account/registerUser';
 
@@ -41,7 +42,7 @@ try {
     swal.close();
 
     if(await res.hasError === false){
-        swal("Aviso", "Usuario registrado exitosamente", "success");            
+        swal("Aviso", "Usuario registrado exitosamente", "success").then(() => navigate(`/Login`));            
     } else {
         swal("Aviso", `${res.error}`, "warning");
     }

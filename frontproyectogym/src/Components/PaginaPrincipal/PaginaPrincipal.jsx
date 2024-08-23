@@ -84,28 +84,34 @@ export default function PaginaPrincipal() {
         </Contenedor>
 
         <Contenedor margin="mt-4" elemento="main">
-        <div className="container mt-3 ">
-            <div className="row">
-              {/* Columna izquierda */}
-                <div className="col-md-6 mt-2 d-flex justify-content-center">
-                    <div style={{ maxWidth: '550px' }}>
-                    <div className={`${styles.resumen}`} style={{ borderRadius: '10px' }}>
+    <div className="container mt-3">
+        <div className="row">
+            {/* Columna izquierda */}
+            <div className="col-lg-6 col-md-12 mt-2 d-flex justify-content-center">
+                <div style={{ maxWidth: '550px', width: '100%' }}>
+                    <div className={`${styles.resumen}`}>
                         <h3 className="text-white">Tu resumen calórico</h3>
                     </div>
-        
                     <div className="mt-2">
-                        <Perfil usuario={datosUsuario} caloriasGenerales={caloriasGenerales} fecha={fecha} porcentajeCalculado={porcentajeCalculado} calorias={calorias} imagenPerfil={imagenPerfil} />
-                    </div>
+                        <Perfil 
+                            usuario={datosUsuario} 
+                            caloriasGenerales={caloriasGenerales} 
+                            fecha={fecha} 
+                            porcentajeCalculado={porcentajeCalculado} 
+                            calorias={calorias} 
+                            imagenPerfil={imagenPerfil} 
+                        />
                     </div>
                 </div>
-    
-              {/* Columna derecha */}
-            <div className={`col-md-6 ${styles.contenedorPrincipal}`}>
-                    <ContenedorPrincipal contenedorFecha={contenedorFecha} fecha={fecha}/>
             </div>
+
+            {/* Columna derecha */}
+            <div className={`col-lg-6 col-md-12 ${styles.contenedorPrincipal}`}>
+                <ContenedorPrincipal contenedorFecha={contenedorFecha} fecha={fecha} />
             </div>
         </div>
-        </Contenedor>
+    </div>
+</Contenedor>
         </>
         
     );

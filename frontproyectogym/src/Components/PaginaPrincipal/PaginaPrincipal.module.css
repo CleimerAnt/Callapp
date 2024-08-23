@@ -1,17 +1,33 @@
-.resumen{
+.resumen {
     background-color: #157347;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5px;
+    padding: 10px; 
+    border-radius: 10px;
 }
 
-.contenedorPrincipal{
+.contenedorPrincipal {
     margin-top: 30px;
 }
 
 @media (min-width: 992px) {
     .contenedorPrincipal {
         margin-top: 0px;
+    }
+}
+
+@media (max-width: 991px) {
+    .contenedorPrincipal {
+        margin-top: 20px; 
+    }
+
+    .resumen {
+        padding: 15px; 
+    }
+
+    .container {
+        padding-left: 15px; 
+        padding-right: 15px; 
     }
 }

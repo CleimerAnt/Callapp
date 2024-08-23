@@ -43,7 +43,7 @@ export default function AccionesAlimentos(){
             <Link className="btn btn-primary" to={`/FormulaioAgregarAlimentos/${fecha}`}>Agregar</Link>
         </section>
         
-        {width <= 767 ?<section className={`${styles.contenedorMovil} mt-3`}>
+        {width <= 992 ?<section className={`${styles.contenedorMovil} mt-3`}>
             {Array.isArray(alimentos) ? alimentos.map((alimento, index) => (
                 <div className={`${styles.descripcion}`} key={index}>
                     <div className={`${styles.nombrePorcion}`}>
@@ -59,7 +59,7 @@ export default function AccionesAlimentos(){
                     </div>
                 </div>
             )) : ''}
-        </section> : width > 1024 ?  <section className={`mt-4 container ${styles.contenedorEscritorio}`}>
+        </section> : width > 992 ?  <section className={`mt-4 container ${styles.contenedorEscritorio}`}>
         {Array.isArray(alimentos) ? <ContenedorAlimentos  aray={alimentos ? alimentos : []} elementos={elmentos} thead={cabeza}/> : <h1 className="text-center mt-4">No hay alimentos</h1>}
         </section> : ''}
     </main>

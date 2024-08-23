@@ -43,7 +43,7 @@ export default function ContenedorPrincipal({ fecha, contenedorFecha = [] }) {
             </div>
             {desayuno.length === 0 ? (
                 <>
-                    <h3>No hay alimentos</h3>
+                    <h3 className="text-center p-4">No hay alimentos</h3>
                     <div className={`${styles.link}`}>
                         <Link className="mb-3" to={`/agregarAlimentos/${comida[0]}/${fecha ?? new Date().toISOString()}`}>Agregar alimentos</Link>
                     </div>
@@ -72,7 +72,7 @@ export default function ContenedorPrincipal({ fecha, contenedorFecha = [] }) {
             </div>
             {almuerzo.length === 0 ? (
                 <>
-                    <h3>No hay alimentos</h3>
+                    <h3 className="text-center p-4">No hay alimentos</h3>
                     <div className={`${styles.link}`}>
                         <Link className="mb-3" to={`/agregarAlimentos/${comida[1]}/${fecha}`}>Agregar alimentos</Link>
                     </div>
@@ -101,7 +101,7 @@ export default function ContenedorPrincipal({ fecha, contenedorFecha = [] }) {
             </div>
             {cena.length === 0 ? (
                 <>
-                    <h3>No hay alimentos</h3>
+                    <h3 className="text-center p-4">No hay alimentos</h3>
                     <div className={`${styles.link}`}>
                         <Link className="mb-3" to={`/agregarAlimentos/${comida[2]}/${fecha}`}>Agregar alimentos</Link>
                     </div>
@@ -128,6 +128,7 @@ export default function ContenedorPrincipal({ fecha, contenedorFecha = [] }) {
         </section>
     </div>
 </Contenedor>
+
 
     </>
 }

@@ -1,7 +1,6 @@
 .main{
     max-width: 90%;
     margin: 0 auto;
-    display: none;
 }
 .contenedor{
     background-color: #F1F1F1;
@@ -61,7 +60,7 @@
 }
 
 .mainOrdenador{
-    display: none;
+
 }
 
 @media (min-width: 1024px) {

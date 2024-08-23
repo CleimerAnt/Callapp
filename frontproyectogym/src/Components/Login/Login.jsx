@@ -133,22 +133,3 @@ const login = async (url, data) => {
     throw err;
 }
 };
-
-
-{/* 
-     useEffect(() => {
-            if (user) {
-                const url = `https://localhost:7051/api/v1/Usuario/ObtenerUsuarios?id=${user.id}`;
-                getDatosUser(url, user.jwToken).then(response => {
-                    if (response && response.status === 204) {
-                        setState(204);
-                    } else {
-                        setState(200);
-                    }
-                }).catch(err => {
-                    console.error('Error', err);
-                    setState(null);
-                });
-            }
-        }, [user]);
-    */}

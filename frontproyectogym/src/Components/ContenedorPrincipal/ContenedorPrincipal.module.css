@@ -1,19 +1,17 @@
 .titulo {
     text-align: center;
-    width: 100%; /* Ajusta el ancho al 100% para pantallas pequeñas */
-    max-width: 600px; /* Limita el ancho máximo en pantallas grandes */
     background-color: #157246;
     color: white;
     padding: 5px;
-    margin: 0 auto; /* Centra el contenido */
+    margin: 0 auto; 
 }
 
 .link {
     text-align: center;
-    width: 100%; /* Ajusta el ancho al 100% para pantallas pequeñas */
-    max-width: 600px; /* Limita el ancho máximo en pantallas grandes */
+    width: 100%;
+    max-width: 600px;
     margin-bottom: 20px;
-    margin: 0 auto; /* Centra el contenido */
+    margin: 0 auto; 
 }
 
 .link a {
@@ -25,10 +23,4 @@
 
 .link a:hover {
     color: #75BE7C;
-}
-
-@media (min-width: 768px) {
-    .titulo, .link {
-        width: 600px; /* Mantén el ancho en 600px para pantallas más grandes */
-    }
 }

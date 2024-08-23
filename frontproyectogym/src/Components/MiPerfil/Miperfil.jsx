@@ -236,8 +236,9 @@ export default function MiPerfil(){
 
         </form>
         </section>
-        </main> : width > 1024 ?  <main className={`${styles.mainOrdenador}`}>
-            <section className={`${styles.perfilOrdenador}} d-flex align-items-center justify-content-center container pt-4`} style={{gap : '20px'}}>
+        </main> : width > 767 ?  <main className={`${styles.mainOrdenador}`}>
+        
+            <section className={`${styles.perfilOrdenador}} flex-column d-flex align-items-center justify-content-center container pt-4`} style={{gap : '20px'}}>
                 <h1>Calcular calorias diarias.</h1>
             </section>
 

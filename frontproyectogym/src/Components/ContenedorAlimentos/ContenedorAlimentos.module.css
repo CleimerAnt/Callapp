@@ -11,34 +11,35 @@
     .table th, .table td {
         font-size: 14px; /* Ajusta el tamaño de fuente para mejorar la legibilidad en pantallas pequeñas */
     }
-}
 
-.contenedorSubtabla{
-    display: none;
-}
-
-@media (width < 768px) {
-    .tabla{
-        display: none;
+    .tabla {
+        display: none; /* Oculta la tabla en pantallas pequeñas */
     }
 
-    .contenedorSubtabla{
-        display: block;
+    .contenedorSubtabla {
+        display: block; /* Muestra la subtabla en pantallas pequeñas */
     }
 }
 
-.carbohidratos{
+@media (min-width: 769px) {
+    .contenedorSubtabla {
+        display: none; /* Oculta la subtabla en pantallas grandes */
+    }
+}
+
+.carbohidratos {
     color: red;
 }
 
-.proteina{
+.proteina {
     color: blue;
 }
 
-.grasa{
+.grasa {
     color: #B57C00;
 }
 
-.subTabla{
+.subTabla {
     border-bottom: 1px solid black;
+    padding: 10px 0;
 }

@@ -9,7 +9,7 @@
 
 .perfil img {
     width: 130px;
-    border-radius: 50%; /* Hace que la imagen sea redonda */
+    border-radius: 50%; 
 }
 
 .nombreUsuario {
@@ -28,7 +28,7 @@
     color: black;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1199px) {
     .perfil {
         flex-direction: row;
         justify-content: space-between;
@@ -40,6 +40,6 @@
     }
 
     .perfil .progress {
-        width: 100%; /* Asegura que la barra de progreso ocupe todo el ancho disponible */
+        width: 100%; 
     }
 }
