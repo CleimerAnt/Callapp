@@ -13,8 +13,7 @@ export default function AgregarAlimentos(){
     const {handleSubmit, register, formState : {errors}} = useForm()
     const {user} = useContext(AuthContext)
     const navigate = useNavigate();
-    const url = import.meta.env.VITET_API_BASE_AGREGARALIMENTOS;
-
+    const url = import.meta.env.VITE_API_BASE_AGREGARALIMENTOS;
     const onSubmit = handleSubmit( async (data) => {
         data.usuarioIdString = user.id;
         try {

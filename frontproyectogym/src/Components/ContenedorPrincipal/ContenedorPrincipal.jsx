@@ -43,8 +43,8 @@ export default function ContenedorPrincipal({ fecha, contenedorFecha = [] }) {
             </div>
             {desayuno.length === 0 ? (
                 <>
-                    <h3 className="text-center p-4">No hay alimentos</h3>
-                    <div className={`${styles.link}`}>
+                    <h3 className="text-center p-2">No hay alimentos</h3>
+                    <div className={`${styles.link} pb-2`}>
                         <Link className="mb-3" to={`/agregarAlimentos/${comida[0]}/${fecha ?? new Date().toISOString()}`}>Agregar alimentos</Link>
                     </div>
                 </>
@@ -56,7 +56,7 @@ export default function ContenedorPrincipal({ fecha, contenedorFecha = [] }) {
                         aray={desayuno}
                         elementos={['nombreAlimento', 'caloriasDelAlimento', 'porcion', 'funcion']}
                     />
-                    <div className={`${styles.link}`}>
+                    <div className={`${styles.link} pb-2`}>
                         <Link className="mb-3" to={`/agregarAlimentos/${comida[0]}/${fecha}`}>Agregar alimentos</Link>
                         <BarraValores 
                             proteina={calculoValores(desayuno, 'proteinaDelAlimento')}
@@ -72,9 +72,9 @@ export default function ContenedorPrincipal({ fecha, contenedorFecha = [] }) {
             </div>
             {almuerzo.length === 0 ? (
                 <>
-                    <h3 className="text-center p-4">No hay alimentos</h3>
-                    <div className={`${styles.link}`}>
-                        <Link className="mb-3" to={`/agregarAlimentos/${comida[1]}/${fecha}`}>Agregar alimentos</Link>
+                    <h3 className="text-center p-2">No hay alimentos</h3>
+                    <div className={`${styles.link} pb-2`}>
+                        <Link className="mb-3" to={`/agregarAlimentos/${comida[1]}/${fecha} `}>Agregar alimentos</Link>
                     </div>
                 </>
             ) : (
@@ -86,7 +86,7 @@ export default function ContenedorPrincipal({ fecha, contenedorFecha = [] }) {
                         elementos={['nombreAlimento', 'caloriasDelAlimento', 'porcion', 'funcion']}
                     />
                     <div className={`${styles.link}`}>
-                        <Link className="mb-3" to={`/agregarAlimentos/${comida[1]}/${fecha}`}>Agregar alimentos</Link>
+                        <Link className="mb-3" to={`/agregarAlimentos/${comida[1]}/${fecha} pb-2`}>Agregar alimentos</Link>
                         <BarraValores 
                             proteina={calculoValores(almuerzo, 'proteinaDelAlimento')}
                             carbohidratos={calculoValores(almuerzo, 'carbohidratosDelAlimento')}
@@ -101,8 +101,8 @@ export default function ContenedorPrincipal({ fecha, contenedorFecha = [] }) {
             </div>
             {cena.length === 0 ? (
                 <>
-                    <h3 className="text-center p-4">No hay alimentos</h3>
-                    <div className={`${styles.link}`}>
+                    <h3 className="text-center p-2">No hay alimentos</h3>
+                    <div className={`${styles.link} pb-2`}>
                         <Link className="mb-3" to={`/agregarAlimentos/${comida[2]}/${fecha}`}>Agregar alimentos</Link>
                     </div>
                 </>

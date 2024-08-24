@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from 'react';
-import getDatosUser from '../Datos/ObtenerCalculoCalorias';
 
 export const AuthContext = createContext();
 

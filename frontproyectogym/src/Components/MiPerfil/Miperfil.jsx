@@ -2,13 +2,14 @@ import CampoInput from '../CampoInput/CampoInput'
 import { useForm } from 'react-hook-form'
 import styles from '../MiPerfil/MiPerfil.module.css'
 import imagen from '../../assets/imagenPerfil.jpg';
+import ModalReact from '../ModalReact/ModalReact'
 import Contenedor from '../Contenedor/Contenedor'
 import HeaderPaginaPrincipal from '../HeaderPaginaPrincipal/HeaderPaginaPrincipal'
 import { AuthContext } from '../../Auth/AuthContext'
 import { useContext, useEffect, useState } from 'react'
 import swal from 'sweetalert'
 import calcularCalorias from '../../Metodos/CalcularCalorias'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import EditarDataAutorizacion from '../../Datos/EditarDataAutorizacion'
 import getDatosUser from '../../Datos/ObtenerCalculoCalorias'
 import calcularMacronutrientes from '../../Metodos/CalcularMacronutrientes';
@@ -20,13 +21,10 @@ export default function MiPerfil(){
     const [data, setData] = useState();
     const navigate = useNavigate();
 
-    console.log('Anchura: ',width)
-
-        console.log('anchura: ',width)
-
     const obtenerDatosUser = async () =>{
         const BaseUrl = import.meta.env.VITE_API_BASE_MIPERFIL;
         const url = `${BaseUrl}id=${user.id}`;
+        console.log('Usuario', user)
         try{
             const response = await getDatosUser(url, user.jwToken);
             setData(response);
@@ -61,7 +59,11 @@ export default function MiPerfil(){
                 Edad: data.edad,
                 Genero: data.genero,
                 NivelActividadFisica: data.nivelActividadFisica,
-                Objetivo: data.objetivo
+                Objetivo: data.objetivo,
+                file: user.ImgUrl,
+                PrimerNombre: user.primerNombre,
+                Apellido: user.apellido,
+                UserName: user.userName
             });
         }
     }, [data]);
@@ -129,12 +131,64 @@ export default function MiPerfil(){
     })
     let imagenPerfil = user.imgUrl === '' ? imagen : `https://localhost:7051${user.imgUrl}`;
 
+    const onEdit = handleSubmit ( async (data) => {
+        const newData = {
+            PrimerNombre: data.PrimerNombre,
+            Apellido: data.Apellido,
+            UserName: data.UserName,
+            file: data.file
+        }
+
+        const formData = new FormData();
+        for (const key in newData) {
+            formData.append(key, newData[key]);
+        }
+        if (newData.file && newData.file[0]) {
+            formData.append('file', newData.file[0]);
+        }
+
+        console.log('New Data',formData)
+
+        const url = `https://localhost:7051/api/v1/Usuario/EditarUsuario?id=${user.id}`;
+
+        try {
+            const response = await EditarDataAutorizacion(url, formData, user, true);
+            console.log(response)
+            if(response.status === 200){
+                swal({
+                    title: "Aviso",
+                    text: "Datos actualizados",
+                    icon: "success",
+                    buttons: {
+                        confirm: {
+                            text: "OK",
+                            value: true,
+                            visible: true,
+                            className: "btn btn-primary",
+                            closeModal: true
+                        }
+                    }
+                }).then((value) => {
+                    if (value) {
+                        navigate(`/PaginaPrincipal/${fecha}`);
+                    }
+                });
+            }
+
+        } catch (error) {
+            console.error('Ocurrió un error:', error);
+            throw error; 
+        }
+
+    })
+
     return<>
         <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
                 <HeaderPaginaPrincipal fecha={fecha} home= {true}/>
         </Contenedor>
 
         <section className = {styles.perfil}>
+            <Link  to={`/EditarPerfil/${fecha}`} className='btn btn-secondary mb-4'>Editar perfil</Link>
             <img className={styles.imagen} src={imagenPerfil ? imagenPerfil : imagenPerfilExtra}/>
             <p className='fw-bold mt-3'>{user.userName}</p>
         </section>
@@ -241,6 +295,61 @@ export default function MiPerfil(){
         </main> : width > 767 ?  <main className={`${styles.mainOrdenador}`}>
         
             <section className={`${styles.perfilOrdenador}} flex-column d-flex align-items-center justify-content-center container pt-4`} style={{gap : '20px'}}>
+                <ModalReact tituloBoton={'Editar Perfil.'} tipoBoton='btn btn-secondary' body={() => {
+                        
+                    return<>
+                    <div className={styles.imagenPerfil}>
+                        <p className='fw-bold'>Foto de perfil.</p>
+                        <img src={imagenPerfil ? imagenPerfil : imagenPerfilExtra}/>
+                    </div>
+                    
+                    <form onSubmit={onEdit}>
+                        <CampoInput
+                            name='file'
+                            type='file'
+                            register={register}
+                            required={false}
+                            errors={errors}
+                            placeholder='Foto de perfil'
+                        />
+
+                        <CampoInput
+                            name='PrimerNombre'
+                            type='text'
+                            label={'Nombre'}
+                            register={register}
+                            required={true}
+                            classFom={'form-control'}
+                            errors={errors}
+                            placeholder='Primer nombre.'
+                        />
+
+                        <CampoInput
+                            name='Apellido'
+                            label={'Aplellido'}
+                            type='text'
+                            register={register}
+                            required={true}
+                            classFom={'form-control'}
+                            errors={errors}
+                            placeholder='Apellido.'
+                        />
+
+                        <CampoInput
+                            name='UserName'
+                            label={'Nombre de Usuario'}
+                            type='text'
+                            register={register}
+                            required={true}
+                            classFom={'form-control'}
+                            errors={errors}
+                            placeholder='Nombre de usuario.'
+                        />
+
+                        <button className='btn btn-primary float-end w-25'>Editar</button>
+                    </form>
+                </>
+                }}/>
                 <h1>Calcular calorias diarias.</h1>
             </section>
 

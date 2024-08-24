@@ -19,6 +19,7 @@ import AgregarAlimentoMovil from './Components/AgregarAlimentoMovil/AgregarAlime
 import MiPerfil from './Components/MiPerfil/Miperfil';
 import Footer from './Components/Footer/Footer';
 import './App.css'; 
+import EditarPerfil from './Components/EditarPerfil/EditarPerfil';
 
 export default function App() {
   const { estaAutenticado } = useContext(AuthContext);
@@ -33,6 +34,7 @@ export default function App() {
           <Route path='/agregarAlimentoMovil/:comida/:fecha/:id' element={<RutaProtegida><AgregarAlimentoMovil /></RutaProtegida>} />
           <Route path='/MiPerfil/:fecha' element={<RutaProtegida><MiPerfil /></RutaProtegida>} />
           <Route path='/FormulaioAgregarAlimentos/:fecha' element={<RutaProtegida><AgregarAlimentos /></RutaProtegida>} />
+          <Route path='/EditarPerfil/:fecha' element={<EditarPerfil />}/>
           <Route path='/accionesAlimentos/:fecha' element={<RutaProtegida><AccionesAlimentos /></RutaProtegida>} />
           <Route path="/Registro" element={estaAutenticado() ? <Navigate to="/PaginaPrincipal" /> : <FormularioRegistro />} />
           <Route path="/FormularioCalorias" element={<RutaProtegida><FormularioCalorias /></RutaProtegida>} />

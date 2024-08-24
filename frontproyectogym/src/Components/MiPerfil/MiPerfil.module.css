@@ -59,8 +59,22 @@
     }
 }
 
-.mainOrdenador{
+.imagenPerfil{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    flex-direction: column;
+}
 
+.imagenPerfil p {
+    font-size: 25px;
+}
+
+.imagenPerfil img{
+    width: 150px;
+    border-radius: 100%;
 }
 
 @media (min-width: 1024px) {
