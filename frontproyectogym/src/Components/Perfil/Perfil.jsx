@@ -7,13 +7,14 @@ import { useNavigate } from "react-router-dom";
 
 export default function Perfil({imagenPerfil, calorias , porcentajeCalculado, fecha, caloriasGenerales, usuario}){
     const { user } = useContext(AuthContext)
+    console.log('Usuario',usuario)
     const navigate = useNavigate();
-    console.log('Usuario: ',usuario)
+
     return <>
         <div className={`${styles.perfil}`}>
     <div className="text-center">
         <img className={styles.imagenPerfil} src={imagenPerfil} alt="Imagen de Usuario" />
-        <p className={`${styles.nombreUsuario}`}>{user.userName}</p>
+        <p className={`${styles.nombreUsuario}`}>{usuario ? usuario.nombreUsuario : ''}</p>
         <CerrarSesion />
     </div>
     <div className="mt-5">

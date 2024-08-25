@@ -12,6 +12,7 @@ export default function FormularioCalorias() {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { user, width } = useContext(AuthContext);
     const navigate = useNavigate()
+    console.log(user)
 
     const onSubmit = handleSubmit(async (data) => {
         const url = import.meta.env.VITE_API_BASE_FORMULARIOCALORIAS;
@@ -130,6 +131,21 @@ export default function FormularioCalorias() {
             register={register}
         />
 
+        <CampoInput
+            name='NombreUsuario'
+            value={user.userName}
+            type='hidden'
+            errors={errors}
+            register={register}
+        />
+
+        <CampoInput
+            name='ImgUrl'
+            value={user.imgUrl}
+            type='hidden'
+            errors={errors}
+            register={register}
+        />
 
         <CampoInput
             name="NivelActividadFisica"

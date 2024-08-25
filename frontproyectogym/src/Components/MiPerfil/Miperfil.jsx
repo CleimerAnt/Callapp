@@ -148,8 +148,8 @@ export default function MiPerfil(){
         }
 
         console.log('New Data',formData)
-
-        const url = `https://localhost:7051/api/v1/Usuario/EditarUsuario?id=${user.id}`;
+        const BaseUrl = import.meta.env.VITE_API_BASEEDITARPERFILUSUARIO;
+        const url = `${BaseUrl}id=${user.id}`;
 
         try {
             const response = await EditarDataAutorizacion(url, formData, user, true);

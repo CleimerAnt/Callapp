@@ -2,6 +2,7 @@ import CampoInput from "../CampoInput/CampoInput"
 import { useForm } from "react-hook-form"
 import { AuthContext} from "../../Auth/AuthContext"
 import { useContext, useEffect, useState } from "react"
+import imagen from '../../assets/imagenPerfil.jpg';
 import { useParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import getDatosUser from "../../Datos/ObtenerCalculoCalorias"
@@ -64,8 +65,8 @@ export default function EditarPerfil(){
         }
 
         console.log('New Data',formData)
-
-        const url = `https://localhost:7051/api/v1/Usuario/EditarUsuario?id=${user.id}`;
+        const BaseUrl = import.meta.env.VITE_API_BASEEDITARPERFILUSUARIO;
+        const url =  `${BaseUrl}id=${user.id}`;
 
         try {
             const response = await EditarDataAutorizacion(url, formData, user, true);
