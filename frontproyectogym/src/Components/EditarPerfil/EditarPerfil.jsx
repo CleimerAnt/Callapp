@@ -15,7 +15,17 @@ export default function EditarPerfil(){
     const {fecha} = useParams();
     const navigate = useNavigate();
     const [data, setData] = useState();
-    let imagenPerfil = user.imgUrl === '' ? imagen : `https://localhost:7051${user.imgUrl}`;
+    let imagenPerfil = imagen;
+
+    if(data){
+        if(data.imgUrl !== "" && data.imgUrl !== null){
+            const BaseUrl = import.meta.env.VITE_API_BASE_IMGURL;
+            imagenPerfil = `${BaseUrl}${data.imgUrl}`;
+        }else{
+            imagenPerfil = imagen;
+        }
+        
+    }
 
     const obtenerDatosUser = async () =>{
         const BaseUrl = import.meta.env.VITE_API_BASE_MIPERFIL;
@@ -38,7 +48,7 @@ export default function EditarPerfil(){
                 file: user.ImgUrl,
                 PrimerNombre: user.primerNombre,
                 Apellido: user.apellido,
-                UserName: user.userName
+                UserName: data ? data.nombreUsuario : ''
             });
         }
     }, [data]);

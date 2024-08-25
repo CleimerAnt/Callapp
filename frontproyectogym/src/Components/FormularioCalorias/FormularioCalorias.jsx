@@ -135,6 +135,7 @@ export default function FormularioCalorias() {
             name='NombreUsuario'
             value={user.userName}
             type='hidden'
+            required={true}
             errors={errors}
             register={register}
         />
@@ -285,6 +286,23 @@ export default function FormularioCalorias() {
         register={register}
         errors={errors}
     />
+
+        <CampoInput
+            name='NombreUsuario'
+            value={user.userName}
+            type='hidden'
+            required={true}
+            errors={errors}
+            register={register}
+        />
+
+        <CampoInput
+            name='ImgUrl'
+            value={user.imgUrl}
+            type='hidden'
+            errors={errors}
+            register={register}
+        />
         
         <div style={{border : 'none'}} className='d-flex align-itens-center justify-content-center'>
             <button  type='submit' className={`btn btn-primary ${styles.boton}`}>Ingresar valores</button>

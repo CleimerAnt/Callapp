@@ -36,6 +36,7 @@
 
 .imagen{
     width: 130px;
+    height: 130px;
     border-radius: 80%;
 }
 
@@ -74,6 +75,7 @@
 
 .imagenPerfil img{
     width: 150px;
+    height: 150px;
     border-radius: 100%;
 }
 

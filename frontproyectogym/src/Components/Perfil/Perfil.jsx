@@ -1,12 +1,9 @@
-import { AuthContext } from "../../Auth/AuthContext";
-import { useContext } from "react";
 import Grafica from '../Grafica/Grafica'
 import styles from './Perfil.module.css'
 import CerrarSesion from "../CerrarSesion/CerrarSesion";
 import { useNavigate } from "react-router-dom";
 
 export default function Perfil({imagenPerfil, calorias , porcentajeCalculado, fecha, caloriasGenerales, usuario}){
-    const { user } = useContext(AuthContext)
     console.log('Usuario',usuario)
     const navigate = useNavigate();
 

@@ -51,8 +51,20 @@ export default function PaginaPrincipal() {
         obtenerDatosUser();
     }, []);
 
-    let imagenPerfil = user.imgUrl === '' ? imagen : `https://localhost:7051${user.imgUrl}`;
+    let imagenPerfil = imagen;
 
+    if(datosUsuario){
+        if(datosUsuario.imgUrl !== "" && datosUsuario.imgUrl !== null){
+            const BaseUrl = import.meta.env.VITE_API_BASE_IMGURL;
+            imagenPerfil = `${BaseUrl}${datosUsuario.imgUrl}`;
+        }else{
+            imagenPerfil = imagen;
+        }
+    }
+
+    
+
+    console.log('Datos Usuario', datosUsuario)
     let contenedorFecha;
     function asignarFecha(fecha) {
         fecha = new Date(fecha)

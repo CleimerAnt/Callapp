@@ -63,7 +63,7 @@ export default function MiPerfil(){
                 file: user.ImgUrl,
                 PrimerNombre: user.primerNombre,
                 Apellido: user.apellido,
-                UserName: user.userName
+                UserName: data ? data.nombreUsuario : ''
             });
         }
     }, [data]);
@@ -129,7 +129,18 @@ export default function MiPerfil(){
             return err;
         }
     })
-    let imagenPerfil = user.imgUrl === '' ? imagen : `https://localhost:7051${user.imgUrl}`;
+    let imagenPerfil = imagen;
+
+    if(data){
+        if(data.imgUrl !== "" && data.imgUrl !== null){
+            const BaseUrl = import.meta.env.VITE_API_BASE_IMGURL;
+            imagenPerfil = `${BaseUrl}${data.imgUrl}`;
+            console.log('Imagen de perifl', imagenPerfil)
+        }else{
+            imagenPerfil = imagen;
+        }
+        
+    }
 
     const onEdit = handleSubmit ( async (data) => {
         const newData = {
@@ -188,9 +199,10 @@ export default function MiPerfil(){
         </Contenedor>
 
         <section className = {styles.perfil}>
-            <Link  to={`/EditarPerfil/${fecha}`} className='btn btn-secondary mb-4'>Editar perfil</Link>
+        {width <= 767 ? <Link  to={`/EditarPerfil/${fecha}`} className='btn btn-secondary mb-4'>Editar perfil</Link> : ''}
+            
             <img className={styles.imagen} src={imagenPerfil ? imagenPerfil : imagenPerfilExtra}/>
-            <p className='fw-bold mt-3'>{user.userName}</p>
+            <p className='fw-bold mt-3'>{data ? data.nombreUsuario : ''} </p>
         </section>
         
         {width <= 767 ? <main className={`${styles.contenedor}`}>
