@@ -78,7 +78,8 @@ export default function FormularioAlimentos({fecha}){
             <CampoInput
                 name='grasa'
                 label={'Grasa'}
-                type='text'
+                type='number'
+                decimal={true}
                 placeholder={'Grasa'}
                 classFom={'form-control'}
                 required={true}
@@ -89,7 +90,8 @@ export default function FormularioAlimentos({fecha}){
             <CampoInput
                 name='carbohidratos'
                 label={'Carbohidratos'}
-                type='text'
+                type='number'
+                decimal={true}
                 placeholder={'Carbohidratos'}
                 classFom={'form-control'}
                 required={true}
@@ -100,7 +102,8 @@ export default function FormularioAlimentos({fecha}){
             <CampoInput
                 name='proteina'
                 label={'Proteina'}
-                type='text'
+                type='number'
+                decimal={true}
                 placeholder={'Proteina'}
                 classFom={'form-control'}
                 required={true}

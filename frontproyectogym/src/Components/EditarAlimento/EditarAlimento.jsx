@@ -90,7 +90,8 @@ export default function EditarAlimento(){
         />
         <CampoInput
             name='porcion'
-            label={'Porción'}
+            soloLectura={true}
+            label={'Porción(100G)'}
             type='text'
             classFom={'form-control'}
             placeholder={'Porción'}
@@ -102,6 +103,7 @@ export default function EditarAlimento(){
             name='calorias'
             label={'Calorías'}
             type='number'
+            decimal={true}
             classFom={'form-control'}
             placeholder={'Calorías'}
             required={true}
@@ -112,6 +114,7 @@ export default function EditarAlimento(){
             name='grasa'
             label={'Grasa'}
             type='number'
+            decimal={true}
             placeholder={'Grasa'}
             classFom={'form-control'}
             required={true}
@@ -122,6 +125,7 @@ export default function EditarAlimento(){
             name='carbohidratos'
             label={'Carbohidratos'}
             type='number'
+            decimal={true}
             placeholder={'Carbohidratos'}
             classFom={'form-control'}
             required={true}
@@ -131,6 +135,7 @@ export default function EditarAlimento(){
         <CampoInput
             name='proteina'
             type='number'
+            decimal={true}
             label={'Proteína'}
             placeholder={'Proteína'}
             classFom={'form-control'}

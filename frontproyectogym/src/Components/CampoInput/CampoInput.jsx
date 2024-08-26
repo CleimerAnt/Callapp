@@ -11,7 +11,8 @@ export default function CampoInput({
     placeholder, 
     classFom, 
     autocomplete, 
-    decimal 
+    decimal,
+    soloLectura
 }) {
     return (
         <div className={type === 'hidden' ? 'd-none' : 'mb-3'}>
@@ -27,6 +28,7 @@ export default function CampoInput({
                         },
                         validate: validate
                     })}
+                    disabled={soloLectura}
                 >
                     {options.map(option => (
                         <option key={option.value} value={option.value}>
@@ -50,6 +52,7 @@ export default function CampoInput({
                         },
                         validate: validate
                     })}
+                    readOnly={soloLectura} 
                 />
             )}
             {errors[name] && <span className="mt-2">{errors[name].message}</span>}
