@@ -1,4 +1,5 @@
 import Contenedor from '../Contenedor/Contenedor';
+import Logo from '../../assets/logo.png'
 import check1 from '../../assets/Check.svg';
 import check2 from '../../assets/Check 2.svg';
 import check3 from '../../assets/Check 3.svg';
@@ -26,7 +27,8 @@ export default function Inicio() {
       </article>
 
       <figure className="text-center mt-4 mt-md-0 ms-md-4">
-        <img className={`${styles.imagenCalorias} img-fluid`} src={Calorias1} alt="Descripción de la imagen de calorías" />
+        {/* <img className={`${styles.imagenCalorias} img-fluid`} src={Calorias1} alt="Descripción de la imagen de calorías" /> */}
+        <img className={`${styles.imagenCalorias} img-fluid`} src={Logo}/>
       </figure>
     </div>
   </section>
