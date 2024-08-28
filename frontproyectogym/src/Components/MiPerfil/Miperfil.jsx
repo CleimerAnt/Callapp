@@ -193,276 +193,279 @@ export default function MiPerfil(){
 
     })
 
-    return<>
-        <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
-                <HeaderPaginaPrincipal fecha={fecha} home= {true}/>
-        </Contenedor>
+    return <>
+    <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
+        <HeaderPaginaPrincipal fecha={fecha} home={true} />
+    </Contenedor>
 
-        <section className = {styles.perfil}>
-        {width <= 767 ? <Link  to={`/EditarPerfil/${fecha}`} className='btn btn-secondary mb-4'>Editar perfil</Link> : ''}
-            
-            <img className={styles.imagen} src={imagenPerfil ? imagenPerfil : imagenPerfilExtra}/>
-            <p className='fw-bold mt-3'>{data ? data.nombreUsuario : ''} </p>
-        </section>
-        
-        {width <= 767 ? <main className={`${styles.contenedor}`}>
-        <section className={styles.main}>
-        <form onSubmit={onSubmit}>
-        <CampoInput
-            name='Edad'
-            label={'Edad'}
-            placeholder={'Edad'}
-            type='number'
-            required={true}
-            errors={errors}
-            register={register}
-        />
+    <section className={styles.perfil}>
+        {width <= 767 ? <Link to={`/EditarPerfil/${fecha}`} className='btn btn-secondary mb-4'>Editar perfil</Link> : ''}
 
-        <CampoInput
-            name="Genero"
-            label={'Genero'}
-            placeholder={'Genero'}
-            type="select"
-            required={true}
-            errors={errors}
-            register={register}
-            options={[
-                { value: '', label: 'Seleccione su género' },
-                { value: 'masculino', label: 'Hombre' },
-                { value: 'femenino', label: 'Mujer' }
-            ]}
-        />
+        <img className={styles.imagen} src={imagenPerfil ? imagenPerfil : imagenPerfilExtra} alt="Imagen de perfil" />
+        <p className='fw-bold mt-3'>{data ? data.nombreUsuario : ''}</p>
+    </section>
 
-        <CampoInput
-            name='Altura'
-            label={'Altura (Pies)'}
-            placeholder='Altura'
-            type='number'
-            decimal={true}
-            required={true}
-            errors={errors}
-            register={register}
-        />
+    {width <= 767 ? (
+        <main className={`${styles.contenedor}`}>
+            <section className={styles.main}>
+                <form onSubmit={onSubmit}>
+                    <CampoInput
+                        name='Edad'
+                        label={'Edad'}
+                        placeholder={'Edad'}
+                        type='number'
+                        required={true}
+                        errors={errors}
+                        register={register}
+                    />
 
-        <CampoInput
-            name='Peso'
-            label={'Peso (LBS)'}
-            placeholder='Peso'
-            type='number'
-            required={true}
-            errors={errors}
-            register={register}
-        />
+                    <CampoInput
+                        name="Genero"
+                        label={'Género'}
+                        placeholder={'Género'}
+                        type="select"
+                        required={true}
+                        errors={errors}
+                        register={register}
+                        options={[
+                            { value: '', label: 'Seleccione su género' },
+                            { value: 'masculino', label: 'Hombre' },
+                            { value: 'femenino', label: 'Mujer' }
+                        ]}
+                    />
 
+                    <CampoInput
+                        name='Altura'
+                        label={'Altura (Pies)'}
+                        placeholder='Altura'
+                        type='number'
+                        decimal={true}
+                        required={true}
+                        errors={errors}
+                        register={register}
+                    />
 
-            <CampoInput
-            name="NivelActividadFisica"
-            label={'Nivel de actividad fisica'}
-            placeholder="Actividad Física"
-            type="select"
-            required={true}
-            errors={errors}
-            register={register}
-            options={[
-                { value: '', label: 'Seleccione su nivel' },
-                { value: '1.2', label: 'Sedentario' },
-                { value: '1.375', label: 'Ligero (1-3 dias)' },
-                { value: '1.55', label: 'Moderado (3-5 dias)' },
-                { value: '1.725', label: 'Intenso (6-7 dias)' },
-                { value: '1.9', label: 'Muy Intenso' }
-            ]}
-            />
+                    <CampoInput
+                        name='Peso'
+                        label={'Peso (LBS)'}
+                        placeholder='Peso'
+                        type='number'
+                        required={true}
+                        errors={errors}
+                        register={register}
+                    />
 
-        <CampoInput
-            name="Objetivo"
-            label={'Objetivo'}
-            placeholder="Objetivo"
-            type="select"
-            required={true}
-            errors={errors}
-            register={register}
-            options={[
-                { value: '', label: 'Seleccione su objetivo ' },
-                { value: '-500', label: 'Perder Peso' },
-                { value: '0', label: 'Mantener Peso' },
-                { value: '+500', label: 'Ganar Peso' }
-            ]}
-        />
+                    <CampoInput
+                        name="NivelActividadFisica"
+                        label={'Nivel de actividad física'}
+                        placeholder="Actividad Física"
+                        type="select"
+                        required={true}
+                        errors={errors}
+                        register={register}
+                        options={[
+                            { value: '', label: 'Seleccione su nivel' },
+                            { value: '1.2', label: 'Sedentario' },
+                            { value: '1.375', label: 'Ligero (1-3 días)' },
+                            { value: '1.55', label: 'Moderado (3-5 días)' },
+                            { value: '1.725', label: 'Intenso (6-7 días)' },
+                            { value: '1.9', label: 'Muy Intenso' }
+                        ]}
+                    />
 
-    <CampoInput
-        name="IdentityId"
-        type="hidden"
-        value={user.id}
-        register={register}
-        errors={errors}
-    />
-        
-        <div style={{border : 'none'}} className='d-flex align-itens-center justify-content-center'>
-            <button  type='submit' className={`btn btn-primary ${styles.boton}`}>Actualizar valores</button>
-        </div>
-        
+                    <CampoInput
+                        name="Objetivo"
+                        label={'Objetivo'}
+                        placeholder="Objetivo"
+                        type="select"
+                        required={true}
+                        errors={errors}
+                        register={register}
+                        options={[
+                            { value: '', label: 'Seleccione su objetivo ' },
+                            { value: '-500', label: 'Perder Peso' },
+                            { value: '0', label: 'Mantener Peso' },
+                            { value: '+500', label: 'Ganar Peso' }
+                        ]}
+                    />
 
-        </form>
-        </section>
-        </main> : width > 767 ?  <main className={`${styles.mainOrdenador}`}>
-        
-            <section className={`${styles.perfilOrdenador}} flex-column d-flex align-items-center justify-content-center container pt-4`} style={{gap : '20px'}}>
-                <ModalReact tituloBoton={'Editar Perfil.'} tipoBoton='btn btn-secondary' body={() => {
-                        
-                    return<>
-                    <div className={styles.imagenPerfil}>
-                        <p className='fw-bold'>Foto de perfil.</p>
-                        <img src={imagenPerfil ? imagenPerfil : imagenPerfilExtra}/>
+                    <CampoInput
+                        name="IdentityId"
+                        type="hidden"
+                        value={user.id}
+                        register={register}
+                        errors={errors}
+                    />
+
+                    <div style={{ border: 'none' }} className='d-flex align-itens-center justify-content-center'>
+                        <button type='submit' className={`btn btn-primary ${styles.boton}`}>Actualizar valores</button>
                     </div>
-                    
-                    <form onSubmit={onEdit}>
-                        <CampoInput
-                            name='file'
-                            type='file'
-                            register={register}
-                            required={false}
-                            errors={errors}
-                            placeholder='Foto de perfil'
-                        />
+                </form>
+            </section>
+        </main>
+    ) : width > 767 ? (
+        <main className={`${styles.mainOrdenador}`}>
+            <section className={`${styles.perfilOrdenador} flex-column d-flex align-items-center justify-content-center container pt-4`} style={{ gap: '20px' }}>
+                <ModalReact
+                    tituloBoton={'Editar Perfil.'}
+                    tipoBoton='btn btn-secondary'
+                    body={() => {
+                        return (
+                            <>
+                                <div className={styles.imagenPerfil}>
+                                    <p className='fw-bold'>Foto de perfil.</p>
+                                    <img src={imagenPerfil ? imagenPerfil : imagenPerfilExtra} alt="Imagen de perfil" />
+                                </div>
 
-                        <CampoInput
-                            name='PrimerNombre'
-                            type='text'
-                            label={'Nombre'}
-                            register={register}
-                            required={true}
-                            classFom={'form-control'}
-                            errors={errors}
-                            placeholder='Primer nombre.'
-                        />
+                                <form onSubmit={onEdit}>
+                                    <CampoInput
+                                        name='file'
+                                        type='file'
+                                        register={register}
+                                        required={false}
+                                        errors={errors}
+                                        placeholder='Foto de perfil'
+                                    />
 
-                        <CampoInput
-                            name='Apellido'
-                            label={'Aplellido'}
-                            type='text'
-                            register={register}
-                            required={true}
-                            classFom={'form-control'}
-                            errors={errors}
-                            placeholder='Apellido.'
-                        />
+                                    <CampoInput
+                                        name='PrimerNombre'
+                                        type='text'
+                                        label={'Nombre'}
+                                        register={register}
+                                        required={true}
+                                        classFom={'form-control'}
+                                        errors={errors}
+                                        placeholder='Primer nombre'
+                                    />
 
-                        <CampoInput
-                            name='UserName'
-                            label={'Nombre de Usuario'}
-                            type='text'
-                            register={register}
-                            required={true}
-                            classFom={'form-control'}
-                            errors={errors}
-                            placeholder='Nombre de usuario.'
-                        />
+                                    <CampoInput
+                                        name='Apellido'
+                                        label={'Apellido'}
+                                        type='text'
+                                        register={register}
+                                        required={true}
+                                        classFom={'form-control'}
+                                        errors={errors}
+                                        placeholder='Apellido'
+                                    />
 
-                        <button className='btn btn-primary float-end w-25'>Editar</button>
-                    </form>
-                </>
-                }}/>
-                <h1>Calcular calorias diarias.</h1>
+                                    <CampoInput
+                                        name='UserName'
+                                        label={'Nombre de Usuario'}
+                                        type='text'
+                                        register={register}
+                                        required={true}
+                                        classFom={'form-control'}
+                                        errors={errors}
+                                        placeholder='Nombre de usuario'
+                                    />
+
+                                    <button className='btn btn-primary float-end w-25'>Editar</button>
+                                </form>
+                            </>
+                        );
+                    }}
+                />
+                <h1>Calcular calorías diarias.</h1>
             </section>
 
-        <section className={`container ${styles.formularioOrdenador} pt-4 d-flex flex-column align-items-center justify-content-center`}>
-            <form onSubmit={onSubmit}>
+            <section className={`container ${styles.formularioOrdenador} pt-4 d-flex flex-column align-items-center justify-content-center`}>
+                <form onSubmit={onSubmit}>
+                    <CampoInput
+                        name='Edad'
+                        label={'Edad'}
+                        placeholder={'Edad'}
+                        type='number'
+                        required={true}
+                        errors={errors}
+                        register={register}
+                    />
 
-            <CampoInput
-            name='Edad'
-            label={'Edad'}
-            placeholder={'Edad'}
-            type='number'
-            required={true}
-            errors={errors}
-            register={register}
-        />
+                    <CampoInput
+                        name="Genero"
+                        label={'Género'}
+                        placeholder={'Género'}
+                        type="select"
+                        required={true}
+                        errors={errors}
+                        register={register}
+                        options={[
+                            { value: '', label: 'Seleccione su género' },
+                            { value: 'masculino', label: 'Hombre' },
+                            { value: 'femenino', label: 'Mujer' }
+                        ]}
+                    />
 
-        <CampoInput
-            name="Genero"
-            label={'Genero'}
-            placeholder={'Genero'}
-            type="select"
-            required={true}
-            errors={errors}
-            register={register}
-            options={[
-                { value: '', label: 'Seleccione su género' },
-                { value: 'masculino', label: 'Hombre' },
-                { value: 'femenino', label: 'Mujer' }
-            ]}
-        />
+                    <CampoInput
+                        name='Altura'
+                        label={'Altura (Pies)'}
+                        placeholder='Altura'
+                        type='number'
+                        decimal={true}
+                        required={true}
+                        errors={errors}
+                        register={register}
+                    />
 
-        <CampoInput
-            name='Altura'
-            label={'Altura (Pies)'}
-            placeholder='Altura'
-            type='number'
-            decimal={true}
-            required={true}
-            errors={errors}
-            register={register}
-        />
+                    <CampoInput
+                        name='Peso'
+                        label={'Peso (Libras)'}
+                        placeholder='Peso'
+                        type='number'
+                        required={true}
+                        errors={errors}
+                        register={register}
+                    />
 
-        <CampoInput
-            name='Peso'
-            label={'Peso (Libras)'}
-            placeholder='Peso'
-            type='number'
-            required={true}
-            errors={errors}
-            register={register}
-        />
+                    <CampoInput
+                        name="NivelActividadFisica"
+                        label={'Nivel de actividad física'}
+                        placeholder="Actividad Física"
+                        type="select"
+                        required={true}
+                        errors={errors}
+                        register={register}
+                        options={[
+                            { value: '', label: 'Seleccione su nivel' },
+                            { value: '1.2', label: 'Sedentario' },
+                            { value: '1.375', label: 'Ligero (1-3 días)' },
+                            { value: '1.55', label: 'Moderado (3-5 días)' },
+                            { value: '1.725', label: 'Intenso (6-7 días)' },
+                            { value: '1.9', label: 'Muy Intenso' }
+                        ]}
+                    />
 
+                    <CampoInput
+                        name="Objetivo"
+                        label={'Objetivo'}
+                        placeholder="Objetivo"
+                        type="select"
+                        required={true}
+                        errors={errors}
+                        register={register}
+                        options={[
+                            { value: '', label: 'Seleccione su objetivo ' },
+                            { value: '-500', label: 'Perder Peso' },
+                            { value: '0', label: 'Mantener Peso' },
+                            { value: '+500', label: 'Ganar Peso' }
+                        ]}
+                    />
 
-        <CampoInput
-            name="NivelActividadFisica"
-            label={'Nivel de actividad fisica'}
-            placeholder="Actividad Física"
-            type="select"
-            required={true}
-            errors={errors}
-            register={register}
-            options={[
-                { value: '', label: 'Seleccione su nivel' },
-                { value: '1.2', label: 'Sedentario' },
-                { value: '1.375', label: 'Ligero (1-3 dias)' },
-                { value: '1.55', label: 'Moderado (3-5 dias)' },
-                { value: '1.725', label: 'Intenso (6-7 dias)' },
-                { value: '1.9', label: 'Muy Intenso' }
-            ]}
-        />
+                    <CampoInput
+                        name="IdentityId"
+                        type="hidden"
+                        value={user.id}
+                        register={register}
+                        errors={errors}
+                    />
 
-        <CampoInput
-            name="Objetivo"
-            label={'Objetivo'}
-            placeholder="Objetivo"
-            type="select"
-            required={true}
-            errors={errors}
-            register={register}
-            options={[
-                { value: '', label: 'Seleccione su objetivo ' },
-                { value: '-500', label: 'Perder Peso' },
-                { value: '0', label: 'Mantener Peso' },
-                { value: '+500', label: 'Ganar Peso' }
-            ]}
-        />
+                    <section style={{ gridColumn: '1 / 3', textAlign: 'center' }} className={`mt-1`}>
+                        <button type='submit' className={`w-75 mt-1 p-2 btn btn-primary ${styles.botonOrdenador}`}>Actualizar valores</button>
+                    </section>
+                </form>
+            </section>
+        </main>
+    ) : ''}
+</>
 
-    <CampoInput
-        name="IdentityId"
-        type="hidden"
-        value={user.id}
-        register={register}
-        errors={errors}
-    />
-
-<section style={{ gridColumn: '1 / 3', textAlign: 'center' }} className={`mt-1`}>
-    <button type='submit' className={`w-75 mt-1 p-2 btn btn-primary ${styles.botonOrdenador}`}>Actualizar valores</button>
-</section>
-
-        </form>
-        </section>
-        </main> : ''}
-    </>
 }

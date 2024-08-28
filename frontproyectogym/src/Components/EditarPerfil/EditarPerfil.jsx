@@ -109,10 +109,10 @@ export default function EditarPerfil(){
 
     })
 
-    return<>
+    return <>
     <div className={styles.imagenPerfil}>
         <p className='fw-bold'>Foto de perfil.</p>
-        <img src={imagenPerfil ? imagenPerfil : imagenPerfilExtra}/>
+        <img src={imagenPerfil ? imagenPerfil : imagenPerfilExtra} alt="Imagen de perfil" />
     </div>
     
     <form className={styles.formulario} onSubmit={onEdit}>
@@ -133,18 +133,18 @@ export default function EditarPerfil(){
             required={true}
             classFom={'form-control'}
             errors={errors}
-            placeholder='Primer nombre.'
+            placeholder='Primer nombre'
         />
 
         <CampoInput
             name='Apellido'
-            label={'Aplellido'}
+            label={'Apellido'}
             type='text'
             register={register}
             required={true}
             classFom={'form-control'}
             errors={errors}
-            placeholder='Apellido.'
+            placeholder='Apellido'
         />
 
         <CampoInput
@@ -155,12 +155,12 @@ export default function EditarPerfil(){
             required={true}
             classFom={'form-control'}
             errors={errors}
-            placeholder='Nombre de usuario.'
+            placeholder='Nombre de usuario'
         />
         <div>
             <button className='btn btn-primary float-end w-25'>Editar</button>
         </div>
-        
     </form>
 </>
+
 }

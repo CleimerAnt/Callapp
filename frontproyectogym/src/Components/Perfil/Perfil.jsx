@@ -8,50 +8,44 @@ export default function Perfil({imagenPerfil, calorias , porcentajeCalculado, fe
     const navigate = useNavigate();
 
     return <>
-        <div className={`${styles.perfil}`}>
-    <div className="text-center">
-        <img className={styles.imagenPerfil} src={imagenPerfil} alt="Imagen de Usuario" />
-        <p className={`${styles.nombreUsuario}`}>{usuario ? usuario.nombreUsuario : ''}</p>
-        <CerrarSesion />
-    </div>
-    <div className="mt-5">
+    <div className={`${styles.perfil}`}>
+        <div className="text-center">
+            <img className={styles.imagenPerfil} src={imagenPerfil} alt="Imagen de Usuario" />
+            <p className={`${styles.nombreUsuario}`}>{usuario ? usuario.nombreUsuario : ''}</p>
+            <CerrarSesion />
+        </div>
+        <div className="mt-5">
+            <p style={{ color: '#00B98E' }}>
+                <span className={styles.spanCalorias}>Meta calórica:</span> {calorias}
+            </p>
 
-        <p style={{ color: '#00B98E' }}>
-            <span className={styles.spanCalorias}>Meta calórica:</span> {calorias}
-        </p>
+            <p style={{ color: '#00B98E' }}>
+                <span className={styles.spanCalorias}>Calorías consumidas:</span> {caloriasGenerales}
+            </p>
 
-        <p style={{ color: '#00B98E' }}>
-            <span className={styles.spanCalorias}>Calorias consumidas:</span> {caloriasGenerales}
-        </p>
+            <div className="progress" role="progressbar" aria-label="Example with label" aria-valuenow={porcentajeCalculado} aria-valuemin="0" aria-valuemax="100">
+                <div 
+                    className="progress-bar" 
+                    style={{ 
+                        width: `${porcentajeCalculado}%`, 
+                        backgroundColor: porcentajeCalculado >= 100 ? 'red' : '' 
+                    }}
+                >
+                    {`${porcentajeCalculado}%`}
+                </div>
+            </div>
 
-        <div className="progress" role="progressbar" aria-label="Example with label" aria-valuenow={porcentajeCalculado} aria-valuemin="0" aria-valuemax="100">
-    <div 
-        className="progress-bar" 
-        style={{ 
-            width: `${porcentajeCalculado}%`, 
-            backgroundColor: porcentajeCalculado >= 100 ? 'red' : '' 
-        }}
-    >
-        {`${porcentajeCalculado}%`}
-    </div>
-</div>
-
-<section >
+            <section>
                 {usuario ? <Grafica grasa={usuario.grasas} proteina={usuario.proteinas} carbohidratos={usuario.carbohidratos}/> : ''}
-                <p className="text-center"> Gráfico de Macronutrientes.</p>
+                <p className="text-center">Gráfico de Macronutrientes.</p>
             </section>
+        </div>
 
+        <div className="mt-4 mt-md-5 text-center d-flex flex-column" style={{ gap: '20px' }}>
+            <button className="btn btn-success" onClick={() => navigate(`/accionesAlimentos/${fecha}`)}>Alimentos</button>
 
+            <button onClick={() => navigate(`/MiPerfil/${fecha}`)} className="btn btn-success">Mi Perfil</button>
+        </div>
     </div>
-
-
-    <div className="mt-4 mt-md-5 text-center d-flex flex-column" style={{gap: '20px'}}>
-        <button className="btn btn-success" onClick={() => navigate(`/accionesAlimentos/${fecha}`)}>Alimentos</button>
-
-        <button onClick={(() => navigate(`/MiPerfil/${fecha}`))} className="btn btn-success">Mi Perfil</button>
-    </div>
-</div>
-
-        
-    </>
+</>
 }

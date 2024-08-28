@@ -7,18 +7,16 @@ export default function ConfirmarCuenta(){
 
     return <>
     <div className="card text-center container mt-4 w-50">
-    <div className={`card-header`}>
-        Confirmar Cuenta
+        <div className="card-header">
+            Confirmar Cuenta
+        </div>
+        <div className="card-body">
+            <h5 className="card-title">Cuenta Confirmada</h5>
+            <p className="card-text">Volver al formulario de inicio de sesión</p>
+            <Link className="btn btn-primary" to={'/'}>Iniciar Sesión</Link>
+        </div>
     </div>
-    <div className="card-body">
-        <h5 className="card-title">Cuenta Confirmada</h5>
-        <p className="card-text">Vorver al Formulario de Inicico de sesion</p>
-        <Link className="btn btn-primary" to={'/'}>Inicial Sesion</Link>
-    </div>
-
-    </div>
-    </>
-
+</>
 }
 
 function confrimar(url,Id){
@@ -47,7 +45,7 @@ function obtenerTokenUserId(urlActual){
     const urlParseada = new URL(urlActual);
     const userId = urlParseada.searchParams.get('userId');
     const token = urlParseada.searchParams.get('token');
-
-    const url = `https://localhost:7051/api/v1/Account/ConfirmarCuenta?userId=${userId}&token=${token}`
+    const BaseUrl = import.meta.env.VITE_API_BASE_CONFIRMARCUENTA;
+    const url = `${BaseUrl}userId=${userId}&token=${token}`
     confrimar(url)
 }

@@ -65,51 +65,50 @@ export default function Login() {
 
     return (
         <>
-            <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
-                <HeaderInicio home= {true}/>
-            </Contenedor>
+    <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
+        <HeaderInicio home={true} />
+    </Contenedor>
 
-            <main className={`container-fluid ${styles.main} d-flex align-items-center flex-column mt-4`}>
-    <section className='d-flex flex-column align-items-center justify-content-center mb-3 mt-4'>
-        <img className={styles.fuegoCalorico} src={fuegoCalorico} alt="Fuego Calórico Logo" />
-        <h1 className={`${styles.titulo} mt-2`}>Por favor, inicia sesión con tu cuenta</h1>
-    </section>
+    <main className={`container-fluid ${styles.main} d-flex align-items-center flex-column mt-4`}>
+        <section className='d-flex flex-column align-items-center justify-content-center mb-3 mt-4'>
+            <img className={styles.fuegoCalorico} src={fuegoCalorico} alt="Fuego Calórico Logo" />
+            <h1 className={`${styles.titulo} mt-2`}>Por favor, inicia sesión con tu cuenta</h1>
+        </section>
 
-    <section>
-        <form onSubmit={onsubmit} className={`${styles.formulario}`}>
-            <CampoInput 
-                name='email'
-                type='email'
-                label={'Correo Electrónico'}
-                register={register}
-                autocomplete="email"
-                required={true}
-                placeholder={"micorreo@gmail.com"}
-                errors={errors}
-            /> 
+        <section>
+            <form onSubmit={onsubmit} className={`${styles.formulario}`}>
+                <CampoInput 
+                    name='email'
+                    type='email'
+                    label={'Correo Electrónico'}
+                    register={register}
+                    autocomplete="email"
+                    required={true}
+                    placeholder={"micorreo@gmail.com"}
+                    errors={errors}
+                /> 
 
-            <CampoInput 
-                name='password'
-                label={'Contraseña'}
-                type='password'
-                register={register}
-                required={true}
-                autocomplete="current-password"
-                errors={errors}
-            />
+                <CampoInput 
+                    name='password'
+                    label={'Contraseña'}
+                    type='password'
+                    register={register}
+                    required={true}
+                    autocomplete="current-password"
+                    errors={errors}
+                />
 
-            <div className='d-flex align-items-center mt-4 justify-content-center'>
-                <button className={`${styles.boton}`} type='submit'>Iniciar sesión</button>
-            </div>
+                <div className='d-flex align-items-center mt-4 justify-content-center'>
+                    <button className={`${styles.boton}`} type='submit'>Iniciar sesión</button>
+                </div>
 
-            <div className={`d-flex align-items-center justify-content-center p-3 ${styles.link}`}>
-                <Link className={styles.link} to={'/Registro'}>¿Deseas crear una cuenta?</Link>
-            </div>
-        </form> 
-    </section>
-</main>
-        </>
-        
+                <div className={`d-flex align-items-center justify-content-center p-3 ${styles.link}`}>
+                    <Link className={styles.link} to={'/Registro'}>¿Deseas crear una cuenta?</Link>
+                </div>
+            </form> 
+        </section>
+    </main>
+</>        
 );
 }
 
