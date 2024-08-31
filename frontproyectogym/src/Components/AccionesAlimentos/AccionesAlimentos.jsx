@@ -32,8 +32,6 @@ export default function AccionesAlimentos(){
         })
     }
 
-    console.log(typeof(alimentos))
-
     return<>
         <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
                 <HeaderPaginaPrincipal fecha={fecha} home= {true}/>

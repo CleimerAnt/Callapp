@@ -5,11 +5,10 @@ import styles from '../ContenedorFechas/ContenedorFechas.module.css';
 const ContenedorFechas = () => {
     const navigate = useNavigate();
     const [selectedDate, setSelectedDate] = useState(new Date());
-
     const formatDate = (date) => {
         return date.toISOString(); 
     };
-
+    
     const goToPreviousDay = () => {
         setSelectedDate(prevDate => {
             const newDate = new Date(prevDate);

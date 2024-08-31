@@ -27,6 +27,7 @@ export default function PaginaPrincipal() {
             setContenedor(response);
         } catch (err) {
             console.log(err);
+            return err;
         }
     };
     
@@ -39,6 +40,7 @@ export default function PaginaPrincipal() {
             }
             catch(error){
                 console.log(error)
+                return error;
             }
     };
 
@@ -62,13 +64,9 @@ export default function PaginaPrincipal() {
         }
     }
 
-    
-
-    console.log('Datos Usuario', datosUsuario)
     let contenedorFecha;
     function asignarFecha(fecha) {
         fecha = new Date(fecha)
-
         contenedorFecha = contenedor.filter((element) => {
             const fechaElemento = new Date(element.fecha);
             return fechaElemento.toDateString() === fecha.toDateString();
@@ -84,13 +82,10 @@ export default function PaginaPrincipal() {
         caloriasGenerales += element.caloriasDelAlimento;
     });
     }
-    console.log('Calorias', calorias)
-    
 
     let porcentaje = (caloriasGenerales / calorias) * 100;
 
     let porcentajeCalculado = Math.round(porcentaje.toFixed(2));
-    console.log('calorias generales', caloriasGenerales)
     return (
         <>
         <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>

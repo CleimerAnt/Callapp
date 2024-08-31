@@ -16,8 +16,6 @@ export default function FormularioEliminarAlimentoDelUsuario() {
         const BaseUrl = import.meta.env.VITE_API_BASE_ELIMINARALIMENTOUSUARIO;
         const url = `${BaseUrl}id=${data.alimentoId}`
 
-        console.log(url)
-
         try {
             const response = await EliminarDatos(url, user);
             if (response.ok) {
@@ -30,6 +28,7 @@ export default function FormularioEliminarAlimentoDelUsuario() {
             }
         } catch (err) {
             console.error(err);
+            return err;
         }
     });
 

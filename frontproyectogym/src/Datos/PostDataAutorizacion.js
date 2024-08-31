@@ -1,5 +1,4 @@
 export default async function postDataAutorizacion(url, data = {}, user) {
-    console.log('Datos enviados:', data);
     try{
         const response = await fetch(url, {
             method: 'POST',

@@ -18,7 +18,6 @@ export default function Login() {
     const navigate = useNavigate();
     const onsubmit = handleSubmit(async (data) => {
     const url = import.meta.env.VITE_API_BASE_LOGIN;
-    console.log(data);
     try {
         const result = await login(url, data);
         setUser(result);
@@ -32,18 +31,14 @@ export default function Login() {
 
     useEffect(() => {
     if (hasAuthenticated) {
-        console.log('Autenticado')
         if (user !== null) {
-            console.log(user)
             if (user.hasError === false) {
-                console.log(user)
                 const baseUrl = import.meta.env.VITE_API_BASE_URL;
                 const url = `${baseUrl}id=${user.id}`;
 
                 async function getCalorias(){
                     const response = await  getDatosUser(url, user.jwToken)
                     const data = await response
-                    console.log(data.status)
                     if(data.status === 204){
                         navigate('/FormularioCalorias')
                     }

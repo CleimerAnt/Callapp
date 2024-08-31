@@ -12,7 +12,6 @@ export default function FormularioCalorias() {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { user, width } = useContext(AuthContext);
     const navigate = useNavigate()
-    console.log(user)
 
     const onSubmit = handleSubmit(async (data) => {
         const url = import.meta.env.VITE_API_BASE_FORMULARIOCALORIAS;
@@ -37,8 +36,6 @@ export default function FormularioCalorias() {
             data.Genero
         )
 
-        console.log('Macronutrientes: ', macronutrientes.proteinas)
-
         data.Calorias = calorias;
         data.Proteinas = macronutrientes.proteinas;
         data.Carbohidratos = macronutrientes.carbohidratos;
@@ -46,11 +43,8 @@ export default function FormularioCalorias() {
         data.IdentityId = user.id;
 
 
-        console.log('Datos enviados:', data);
-
         try {
             const response = await postDataAutorizacion(url, data, user);
-            console.log('Respuesta del servidor:', response);
             swal({
                 title: "Aviso",
                 text: "Calorías calculadas",

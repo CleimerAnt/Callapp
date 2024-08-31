@@ -9,12 +9,11 @@ export default function CerrarSesion(){
 
     function Cerrar(url){
         setUser(null)
-
         CerrarSesionUsuario(url,user)
     }
 
     return <>
-        <button className="btn btn-secondary" onClick={() => Cerrar(url)}>Cerrar Sesion</button>
+        <button className="btn btn-secondary" onClick={() => Cerrar(url)}>Cerrar Sesión</button>
     </>
 }
 

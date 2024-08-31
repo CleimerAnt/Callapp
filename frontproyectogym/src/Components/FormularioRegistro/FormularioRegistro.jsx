@@ -12,11 +12,10 @@ export default function FormularioRegistro() {
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
     const navigate = useNavigate();
     const onSubmit = handleSubmit(async (data) => {
-        const url = import.meta.env.VITE_API_BASE_REGISTER;
+    const url = import.meta.env.VITE_API_BASE_REGISTER;
 
-        console.log('Datos del formulario:', data);
 
-        const formData = new FormData();
+    const formData = new FormData();
 for (const key in data) {
     formData.append(key, data[key]);
 }
@@ -36,7 +35,6 @@ const loadingAlert = swal({
 
 try {
     const res = await postUsuario(url, formData);
-    console.log(await res); 
 
     swal.close();
 
@@ -68,79 +66,94 @@ try {
         </article>
 
         <section className={`w-md-75 w-lg-50 ${styles.contenedorFormulario}`}>
-            <form encType="multipart/form-data" className={`${styles.formulario} mt-4`} onSubmit={onSubmit}>
-                <CampoInput
-                    name='PrimerNombre'
-                    type='text'
-                    label='Primer Nombre'
-                    register={register}
-                    required={true}
-                    errors={errors}
-                    placeholder=''
-                />
-                <CampoInput
-                    name='Apellido'
-                    type='text'
-                    label='Apellido'
-                    register={register}
-                    required={true}
-                    errors={errors}
-                    placeholder=''
-                />
-                <CampoInput
-                    name='Email'
-                    type='email'
-                    label='Correo Electrónico'
-                    register={register}
-                    required={true}
-                    errors={errors}
-                    placeholder=''
-                />
-                <CampoInput
-                    name='UserName'
-                    type='text'
-                    label='Nombre de Usuario'
-                    register={register}
-                    required={true}
-                    errors={errors}
-                    placeholder=''
-                />
-                <CampoInput
-                    name='file'
-                    type='file'
-                    label='Foto de Perfil'
-                    register={register}
-                    required={false}
-                    errors={errors}
-                    placeholder=''
-                />
-                <CampoInput
-                    name='Password'
-                    type='password'
-                    label='Contraseña'
-                    register={register}
-                    required={true}
-                    errors={errors}
-                    placeholder=''
-                />
-                <CampoInput
-                    name='ConfirmarContraseña'
-                    type='password'
-                    label='Confirmar Contraseña'
-                    register={register}
-                    required={true}
-                    errors={errors}
-                    placeholder=''
-                    validate={value => value === watch('Password') || 'Las contraseñas no coinciden'}
-                />
-                <div className='d-flex align-items-center justify-content-center mt-4'>
-                    <button className={styles.boton} type='submit'>Registrarme</button>
-                </div>
+        <form encType="multipart/form-data" className={`${styles.formulario} mt-4`} onSubmit={handleSubmit(onSubmit)}>
+        <CampoInput
+            name='PrimerNombre'
+            type='text'
+            label='Primer Nombre'
+            register={register}
+            required={true}
+            errors={errors}
+            placeholder=''
+        />
+        <CampoInput
+            name='Apellido'
+            type='text'
+            label='Apellido'
+            register={register}
+            required={true}
+            errors={errors}
+            placeholder=''
+        />
+        <CampoInput
+            name='Email'
+            type='email'
+            label='Correo Electrónico'
+            register={register}
+            required={true}
+            errors={errors}
+            placeholder=''
+        />
+        <CampoInput
+            name='UserName'
+            type='text'
+            label='Nombre de Usuario'
+            register={register}
+            required={true}
+            errors={errors}
+            placeholder=''
+            validate={(value) =>
+                !/\s/.test(value) || 'El campo no puede contener espacios en blanco.'
+            }
+        />
+        <CampoInput
+            name='file'
+            type='file'
+            label='Foto de Perfil'
+            register={register}
+            required={false}
+            errors={errors}
+            placeholder=''
+        />
+        <CampoInput
+            name='Password'
+            type='password'
+            label='Contraseña'
+            register={register}
+            required={true}
+            errors={errors}
+            placeholder=''
+            validate={{
+                minLength: value =>
+                    value.length >= 8 || 'Debe tener al menos 8 caracteres.',
+                hasUpperCase: value =>
+                    /[A-Z]/.test(value) || 'Debe contener al menos una letra mayúscula.',
+                hasLowerCase: value =>
+                    /[a-z]/.test(value) || 'Debe contener al menos una letra minúscula.',
+                hasNumber: value =>
+                    /\d/.test(value) || 'Debe contener al menos un número.',
+                hasSpecialChar: value =>
+                    /[!@#$%^&*(),.?":{}|<>]/.test(value) || 'Debe contener al menos un carácter especial.'
+            }}
+        />
+        <CampoInput
+            name='ConfirmarContraseña'
+            type='password'
+            label='Confirmar Contraseña'
+            register={register}
+            required={true}
+            errors={errors}
+            placeholder=''
+            validate={value => value === watch('Password') || 'Las contraseñas no coinciden'}
+        />
+        <div className='d-flex align-items-center justify-content-center mt-4'>
+            <button className={styles.boton} type='submit'>Registrarme</button>
+        </div>
 
-                <div className={`d-flex align-items-center justify-content-center p-3 ${styles.link}`}>
-                    <Link className={styles.link} to={'/Login'}>Iniciar Sesión</Link>
-                </div>
-            </form>
+        <div className={`d-flex align-items-center justify-content-center p-3 ${styles.link}`}>
+            <Link className={styles.link} to={'/Login'}>Iniciar Sesión</Link>
+        </div>
+    </form>
         </section>
     </main>
 </>

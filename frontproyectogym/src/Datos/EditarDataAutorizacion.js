@@ -1,11 +1,4 @@
 export default async function EditarDataAutorizacion(url, data = {}, user, img = false) {
-    console.log('Datos enviados:', data);
-
-    if(img){
-        console.log('FormData contents:');
-    for (let pair of data.entries()) {
-        console.log(pair[0]+ ': ' + pair[1]);
-    }}
 
     const headers = img ? {
         method: 'PUT',

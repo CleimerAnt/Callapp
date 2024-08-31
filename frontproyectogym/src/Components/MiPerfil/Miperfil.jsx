@@ -24,11 +24,9 @@ export default function MiPerfil(){
     const obtenerDatosUser = async () =>{
         const BaseUrl = import.meta.env.VITE_API_BASE_MIPERFIL;
         const url = `${BaseUrl}id=${user.id}`;
-        console.log('Usuario', user)
         try{
             const response = await getDatosUser(url, user.jwToken);
             setData(response);
-            console.log(response)
         }
         catch(err){
             throw err;
@@ -89,7 +87,6 @@ export default function MiPerfil(){
             data.Genero
         )
 
-        console.log('Macronutrientes: ', macronutrientes.proteinas)
 
         data.Calorias = calorias;
         data.Proteinas = macronutrientes.proteinas;
@@ -99,8 +96,6 @@ export default function MiPerfil(){
 
         try{
             const response = await EditarDataAutorizacion(url, data, user);
-            console.log('Respuesta del servidor', response);
-
             if(response.status === 200){
                 swal({
                     title: "Aviso",
@@ -135,7 +130,6 @@ export default function MiPerfil(){
         if(data.imgUrl !== "" && data.imgUrl !== null){
             const BaseUrl = import.meta.env.VITE_API_BASE_IMGURL;
             imagenPerfil = `${BaseUrl}${data.imgUrl}`;
-            console.log('Imagen de perifl', imagenPerfil)
         }else{
             imagenPerfil = imagen;
         }
@@ -158,13 +152,11 @@ export default function MiPerfil(){
             formData.append('file', newData.file[0]);
         }
 
-        console.log('New Data',formData)
         const BaseUrl = import.meta.env.VITE_API_BASEEDITARPERFILUSUARIO;
         const url = `${BaseUrl}id=${user.id}`;
 
         try {
             const response = await EditarDataAutorizacion(url, formData, user, true);
-            console.log(response)
             if(response.status === 200){
                 swal({
                     title: "Aviso",

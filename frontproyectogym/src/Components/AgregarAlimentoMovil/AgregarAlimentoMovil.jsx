@@ -15,7 +15,6 @@ export default function AgregarAlimentoMovil(){
     const [alimento, setAlimento] = useState()
     const navigate = useNavigate();
     const {user} = useContext(AuthContext)
-    console.log(user)
     const {id, comida, fecha} = useParams()
     const urlPostContenedor = import.meta.env.VITE_API_BASE_CONTENEDORALIMENTOSGET;
     const BaseUrl = import.meta.env.VITE_API_BASE_OBTENERALIMENTOSPORELID;
@@ -25,7 +24,6 @@ export default function AgregarAlimentoMovil(){
         const alimentosIdObjeto = [data.alimentosId];
         data.alimentosId = alimentosIdObjeto;
         data.Fecha = fecha;
-        console.log('fecha',data.Fecha)
         try {
             const response = await postDataAutorizacion(urlPostContenedor, data, user);
 
@@ -55,7 +53,6 @@ export default function AgregarAlimentoMovil(){
 
         fetchData();
     }, [url, user.jwToken]);
-    console.log(alimento)
     return<>
     {alimento ? <Grafica proteina={alimento.proteina} carbohidratos={alimento.carbohidratos} grasa={alimento.grasa}/> : ''}
     <main className={`${styles.formulario}`}>

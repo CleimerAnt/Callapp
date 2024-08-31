@@ -41,7 +41,6 @@ export default function FormularioContenedorAlimentos() {
         element.eliminar = 'eliminar';
     });
 
-    console.log('Contenedor Alimentos');
     return (
         <>
             <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>

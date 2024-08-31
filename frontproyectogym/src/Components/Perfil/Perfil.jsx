@@ -4,7 +4,6 @@ import CerrarSesion from "../CerrarSesion/CerrarSesion";
 import { useNavigate } from "react-router-dom";
 
 export default function Perfil({imagenPerfil, calorias , porcentajeCalculado, fecha, caloriasGenerales, usuario}){
-    console.log('Usuario',usuario)
     const navigate = useNavigate();
 
     return <>

@@ -30,11 +30,9 @@ export default function EditarPerfil(){
     const obtenerDatosUser = async () =>{
         const BaseUrl = import.meta.env.VITE_API_BASE_MIPERFIL;
         const url = `${BaseUrl}id=${user.id}`;
-        console.log('Usuario', user)
         try{
             const response = await getDatosUser(url, user.jwToken);
             setData(response);
-            console.log(response)
         }
         catch(err){
             throw err;
@@ -74,13 +72,12 @@ export default function EditarPerfil(){
             formData.append('file', newData.file[0]);
         }
 
-        console.log('New Data',formData)
         const BaseUrl = import.meta.env.VITE_API_BASEEDITARPERFILUSUARIO;
         const url =  `${BaseUrl}id=${user.id}`;
 
         try {
             const response = await EditarDataAutorizacion(url, formData, user, true);
-            console.log(response)
+
             if(response.status === 200){
                 swal({
                     title: "Aviso",

@@ -1,9 +1,4 @@
 export default async function postUsuario(url, formData) {
-    console.log('FormData contents:');
-    for (let pair of formData.entries()) {
-        console.log(pair[0]+ ': ' + pair[1]);
-    }
-
     try {
         const response = await fetch(url, {
             method: 'POST',

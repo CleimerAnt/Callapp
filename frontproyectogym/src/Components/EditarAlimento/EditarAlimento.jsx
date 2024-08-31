@@ -51,19 +51,16 @@ export default function EditarAlimento(){
     
 
     const onSubmit = handleSubmit(async (data) => {
-        console.log(data)
         const BaseUrl = import.meta.env.VITE_API_BASE_EDITARALIMENTOPOST;
         const url = `${BaseUrl}id=${alimentoId}`;
 
         try{
             const response = await EditarDataAutorizacion(url, data, user);
-
             if (response.status === 200) {
                 swal('Editado', 'Alimento editado exitosamente', "success").then(() => {
                     navigate(`/accionesAlimentos/${fecha}`);
                 });
             } else {
-                console.log(response)
                 swal('Error', response, "warning");
             }
         }

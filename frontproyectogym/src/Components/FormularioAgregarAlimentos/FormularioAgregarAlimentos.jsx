@@ -14,13 +14,11 @@ export default function FormularioAgregarAlimentos({ id, comida, userId, macros 
 
     const enviarFormulario = async (data) => {
         
-        console.log(data)
         const alimentosIdObjeto = [data.alimentosId];
         data.alimentosId = alimentosIdObjeto;
         data.Fecha = fecha;
         try {
             const response = await postDataAutorizacion(urlPostContenedor, data, user);
-            console.log(response)
             if (response.status === 201) {
                 swal('Agregado', 'Alimento agregado exitosamente', "success")
                     .then(() => {
