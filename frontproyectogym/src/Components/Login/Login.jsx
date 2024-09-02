@@ -1,6 +1,6 @@
 import CampoInput from '../CampoInput/CampoInput';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { json, Link, useNavigate } from 'react-router-dom';
 import HeaderInicio from '../HeaderInicio/HeaderInicio';
 import getDatosUser from '../../Datos/ObtenerCalculoCalorias';
 import styles from '../Login/Login.module.css';
@@ -20,9 +20,9 @@ export default function Login() {
     const url = import.meta.env.VITE_API_BASE_LOGIN;
     try {
         const result = await login(url, data);
-        setUser(result);
-        setHasAuthenticated(true);
-
+        setUser(result)
+        setHasAuthenticated(true);      
+        localStorage.setItem('user', JSON.stringify(result));
     } catch (error) {
         console.error('Error al autenticar:', error);
         return error;
@@ -32,6 +32,7 @@ export default function Login() {
     useEffect(() => {
     if (hasAuthenticated) {
         if (user !== null) {
+            
             if (user.hasError === false) {
                 const baseUrl = import.meta.env.VITE_API_BASE_URL;
                 const url = `${baseUrl}id=${user.id}`;

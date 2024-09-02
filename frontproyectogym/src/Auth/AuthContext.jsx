@@ -3,8 +3,19 @@ import { createContext, useState, useEffect } from 'react';
 export const AuthContext = createContext();
 
 export default function AuthContextProvider({ children }) {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(() => {
+        const userStorage = localStorage.getItem('user');
+        return userStorage ? JSON.parse(userStorage) : null
+    });
+
     const [width, setWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const userStorage = JSON.parse(localStorage.getItem('user'));
+        if (userStorage) {
+            setUser(userStorage);
+        }
+    }, []);
 
     useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
@@ -23,7 +34,7 @@ export default function AuthContextProvider({ children }) {
 
 
     return (
-        <AuthContext.Provider value={{ user, setUser, estaAutenticado, width }}>
+        <AuthContext.Provider value={{ user, setUser,estaAutenticado, width, }}>
             {children}
         </AuthContext.Provider>
     );
