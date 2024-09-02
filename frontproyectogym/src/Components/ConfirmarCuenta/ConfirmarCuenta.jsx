@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function ConfirmarCuenta(){
     const urlActual = window.location.href;
-
     obtenerTokenUserId(urlActual);
 
     return <>
@@ -13,7 +12,7 @@ export default function ConfirmarCuenta(){
         <div className="card-body">
             <h5 className="card-title">Cuenta Confirmada</h5>
             <p className="card-text">Volver al formulario de inicio de sesión</p>
-            <Link className="btn btn-primary" to={'/'}>Iniciar Sesión</Link>
+            <Link to={'/'}>Inciar Sesión</Link>
         </div>
     </div>
 </>

@@ -136,14 +136,14 @@ export default function MiPerfil(){
         
     }
 
-    const onEdit = handleSubmit ( async (data) => {
+    const onEdit = handleSubmit(async (data) => {
         const newData = {
             PrimerNombre: data.PrimerNombre,
             Apellido: data.Apellido,
             UserName: data.UserName,
             file: data.file
         }
-
+    
         const formData = new FormData();
         for (const key in newData) {
             formData.append(key, newData[key]);
@@ -151,13 +151,26 @@ export default function MiPerfil(){
         if (newData.file && newData.file[0]) {
             formData.append('file', newData.file[0]);
         }
-
+    
+        const loadingAlert = swal({
+            title: "Actualizando...",
+            text: "Por favor, espera mientras se actualizan los datos.",
+            icon: "info",
+            buttons: false,
+            closeOnClickOutside: false,
+            closeOnEsc: false,
+            timer: 10000,
+        });
+    
         const BaseUrl = import.meta.env.VITE_API_BASEEDITARPERFILUSUARIO;
         const url = `${BaseUrl}id=${user.id}`;
-
+    
         try {
             const response = await EditarDataAutorizacion(url, formData, user, true);
-            if(response.status === 200){
+    
+            swal.close();
+    
+            if (response.status === 200) {
                 swal({
                     title: "Aviso",
                     text: "Datos actualizados",
@@ -177,13 +190,18 @@ export default function MiPerfil(){
                     }
                 });
             }
-
+    
         } catch (error) {
             console.error('Ocurrió un error:', error);
+    
+            swal.close();
+    
+            swal("Error", "Hubo un problema al actualizar los datos.", "error");
             throw error; 
         }
-
-    })
+    
+    });
+    
 
     return <>
     <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>

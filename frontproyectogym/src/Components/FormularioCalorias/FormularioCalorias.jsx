@@ -220,7 +220,7 @@ export default function FormularioCalorias() {
 
         <CampoInput
             name='Altura'
-            label={'Altura (CM)'}
+            label={'Altura (Pies)'}
             placeholder='Altura'
             type='text'
             required={true}

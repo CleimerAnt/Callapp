@@ -10,35 +10,32 @@ import EditarDataAutorizacion from "../../Datos/EditarDataAutorizacion"
 import styles from '../EditarPerfil/EditarPerfil.module.css'
 
 export default function EditarPerfil(){
-    const {register, formState : {errors}, handleSubmit,reset} = useForm()
-    const {user} = useContext(AuthContext)
-    const {fecha} = useParams();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const { user } = useContext(AuthContext);
+    const { fecha } = useParams();
     const navigate = useNavigate();
     const [data, setData] = useState();
     let imagenPerfil = imagen;
 
-    if(data){
-        if(data.imgUrl !== "" && data.imgUrl !== null){
+    if (data) {
+        if (data.imgUrl !== "" && data.imgUrl !== null) {
             const BaseUrl = import.meta.env.VITE_API_BASE_IMGURL;
             imagenPerfil = `${BaseUrl}${data.imgUrl}`;
-        }else{
+        } else {
             imagenPerfil = imagen;
         }
-        
     }
 
-    const obtenerDatosUser = async () =>{
+    const obtenerDatosUser = async () => {
         const BaseUrl = import.meta.env.VITE_API_BASE_MIPERFIL;
         const url = `${BaseUrl}id=${user.id}`;
-        try{
+        try {
             const response = await getDatosUser(url, user.jwToken);
             setData(response);
-        }
-        catch(err){
+        } catch (err) {
             throw err;
         }
     }
-
 
     useEffect(() => {
         if (data) {
@@ -55,8 +52,7 @@ export default function EditarPerfil(){
         obtenerDatosUser();
     }, [])
 
-
-    const onEdit = handleSubmit ( async (data) => {
+    const onEdit = handleSubmit(async (data) => {
         const newData = {
             PrimerNombre: data.PrimerNombre,
             Apellido: data.Apellido,
@@ -72,13 +68,25 @@ export default function EditarPerfil(){
             formData.append('file', newData.file[0]);
         }
 
+        const loadingAlert = swal({
+            title: "Actualizando...",
+            text: "Por favor, espera mientras se actualizan los datos.",
+            icon: "info",
+            buttons: false,
+            closeOnClickOutside: false,
+            closeOnEsc: false,
+            timer: 10000,
+        });
+
         const BaseUrl = import.meta.env.VITE_API_BASEEDITARPERFILUSUARIO;
-        const url =  `${BaseUrl}id=${user.id}`;
+        const url = `${BaseUrl}id=${user.id}`;
 
         try {
             const response = await EditarDataAutorizacion(url, formData, user, true);
 
-            if(response.status === 200){
+            swal.close();
+
+            if (response.status === 200) {
                 swal({
                     title: "Aviso",
                     text: "Datos actualizados",
@@ -101,10 +109,14 @@ export default function EditarPerfil(){
 
         } catch (error) {
             console.error('Ocurrió un error:', error);
-            throw error; 
+
+            swal.close();
+
+            swal("Error", "Hubo un problema al actualizar los datos.", "error");
+            throw error;
         }
 
-    })
+    });
 
     return <>
     <div className={styles.imagenPerfil}>

@@ -30,7 +30,7 @@ const loadingAlert = swal({
     buttons: false,
     closeOnClickOutside: false,
     closeOnEsc: false,
-    timer: 5000,
+    timer: 10000,
 });
 
 try {
@@ -93,6 +93,9 @@ try {
             required={true}
             errors={errors}
             placeholder=''
+            validate={coreo => {
+                
+            }}
         />
         <CampoInput
             name='UserName'
