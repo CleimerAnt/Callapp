@@ -9,9 +9,9 @@ import HeaderInicio from '../HeaderInicio/HeaderInicio';
 export default function Inicio() {
   return (
     <>
-  <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
-      <HeaderInicio />
-  </Contenedor>
+    <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center '}>
+        <HeaderInicio home={true} />
+    </Contenedor>
 
   <main className={`${styles.main}`}>
     <section className={`${styles.subContainer} container`}>

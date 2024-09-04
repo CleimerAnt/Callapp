@@ -56,7 +56,7 @@ try {
 
     return (
         <>
-    <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
+    <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center'}>
         <HeaderInicio home={true} />
     </Contenedor>
 

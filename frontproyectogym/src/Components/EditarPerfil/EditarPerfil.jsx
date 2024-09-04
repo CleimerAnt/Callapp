@@ -75,7 +75,7 @@ export default function EditarPerfil(){
             buttons: false,
             closeOnClickOutside: false,
             closeOnEsc: false,
-            timer: 10000,
+            timer: 120000,
         });
 
         const BaseUrl = import.meta.env.VITE_API_BASEEDITARPERFILUSUARIO;
