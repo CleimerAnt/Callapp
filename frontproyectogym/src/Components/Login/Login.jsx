@@ -1,6 +1,6 @@
 import CampoInput from '../CampoInput/CampoInput';
 import { useForm } from 'react-hook-form';
-import { json, Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import HeaderInicio from '../HeaderInicio/HeaderInicio';
 import getDatosUser from '../../Datos/ObtenerCalculoCalorias';
 import styles from '../Login/Login.module.css';
@@ -12,49 +12,62 @@ import swal from 'sweetalert';
 import login from '../../Datos/Login';
 
 export default function Login() {
-    const { register, formState: { errors }, handleSubmit } = useForm();
-    const { user, setUser} = useContext(AuthContext);
-    const [hasAuthenticated, setHasAuthenticated] = useState(false);
-    const navigate = useNavigate();
-    const onsubmit = handleSubmit(async (data) => {
+const { register, formState: { errors }, handleSubmit } = useForm();
+const { user, setUser } = useContext(AuthContext);
+const [hasAuthenticated, setHasAuthenticated] = useState(false);
+const navigate = useNavigate();
+
+const onsubmit = handleSubmit(async (data) => {
     const url = import.meta.env.VITE_API_BASE_LOGIN;
     try {
+
+        swal({
+            title: "Cargando...",
+            text: "Espere mientras procesamos su autenticación",
+            icon: "info",
+            buttons: false,
+            closeOnClickOutside: false,
+        });
+
         const result = await login(url, data);
-        setUser(result)
+        setUser(result);
         setHasAuthenticated(true);      
         localStorage.setItem('user', JSON.stringify(result));
+
+        swal.close();
+
     } catch (error) {
         console.error('Error al autenticar:', error);
+        swal.close();
+        swal("Error", "Hubo un problema con el login", "error");
         return error;
     }
-    });
+});
 
-    useEffect(() => {
+useEffect(() => {
     if (hasAuthenticated) {
         if (user !== null) {
-            
             if (user.hasError === false) {
                 const baseUrl = import.meta.env.VITE_API_BASE_URL;
                 const url = `${baseUrl}id=${user.id}`;
 
                 async function getCalorias(){
-                    const response = await  getDatosUser(url, user.jwToken)
-                    const data = await response
+                    const response = await getDatosUser(url, user.jwToken);
+                    const data = await response;
                     if(data.status === 204){
-                        navigate('/FormularioCalorias')
-                    }
-                    else{
-                        navigate(`/PaginaPrincipal/${new Date().toISOString()}`) 
+                        navigate('/FormularioCalorias');
+                    } else {
+                        navigate(`/PaginaPrincipal/${new Date().toISOString()}`);
                     }
                 }
-                getCalorias()
+                getCalorias();
 
-        } else if (user.hasError === true) {
-            swal("Error:", user.error, "error");
-        } else if (user.isVerified === false) {
-            swal("Aviso", "Su Cuenta no esta activada", "warning");
+            } else if (user.hasError === true) {
+                swal("Error:", user.error, "error");
+            } else if (user.isVerified === false) {
+                swal("Aviso", "Su Cuenta no está activada", "warning");
+            }
         }
-    }
         setHasAuthenticated(false);
     }
 }, [user, hasAuthenticated]);

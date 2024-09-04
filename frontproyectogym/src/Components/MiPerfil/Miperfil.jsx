@@ -208,7 +208,7 @@ export default function MiPerfil(){
         <HeaderPaginaPrincipal fecha={fecha} home={true} />
     </Contenedor>
 
-    <section className={styles.perfil}>
+    <section className={`${styles.perfil} mt-5`}>
         {width <= 767 ? <Link to={`/EditarPerfil/${fecha}`} className='btn btn-secondary mb-4'>Editar perfil</Link> : ''}
 
         <img className={styles.imagen} src={imagenPerfil ? imagenPerfil : imagenPerfilExtra} alt="Imagen de perfil" />

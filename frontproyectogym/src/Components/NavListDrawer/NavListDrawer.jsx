@@ -1,4 +1,4 @@
-import { Modal,Box, Button, List, ListItem, ListItemButton, Divider } from "@mui/material";
+import { Modal,Box, Button, List, ListItem, ListItemButton, Avatar, ListItemAvatar } from "@mui/material";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
@@ -31,7 +31,8 @@ export default function NavListDrawer({navLinks = []}){
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <List disablePadding>
+                    <List disablePadding sx={{display : 'flex', alignItems : 'center', justifyContent : 'center', flexDirection : 'column'}}>
+                    <Avatar sx={{width : '65px', mb:2, height : '70px'}} alt="Fuego Calorico" src={fuegoCalorico}/>
                     {navLinks.map((item, key) => (
                     <ListItem key={key} disablePadding>
                         <ListItemButton key={key} sx={{fontSize : '30px'}} to={item.enlace} component={NavLink}>{item.titulo}</ListItemButton>

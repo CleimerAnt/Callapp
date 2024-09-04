@@ -1,7 +1,7 @@
 import styles from '../HeaderPaginaPrincipal/HeaderPaginaPrincipal.module.css'
 import { Link } from "react-router-dom";
 import fuegoCalorico from '../../assets/fuegoCalorico.png';
-import { Box } from '@mui/material';
+import { AppBar, Box, Toolbar } from '@mui/material';
 import NavListDrawer from '../NavListDrawer/NavListDrawer';
 
 export default function HeaderPaginaPrincipal({fecha}){
@@ -29,9 +29,13 @@ export default function HeaderPaginaPrincipal({fecha}){
         </Box>
     </Box>
 
-    <Box sx={{display : {xs: 'block', sm : 'none'}}}>
+    <AppBar sx={{display : {xs: 'block', sm : 'none'}}} position={'fixed'}>
+        <Toolbar sx={{alignItems : 'center', justifyContent: 'center'}}>
+            <Box  >
         <NavListDrawer navLinks={navLinks}/>
-    </Box>
+            </Box>
+        </Toolbar>
+    </AppBar>
     
 </>
 

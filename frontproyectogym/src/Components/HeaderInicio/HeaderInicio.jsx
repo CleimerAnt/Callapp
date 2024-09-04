@@ -38,7 +38,7 @@ export default function HeaderInicio({ home = false }) {
 </Box>
 
 
-    <Box sx={{display : {xs: 'block', sm : 'none'}}}>
+    <Box sx={{display : {xs: 'block', sm : 'none'}}} >
         <NavListDrawer navLinks={navLinks}/>
     </Box>
     

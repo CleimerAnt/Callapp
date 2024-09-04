@@ -82,7 +82,7 @@ export default function PaginaPrincipal() {
                 <HeaderPaginaPrincipal fecha={fecha} />
         </Contenedor>
 
-        <Contenedor margin="mt-4" elemento="main">
+        <Contenedor margin="mt-5" elemento="main">
     <div className="container mt-3">
         <div className="row">
             {/* Columna izquierda */}
