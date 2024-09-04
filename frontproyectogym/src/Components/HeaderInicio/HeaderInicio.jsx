@@ -2,8 +2,7 @@ import styles from '../HeaderInicio/HeaderInicio.module.css'
 import fuegoCalorico from '../../assets/fuegoCalorico.png';
 import { Link } from 'react-router-dom';
 import NavListDrawer from '../NavListDrawer/NavListDrawer';
-import { AppBar, Box, Drawer, Typography } from '@mui/material';
-import { useState } from 'react';
+import { Box } from '@mui/material';
 
 export default function HeaderInicio({ home = false }) {
 
@@ -47,8 +46,3 @@ export default function HeaderInicio({ home = false }) {
 </>         
     );
 }
-
-
-{/*
-       
-    */}
