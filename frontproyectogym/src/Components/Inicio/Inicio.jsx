@@ -2,16 +2,24 @@ import Contenedor from '../Contenedor/Contenedor';
 import Logo from '../../assets/logo.png'
 import check1 from '../../assets/Check.svg';
 import check2 from '../../assets/Check 2.svg';
+import { Box, Button } from '@mui/material';
 import check3 from '../../assets/Check 3.svg';
+import { NavLink } from "react-router-dom";
 import styles from '../Inicio/Inicio.module.css';
 import HeaderInicio from '../HeaderInicio/HeaderInicio';
 
 export default function Inicio() {
   return (
     <>
-    <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center '}>
-        <HeaderInicio home={true} />
+      <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4  '}>
+        <HeaderInicio barra={false} home={true} />
     </Contenedor>
+  
+
+    <Box sx={{display : {xs : 'flex', sm: 'none'}, mt: 0,flexDirection : 'row', gap : '20px',alignItems: 'center', justifyContent : 'center' }}>
+    <Button to={'/Registro'} variant='contained' color='inherit' component={NavLink}>Crear Cuenta</Button>
+      <Button to={'/Login'} variant='contained' component={NavLink}>Iniciar Sesión</Button>
+    </Box>
 
   <main className={`${styles.main}`}>
     <section className={`${styles.subContainer} container`}>

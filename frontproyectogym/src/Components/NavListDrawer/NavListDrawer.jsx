@@ -9,7 +9,6 @@ export default function NavListDrawer({navLinks = []}){
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);  
 
-
     const style = {
         position: 'absolute',
         top: '50%',

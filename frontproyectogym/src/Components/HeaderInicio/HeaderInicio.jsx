@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import NavListDrawer from '../NavListDrawer/NavListDrawer';
 import { Box } from '@mui/material';
 
-export default function HeaderInicio({ home = false }) {
+export default function HeaderInicio({ home = false, barra = true }) {
 
     const navLinks = [
         {
@@ -38,7 +38,7 @@ export default function HeaderInicio({ home = false }) {
 </Box>
 
 
-    <Box sx={{display : {xs: 'block', sm : 'none'}}} >
+    <Box sx={{display : {xs: barra ? 'block' : 'none', sm : 'none'}}} >
         <NavListDrawer navLinks={navLinks}/>
     </Box>
     

@@ -14,7 +14,6 @@ export default function FormularioRegistro() {
     const onSubmit = handleSubmit(async (data) => {
     const url = import.meta.env.VITE_API_BASE_REGISTER;
 
-
     const formData = new FormData();
 for (const key in data) {
     formData.append(key, data[key]);
@@ -22,6 +21,7 @@ for (const key in data) {
 if (data.file && data.file[0]) {
     formData.append('file', data.file[0]);
 }
+
 
 const loadingAlert = swal({
     title: "Registrando...",
@@ -109,7 +109,8 @@ try {
                 !/\s/.test(value) || 'El campo no puede contener espacios en blanco.'
             }
         />
-        <CampoInput
+    
+            <CampoInput
             name='file'
             type='file'
             label='Foto de Perfil'
