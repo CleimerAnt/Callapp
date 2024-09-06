@@ -109,7 +109,8 @@ export default function FormularioCalorias() {
             name='Altura'
             label={'Altura (Pies)'}
             placeholder='Altura'
-            type='text'
+            type='number'
+            decimal={true}
             required={true}
             errors={errors}
             register={register}
@@ -198,6 +199,7 @@ export default function FormularioCalorias() {
             label={'Edad'}
             placeholder={'Edad'}
             type='number'
+            decimal={true}
             required={true}
             errors={errors}
             register={register}
@@ -222,7 +224,8 @@ export default function FormularioCalorias() {
             name='Altura'
             label={'Altura (Pies)'}
             placeholder='Altura'
-            type='text'
+            type='number'
+            decimal={true}
             required={true}
             errors={errors}
             register={register}
