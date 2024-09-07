@@ -14,7 +14,7 @@ export default function AccionesAlimentos(){
     const [alimentos, setAlimentos] = useState([])
     const BaseUrl = import.meta.env.VITE_API_BASE_ACCIONESALIMENTOS
     const url = `${BaseUrl}id=${user.id}`;
-    const cabeza = ['Nombre del Alimento', 'Carbohidratos', 'Proteina', 'Grasa', 'Calorias', 'Descripcion', 'Acciones'];
+    const cabeza = ['Nombre del Alimento', 'Carbohidratos', 'Proteina', 'Grasa', 'Calorias', 'Descripcion', 'Eliminar', 'Editar'];
     const elmentos = ['nombreAlimento', 'carbohidratos', 'proteina', 'grasa', 'calorias', 'descripcion', 'funcion', 'editar']
 
     useEffect(() => {
@@ -57,10 +57,12 @@ export default function AccionesAlimentos(){
                     <Link className='btn btn-secondary w-75' to={`/EditarAlimento/${alimento.id}/${fecha}`}>Editar</Link>
                     </div>
                 </div>
-            )) : ''}
+            )) : <h1 className="text-center mt-2">No hay alimentos</h1>}
         </section> : width > 992 ?  <section className={`mt-4 container ${styles.contenedorEscritorio}`}>
-        {Array.isArray(alimentos) ? <ContenedorAlimentos  aray={alimentos ? alimentos : []} elementos={elmentos} thead={cabeza}/> : <h1 className="text-center mt-4">No hay alimentos</h1>}
+        {Array.isArray(alimentos) ? <ContenedorAlimentos  aray={alimentos ? alimentos : []} elementos={elmentos} thead={cabeza}/> : <ContenedorAlimentos  aray={[]} elementos={elmentos} thead={cabeza}/>}
         </section> : ''}
     </main>
     </>
 }
+
+{/*<h1 className="text-center mt-4">No hay alimentos</h1> */}

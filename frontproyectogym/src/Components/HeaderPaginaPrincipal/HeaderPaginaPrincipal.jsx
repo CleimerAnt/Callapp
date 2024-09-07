@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import fuegoCalorico from '../../assets/fuegoCalorico.png';
 import { AppBar, Box, Toolbar } from '@mui/material';
 import NavListDrawer from '../NavListDrawer/NavListDrawer';
+import CerrarSesion from '../CerrarSesion/CerrarSesion';
 
 export default function HeaderPaginaPrincipal({fecha}){
 
@@ -12,6 +13,9 @@ export default function HeaderPaginaPrincipal({fecha}){
         },
         {
             titulo: 'Alimentos', enlace : `/accionesAlimentos/${fecha}`
+        }
+        ,{
+            accion : <CerrarSesion />
         }
     ];
 
@@ -26,6 +30,7 @@ export default function HeaderPaginaPrincipal({fecha}){
         <Box component={'nav'} className={`${styles.links} mt-4 mt-md-0 d-flex flex-column flex-md-row align-items-center justify-content-center`}>
             <Link to={`/PaginaPrincipal/${fecha}`} className="mb-3 mb-md-0">Página Principal</Link>
             <Link to={`/accionesAlimentos/${fecha}`} className="mb-3 mb-md-0 ms-md-4">Mantenimiento de alimentos</Link>
+            <CerrarSesion texto={true}/>
         </Box>
     </Box>
 

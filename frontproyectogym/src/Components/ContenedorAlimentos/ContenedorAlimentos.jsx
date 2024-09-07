@@ -80,13 +80,3 @@ export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elem
     );
 }
 
-
-{/*
-    <FormularioAgregarAlimentos 
-                                                id={element.id} 
-                                                userId={user.id} 
-                                                comida={element.horaio} 
-                                                grafica={[element.proteina, element.carbohidratos, element.grasa]}
-                                                fecha={fecha}
-                                            />
-    */}

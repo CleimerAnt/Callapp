@@ -55,7 +55,7 @@ export default function CampoInput({
                     readOnly={soloLectura} 
                 />
             )}
-            {errors[name] && <span className="mt-2">{errors[name].message}</span>}
+            {errors[name] && <span style={{color : '#EA0001'}} className="mt-2">{errors[name].message}</span>}
         </div>
     );
 }

@@ -1,0 +1,16 @@
+.boton{
+    border: none;
+    font-size: 20px;
+    color: #000000;
+    transition: border-bottom 0.2s linear;
+}
+
+.boton:hover{
+    border-bottom: #F8664F 2px solid;
+}
+
+.movil{
+    border: none;
+    font-size: 25px;
+    background-color: white;
+}
