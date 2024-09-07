@@ -44,6 +44,11 @@ const onsubmit = handleSubmit(async (data) => {
     }
 });
 
+const formatDateForRepublicaDominicana = (date) => {
+    return new Date(date.toLocaleString('en-US', { timeZone: 'America/Santo_Domingo' })).toISOString();
+};
+
+
 useEffect(() => {
     if (hasAuthenticated) {
         if (user !== null) {
@@ -57,7 +62,8 @@ useEffect(() => {
                     if(data.status === 204){
                         navigate('/FormularioCalorias');
                     } else {
-                        navigate(`/PaginaPrincipal/${new Date().toISOString()}`);
+                        const formattedDate = formatDateForRepublicaDominicana(new Date());
+                        navigate(`/PaginaPrincipal/${formattedDate}`);
                     }
                 }
                 getCalorias();

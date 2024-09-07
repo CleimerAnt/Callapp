@@ -16,9 +16,11 @@ export default function EditarPerfil(){
     const [data, setData] = useState();
     let imagenPerfil = imagen;
 
-    const fechaIso = () =>{
-        return new Date().toISOString();
-    }
+    const fechaIso = () => {
+        const fechaRD = new Date().toLocaleString('en-US', { timeZone: 'America/Santo_Domingo' });
+        return new Date(fechaRD).toISOString();
+    };
+    
 
     if (data) {
         if (data.imgUrl !== "" && data.imgUrl !== null) {

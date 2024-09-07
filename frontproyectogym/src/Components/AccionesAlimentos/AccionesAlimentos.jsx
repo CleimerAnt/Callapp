@@ -17,8 +17,6 @@ export default function AccionesAlimentos(){
     const cabeza = ['Nombre del Alimento', 'Carbohidratos', 'Proteina', 'Grasa', 'Calorias', 'Descripcion', 'Eliminar', 'Editar'];
     const elmentos = ['nombreAlimento', 'carbohidratos', 'proteina', 'grasa', 'calorias', 'descripcion', 'funcion', 'editar'];
 
-
-
     useEffect(() => {
         getDatosUser(url, user.jwToken)
             .then(res => {

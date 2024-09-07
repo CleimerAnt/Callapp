@@ -5,15 +5,20 @@ import styles from '../ContenedorFechas/ContenedorFechas.module.css';
 const ContenedorFechas = () => {
     const navigate = useNavigate();
     const [selectedDate, setSelectedDate] = useState(new Date());
-    const formatDate = (date) => {
-        return date.toISOString(); 
+
+    const getDominicanDate = (date) => {
+        return new Date(date.toLocaleString('en-US', { timeZone: 'America/Santo_Domingo' }));
     };
-    
+
+    const formatDateForURL = (date) => {
+        return new Date(date.toLocaleString('en-US', { timeZone: 'America/Santo_Domingo' })).toISOString();
+    };
+
     const goToPreviousDay = () => {
         setSelectedDate(prevDate => {
             const newDate = new Date(prevDate);
             newDate.setDate(newDate.getDate() - 1);
-            navigate(`/PaginaPrincipal/${formatDate(newDate)}`);
+            navigate(`/PaginaPrincipal/${formatDateForURL(newDate)}`);
             return newDate;
         });
     };
@@ -22,7 +27,7 @@ const ContenedorFechas = () => {
         setSelectedDate(prevDate => {
             const newDate = new Date(prevDate);
             newDate.setDate(newDate.getDate() + 1);
-            navigate(`/PaginaPrincipal/${formatDate(newDate)}`);
+            navigate(`/PaginaPrincipal/${formatDateForURL(newDate)}`);
             return newDate;
         });
     };
@@ -30,7 +35,7 @@ const ContenedorFechas = () => {
     return (
         <div className={`${styles.datePicker}`}>
             <button onClick={goToPreviousDay}>◀</button>
-            <span>{selectedDate.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</span>
+            <span>{getDominicanDate(selectedDate).toLocaleDateString('es-DO', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</span>
             <button onClick={goToNextDay}>▶</button>
         </div>
     );

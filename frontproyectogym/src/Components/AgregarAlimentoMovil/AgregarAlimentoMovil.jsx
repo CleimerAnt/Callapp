@@ -20,9 +20,11 @@ export default function AgregarAlimentoMovil(){
     const BaseUrl = import.meta.env.VITE_API_BASE_OBTENERALIMENTOSPORELID;
     const url = `${BaseUrl}id=${id}`;
 
-    const fechaIso = () =>{
-        return new Date().toISOString();
-    }
+    const fechaIso = () => {
+        const fechaRD = new Date().toLocaleString('en-US', { timeZone: 'America/Santo_Domingo' });
+        return new Date(fechaRD).toISOString();
+    };
+    
 
     const onSubmit = handleSubmit( async (data) => {
         const alimentosIdObjeto = [data.alimentosId];

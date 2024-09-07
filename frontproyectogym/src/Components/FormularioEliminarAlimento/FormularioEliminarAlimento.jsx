@@ -11,9 +11,11 @@ export default function FormularioEliminarAlimento() {
     const {alimentoId, contenedorId} = useParams();
     const navigate = useNavigate()
 
-    const fechaIso = () =>{
-        return new Date().toISOString();
-    }
+    const fechaIso = () => {
+        const fechaRD = new Date().toLocaleString('en-US', { timeZone: 'America/Santo_Domingo' });
+        return new Date(fechaRD).toISOString();
+    };
+    
 
     const onSubmit = handleSubmit (async (data) => {
         const BaseUrl = import.meta.env.VITE_API_BASE_ELIMINARALIMENTO;
@@ -24,7 +26,7 @@ export default function FormularioEliminarAlimento() {
             const response = await EliminarDatos(url, user);
             if (response.ok) {
                 swal('Eliminado', 'Alimento eliminado exitosamente', "success").then(() => {
-                    navigate(`/PaginaPrincipal/${new Date().toISOString()}`); 
+                    navigate(`/PaginaPrincipal/${fechaIso()}`); 
                 });
             }
             else{

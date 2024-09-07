@@ -7,9 +7,11 @@ import CerrarSesion from '../CerrarSesion/CerrarSesion';
 
 export default function HeaderPaginaPrincipal({fecha, principal = false}){
 
-    const fechaIso = () =>{
-        return new Date().toISOString();
-    }
+    const fechaIso = () => {
+        const fechaRD = new Date().toLocaleString('en-US', { timeZone: 'America/Santo_Domingo' });
+        return new Date(fechaRD).toISOString();
+    };
+    
 
     const navLinks = [
         {

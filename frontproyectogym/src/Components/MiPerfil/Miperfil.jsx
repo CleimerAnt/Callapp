@@ -21,9 +21,11 @@ export default function MiPerfil(){
     const [data, setData] = useState();
     const navigate = useNavigate();
 
-    const fechaIso = () =>{
-        return new Date().toISOString();
-    }
+    const fechaIso = () => {
+        const fechaRD = new Date().toLocaleString('en-US', { timeZone: 'America/Santo_Domingo' });
+        return new Date(fechaRD).toISOString();
+    };
+    
 
     const obtenerDatosUser = async () =>{
         const BaseUrl = import.meta.env.VITE_API_BASE_MIPERFIL;

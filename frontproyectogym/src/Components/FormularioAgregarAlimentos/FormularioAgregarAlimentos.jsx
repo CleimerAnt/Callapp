@@ -12,9 +12,11 @@ export default function FormularioAgregarAlimentos({ id, comida, userId, macros 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate()
 
-    const fechaIso = () =>{
-        return new Date().toISOString();
-    }
+    const fechaIso = () => {
+        const fechaRD = new Date().toLocaleString('en-US', { timeZone: 'America/Santo_Domingo' });
+        return new Date(fechaRD).toISOString();
+    };
+    
 
     const enviarFormulario = async (data) => {
         
