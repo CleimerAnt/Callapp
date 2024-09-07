@@ -18,7 +18,11 @@ export default function AgregarAlimentoMovil(){
     const {id, comida, fecha} = useParams()
     const urlPostContenedor = import.meta.env.VITE_API_BASE_CONTENEDORALIMENTOSGET;
     const BaseUrl = import.meta.env.VITE_API_BASE_OBTENERALIMENTOSPORELID;
-    const url = `${BaseUrl}id=${id}`
+    const url = `${BaseUrl}id=${id}`;
+
+    const fechaIso = () =>{
+        return new Date().toISOString();
+    }
 
     const onSubmit = handleSubmit( async (data) => {
         const alimentosIdObjeto = [data.alimentosId];
@@ -30,7 +34,7 @@ export default function AgregarAlimentoMovil(){
             if (response.status === 201) {
                 swal('Agregado', 'Alimento agregado exitosamente', 'success')
         .then(() => {
-            navigate(`/PaginaPrincipal/${fecha}`);
+            navigate(`/PaginaPrincipal/${fechaIso()}`);
         });
             } else {
                 swal('Error', 'Error al agregar el alimento', "warning");

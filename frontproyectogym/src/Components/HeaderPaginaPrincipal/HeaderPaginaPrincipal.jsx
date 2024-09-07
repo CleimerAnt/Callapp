@@ -5,12 +5,13 @@ import { AppBar, Box, Toolbar } from '@mui/material';
 import NavListDrawer from '../NavListDrawer/NavListDrawer';
 import CerrarSesion from '../CerrarSesion/CerrarSesion';
 
-export default function HeaderPaginaPrincipal({fecha}){
+export default function HeaderPaginaPrincipal({fecha, principal = false}){
+
+    const fechaIso = () =>{
+        return new Date().toISOString();
+    }
 
     const navLinks = [
-        {
-            titulo: 'Página Principal', enlace : `/PaginaPrincipal/${fecha}`
-        },
         {
             titulo: 'Alimentos', enlace : `/accionesAlimentos/${fecha}`
         }
@@ -19,6 +20,9 @@ export default function HeaderPaginaPrincipal({fecha}){
         }
     ];
 
+    if(principal){
+        navLinks.unshift({titulo: 'Página Principal', enlace: `/PaginaPrincipal/${fechaIso()}`})
+    }
 
     return <>
 
@@ -28,7 +32,7 @@ export default function HeaderPaginaPrincipal({fecha}){
             <img className={`${styles.logo} img-fluid`} src={fuegoCalorico} alt="Fuego Calórico" />
         </Box>
         <Box component={'nav'} className={`${styles.links} mt-4 mt-md-0 d-flex flex-column flex-md-row align-items-center justify-content-center`}>
-            <Link to={`/PaginaPrincipal/${fecha}`} className="mb-3 mb-md-0">Página Principal</Link>
+            {principal ? <Link to={`/PaginaPrincipal/${fechaIso()}`} className="mb-3 mb-md-0">Página Principal</Link> : ''}
             <Link to={`/accionesAlimentos/${fecha}`} className="mb-3 mb-md-0 ms-md-4">Mantenimiento de alimentos</Link>
             <CerrarSesion texto={true}/>
         </Box>

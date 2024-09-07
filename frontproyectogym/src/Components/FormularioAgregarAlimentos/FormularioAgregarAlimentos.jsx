@@ -12,6 +12,10 @@ export default function FormularioAgregarAlimentos({ id, comida, userId, macros 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate()
 
+    const fechaIso = () =>{
+        return new Date().toISOString();
+    }
+
     const enviarFormulario = async (data) => {
         
         const alimentosIdObjeto = [data.alimentosId];
@@ -22,7 +26,7 @@ export default function FormularioAgregarAlimentos({ id, comida, userId, macros 
             if (response.status === 201) {
                 swal('Agregado', 'Alimento agregado exitosamente', "success")
                     .then(() => {
-                        navigate(`/PaginaPrincipal/${fecha}`);
+                        navigate(`/PaginaPrincipal/${fechaIso()}`);
                     });
             } else {
                 swal('Error', 'Error al agregar el alimento', "warning");

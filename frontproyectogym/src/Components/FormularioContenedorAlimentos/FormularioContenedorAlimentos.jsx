@@ -16,6 +16,10 @@ export default function FormularioContenedorAlimentos() {
     const BaseUrl = import.meta.env.VITE_API_BASE_CONTENEDORALIMENTOS;
     const url = `${BaseUrl}id=${user.id}`;
 
+    const fechaIso = () =>{
+        return new Date().toISOString();
+    }
+
     useEffect(() => {
         getDatosUser(url, user.jwToken)
             .then(res => {
@@ -44,7 +48,7 @@ export default function FormularioContenedorAlimentos() {
     return (
         <>
             <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
-                <HeaderPaginaPrincipal fecha={fecha} home= {true}/>
+                <HeaderPaginaPrincipal principal={true} fecha={fecha} home= {true}/>
         </Contenedor>
 
             {width <= 767 ? <article className={`${styles.contenedorMovil} mt-3`}>

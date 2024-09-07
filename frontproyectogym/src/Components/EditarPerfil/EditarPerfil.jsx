@@ -12,10 +12,13 @@ import styles from '../EditarPerfil/EditarPerfil.module.css'
 export default function EditarPerfil(){
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const { user } = useContext(AuthContext);
-    const { fecha } = useParams();
     const navigate = useNavigate();
     const [data, setData] = useState();
     let imagenPerfil = imagen;
+
+    const fechaIso = () =>{
+        return new Date().toISOString();
+    }
 
     if (data) {
         if (data.imgUrl !== "" && data.imgUrl !== null) {
@@ -102,7 +105,7 @@ export default function EditarPerfil(){
                     }
                 }).then((value) => {
                     if (value) {
-                        navigate(`/PaginaPrincipal/${fecha}`);
+                        navigate(`/PaginaPrincipal/${fechaIso()}`);
                     }
                 });
             }

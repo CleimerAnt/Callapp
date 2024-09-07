@@ -70,7 +70,7 @@ export default function EditarAlimento(){
     })
     return <>
     <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
-            <HeaderPaginaPrincipal fecha={fecha} home= {true}/>
+            <HeaderPaginaPrincipal principal={true} fecha={fecha} home= {true}/>
     </Contenedor>
     <main className={styles.main}>
 

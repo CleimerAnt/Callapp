@@ -15,7 +15,9 @@ export default function AccionesAlimentos(){
     const BaseUrl = import.meta.env.VITE_API_BASE_ACCIONESALIMENTOS
     const url = `${BaseUrl}id=${user.id}`;
     const cabeza = ['Nombre del Alimento', 'Carbohidratos', 'Proteina', 'Grasa', 'Calorias', 'Descripcion', 'Eliminar', 'Editar'];
-    const elmentos = ['nombreAlimento', 'carbohidratos', 'proteina', 'grasa', 'calorias', 'descripcion', 'funcion', 'editar']
+    const elmentos = ['nombreAlimento', 'carbohidratos', 'proteina', 'grasa', 'calorias', 'descripcion', 'funcion', 'editar'];
+
+
 
     useEffect(() => {
         getDatosUser(url, user.jwToken)
@@ -34,7 +36,7 @@ export default function AccionesAlimentos(){
 
     return<>
         <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
-                <HeaderPaginaPrincipal fecha={fecha} home= {true}/>
+                <HeaderPaginaPrincipal principal={true} fecha={fecha} home= {true}/>
         </Contenedor>
         
     <main>

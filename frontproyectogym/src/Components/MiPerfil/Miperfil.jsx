@@ -21,6 +21,10 @@ export default function MiPerfil(){
     const [data, setData] = useState();
     const navigate = useNavigate();
 
+    const fechaIso = () =>{
+        return new Date().toISOString();
+    }
+
     const obtenerDatosUser = async () =>{
         const BaseUrl = import.meta.env.VITE_API_BASE_MIPERFIL;
         const url = `${BaseUrl}id=${user.id}`;
@@ -112,7 +116,7 @@ export default function MiPerfil(){
                     }
                 }).then((value) => {
                     if (value) {
-                        navigate(`/PaginaPrincipal/${fecha}`);
+                        navigate(`/PaginaPrincipal/${fechaIso()}`);
                     }
                 });
             }
@@ -186,7 +190,7 @@ export default function MiPerfil(){
                     }
                 }).then((value) => {
                     if (value) {
-                        navigate(`/PaginaPrincipal/${fecha}`);
+                        navigate(`/PaginaPrincipal/${fechaIso()}`);
                     }
                 });
             }
@@ -205,7 +209,7 @@ export default function MiPerfil(){
 
     return <>
     <Contenedor elemento='header' margin={'d-flex justify-content-around mt-4 align-items-center mb-4'}>
-        <HeaderPaginaPrincipal fecha={fecha} home={true} />
+        <HeaderPaginaPrincipal principal={true} fecha={fecha} home={true} />
     </Contenedor>
 
     <section className={`${styles.perfil} mt-5`}>

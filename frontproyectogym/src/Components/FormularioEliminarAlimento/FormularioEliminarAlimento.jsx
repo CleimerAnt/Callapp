@@ -11,6 +11,10 @@ export default function FormularioEliminarAlimento() {
     const {alimentoId, contenedorId} = useParams();
     const navigate = useNavigate()
 
+    const fechaIso = () =>{
+        return new Date().toISOString();
+    }
+
     const onSubmit = handleSubmit (async (data) => {
         const BaseUrl = import.meta.env.VITE_API_BASE_ELIMINARALIMENTO;
         const url = `${BaseUrl}alimentoId=${parseInt(data.alimentoId)}&contenedorId=${parseInt(data.contenedorId)}`;
@@ -39,7 +43,8 @@ export default function FormularioEliminarAlimento() {
                     <h4 className="text-center mt-1 text-white">Eliminar alimento del contenedor</h4>    
                 </div>
                 <div class="card-body">
-                    <p class="card-text text-center" style={{fontSize : "20px"}}>¿Esta seguro que desea eliminar el alimento? </p>
+                    <p class="card-text text-center" style={{fontSize : "20px"}}>
+                    ¿Está seguro de que desea eliminar el alimento? </p>
                     <form onSubmit={onSubmit}>
                     <CampoInput
                         name={'alimentoId'}
