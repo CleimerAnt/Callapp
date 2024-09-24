@@ -17,15 +17,10 @@ import calcularMacronutrientes from '../../Metodos/CalcularMacronutrientes';
 export default function MiPerfil(){
     const {register, formState : {errors}, handleSubmit,reset} = useForm()
     const {fecha} = useParams();
-    const {user, width} = useContext(AuthContext)
+    const {user, width, fechaIso} = useContext(AuthContext)
     const [data, setData] = useState();
     const navigate = useNavigate();
 
-    const fechaIso = () => {
-        const fechaRD = new Date().toLocaleString('en-US', { timeZone: 'America/Santo_Domingo' });
-        return new Date(fechaRD).toISOString();
-    };
-    
 
     const obtenerDatosUser = async () =>{
         const BaseUrl = import.meta.env.VITE_API_BASE_MIPERFIL;

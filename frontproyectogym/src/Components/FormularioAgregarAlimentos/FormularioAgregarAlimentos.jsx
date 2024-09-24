@@ -8,15 +8,10 @@ import { useNavigate } from 'react-router-dom';
 
 export default function FormularioAgregarAlimentos({ id, comida, userId, macros = [], fecha }) {
     const urlPostContenedor = import.meta.env.VITE_API_BASE_FORMULARIOAGREGARALIMENTOS;
-    const { user } = useContext(AuthContext);
+    const { user, fechaIso } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate()
 
-    const fechaIso = () => {
-        const fechaRD = new Date().toLocaleString('en-US', { timeZone: 'America/Santo_Domingo' });
-        return new Date(fechaRD).toISOString();
-    };
-    
 
     const enviarFormulario = async (data) => {
         

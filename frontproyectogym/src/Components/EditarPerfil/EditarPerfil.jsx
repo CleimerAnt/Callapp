@@ -11,16 +11,11 @@ import styles from '../EditarPerfil/EditarPerfil.module.css'
 
 export default function EditarPerfil(){
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
-    const { user } = useContext(AuthContext);
+    const { user, fechaIso } = useContext(AuthContext);
     const navigate = useNavigate();
     const [data, setData] = useState();
     let imagenPerfil = imagen;
 
-    const fechaIso = () => {
-        const fechaRD = new Date().toLocaleString('en-US', { timeZone: 'America/Santo_Domingo' });
-        return new Date(fechaRD).toISOString();
-    };
-    
 
     if (data) {
         if (data.imgUrl !== "" && data.imgUrl !== null) {

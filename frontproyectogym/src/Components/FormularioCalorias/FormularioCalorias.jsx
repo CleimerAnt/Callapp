@@ -10,15 +10,10 @@ import calcularCalorias from "../../Metodos/CalcularCalorias";
 
 export default function FormularioCalorias() {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { user, width } = useContext(AuthContext);
+    const { user, width, fechaIso } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const fechaIso = () => {
-        const fechaRD = new Date().toLocaleString('en-US', { timeZone: 'America/Santo_Domingo' });
-        return new Date(fechaRD).toISOString();
-    };
     
-
     const onSubmit = handleSubmit(async (data) => {
         const url = import.meta.env.VITE_API_BASE_FORMULARIOCALORIAS;
         

@@ -14,17 +14,12 @@ export default function AgregarAlimentoMovil(){
     const {register, handleSubmit, formState : {errors}} = useForm()
     const [alimento, setAlimento] = useState()
     const navigate = useNavigate();
-    const {user} = useContext(AuthContext)
+    const {user, fechaIso} = useContext(AuthContext)
     const {id, comida, fecha} = useParams()
     const urlPostContenedor = import.meta.env.VITE_API_BASE_CONTENEDORALIMENTOSGET;
     const BaseUrl = import.meta.env.VITE_API_BASE_OBTENERALIMENTOSPORELID;
     const url = `${BaseUrl}id=${id}`;
 
-    const fechaIso = () => {
-        const fechaRD = new Date().toLocaleString('en-US', { timeZone: 'America/Santo_Domingo' });
-        return new Date(fechaRD).toISOString();
-    };
-    
 
     const onSubmit = handleSubmit( async (data) => {
         const alimentosIdObjeto = [data.alimentosId];

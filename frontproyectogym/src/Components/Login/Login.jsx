@@ -13,7 +13,7 @@ import login from '../../Datos/Login';
 
 export default function Login() {
 const { register, formState: { errors }, handleSubmit } = useForm();
-const { user, setUser } = useContext(AuthContext);
+const { user, setUser,fechaIso } = useContext(AuthContext);
 const [hasAuthenticated, setHasAuthenticated] = useState(false);
 const navigate = useNavigate();
 
@@ -44,9 +44,7 @@ const onsubmit = handleSubmit(async (data) => {
     }
 });
 
-const formatDateForRepublicaDominicana = (date) => {
-    return new Date(date.toLocaleString('en-US', { timeZone: 'America/Santo_Domingo' })).toISOString();
-};
+
 
 
 useEffect(() => {
@@ -62,8 +60,7 @@ useEffect(() => {
                     if(data.status === 204){
                         navigate('/FormularioCalorias');
                     } else {
-                        const formattedDate = formatDateForRepublicaDominicana(new Date());
-                        navigate(`/PaginaPrincipal/${formattedDate}`);
+                        navigate(`/PaginaPrincipal/${fechaIso()}`);
                     }
                 }
                 getCalorias();

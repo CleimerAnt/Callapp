@@ -4,13 +4,11 @@ import fuegoCalorico from '../../assets/fuegoCalorico.png';
 import { AppBar, Box, Toolbar } from '@mui/material';
 import NavListDrawer from '../NavListDrawer/NavListDrawer';
 import CerrarSesion from '../CerrarSesion/CerrarSesion';
+import { useContext } from 'react';
+import { AuthContext } from '../../Auth/AuthContext';
 
 export default function HeaderPaginaPrincipal({fecha, principal = false}){
-
-    const fechaIso = () => {
-        const fechaRD = new Date().toLocaleString('en-US', { timeZone: 'America/Santo_Domingo' });
-        return new Date(fechaRD).toISOString();
-    };
+    const {fechaIso} = useContext(AuthContext);
     
 
     const navLinks = [
