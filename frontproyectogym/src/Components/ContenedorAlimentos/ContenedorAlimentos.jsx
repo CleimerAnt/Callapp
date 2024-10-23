@@ -17,6 +17,7 @@ export default function ContenedorAlimentos({ aray = [], thead = [], ancho, elem
                                 <p className='fw-bold'>{element.nombreAlimento}</p>
                                 <div key={index}>
                                     <p className='text-primary fw-bold'>Calorías: {element.caloriasDelAlimento}</p>
+                                    <p className='text-success fw-bold'>Porción: {element.porcion}</p>
                                     <div className='d-flex' style={{ gap: '10px' }}>
                                         <p>C: <span className={`${styles.carbohidratos}`}>{element.carbohidratosDelAlimento}</span></p>
                                         <p>P: <span className={`${styles.proteina}`}>{element.proteinaDelAlimento}</span></p>

@@ -64,5 +64,3 @@ export default function AccionesAlimentos(){
     </main>
     </>
 }
-
-{/*<h1 className="text-center mt-4">No hay alimentos</h1> */}
