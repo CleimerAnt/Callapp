@@ -1,8 +1,15 @@
-# React + Vite
+# Proyecto React - Frontend de [CallApp](https://callapp.es/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es un proyecto desarrollado en **React** en el cual realicé el frontend de la página [CallApp](https://callapp.es/). 
 
-Currently, two official plugins are available:
+## Tecnologías y herramientas utilizadas:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React Hook Form:** Para la gestión de formularios.
+- **React Calendar:** Para el manejo de calendarios.
+- **React Router Dom:** Para la gestión de rutas en la aplicación.
+- **API en .NET:** Consumí una API que desarrollé en **.NET**.
+- **Docker:** Dockericé la aplicación para facilitar su despliegue y manejo.
+
+## Enlaces:
+
+- [Repositorio en Docker Hub](https://hub.docker.com/r/cleimer24/callapp/tags)
